@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizDataObj Class="BizDataObj" DBName="Default" Description="Add description of BizDataObj" IdGeneration="Identity" InheritFrom="" Name="BOtmpprices" OtherSQLRule="" Package="admin.prices.tmpprices" SearchRule="" SortRule="" Table="_prices">
+	<BizFieldList>
+		<!--  -->
+		<BizField Column="name" Join="prtypes_join" Name="_prtypes_name" Type="Text"/>
+		<BizField Column="name" Join="currency_join" Name="_currency_name" Type="Text"/>
+		<BizField Column="cod" Join="currency_join" Name="_currency_cod" Type="Text"/>
+		<!--  -->		
+		
+		<BizField Column="rid" Name="Id" />
+		<BizField Column="_pritems_rid" Name="_pritems_rid" Type="Number" Required="Y"/>
+		<BizField Column="_prtypes_rid" Name="_prtypes_rid" Type="Number" Required="Y"/>
+		<BizField Column="_currency_rid" Name="_currency_rid" Type="Number" Required="Y"/>
+		<BizField Column="price" Name="price" Type="Float" Required="Y"/>
+		<BizField Column="" Name="archive_display_value" Value="{(@:Field[archive].Value == '1')?'Да':'Нет'}"/>
+		<BizField Column="archive" Name="archive" />
+		<BizField Column="descr" Name="descr" />
+		<BizField Column="createDT" Name="createDT" Type="DateTime"/>
+		<BizField Column="modifyDT" Name="modifyDT" Type="DateTime"/>
+	</BizFieldList>
+	<TableJoins>
+		<Join Name="pritems_join" Table="_pritems" Column="rid" ColumnRef="_pritems_rid" JoinType="INNER JOIN"/>			
+		<Join Name="prtypes_join" Table="_prtypes" Column="rid" ColumnRef="_prtypes_rid" JoinType="INNER JOIN"/>			
+		<Join Name="currency_join" Table="_currency" Column="rid" ColumnRef="_currency_rid" JoinType="INNER JOIN"/>			
+	</TableJoins>
+	<ObjReferences>
+		<!-- 
+		<Object Name="admin.yelowpages.regions.BOregions" Description="" Relationship="M-1" Table="_regions" Column="Id" FieldRef="_regions_rid"/>
+		<Object Name="admin.yelowpages.clients.BOclients" Description="" Relationship="1-M" Table="_clients" Column="_cities_rid" FieldRef="Id" CascadeDelete="Y"/>		
+		 -->
+	</ObjReferences>
+</BizDataObj>

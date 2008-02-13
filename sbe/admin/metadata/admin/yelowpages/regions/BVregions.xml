@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizView Class="BizView" Description="Система администрирования" Name="BVregions" Package="admin.yelowpages.regions" Template="layouts/layout_simple.tpl">
+	<ControlList>
+		<Control Name="mainmenu" Form="admin.shared.BFmainmenu"/>
+		<Control Name="right_panel_content" Form="admin.yelowpages.regions.BFregions"/>
+	</ControlList>
+</BizView>

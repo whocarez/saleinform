@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Menu Name="Menus" Package="admin.shared" Class="HTMLMenus">
+   <MenuItem URL="controller.php?view=admin.welcome.BVwelcome" Target="" Caption="Домой">
+   </MenuItem>
+   <MenuItem URL="" Target="" Caption="Валюты">
+	   <MenuItem URL="controller.php?view=admin.yelowpages.currency.BVcurrency" Target="" Caption="Справочник валют"/>
+	   <MenuItem URL="controller.php?view=admin.yelowpages.officialcources.BVofficialcources" Target="" Caption="Оффициальные курсы"/>
+	   <MenuItem URL="controller.php?view=admin.yelowpages.currcources.BVcurrcources" Target="" Caption="Курсы клиентов"/>
+   </MenuItem>
+   <MenuItem URL="" Target="" Caption="География" Icon="">
+		<MenuItem URL="controller.php?view=admin.yelowpages.countries.BVcountries" Target="" Caption="Страны" />   
+		<MenuItem URL="controller.php?view=admin.yelowpages.regions.BVregions" Target="" Caption="Регионы" />
+		<MenuItem URL="controller.php?view=admin.yelowpages.cities.BVcities" Target="" Caption="Города" />
+   </MenuItem>
+   <MenuItem URL="" Target="" Caption="Клиенты" Icon="">
+		<MenuItem URL="controller.php?view=admin.yelowpages.cltypes.BVcltypes" Target="" Caption="Типы клиентов" />   
+		<MenuItem URL="controller.php?view=admin.yelowpages.urforms.BVurforms" Target="" Caption="Юр. формы" />		
+		<MenuItem URL="controller.php?view=admin.yelowpages.clients.BVclients" Target="" Caption="Справочник клиентов" />		
+		<MenuItem URL="controller.php?view=admin.yelowpages.users.BVusers" Target="" Caption="Аккаунты клиентов" />	
+		<MenuItem URL="controller.php?view=admin.yelowpages.cluopinions.BVcluopinions" Target="" Caption="Отзывы пользователей" />
+		<MenuItem URL="controller.php?view=admin.yelowpages.prloadsorganizer.BVprloadsorganizer" Target="" Caption="Статусы загрузок" />			
+   </MenuItem>
+   <MenuItem URL="" Target="" Caption="Товары" Icon="">
+		<MenuItem URL="controller.php?view=admin.wares.brands.BVbrands" Target="" Caption="Справочник брендов" />   
+		<MenuItem URL="controller.php?view=admin.wares.brandsassoc.BVbrandsassoc" Target="" Caption="Синонимы брендов" />   
+		<MenuItem URL="controller.php?view=admin.wares.categories.BVcategories" Target="" Caption="Справочник категорий" />   
+		<MenuItem URL="controller.php?view=admin.wares.wares.BVwares_warespars" Target="" Caption="Справочник товаров" />   
+		<MenuItem URL="controller.php?view=admin.wares.categoriesimages.BVcategoriesimages" Target="" Caption="Изображения категорий" />   
+		<MenuItem URL="controller.php?view=admin.wares.pars.BVpars" Target="" Caption="Справочник параметров" />   
+		<MenuItem URL="controller.php?view=admin.wares.relatedcats.BVrelatedcats" Target="" Caption="Родственные категории" />   
+		<MenuItem URL="controller.php?view=admin.wares.guides.BVguides" Target="" Caption="Советы покупателям" />   
+		<MenuItem URL="controller.php?view=admin.wares.catpars.BVcatpars" Target="" Caption="Параметры категорий" />   
+   </MenuItem>
+   <MenuItem URL="" Target="" Caption="Пользователи" Icon="">
+		<MenuItem URL="controller.php?view=admin.members.members.BVmembers" Target="" Caption="Пользователи" />    
+		<MenuItem URL="controller.php?view=admin.members.uerrors.BVuerrors" Target="" Caption="Сообщения об ошибках" />    
+		<MenuItem URL="controller.php?view=admin.members.ucallbacks.BVucallbacks" Target="" Caption="Обратная связь" />    
+   </MenuItem>
+   <MenuItem URL="" Target="" Caption="Прайсы" Icon="">
+		<MenuItem URL="controller.php?view=admin.prices.prtypes.BVprtypes" Target="" Caption="Типы цен" />    
+		<MenuItem URL="controller.php?view=admin.prices.availabletypes.BVavailabletypes" Target="" Caption="Типы наличия" />    
+		<MenuItem URL="controller.php?view=admin.prices.tmppricesstorage.BVtmppricesstorage" Target="" Caption="Временное хранилище" />    
+		<MenuItem URL="controller.php?view=admin.prices.pritems.BVpritems" Target="" Caption="Хранилище цен" />    
+   </MenuItem>
+   <MenuItem URL="" Target="" Caption="Контент" Icon="">
+		<MenuItem URL="controller.php?view=admin.content.newscategories.BVnewscategories" Target="" Caption="Новости" />    
+		<MenuItem URL="controller.php?view=admin.content.advertises.BVadvertises" Target="" Caption="Реклама" />
+		<MenuItem URL="controller.php?view=admin.content.links.BVlinks" Target="" Caption="Cсылки" />  
+		<MenuItem URL="controller.php?view=admin.content.linkstocategories.BVlinkstocategories" Target="" Caption="Обмен ссылками" />    
+   </MenuItem>
+   <MenuItem URL="" Target="" Caption="Сервисы" Icon="">
+		<MenuItem URL="controller.php?view=admin.system.services.BVservices" Target="" Caption="Сервисы" />    
+   </MenuItem>
+   <MenuItem URL="" Target="" Caption="Система" Icon="">
+		<MenuItem URL="controller.php?view=admin.system.options.BVoptions" Target="" Caption="Константы" />    
+   </MenuItem>
+   <MenuItem URL="" Target="" Caption="Безопасность" Icon="">
+		<MenuItem URL="controller.php?view=admin.security.users.BVusers" Target="" Caption="Админперсонал" />       
+   </MenuItem>
+</Menu>

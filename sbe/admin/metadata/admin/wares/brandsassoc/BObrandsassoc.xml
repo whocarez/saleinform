@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<BizDataObj Class="BizDataObj" DBName="Default" IdGeneration="Identity" Description="Add description of BizDataObj" InheritFrom="" Name="BObrandsassoc" OtherSQLRule="" Package="admin.wares.brandsassoc" SearchRule="" SortRule="" Table="_brandsassoc">
+	<BizFieldList>
+		<!--  -->
+		<BizField Column="name" Join="brands_join" Name="_brands_name" Type="Text"/>
+		<!--  -->
+		<BizField Column="rid" Name="Id" />
+		<BizField Column="_brands_rid" Name="_brands_rid" Type="Number" Required="Y"/>
+		<BizField Column="name" Name="name" Type="Text" Required="Y"/>
+		<BizField Column="archive" Name="archive" DefaultValue="0" Type="Text"/>
+		<BizField Column="" Name="archive_display_value" Value="{(@:Field[archive].Value == '1')?'Да':'Нет'}"/>
+		<BizField Column="descr" Name="descr" Type="Text" />
+		<BizField Column="createDT" Name="createDT" Type="DateTime" />
+		<BizField Column="modifyDT" Name="modifyDT" Type="DateTime" />
+	</BizFieldList>
+	<TableJoins>
+		<Join Name="brands_join" Table="_brands" Column="rid" ColumnRef="_brands_rid" JoinType="INNER JOIN" />
+	</TableJoins>
+	<ObjReferences>
+		<Object Name="admin.wares.brands.BObrands" Description="бренды" Relationship="M-1" Table="_brands" Column="Id" FieldRef="_brands_rid" CascadeDelete="Y"/>	
+	</ObjReferences>
+</BizDataObj>
