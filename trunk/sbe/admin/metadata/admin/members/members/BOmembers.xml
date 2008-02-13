@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizDataObj Class="BizDataObj" DBName="Default" IdGeneration="Identity" Description="Add description of BizDataObj" InheritFrom="" Name="BOmembers" OtherSQLRule="" Package="admin.members.members" SearchRule="" SortRule="" Table="_members">
+	<BizFieldList>
+		<BizField Column="rid" Name="Id"/>
+		<BizField Column="display_name" Name="display_name" Required="Y" Type="Text"/>
+		<BizField Column="login" Name="login" Type="Text" Required="Y"/>
+		<BizField Column="password" Name="password" Type="Text" Required="Y"/>
+		<BizField Column="email" Name="email" Type="Text" Required="Y"/>
+		<BizField Column="subscribed" Name="subscribed" Type="Number"/>
+		<BizField Column="activate_code" Name="activate_code" Type="Text" Required="Y"/>
+		<BizField Column="" Name="activate_status_display_value" Value="{(@:Field[activate_status].Value == '1')?'Да':'Нет'}"/>
+		<BizField Column="activate_status" Name="activate_status"/>
+		<BizField Column="" Name="subscribed_display_value" Value="{(@:Field[subscribed].Value == '1')?'Да':'Нет'}"/>
+		<BizField Column="archive" Name="archive" Type="Number"/>
+		<BizField Column="" Name="archive_display_value" Value="{(@:Field[archive].Value == '1')?'Да':'Нет'}"/>
+		<BizField Column="descr" Name="descr" />
+		<BizField Column="createDT" Name="createDT" Type="DateTime"/>
+		<BizField Column="modifyDT" Name="modifyDT" Type="DateTime"/>
+	</BizFieldList>
+	<TableJoins>
+	</TableJoins>
+	<ObjReferences>
+	</ObjReferences>
+</BizDataObj>
