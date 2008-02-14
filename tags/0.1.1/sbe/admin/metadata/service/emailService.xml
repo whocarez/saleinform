@@ -1,0 +1,6 @@
+<?xml version="1.0" standalone="no"?>
+<PluginService Name="emailService" Package="service" Class="emailService">
+   <Accounts>
+     <Account Name="PricesLoadLog" Host="nirvana" FromName="SI" FromEmail="prices@saleinform.com" IsSMTP="N" SMTPAuth="N" Username="" Password="" />
+   </Accounts>
+</PluginService>
