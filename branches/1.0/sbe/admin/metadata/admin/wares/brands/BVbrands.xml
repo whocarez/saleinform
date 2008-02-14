@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizView Class="BizView" Description="Система администрирования" Name="BVbrands" Package="admin.wares.brands" Template="layouts/layout_simple.tpl">
+	<ControlList>
+		<Control Name="mainmenu" Form="admin.shared.BFmainmenu"/>
+		<!-- 
+		<Control Name="left_panel_title" Form="admin.wares.brands.BFLPtitle"/>
+		<Control Name="left_panel_content" Form="admin.wares.brands.BFLPbrands"/>
+		 -->
+		<Control Name="right_panel_content" Form="admin.wares.brands.BFbrands"/>
+	</ControlList>
+</BizView>

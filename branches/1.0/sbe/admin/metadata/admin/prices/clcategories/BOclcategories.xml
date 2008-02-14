@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<BizDataObj Class="BizDataObj" DBName="Default" IdGeneration="Identity" Description="Add description of BizDataObj" InheritFrom="" Name="BOclcategories" OtherSQLRule="" Package="admin.prices.clcategories" SearchRule="" SortRule="[Name] ASC" Table="_clcategories">
+	<BizFieldList>
+		<!--  -->
+		<BizField Column="name" Join="categories_join" Name="_categories_name" Type="Text"/>		
+		<!--  -->
+		<BizField Column="rid" Name="Id"/>
+		<BizField Column="name" Name="Name" Required="Y" Type="Text"/>
+		<BizField Column="_clcategories_rid" Name="PId" Type="Text"/>
+		<BizField Column="_categories_rid" Name="_categories_rid" Type="Text"/>
+		<BizField Column="_clients_rid" Name="_clients_rid" Type="Text"/>
+		<BizField Column="clrid" Name="clId" Type="Text"/>
+		<BizField Column="archive" Name="archive" DefaultValue="0" Type="Text"/>
+		<BizField Column="" Name="archive_display_value" Value="{(@:Field[archive].Value == '1')?'Да':'Нет'}"/>
+		<BizField Column="descr" Name="descr" Type="Text" />
+		<BizField Column="createDT" Name="createDT" Type="DateTime" />
+		<BizField Column="modifyDT" Name="modifyDT" Type="DateTime" />
+	</BizFieldList>
+	<TableJoins>
+		<Join Name="categories_join" Table="_categories" Column="rid" ColumnRef="_categories_rid" JoinType="LEFT JOIN" />	
+	</TableJoins>
+	<ObjReferences>
+		<Object Column="_clients_rid" Description="временное хранилище" FieldRef="_clients_rid" Name="admin.prices.tmppricesstorage.BOtmppricesstorage" Relationship="M-1" Table="_tmppricesstorage" CascadeDelete="Y"/>
+		<Object Column="_clcategories_rid" Description="предложения клиентов" FieldRef="Id" Name="admin.prices.tmppritems.BOtmppritems" Relationship="1-M" Table="_tmppritems" CascadeDelete="N"/>		
+	</ObjReferences>
+</BizDataObj>

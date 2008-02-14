@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizView Class="BizView" Description="Система администрирования" Name="BVcurrcources" Package="admin.yelowpages.currcources" Template="layouts/layout_two_rows.tpl">
+	<ControlList>
+		<Control Name="mainmenu" Form="admin.shared.BFmainmenu"/>
+		<Control Name="right_panel_content_1" Form="admin.yelowpages.clients.BFclients_currcources" SubCtrls="admin.yelowpages.currcources.BFcurrcources"/>
+		<Control Name="right_panel_content_2" Form="admin.yelowpages.currcources.BFcurrcources"/>
+	</ControlList>
+</BizView>

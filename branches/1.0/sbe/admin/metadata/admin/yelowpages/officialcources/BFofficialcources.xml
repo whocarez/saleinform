@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizForm BizDataObj="admin.yelowpages.officialcources.BOofficialcources" Class="BizForm" Description="" InheritFrom="" Name="BFofficialcources" Package="admin.yelowpages.officialcources" PageSize="14" SearchRule="" Title="Оффициальные курсы валют" jsClass="jbForm">
+	<DisplayModes>
+		<Mode DataFormat="array" Name="QUERY" TemplateFile="edit.tpl"/>
+		<Mode DataFormat="array" Name="EDIT" TemplateFile="edit.tpl"/>
+		<Mode DataFormat="array" Name="NEW" TemplateFile="edit.tpl"/>
+		<Mode DataFormat="block" FormatStyle="tbl" Name="READ" TemplateFile="list.tpl"/>
+	</DisplayModes>
+	<BizCtrlList>
+		<BizCtrl DisplayName="ID" FieldName="Id" Name="bctrl_Id" DisplayMode="READ" Sortable="Y" Required="Y"/>
+		<BizCtrl DisplayName="Валюта" FieldName="_currency_cod" Name="bctrl__currency_cod" Hidden="N" Sortable="Y" DisplayMode="READ"/>
+		<BizCtrl DisplayName="_countries_name" FieldName="_countries_name" Name="bctrl__countries_name" Hidden="Y"/>
+		<BizCtrl DisplayName="Страна" FieldName="_countries_rid" Name="bctrl__countries_rid" Required="Y" DisplayMode="NEW" SelectFrom="admin.yelowpages.countries.BOcountries[name:Id]" Enabled="N" />
+		<BizCtrl DisplayName="Валюта" FieldName="_currency_rid" Name="bctrl__currency_rid" Sortable="Y" Required="Y" SelectFrom="admin.yelowpages.currency.BOcurrency[name:Id],[archive]=0" DisplayMode="EDIT|NEW"/>
+		<BizCtrl DisplayName="Валюта" FieldName="_currency_rid" Name="bctrl__currency_rid_query" Sortable="Y" SelectFrom="admin.yelowpages.currency.BOcurrency[name:Id],[archive]=0" HTMLAttr="&lt;option value= &gt;Все&lt;/option&gt;" DisplayMode="QUERY"/>
+		<BizCtrl DisplayName="Дата" FieldName="courcedate" Name="bctrl_courcedate" Sortable="Y" Required="Y" Type="Date" DisplayMode="READ|NEW|EDIT"/>
+		<BizCtrl DisplayName="Курс" FieldName="cource" Name="bctrl_cource" Sortable="Y" Type="Number" Required="Y" Format="Float" DisplayMode="READ|NEW|EDIT"/>
+		<BizCtrl DisplayName="Дата" FieldName="courcedate" Name="bctrl_courcedate_query" Sortable="Y" Type="Date" DisplayMode="QUERY"/>
+		<BizCtrl DisplayName="Курс" FieldName="cource" Name="bctrl_cource_query" Sortable="Y" Type="Number" Format="Float" DisplayMode="QUERY"/>
+		<BizCtrl DisplayName="Примечание" FieldName="descr" Name="bctrl_descr" Required="N" Sortable="N" Width="400" Type="Textarea" DisplayMode="NEW|EDIT"/>
+		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="admin.shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
+		<BizCtrl DisplayName="Архивный" FieldName="archive_display_value" Name="bctrl_archive_display_value" Required="N" Sortable="N" DisplayMode="READ" />
+		<BizCtrl DisplayName="Создан" FieldName="createDT" Name="bctrl_createDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
+		<BizCtrl DisplayName="Изменен" FieldName="modifyDT" Name="bctrl_modifyDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
+	</BizCtrlList>
+	<Toolbar>
+		<Control Caption="Поиск" DisplayMode="READ" Function="SearchRecord()" Image="search.gif" Name="btn_search" Type="button" />
+		<Control Caption="Поиск" DisplayMode="QUERY" Function="RunSearch()" Image="search.gif" Name="btn_dosearch" Type="button" />
+		<Control Caption="Правка" DisplayMode="READ" Function="EditRecord()" Image="edit.gif" Name="btn_edit" Type="button" />
+		<Control Caption="Новый" DisplayMode="READ" Function="NewRecord()" Image="new.gif" Name="btn_new" Type="button" />
+		<Control Caption="Сохранить" DisplayMode="EDIT|NEW" Function="SaveRecord()" Image="save.gif" Name="btn_save" Type="button" />
+		<!-- 
+		<Control Caption="Копировать" DisplayMode="READ" Function="CopyRecord()" Image="copy.gif" Name="btn_copy" Style="" Type="button"/>
+		 -->
+		<Control Caption="Удалить" DisplayMode="READ" Function="DeleteRecord()" Image="delete.gif" Name="btn_delete" Style="" Type="button" />
+		<Control Caption="Отмена" DisplayMode="EDIT|NEW|QUERY" Function="Cancel()" Image="cancel.gif" Name="btn_cancel" Type="button" />
+		<Control Caption="Обновить" DisplayMode="READ" Function="RefreshQuery()" Image="refresh.gif" Name="btn_refresh" Style="" Type="button" />
+		<Control Caption="Експорт в ексель" Name="btn_excel" Image="excel.gif" Type="button" Width="" Height="" HTMLAttr="" Function="CallService(excelService,renderHTML)" FunctionType="Popup" DisplayMode="READ"/>
+		<Control Caption="Експорт" Name="btn_export" Image="" Type="button" HTMLAttr="" Function="CallService(ioService,exportXML)" FunctionType="Page" DisplayMode="READ"/>
+		<Control Caption="Импорт" Name="btn_import" Image="" Type="button" HTMLAttr="" Function="ShowPopup(shared.FMImportPopup)" FunctionType="Popup" DisplayMode="READ"/>
+
+	</Toolbar> 
+	<Navbar>
+		<Control Name="btn_next" Image="next.gif" Caption="Следующая" Type="button" DisplayMode="READ">
+			<EventHandler Name="onclick" Event="onclick" Function="NextPage()" />
+			<EventHandler Name="nextrecord" Event="" Function="NextRow()" />
+		</Control>
+		<Control Name="btn_prev" Image="prev.gif" Caption="Предыдущая" Type="button" DisplayMode="READ">
+			<EventHandler Name="onclick" Event="onclick" Function="PrevPage()" />
+			<EventHandler Name="prevrecord" Event="" Function="PrevRow()" />
+		</Control>
+			<Control Name="btn_last" Image="nextlast.gif" Caption="В конец" Type="button" Width="" Height="" HTMLAttr="" Function="GotoPage(-1)" Style="" Enabled="" DisplayMode="" Access=""/>
+			<Control Name="btn_first" Image="prevfirst.gif" Caption="В начало" Type="button" Width="" Height="" HTMLAttr="" Function="GotoPage(1)" Style="" Enabled="" DisplayMode="" Access=""/>
+	</Navbar> 
+
+</BizForm>
