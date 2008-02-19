@@ -10,7 +10,7 @@
 		<BizCtrl DisplayName="ID" FieldName="Id" Name="bctrl_Id" Sortable="Y" DisplayMode="READ"/>
 		<BizCtrl DisplayName="Категория" FieldName="_categories_name" Required="Y" Name="bctrl__categories_name" DisplayMode="READ" Hidden="Y"/>
 		<BizCtrl DisplayName="Заголовок" FieldName="title" Required="Y" Name="bctrl_title" />
-		<BizCtrl DisplayName="Категория" FieldName="_categories_rid" Required="Y" Name="bctrl__categories_rid" DisplayMode="NEW|EDIT|QUERY" SelectFrom="admin.wares.categories.BOcategories[Name:Id:PId],[archive]=0" Hidden="N" Enabled="Y"/>
+		<BizCtrl DisplayName="Категория" FieldName="_categories_rid" Required="Y" Name="bctrl__categories_rid" DisplayMode="NEW|EDIT|QUERY" SelectFrom="admin.wares.categories.BOcategories[Name:Id],[archive]=0" Hidden="N" Enabled="Y"/>
 		<BizCtrl DisplayName="Текст" FieldName="content" Name="bctrl_content" Required="N" Sortable="N" Type="Textarea" Style="width: 600px; height: 200px;" DisplayMode="NEW|EDIT"/>
 		<BizCtrl DisplayName="Примечание" FieldName="descr" Name="bctrl_descr" Required="N" Sortable="N" Width="400" Type="Textarea" DisplayMode="NEW|EDIT"/>
 		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="admin.shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
