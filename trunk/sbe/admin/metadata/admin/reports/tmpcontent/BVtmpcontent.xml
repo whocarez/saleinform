@@ -1,0 +1,7 @@
+<?xml version="1.0" standalone="no"?>
+<BizView Name="ReportView" Description="Events Report" Package="admin.reports.tmpcontent" Class="BizView" Template="layouts/layout_simple.tpl" AccessControl="">
+	<ControlList>
+		<Control Name="mainmenu" Form="admin.shared.BFmainmenu"/>
+		<Control Name="fm_report" Form="BFtmpcontent"/>
+	</ControlList>
+</BizView>

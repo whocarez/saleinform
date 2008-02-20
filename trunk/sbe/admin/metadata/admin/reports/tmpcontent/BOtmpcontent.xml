@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizDataObj Class="BizDataObj" DBName="Default" Description="Add description of BizDataObj" IdGeneration="Identity" InheritFrom="" Name="BOtmpcontent" OtherSQLRule="GROUP BY [Id]" Package="admin.reports.tmpcontent" SearchRule="" SortRule="" Table="_tmppricesstorage">
+	<BizFieldList>
+		<!--  -->
+		<BizField Column="name" Join="cities_join" Name="_cities_name" Type="Text"/>
+		<BizField Column="name" Join="countries_join" Name="_countries_name" Type="Text"/>
+		<BizField Column="name" Join="clients_join" Name="_clients_name" Type="Text"/>
+		<BizField Column="name" Join="cltypes_join" Name="_cltypes_name" Type="Text"/>
+		<BizField Column="name" Join="currency_join" Name="_currency_name" Type="Text"/>
+		<BizField Column="cod" Join="currency_join" Name="_currency_cod" Type="Text"/>
+		<BizField Column="name" Join="regions_join" Name="_regions_name" Type="Text"/>
+		<BizField Column="rid" Join="tmppritems_join" Name="_tmppritems_rid" Type="Text"/>
+		<!--  -->		
+		<BizField Column="rid" Name="Id" />
+		<BizField Column="_clients_rid" Name="_clients_rid" Type="Number" Required="Y"/>
+		<BizField Column="price_date" Name="price_date" Type="DateTime" Required="Y"/>
+		<BizField Column="clname" Name="clname" Type="Text" Required="Y"/>
+		<BizField Column="clcompany" Name="clcompany" Type="Text" Required="Y"/>
+		<BizField Column="clurl" Name="clurl" Type="Text" Required="Y"/>
+		<BizField Column="" Name="itemsCount" SQLExpr="COUNT([_tmppritems_rid])"/>
+		<BizField Column="" Name="archive_display_value" Value="{(@:Field[archive].Value == '1')?'Да':'Нет'}"/>
+		<BizField Column="archive" Name="archive" />
+		<BizField Column="descr" Name="descr" />
+		<BizField Column="createDT" Name="createDT" Type="DateTime"/>
+		<BizField Column="modifyDT" Name="modifyDT" Type="DateTime"/>
+	</BizFieldList>
+	<TableJoins>
+		<Join Name="clients_join" Table="_clients" Column="rid" ColumnRef="_clients_rid" JoinType="INNER JOIN"/>
+		<Join Name="cltypes_join" Table="_cltypes" Column="rid" JoinRef="clients_join" ColumnRef="_cltypes_rid" JoinType="INNER JOIN"/>
+		<Join Name="urforms_join" Table="_urforms" Column="rid" JoinRef="clients_join" ColumnRef="_urforms_rid" JoinType="INNER JOIN"/>
+		<Join Name="cities_join" Table="_cities" Column="rid" JoinRef="clients_join" ColumnRef="_cities_rid" JoinType="INNER JOIN"/>
+		<Join Name="regions_join" Table="_regions"  JoinRef="cities_join" Column="rid" ColumnRef="_regions_rid" JoinType="INNER JOIN"/>		
+		<Join Name="countries_join" Table="_countries"  JoinRef="regions_join" Column="rid" ColumnRef="_countries_rid" JoinType="INNER JOIN"/>
+		<Join Name="currency_join" Table="_currency"  JoinRef="countries_join" Column="rid" ColumnRef="_currency_rid" JoinType="INNER JOIN"/>
+		<Join Name="tmppritems_join" Table="_tmppritems"  Column="_tmppricesstorage_rid" ColumnRef="rid" JoinType="INNER JOIN"/>
+	</TableJoins>
+	<ObjReferences>
+	</ObjReferences>
+</BizDataObj>
