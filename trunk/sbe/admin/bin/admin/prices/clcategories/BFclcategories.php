@@ -81,7 +81,8 @@ class BFclcategories extends BizForm
       
       // set the search rule
       if ($pid == '')
-         $this->m_SearchRule = "[PId] = '' or [PId] is NULL";
+         #$this->m_SearchRule = "[PId] = '' or [PId] is NULL";
+         $this->m_SearchRule = "_clcategories_rid not in (select clrid from _clcategories where _clients_rid = _clcategories._clients_rid)";
       else
          $this->m_SearchRule = "[PId] = '$pid'";
       $this->m_ClearSearchRule = true;

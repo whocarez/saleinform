@@ -12,7 +12,9 @@
 {foreach item=btn from=$toolbar}
 {$btn}
 {/foreach}
-</td></tr></table>
+</td>
+<td><div id='{$name}.load_disp' style="display:none"><img src="../images/indicator.white.gif"/></div></td>
+</tr></table>
 </td>
 </table>
 </div>
