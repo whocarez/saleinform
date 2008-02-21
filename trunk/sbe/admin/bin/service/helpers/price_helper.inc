@@ -281,6 +281,7 @@ class PriceXML
 			}
 			elseif($itemName == 'CURRENCYID') continue;
 			else {
+				if($itemName=='DESCRIPTION') $item['VALUE'] = str_replace('//', '; ', $item['VALUE']);
 				$stmt = $this->DB->prepare("INSERT INTO _tmppritemsattrs(_tmppritems_rid, attr_name, attr_value) 
 											VALUES (:_tmppritems_rid, :attr_name, :attr_value)");
 				$stmt->bindParam(':_tmppritems_rid', $_tmppritems_rid);
