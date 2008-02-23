@@ -41,6 +41,15 @@ class pricesService
 			
 			$priceOBJ = new PriceXML($rec['rid'], $rec['pr_url']);
 			$loadStatus = $priceOBJ->LoadPrice();
+			if($loadStatus){
+				$stmt = $db->prepare("CREATE TEMPORARY TABLE temp_pritems (SELECT name FROM _pritems WHERE _clients_rid = :_clients_rid)");
+				$stmt->bindParam(':_clients_rid', $rec['rid']);
+				$stmt->execute();
+				$stmt = $db->prepare("SELECT SFE_GetPrItemsWaresRid(name) FROM temp_pritems");
+				$stmt->execute();
+				$stmt = $db->prepare("DROP TABLE temp_pritems");
+				$stmt->execute();
+			}
 			$stmt = $db->prepare("INSERT INTO _prloadsorganizer(_clients_rid, load_time, next_load, wares_quan, error_status, descr)
 									values(:_clients_rid, NOW(), ADDDATE(NOW(), :pr_actual_days), :wares_quan, :error_status, :descr)");
 			$stmt->bindParam(':_clients_rid', $rec['rid']);
