@@ -12,7 +12,7 @@ class Rating_model extends Model
 	
 	public function GetRatedProducts($parsARR)
 	{
-		$this->db->select('concat(_pritems.name, \' \', _brands.name, \' \', _pritems.model) as wareNAME, 
+		$this->db->select('concat( _brands.name, \' \', _pritems.model) as wareNAME, 
 							_wares.*, ROUND(avg(_waresuopinions.mark),0) as wareRATING, 
 							count(_wares.rid) as offersQUAN,
 							_waresimages.name as iname, 
