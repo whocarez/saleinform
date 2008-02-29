@@ -33,9 +33,9 @@ class pricesService
 		{
 			// Закрываем старые предложения от этого клиента
 			//$stmt = $db->prepare("UPDATE _pritems SET archive = 1 WHERE _clients_rid = :_clients_rid");
-			$stmt = $db->prepare("DELETE FROM _pritems WHERE _clients_rid = :_clients_rid");
-			$stmt->bindParam(':_clients_rid', $rec['rid']);
-			$stmt->execute();
+			//$stmt = $db->prepare("DELETE FROM _pritems WHERE _clients_rid = :_clients_rid");
+			//$stmt->bindParam(':_clients_rid', $rec['rid']);
+			//$stmt->execute();
 			//echo $rec['rid'];
 			/* { Load price */
 			
