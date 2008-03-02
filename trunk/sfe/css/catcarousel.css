@@ -1,0 +1,53 @@
+.carousel-component .carousel-list li { 
+    min-width:152px; /*75 + 2 + 2 + 1 + 1 */
+    width:152px;
+    margin-top:8px;
+    text-align: left;
+    white-space: nowrap;
+}
+.carousel-component .carousel-clip-region {
+	width: 608px; 
+}
+
+.carousel-component .carousel-list li a { 
+    /*display:block;*/
+    /*border:2px solid #e2edfa;*/
+    outline:none;
+    -moz-outline:none; 
+}
+
+.carousel-component .carousel-list li a:hover { 
+    /*border: 2px solid #87bf4e; */
+}
+
+.carousel-component .carousel-list li.active a { 
+    /*border:2px solid #708fc7; */
+}
+
+.carousel-component .carousel-list li img { 
+	margin-left: auto;
+    margin-right: auto;
+    padding:1px;
+    border:1px solid #999;
+    display:block; 
+}
+
+.carousel-component .carousel-list li strong { 
+    display:block; 
+}
+                                    
+.carousel-component .carousel-prev { 
+    position:relative;
+    top:100px;
+    z-index:3;
+    cursor:pointer; 
+    left:5px; 
+}
+
+.carousel-component .carousel-next { 
+    position:absolute;
+    top:100px;
+    z-index:3;
+    cursor:pointer; 
+    right:5px; 
+}
