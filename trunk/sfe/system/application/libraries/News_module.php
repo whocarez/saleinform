@@ -48,6 +48,7 @@ class News_module
 		$resultARR = array_slice($resultARR, $this->_current_news_current_page, $this->STN_news_quan_per_page);	
 		foreach($resultARR as $key=>$row)
 		{ 
+			$resultARR[$key]['title'] = stripslashes($resultARR[$key]['title']);
 			$resultARR[$key]['new'] = character_limiter(auto_typography(stripslashes($resultARR[$key]['new'])), 400);
 			if($resultARR[$key]['source_name'] && $resultARR[$key]['source_link']) $resultARR[$key]['source_link'] = '<a href="'.$resultARR[$key]['source_link'].'">'.$resultARR[$key]['source_name']."</a>";
 			else $resultARR[$key]['source_link']='';
