@@ -80,8 +80,9 @@ class PriceXML
 
 	public function DBTransaction()
 	{
-		BizSystem::log(LOG_DEBUG, "PRICELOADER", "PriceLoader Info = Start Database transaction");
-		$stmt = $this->DB->prepare("UPDATE _pritems SET archive = 0 WHERE _clients_rid = :_clients_rid");
+		//$stmt = $this->DB->prepare("UPDATE _pritems SET archive = 0 WHERE _clients_rid = :_clients_rid");
+		$stmt = $this->DB->prepare("DELETE FROM _pritems WHERE _clients_rid = :_clients_rid");
+		$_clients_rid = $this->clientsRid;
 		$stmt->bindParam(':_clients_rid', $_clients_rid);
 		$stmt->execute();
 		$stmt = $this->DB->prepare("DELETE FROM _tmppricesstorage WHERE _clients_rid = :_clients_rid");
@@ -200,6 +201,7 @@ class PriceXML
 	}
 	
 	public function OffersPROCESING(){
+		$offersQuan = count($this->docARR['YML_CATALOG']['SHOP']['OFFERS']['OFFER']);
 		foreach($this->docARR['YML_CATALOG']['SHOP']['OFFERS']['OFFER'] as $row){
 			if(!isset($row['CATEGORYID']) || !isset($this->clcategoriesARR[$row['CATEGORYID']['VALUE']])) continue;
 			$_clcategories_rid = $this->clcategoriesARR[$row['CATEGORYID']['VALUE']];
@@ -218,8 +220,7 @@ class PriceXML
 			unset($row['CATEGORYID']);
 			$this->OfferAttributesPROCESING($row, $this->DB->lastInsertId());
 			$this->LOADS_quan++;
-			//echo $this->LOADS_quan;
-			//if($this->LOADS_quan%100 === 0) $this->DB->commit();
+			BizSystem::log(LOG_DEBUG, "--------------->", "Complete {$this->LOADS_quan}/{$offersQuan}\n");
 		}
 	}
 	

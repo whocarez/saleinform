@@ -16,7 +16,7 @@ class pricesService
 				from _clients
 				JOIN _cities ON _cities.rid = _clients._cities_rid
 				JOIN _regions ON _regions.rid = _cities._regions_rid
-				JOIN _coutries ON _coutries.rid = _regions._countries_rid
+				JOIN _countries ON _countries.rid = _regions._countries_rid
 				LEFT JOIN _prloadsorganizer ON _clients.rid=_prloadsorganizer._clients_rid  
 				WHERE _clients.pr_url<>'' AND _clients.archive=0 AND _clients.pr_load=1 AND _clients.active=1
 				GROUP BY _clients.rid
@@ -29,20 +29,16 @@ class pricesService
 		$clientsArrForLoad = array();
 		foreach($recArr as $row)
 		{
-			if($row['_countries_rid'] != '5') continue;
+			//if($row['_countries_rid'] != '5') continue;
 		  	if(!$row['last_load'] || $row['last_load']<$now) $clientsArrForLoad[] = $row;
 		}
-		if(!$clientsArrForLoad) return;	
+		if(!$clientsArrForLoad) return;
+		$currNum = 1;
+		$quan = count($clientsArrForLoad);	
 		foreach($clientsArrForLoad as $rec)
 		{
-			// Закрываем старые предложения от этого клиента
-			//$stmt = $db->prepare("UPDATE _pritems SET archive = 1 WHERE _clients_rid = :_clients_rid");
-			//$stmt = $db->prepare("DELETE FROM _pritems WHERE _clients_rid = :_clients_rid");
-			//$stmt->bindParam(':_clients_rid', $rec['rid']);
-			//$stmt->execute();
-			//echo $rec['rid'];
 			/* { Load price */
-			
+			BizSystem::log(LOG_DEBUG, "PRICELOADER", "PriceLoader Info = Start load price: {$rec['name']}. {$currNum} FROM {$quan}\n");
 			$priceOBJ = new PriceXML($rec['rid'], $rec['pr_url']);
 			$loadStatus = $priceOBJ->LoadPrice();
 			if($loadStatus){
@@ -63,6 +59,8 @@ class pricesService
 			$stmt->bindParam(':descr', $priceOBJ->ERROR_content);
 			//echo $priceOBJ->ERROR_content;
 			$stmt->execute();
+			BizSystem::log(LOG_DEBUG, "PRICELOADER", "PriceLoader Info = Complete load price: {$rec['name']}. {$currNum} FROM {$quan}\n");
+			$currNum++;
 		}
 	}
 }
