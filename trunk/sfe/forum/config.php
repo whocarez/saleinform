@@ -51,10 +51,10 @@ $dbs = array();
 // Define database configuration
 //
 $dbs['type'] = 'mysql';
-$dbs['server'] = 'localhost';
+$dbs['server'] = '62.149.25.12';
 $dbs['username'] = 'saleinfo_sfedb';
-$dbs['passwd'] = ',hf[vfgenhf';
-$dbs['dbname'] = 'saleinfo_sfedb';
+$dbs['passwd'] = 'korn17';
+$dbs['dbname'] = 'saleinform';
 $dbs['prefix'] = 'forum_';
 
 //
