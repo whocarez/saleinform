@@ -49,7 +49,7 @@ class Mostpopular_model extends Model
 		$this->db->from('_clients');
 		$this->db->join('_pritems', "_clients.rid=_pritems._clients_rid AND _pritems.archive='0'", 'LEFT');
 		if(!$parsARR['catRID']) $this->db->where(array('_pritems.archive'=>'0', '_pritems.archive'=>'0'));
-		else $this->db->where(array('_pritems._categories_rid'=>$parsARR['catRID'], '_pritems.archive'=>'0'));
+		else $this->db->where(array('_pritems._categories_rid'=>$parsARR['catRID'], '_pritems.archive'=>'0', '_clients.archive'=>'0'));
 		if($parsARR['citiesRID'])
 		{
 			$this->db->where(array('_clients._cities_rid'=>$parsARR['citiesRID']));
