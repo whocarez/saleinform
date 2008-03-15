@@ -52,6 +52,10 @@
 				<!-- { Login area -->
 				<?php echo $login_area_obj;?>				
 				<!-- } Login area -->
+
+				<!-- { Filters area -->
+				<?php echo $filters_area_obj;?>				
+				<!-- } Filters area -->
 				
 				<!-- { Quickmenu area -->
 				<?php echo $quickmenu_area_obj;?>				

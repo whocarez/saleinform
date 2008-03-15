@@ -185,6 +185,7 @@ class Categories_model extends Model
 		$this->db->join('_officialcources', "_officialcources._currency_rid=_prices._currency_rid AND _officialcources.courcedate = (SELECT max(courcedate) from _officialcources WHERE _countries_rid='$countriesRID') AND _officialcources.archive=0 AND _officialcources._countries_rid='$countriesRID'", 'LEFT');
 		if($cititesRID)
 		{
+			$this->db->join('_cities', '_cities.rid=_clients._cities_rid');
 			$this->db->where(array('_clients._cities_rid'=>$cititesRID));
 		}
 		else if(!$cititesRID && $regionsRID)

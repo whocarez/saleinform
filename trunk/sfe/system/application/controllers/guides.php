@@ -23,6 +23,7 @@ class Guides extends Controller
 		$this->load->library('linkchanges_module');
 		$this->load->library('quickmenu_module');
 		$this->load->library('guides_module');
+		$this->load->library('filters_module');
 		$this->load->library('contacts_module');
 		$this->load->library('keywords_module');
 		/* generate objects */
@@ -42,6 +43,7 @@ class Guides extends Controller
 		$this->objectsArr['quickmenu_area_obj'] = $this->quickmenu_module->RenderQuickmenuArea();
 		$this->objectsArr['footermenu_area_obj'] = $this->quickmenu_module->RenderFootermenuArea();
 		$this->objectsArr['navline_area_obj'] = $this->navline_module->RenderNavigationLine();
+		$this->objectsArr['filters_area_obj'] = null;		
 		$this->objectsArr['contactstoolbar_area_obj'] = $this->contacts_module->RenderContactsToolbar();
 		$this->objectsArr['metatitle_area_obj'] = $this->keywords_module->RenderMetatitleArea();
 		$this->objectsArr['metadescription_area_obj'] = $this->keywords_module->RenderMetadescriptionArea();
@@ -72,6 +74,7 @@ class Guides extends Controller
 	public function ShowCatGuide()
 	{
 		$this->objectsArr['guides_area_obj'] = $this->guides_module->RenderCatGuideArea();
+		$this->objectsArr['filters_area_obj'] = $this->filters_module->RenderCategoryFilters();		
 		$this->objectsArr['keywords_area_obj'] = $this->keywords_module->RenderKeywordsArea($this->objectsArr['guides_area_obj']);		
 		$this->load->view('layouts/guides.php', $this->objectsArr);
 	}
