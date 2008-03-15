@@ -15,6 +15,7 @@ class Guides_module
 		$this->ciObject = &get_instance();
 		$this->ciObject->lang->load('guides_module');
 		$this->ciObject->load->model('guides_model');
+		$this->ciObject->load->helper('typography');
 		$this->_current_guides_uri_assoc = $this->ciObject->uri->uri_to_assoc(2);
 		$this->_current_guides_category_rid = (isset($this->_current_guides_uri_assoc['c']))?$this->_current_guides_uri_assoc['c']:null;
 	}
@@ -50,6 +51,7 @@ class Guides_module
 		{
 			return $this->RenderGuidesListArea();	
 		}
+		$this->objectsArr['guides_guide_category_content']['content'] = auto_typography($this->objectsArr['guides_guide_category_content']['content']);
 		$this->objectsArr['guides_guide_category_content_title'] = sprintf($this->ciObject->lang->line('GUIDES_MODULE_CONTENT_TITLE'), $this->objectsArr['guides_guide_category_content']['name']);
 		return $this->ciObject->load->view('modules/guides_module/catguide.php',$this->objectsArr, True); 
 	}
