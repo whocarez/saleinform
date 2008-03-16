@@ -12,7 +12,10 @@
 		<BizCtrl DisplayName="Размер" FieldName="size" Sortable="Y" Name="bctrl_size" DisplayMode="READ|QUERY"/>
 		<BizCtrl DisplayName="Изображение" FieldName="imgtype" Sortable="Y" Name="bctrl_imgtype" DisplayMode="READ|NEW|EDIT|QUERY" SelectFrom="admin.shared.Selection(IMGT)"/>
 		<BizCtrl DisplayName="Наименование" FieldName="name" Function="admin.wares.categoriesimages.BFcategoriesimages.Download({@:Control[bctrl_Id].Value})" FunctionType="Page" Sortable="Y" Name="bctrl_name" DisplayMode="READ|QUERY"/>
-		<BizCtrl DisplayName="Категория" FieldName="_categories_rid" Name="bctrl__categories_rid_new" SelectFrom="admin.wares.categories.BOcategories[Name:Id:PId],[archive]=0" HTMLAttr="&lt;option value= &gt;-&lt;/option&gt;" DisplayMode="NEW|EDIT" Enabled="Y"/>
+		<BizCtrl DisplayName="Категория" FieldName="_categories_rid" Name="bctrl__categories_rid_new" ValuePicker="admin.wares.categories.BFcategoriesPopup" DisplayMode="NEW|EDIT" Enabled="Y">
+			<EventHandler Name="onchange" Event="onchange" Function="AutoPickValue(_categories_rid)" FunctionType="" />
+		</BizCtrl>
+		
 		<BizCtrl DisplayName="Изображение" FieldName="image" Name="bctrl_image" Type="File" DisplayMode="EDIT|NEW"/>
 		<BizCtrl DisplayName="Примечание" FieldName="descr" Name="bctrl_descr" Required="N" Sortable="N" Width="400" Type="Textarea" DisplayMode="NEW|EDIT"/>
 		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="admin.shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
