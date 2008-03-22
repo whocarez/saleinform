@@ -25,7 +25,7 @@
 	<ObjReferences>
 		<Object Column="_categories_rid" Description="товары" FieldRef="Id" Name="admin.wares.wares.BOwares" Relationship="1-M" Table="_wares" CascadeDelete="Y"/>		
 		<Object Column="_categories_rid" Description="параметры категорий" FieldRef="Id" Name="admin.wares.catpars.BOcatpars" Relationship="1-M" Table="_catpars" CascadeDelete="Y"/>		
-		<Object Column="_categories_rid" Description="временное хранилище прайсов" FieldRef="Id" Name="admin.prices.tmppritems.BOtmppritems" Relationship="1-M" Table="_tmppritems" CascadeDelete="Y"/>		
+		<Object Column="_categories_rid" Description="временное хранилище прайсов" FieldRef="Id" Name="admin.prices.clcategories.BOclcategories" Relationship="1-M" Table="_clcategories" CascadeDelete="Y"/>		
 		<Object Column="_categories_rid" Description="хранилище прайсов" FieldRef="Id" Name="admin.prices.pritems.BOpritems" Relationship="1-M" Table="_pritems" CascadeDelete="Y"/>	
 		<Object Column="_categories_rid" Description="связанные категории" FieldRef="Id" Name="admin.wares.relatedcats.BOrelatedcats" Relationship="1-M" Table="_relatedcats" CascadeDelete="Y"/>		
 		<Object Column="_categories_rid" Description="изображения" FieldRef="Id" Name="admin.wares.categoriesimages.BOcategoriesimages" Relationship="1-M" Table="_categoriesimages" CascadeDelete="Y"/>		

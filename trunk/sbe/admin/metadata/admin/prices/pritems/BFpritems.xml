@@ -36,6 +36,7 @@
 		<BizCtrl DisplayName="Кaтегория" Hidden="Y" FieldName="_categories_name" Name="bctrl__categories_name" DisplayMode="READ"/>
 		<BizCtrl DisplayName="Кaтегория" FieldName="_categories_rid" Name="bctrl__categories_rid" DisplayMode="NEW|EDIT" Required="Y" SelectFrom="admin.wares.wares.BOcategories[name:Id:_categories_rid], [archive]=0"/>
 		<BizCtrl DisplayName="Кaтегория" FieldName="_categories_rid" Name="bctrl__categories_rid_query" DisplayMode="QUERY"  Required="Y" HTMLAttr="&lt;option value= &gt;*&lt;/option&gt;" SelectFrom="admin.wares.wares.BOcategories[name:Id:_categories_rid], [archive]=0"/>
+		<BizCtrl DisplayName="Наименование" FieldName="name" Hidden="N" Sortable="Y" Required="Y" Name="bctrl_name" />
 		<BizCtrl DisplayName="Бренд" FieldName="_brands_name" Sortable="Y" Name="bctrl__brands_name" Required="Y" DisplayMode="READ"/>
 		<BizCtrl DisplayName="Бренд" FieldName="_brands_rid" Name="bctrl__brands_rid" Required="Y" DisplayMode="NEW|EDIT" SelectFrom="admin.wares.brands.BObrands[name:Id], [archive]=0"/>
 		<BizCtrl DisplayName="Бренд" FieldName="_brands_rid" Name="bctrl__brands_rid_query" Required="Y" DisplayMode="QUERY" HTMLAttr="&lt;option value= &gt;*&lt;/option&gt;" SelectFrom="admin.wares.brands.BObrands[name:Id], [archive]=0"/>
@@ -44,7 +45,6 @@
 		<BizCtrl DisplayName="Товар" FieldName="_wares_rid" Name="bctrl__wares_rid" DisplayMode="NEW|EDIT" SelectFrom="admin.wares.wares.BOwares[name:Id], [archive]=0"/>
 		<BizCtrl DisplayName="Товар" FieldName="_wares_rid" Name="bctrl__wares_rid_query" DisplayMode="QUERY" HTMLAttr="&lt;option value= &gt;*&lt;/option&gt;" SelectFrom="admin.wares.wares.BOwares[name:Id], [archive]=0"/>
 		 -->
-		<BizCtrl DisplayName="Наименование" FieldName="name" Hidden="Y" Sortable="Y" Required="Y" Name="bctrl_name" />
 		<BizCtrl DisplayName="Модель" FieldName="model" Sortable="Y" Required="Y" Name="bctrl_model" />
 
 		<BizCtrl DisplayName="Наличие" FieldName="_availabletypes_name" Required="Y" Sortable="Y" Name="bctrl__availabletypes_name" DisplayMode="READ"/>
@@ -52,14 +52,17 @@
 		<BizCtrl DisplayName="Наличие" FieldName="_availabletypes_rid" Required="Y" Name="bctrl__availabletypes_rid_query" DisplayMode="QUERY" HTMLAttr="&lt;option value= &gt;*&lt;/option&gt;" SelectFrom="admin.prices.availabletypes.BOavailabletypes[name:Id], [archive]=0"/>
 		
 		<BizCtrl DisplayName="Короткое описание" FieldName="short_descr" Name="bctrl_short_descr" DisplayMode="NEW|EDIT"/>
+		<!-- 
 		<BizCtrl DisplayName="Длинное описание" FieldName="long_descr" Name="bctrl_long_descr" DisplayMode="NEW|EDIT"/>
+		 -->
 		<BizCtrl DisplayName="Ссылка" FieldName="link_ware" Name="bctrl_link_ware" DisplayMode="NEW|EDIT"/>
+		<!-- 
 		<BizCtrl DisplayName="Изображение" FieldName="link_image" Name="bctrl_link_image" DisplayMode="NEW|EDIT"/>
+		 -->
 		<BizCtrl DisplayName="Дата прайса" Required="Y" Type="Date" Sortable="Y" FieldName="prdate" Name="bctrl_prdate"/>
 		
 		<BizCtrl DisplayName="Примечание" FieldName="descr" Name="bctrl_descr" Required="N" Sortable="N" Width="400" Type="Textarea" DisplayMode="NEW|EDIT"/>
 		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="admin.shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive_display_value" Name="bctrl_archive_display_value" Required="N" Sortable="N" DisplayMode="READ" />
 		<BizCtrl DisplayName="Создан" FieldName="createDT" Name="bctrl_createDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N" Hidden="Y"/>
 		<BizCtrl DisplayName="Изменен" FieldName="modifyDT" Name="bctrl_modifyDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N" Hidden="Y"/>
 	</BizCtrlList>
