@@ -94,7 +94,7 @@ class Mostpopular_model extends Model
 		$this->db->select('_findqueries.*');
 		$this->db->from('_findqueries');
 		if($catRID) $this->db->where(array('_categories_rid'=>$catRID));
-		$this->db->where(array('archive'=>'0', 'resquan > '=>'0')); 
+		$this->db->where(array('archive'=>'0'/*, 'resquan > '=>'0'*/)); 
 		$this->db->groupby('query');
 		$this->db->orderby('createDT DESC');
 		$this->db->limit(10);

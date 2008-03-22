@@ -9,9 +9,9 @@
 						<!-- -->
 						<?php foreach($mostpopular_searches_arr as $key=>$row) {?>
 							<?php if(($key%2)==1) { ?>
-							<div style="margin-bottom:6px;float:left;width:45%;overflow: hidden;">
+							<div style="margin-bottom:6px;margin-left:5px;float:left;width:45%;overflow: hidden;white-space: nowrap;">
 							<?php } else { ?>
-							<div style="margin-bottom:6px;float:left;width:45%;overflow: hidden;">
+							<div style="margin-bottom:6px;float:left;width:45%;overflow: hidden;white-space: nowrap;">
 							<?php } ?>
 							<span style="font:bold 77%/150% verdana;"><font color="#DF7E4F"><?php echo $key+1;?>.</font>&nbsp;&nbsp;<?php echo $row['query'];?></span>
 							</div>

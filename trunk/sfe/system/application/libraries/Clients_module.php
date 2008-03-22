@@ -151,6 +151,7 @@ class Clients_module
 		$this->objectsArr['clients_module_client_wopin_title'] = $this->ciObject->lang->line('CLIENTS_MODULE_CLIENTS_WOPIN_TITLE');
 		$this->objectsArr['clients_module_client_wopin_link'] = anchor(base_url().index_page().'/cluops/c/'.$resultARR['rid'], $this->ciObject->lang->line('CLIENTS_MODULE_CLIENTS_WOPIN_TITLE'));
 		$this->objectsArr['clients_module_client_opins_link'] = anchor(base_url().index_page().'/clients/o/'.$resultARR['rid'], $this->ciObject->lang->line('CLIENTS_MODULE_CLIENTS_OPINS_TITLE'));
+		$resultARR['descr'] = stripslashes($resultARR['descr']);
 		$this->objectsArr['clients_module_client_result_arr'] = $resultARR;
 		return $this->ciObject->load->view('modules/clients_module/clientinfo.php',$this->objectsArr, True);		
 	}

@@ -16,7 +16,8 @@ class Rating_model extends Model
 							_wares.*, ROUND(avg(_waresuopinions.mark),0) as wareRATING, 
 							count(_wares.rid) as offersQUAN,
 							_waresimages.name as iname, 
-							_pritems.short_descr as shortDESCR,
+							/*_pritems.short_descr as shortDESCR,*/
+							SFE_GetItemShortDescr(_pritems._wares_rid, _pritems.rid) as shortDESCR,
 							_waresimages.image as image, 
 							_waresimages.rid as irid');
 		$this->db->from('_pritems');
