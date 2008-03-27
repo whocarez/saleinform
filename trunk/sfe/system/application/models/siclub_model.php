@@ -98,5 +98,11 @@ class Siclub_model extends Model
 		$this->db->update('_clients', $updateARR);
 		return;
 	}
+	
+	public function SaveUserInfo($clientsRID, $updateARR){
+		$this->db->where('_clients_rid', $clientsRID);
+		$this->db->update('_users', $updateARR);
+		return;
+	}
 }
 ?>

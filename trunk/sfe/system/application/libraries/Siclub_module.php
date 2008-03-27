@@ -336,27 +336,28 @@ class Siclub_module
 		$rules['cphones'] = "trim|max_length[255]";
 		$rules['cmail'] = "trim|required|max_length[255]|valid_email";
 		$rules['cperson'] = "trim|required|max_length[255]";
-		$rules['login'] = "trim|required|max_length[12]|callback__check_login";
-		$rules['passwd'] = "trim|required|matches[cpasswd]|min_length[6]|max_length[12]";
-		$rules['cpasswd'] = "trim|required|max_length[12]";
-		$rules['uemail'] = "trim|required|max_length[255]|valid_email";
-		$rules['dname'] = "trim|required|max_length[255]";
+		//$rules['login'] = "trim|required|max_length[12]|callback__check_login";
+		//$rules['passwd'] = "trim|required|matches[cpasswd]|min_length[6]|max_length[12]";
+		//$rules['cpasswd'] = "trim|required|max_length[12]";
+		//$rules['uemail'] = "trim|required|max_length[255]|valid_email";
+		//$rules['dname'] = "trim|required|max_length[255]";
 		
 		
 		$fields['cphones'] = $this->objectsArr['siclub_cphones_label'];
 		$fields['cmail'] = $this->objectsArr['siclub_cmail_label'];
 		$fields['cperson'] = $this->objectsArr['siclub_cperson_label'];
-		$fields['login'] = $this->objectsArr['siclub_login_label'];
-		$fields['passwd'] = $this->objectsArr['siclub_passwd_label'];
-		$fields['cpasswd'] = $this->objectsArr['siclub_cpasswd_label'];
-		$fields['uemail'] = $this->objectsArr['siclub_uemail_label'];
-		$fields['dname'] = $this->objectsArr['siclub_dname_label'];
+		//$fields['login'] = $this->objectsArr['siclub_login_label'];
+		//$fields['passwd'] = $this->objectsArr['siclub_passwd_label'];
+		//$fields['cpasswd'] = $this->objectsArr['siclub_cpasswd_label'];
+		//$fields['uemail'] = $this->objectsArr['siclub_uemail_label'];
+		//$fields['dname'] = $this->objectsArr['siclub_dname_label'];
 		
 		$this->ciObject->validation->set_error_delimiters('<br><span style="font-size:90%;color:red;">', '</div>');
 		$this->ciObject->validation->set_rules($rules);
 		$this->ciObject->validation->set_fields($fields);
 		if ($this->ciObject->validation->run() == FALSE)		
 		{
+			echo $this->ciObject->validation->error_string;
 			return $this->ciObject->load->view('modules/siclub_module/personalinfo.php',$this->objectsArr, True);
 		}
 		$updateARR = array('contact_phones'=>$_POST['cphones'], 'contact_email'=>$_POST['cmail'], 
@@ -399,9 +400,9 @@ class Siclub_module
 		$this->objectsArr['siclub_requires'] = $this->ciObject->lang->line('SICLUB_MODULE_REQUIRES');
 		$this->objectsArr['siclub_save_changes'] = $this->ciObject->lang->line('SICLUB_MODULE_SAVE_CHANGES');		
 	
-		$rules['cphones'] = "trim|max_length[255]";
-		$rules['cmail'] = "trim|required|max_length[255]|valid_email";
-		$rules['cperson'] = "trim|required|max_length[255]";
+		//$rules['cphones'] = "trim|max_length[255]";
+		//$rules['cmail'] = "trim|required|max_length[255]|valid_email";
+		//$rules['cperson'] = "trim|required|max_length[255]";
 		$rules['login_siclub'] = "trim|required|max_length[12]";
 		$rules['passwd'] = "trim|matches[cpasswd]|min_length[6]|max_length[12]";
 		$rules['cpasswd'] = "trim|max_length[12]";
@@ -409,9 +410,9 @@ class Siclub_module
 		$rules['dname'] = "trim|required|max_length[255]";
 		
 		
-		$fields['cphones'] = $this->objectsArr['siclub_cphones_label'];
-		$fields['cmail'] = $this->objectsArr['siclub_cmail_label'];
-		$fields['cperson'] = $this->objectsArr['siclub_cperson_label'];
+		//$fields['cphones'] = $this->objectsArr['siclub_cphones_label'];
+		//$fields['cmail'] = $this->objectsArr['siclub_cmail_label'];
+		//$fields['cperson'] = $this->objectsArr['siclub_cperson_label'];
 		$fields['login_siclub'] = $this->objectsArr['siclub_login_label'];
 		$fields['passwd'] = $this->objectsArr['siclub_passwd_label'];
 		$fields['cpasswd'] = $this->objectsArr['siclub_cpasswd_label'];
@@ -423,13 +424,13 @@ class Siclub_module
 		$this->ciObject->validation->set_fields($fields);
 		if ($this->ciObject->validation->run() == FALSE)		
 		{
-			return $this->ciObject->load->view('modules/siclub_module/accountinfo.php',$this->objectsArr, True);
+		    return $this->ciObject->load->view('modules/siclub_module/accountinfo.php',$this->objectsArr, True);
 		}
 		if(!empty($_POST['passwd']))
 		$updateARR = array('login'=>$_POST['login_siclub'], 'email'=>$_POST['uemail'], 
-							'displayname'=>$_POST['dname'], 'passwd'=>$_POST['passwd']);
+							'displayname'=>$_POST['dname'], 'passwd'=>md5($_POST['passwd']));
 		else 
-		$updateARR = array('login'=>$_POST['login'], 'email'=>$_POST['uemail'], 
+		$updateARR = array('login'=>$_POST['login_siclub'], 'email'=>$_POST['uemail'], 
 							'displayname'=>$_POST['dname']);
 		$this->ciObject->siclub_model->SaveUserInfo($currentSESS['SI_SICLUB']['_CLIENTS_RID_'], $updateARR);
 		return $this->ciObject->load->view('modules/siclub_module/accountinfo.php',$this->objectsArr, True);
