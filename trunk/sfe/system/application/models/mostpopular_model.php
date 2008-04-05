@@ -77,6 +77,13 @@ class Mostpopular_model extends Model
 	
 	public function GetTopCategories($parsARR)
 	{
+		/**
+		 * Has a problem with performance
+		 * 
+		 * as temporary dicission is turn on a cache
+		 */
+				
+		$this->db->cache_on();
 		$this->db->select('_categories.*, _categoriesimages.rid as irid, _categoriesimages.image as iimage, _categoriesimages.name as iname');
 		$this->db->from('_categories');
 		$this->db->join('_popularcategories', "_categories.rid = _popularcategories._categories_rid AND _popularcategories.archive='0'", 'LEFT');
@@ -85,6 +92,7 @@ class Mostpopular_model extends Model
 		$this->db->groupby('_categories.rid');
 		$this->db->orderby('count(_popularcategories.rid) DESC');
 		$query = $this->db->get();
+		$this->db->cache_off();
 		if($query->num_rows()) return $query->result_array();
 		return false;
 	}
