@@ -32,11 +32,9 @@
 */
 
 $active_group = "default";
-//$db['default']['hostname'] = "localhost";
-$db['default']['hostname'] = "62.149.25.12";
-$db['default']['username'] = "saleinfo_sfedb";
+$db['default']['hostname'] = "soad";
+$db['default']['username'] = "saleinform";
 $db['default']['password'] = "korn17";
-//$db['default']['database'] = "saleinform";
 $db['default']['database'] = "saleinform";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "";
@@ -44,6 +42,6 @@ $db['default']['active_r'] = TRUE;
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
-$db['default']['cachedir'] = $_SERVER['DOCUMENT_ROOT'].'/cache';
+$db['default']['cachedir'] = $_SERVER['DOCUMENT_ROOT'].'/sfe/cache';
 
 ?>

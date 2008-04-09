@@ -11,8 +11,7 @@
 |	http://www.your-site.com/
 |
 */
-$config['base_url']	= "http://www.saleinform.com/";
-#$config['base_url']	= "http://nirvana/sfe/";
+$config['base_url']	= "http://soad/sfe/";
 
 /*
 |--------------------------------------------------------------------------
