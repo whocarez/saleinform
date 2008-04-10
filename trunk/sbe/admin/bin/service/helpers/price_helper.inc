@@ -230,6 +230,13 @@ class PriceXML
 			if(!$item['VALUE']) continue;
 			else $item['VALUE'] = strip_tags($item['VALUE']); # удаляем все HTML теги		
 			if($itemName == 'PRICE'){
+				# if price is 0 then delete pritem and continue
+				if(!$item['VALUE']){
+					$stmt_d = $this->DB->prepare("DELETE FROM _tmppritems WHERE _tmppritems_rid = :_tmppritems_rid");
+					$stmt_d->bindParam(':_tmppritems_rid', $_tmppritems_rid);
+					$stmt_d->execute();
+					return;
+				}
 				$stmt = $this->DB->prepare("INSERT INTO _tmpprices(_tmppritems_rid, _prtypes_rid, _currency_rid, price) 
 											VALUES (:_tmppritems_rid, :_prtypes_rid, :_currency_rid, :price)");
 				$stmt->bindParam(':_tmppritems_rid', $_tmppritems_rid);
