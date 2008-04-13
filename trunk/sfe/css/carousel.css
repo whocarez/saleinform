@@ -6,7 +6,7 @@
 }
 				
 .carousel-component ul.carousel-list { 
-	width:1000px;
+	width:3000px;
 	position:relative;
 	z-index:1; 
 }
@@ -40,7 +40,7 @@
 
 .carousel-component { 
 	/*background:#3F3F3F;*/
-	padding:0px;
+	padding:0 0 5px 0;
 	color:#618cbe;
 }
 .carousel-component ul.carousel-list { 
@@ -51,7 +51,7 @@
 	text-align:center;
 	margin:0px 0px 0px 0px;
 	padding:0px;
-	font:10px verdana,arial,sans-serif;
+	/*font:10px verdana,arial,sans-serif;*/
 	color:#666;
 }
 .carousel-component .carousel-vertical li { 

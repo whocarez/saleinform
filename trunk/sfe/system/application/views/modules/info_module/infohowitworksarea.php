@@ -5,7 +5,7 @@
 		<div class="b_c">
 			<div class="o" id="chat_c" style="">
 				<div id="chat_cnt">
-					<div style="clear: both; font-size: 8pt;">
+					<div style="clear: both;">
 						<?php echo $info_module_how_itworks_content;?>
 					</div>
 				</div>

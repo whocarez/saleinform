@@ -18,7 +18,7 @@ Event.observe(window, "load", initCarousel);
 function initCarousel() {
     var carousel = new Carousel("catcarousel",  
     	{
-    		numVisible:4,
+    		numVisible:3,
     		buttonStateHandler: buttonStateHandler, 
     		animParameters: {duration: 0.5}
     	});
