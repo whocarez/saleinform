@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizForm BizDataObj="admin.reports.pritemsquan.BOpritemsquan" Class="BizForm" Description="Add description of BizForm" InheritFrom="" Name="BFpritemsquan" Package="admin.reports.pritemsquan" PageSize="300" SearchRule="" Title="отчет по загруженным предложениям" jsClass="jbForm">
+	<DisplayModes>
+      <Mode Name="READ" TemplateFile="rpt_pritemsquan.tpl" InitMode="" DataFormat="table" FormatStyle=""/>
+	</DisplayModes>
+		<BizCtrlList>
+		<BizCtrl DisplayName="ID" FieldName="Id" Name="bctrl_Id" DisplayMode="READ" Sortable="Y" Required="Y"/>
+		<BizCtrl DisplayName="Дата" FieldName="price_date" Name="bctrl_price_date" DisplayMode="READ" Sortable="Y" Required="Y"/>
+		<BizCtrl DisplayName="Тип" FieldName="_cltypes_name" Name="bctrl__cltypes_name" DisplayMode="READ" Sortable="Y" Required="Y"/>
+		<BizCtrl DisplayName="Клиент" FieldName="_clients_name" Name="bctrl__clients_name" DisplayMode="READ" Sortable="Y" Required="Y"/>
+		<BizCtrl DisplayName="Город" FieldName="_cities_name" Name="bctrl__cities_name" DisplayMode="READ" Sortable="Y" Required="Y"/>
+		<BizCtrl DisplayName="Регион" FieldName="_regions_name" Name="bctrl__regions_name" DisplayMode="READ" Sortable="Y" Required="Y"/>
+		<BizCtrl DisplayName="Страна" FieldName="_countries_name" Name="bctrl__countries_name" DisplayMode="READ" Sortable="Y" Required="Y"/>
+		<BizCtrl DisplayName="К-во" FieldName="itemsCount" Name="bctrl__itemsCount" DisplayMode="READ" />
+	</BizCtrlList>
+	<Toolbar>
+	</Toolbar> 
+	<Navbar>
+	</Navbar> 
+</BizForm>
