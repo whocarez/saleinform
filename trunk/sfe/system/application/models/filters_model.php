@@ -103,7 +103,8 @@ class Filters_model extends Model
 								'_brands.archive'=>0));
 		if($parsARR['cl']) $this->db->where(array('_clients_rid'=>$parsARR['cl']));
 		$this->db->groupby('_pritems._brands_rid');
-		$this->db->orderby('_brands.name');
+		#$this->db->orderby('_brands.name');
+		$this->db->orderby('itemsCOUNT DESC');
 		$query = $this->db->get();
 		if($query->num_rows()) return $query->result_array();
 		return false;

@@ -223,13 +223,9 @@ class Categories_model extends Model
 		if($priceTO)$this->db->having(array('maxbasePRICE<='=>$priceTO));
 		if($priceAFROM)$this->db->having(array('minaddPRICE>='=>$priceAFROM));
 		if($priceATO)$this->db->having(array('maxaddPRICE<='=>$priceATO));
-		if($searchSTR)
+		if($searchSTR && $searchARR = $this->GetSearchExpression($searchSTR))
 		{
-			#$wordsARR = explode(' ', $searchSTR);
-			#foreach($wordsARR as $key=>$mWord) if(empty($mWord)) unset($wordsARR[$key]);
-			#$searchSTR = implode('|',$wordsARR);
-			#echo $searchSTR; 
-			$this->db->having(array('wareNAME like '=>'%'.$searchSTR.'%'));
+			foreach($searchARR as $sSTR) $this->db->having(array('wareNAME like '=>'%'.$sSTR.'%'));
 		}
 		/* ordering control */
 		if($sortRULE=='nm')$this->db->orderby('wareNAME');
@@ -338,7 +334,11 @@ class Categories_model extends Model
 			$this->db->join('_countries', '_countries.rid=_regions._countries_rid');
 			$this->db->where(array('_countries.rid'=>$countriesRID));
 		}
-		$this->db->where("_pritems.archive='0' AND _pritems.name like '%$searchSTR%'");
+		$this->db->where("_pritems.archive='0'");
+		if($searchSTR && $searchARR = $this->GetSearchExpression($searchSTR))
+		{
+			foreach($searchARR as $sSTR) $this->db->like(array('_pritems.name'=>'%'.$sSTR.'%'));
+		}
 		$this->db->groupby('_pritems._categories_rid');
 		$this->db->orderby('count(_pritems.rid) DESC');
 		$query = $this->db->get();
@@ -353,6 +353,18 @@ class Categories_model extends Model
 							'_categories_rid'=>$row['rid']);
 		$this->db->insert('_findqueries', $insertARR);
 		return;
+	}
+	
+	/**
+	 * @author Mazvv
+	 * @param string $searchSTR
+	 * @return array $words
+	 */
+	public function GetSearchExpression($searchSTR){
+		$searchARR = array();
+		$wordsARR = explode(' ', $searchSTR);
+		foreach($wordsARR as $key=>$mWord) if(!empty($mWord)) $searchARR[] = $mWord;
+		return $searchARR; 
 	}
 }
 ?>

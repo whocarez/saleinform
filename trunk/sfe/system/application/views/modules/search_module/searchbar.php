@@ -57,7 +57,7 @@
 <div class="zs">
 <div id="z" style="margin: 15px 0px 0px;">
 <div class="left" style="float: left; text-align: center; width: 260px;">
-	<a href="#"> <img style="position: relative; top: 17px;" src="<?php echo base_url();?>/images/logo_a.png" alt="<?php echo $logo_title; ?>" border="0" height="36" width="250"></a>
+	<a href="#"> <img style="position: relative; top: 17px;" src="<?php echo base_url();?>/images/logo.png" alt="<?php echo $logo_title; ?>" border="0" height="36" width="250"></a>
 </div>
 <div style="margin-left: 260px;">
 <div style="float: left; padding-right: 25px;" id="zz">
