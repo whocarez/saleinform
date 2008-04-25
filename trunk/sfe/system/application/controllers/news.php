@@ -9,7 +9,13 @@ class News extends Controller
 	public function __construct()
 	{
 		parent::Controller();
-		#$this->output->enable_profiler(TRUE);
+		// { Enable profiler for admin only
+		$currentSESS = $this->session->userdata('_SI_');
+		if(isset($currentSESS['SI_LOGIN']['_USER_LOGIN_']) && $currentSESS['SI_LOGIN']['_USER_LOGIN_'] == 'admin'){
+			$this->output->enable_profiler(True);		
+		}
+		else $this->output->enable_profiler(False);
+		// } Enable profiler for admin only
 		/* load needed libraries */	
 		$this->load->library('lang_module');
 		$this->load->library('settings_module');
@@ -82,10 +88,13 @@ class News extends Controller
 	
 	public function ShowNewsList()
 	{
+		$this->benchmark->mark('ncats_start');
 		$this->objectsArr['news_area_obj']=$this->news_module->RenderNewsListArea();
 		$this->objectsArr['navline_area_obj'] = $this->navline_module->RenderNavigationLine();
+		$this->benchmark->mark('ncats_end');
 		$this->objectsArr['keywords_area_obj'] = $this->keywords_module->RenderKeywordsArea($this->objectsArr['news_area_obj']);
-		$this->load->view('layouts/news.php', $this->objectsArr);			
+		$this->load->view('layouts/news.php', $this->objectsArr);
+		
 	}
 	
 }

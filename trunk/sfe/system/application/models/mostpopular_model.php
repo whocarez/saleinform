@@ -14,7 +14,7 @@ class Mostpopular_model extends Model
 	{
 		$this->db->select('count(_brands.rid) as pritemsQUAN, _brands.name, _brands.rid, _brands.descr');
 		$this->db->from('_brands');
-		$this->db->join('_pritems', '_brands.rid=_pritems._brands_rid AND _pritems.archive=0', 'LEFT');
+		$this->db->join('_pritems', '_brands.rid=_pritems._brands_rid AND _pritems.archive=0');
 		$this->db->join('_clients', '_clients.rid=_pritems._clients_rid AND _clients.archive=0');
 		if(!$parsARR['catRID']) $this->db->where(array('_pritems.archive'=>'0', '_pritems.archive'=>'0'));
 		else $this->db->where(array('_pritems._categories_rid'=>$parsARR['catRID'], '_pritems.archive'=>'0'));

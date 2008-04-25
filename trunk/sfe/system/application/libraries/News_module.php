@@ -42,10 +42,10 @@ class News_module
 	
 	public function RenderNewsListArea()
 	{
-		$resultARR = $this->ciObject->news_model->GetNewsArr(null, $this->_current_news_current_cat_new);
+		$resultARR = $this->ciObject->news_model->GetNewsArr(null, $this->_current_news_current_cat_new, $this->_current_news_current_page, $this->STN_news_quan_per_page);
+		$this->_current_quan_of_news = $this->ciObject->news_model->GetQueryRowsQuan();
 		$newscatsARR = $this->ciObject->news_model->GetNewsCatsArr();
-		$this->_current_quan_of_news = count($resultARR);
-		$resultARR = array_slice($resultARR, $this->_current_news_current_page, $this->STN_news_quan_per_page);	
+		#$resultARR = array_slice($resultARR, $this->_current_news_current_page, $this->STN_news_quan_per_page);	
 		foreach($resultARR as $key=>$row)
 		{ 
 			$resultARR[$key]['title'] = stripslashes($resultARR[$key]['title']);
@@ -192,5 +192,7 @@ class News_module
 		$imgNAME = $imgNEWS;
 		return base_url().$imgNAME;
 	}
+	
+	
 }
 ?>

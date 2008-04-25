@@ -23,7 +23,14 @@ class Welcome extends Controller
 	function __construct()
 	{
 		parent::Controller();
-		$this->output->enable_profiler(False);
+		// { Enable profiler for admin only
+		$currentSESS = $this->session->userdata('_SI_');
+		if(isset($currentSESS['SI_LOGIN']['_USER_LOGIN_']) && $currentSESS['SI_LOGIN']['_USER_LOGIN_'] == 'admin'){
+			$this->output->enable_profiler(True);		
+		}
+		else $this->output->enable_profiler(False);
+		// } Enable profiler for admin only
+		
 		/* load needed libraries */	
 		$this->load->library('lang_module');
 		$this->load->library('settings_module');
@@ -57,9 +64,8 @@ class Welcome extends Controller
 		$this->objectsArr['settings_area_obj'] = $this->settings_module->RenderSettingsArea();
 		$this->benchmark->mark('settings_area_end');
 		
-		$this->benchmark->mark('mostpopular_area_start');
+		
 		$this->objectsArr['mostpopular_area_obj'] = $this->mostpopular_module->RenderMostpopularTabbedArea();
-		$this->benchmark->mark('mostpopular_area_end');
 		
 		$this->benchmark->mark('mostpopular_searches_start');
 		$this->objectsArr['mostpopular_searches_obj'] = $this->mostpopular_module->RenderMostpopularSearchesArea();

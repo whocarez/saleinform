@@ -83,7 +83,7 @@ class Last_module
 			else $resultARR[$key]['img'] = null;
 		}
 		$this->objectsArr['last_module_news_allnews_link'] = anchor(base_url().index_page().'/news', $this->ciObject->lang->line('LAST_MODULE_NEWS_ALL'), 'class="c69"');; 
-		$this->objectsArr['last_module_news_cont_arr'] = $resultARR; 
+		$this->objectsArr['last_module_news_cont_arr'] = $resultARR;
 		return $this->ciObject->load->view('modules/last_module/_newscont.php',$this->objectsArr, True);
 	}
 

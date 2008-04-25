@@ -93,6 +93,7 @@ class Categories_model extends Model
 		$priceFROM = null;
 		$priceAFROM = null;
 		$perPAGE = $parsARR['l'];
+		$currPAGE = $parsARR['p'];
 		$mainCURRENCYRID = $parsARR['m_c'];
 		$addCURRENCYRID = $parsARR['a_c'];
 		$countriesRID = $parsARR['cn_c'];
@@ -130,7 +131,7 @@ class Categories_model extends Model
 		}*/
 		/* -------------------------------- */
 		# concat(_brands.name, ' ', _pritems.model) as wareNAME
-		$this->db->select("_pritems.name as wareNAME, GROUP_CONCAT(_pritemsimgs.rid SEPARATOR '|') as prItemIMGS, 
+		$this->db->select(" SQL_CALC_FOUND_ROWS _pritems.name as wareNAME, GROUP_CONCAT(_pritemsimgs.rid SEPARATOR '|') as prItemIMGS, 
 							SFE_GetItemShortDescr(_pritems._wares_rid, _pritems.rid) as wareSDESCR,
 							min(ROUND(IF(_prices._currency_rid = '$addCURRENCYRID', _prices.price,
 							IF(_currcources.cource is NULL, _officialcources.cource*_prices.price, _currcources.cource*_prices.price)/IF((SELECT cource FROM _currcources WHERE _clients_rid = _clients.rid AND courcedate=_pritems.prdate AND _currency_rid='$addCURRENCYRID') is NULL, 
@@ -234,6 +235,7 @@ class Categories_model extends Model
 		if($sortRULE=='pr')$this->db->orderby('minbasePRICE');  
 		if($sortRULE=='apr')$this->db->orderby('avgbasePRICE');  
 		/* ---------------- */
+		$this->db->limit($perPAGE, $currPAGE);
 		$query = $this->db->get();
 		if(!$query->num_rows()) return false;
 		return $query->result_array();
@@ -365,6 +367,17 @@ class Categories_model extends Model
 		$wordsARR = explode(' ', $searchSTR);
 		foreach($wordsARR as $key=>$mWord) if(!empty($mWord)) $searchARR[] = $mWord;
 		return $searchARR; 
+	}
+	
+	/**
+	 * @author Mazvv
+	 * @param void
+	 * @return integer $rowsQuan
+	 */
+	public function GetQueryRowsQuan(){
+		$this->db->select('FOUND_ROWS() as rowsQuan');
+		$query = $this->db->get();
+		return $query->row()->rowsQuan; 	
 	}
 }
 ?>

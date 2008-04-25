@@ -9,7 +9,13 @@ class Categories extends Controller
 	public function __construct()
 	{
 		parent::Controller();
-		$this->output->enable_profiler(False);
+		// { Enable profiler for admin only
+		$currentSESS = $this->session->userdata('_SI_');
+		if(isset($currentSESS['SI_LOGIN']['_USER_LOGIN_']) && $currentSESS['SI_LOGIN']['_USER_LOGIN_'] == 'admin'){
+			$this->output->enable_profiler(True);		
+		}
+		else $this->output->enable_profiler(False);
+		// } Enable profiler for admin only
 		/* load needed libraries */	
 		$this->load->library('lang_module');
 		$this->load->library('settings_module');
@@ -27,60 +33,60 @@ class Categories extends Controller
 		$this->load->library('contacts_module');
 		$this->load->library('keywords_module');
 		/* generate objects */
-		#$this->benchmark->mark('p1_start');
+		$this->benchmark->mark('p1_start');
 		$this->objectsArr['search_bar_obj'] = $this->search_module->RenderSearchBar();
-		#$this->benchmark->mark('p1_end');
-		#$this->benchmark->mark('p2_start');
+		$this->benchmark->mark('p1_end');
+		$this->benchmark->mark('p2_start');
 		$this->objectsArr['login_area_obj'] = $this->accounts_module->RenderLoginArea();
-		#$this->benchmark->mark('p2_end');
-		#$this->benchmark->mark('p3_start');
+		$this->benchmark->mark('p2_end');
+		$this->benchmark->mark('p3_start');
 		$this->objectsArr['settings_area_obj'] = $this->settings_module->RenderSettingsArea();
-		#$this->benchmark->mark('p3_end');
-		#$this->benchmark->mark('p4_start');
+		$this->benchmark->mark('p3_end');
+		$this->benchmark->mark('p4_start');
 		$this->objectsArr['mostpopular_area_obj'] = $this->mostpopular_module->RenderMostpopularTabbedArea();
-		#$this->benchmark->mark('p4_end');
-		#$this->benchmark->mark('p5_start');
+		$this->benchmark->mark('p4_end');
+		$this->benchmark->mark('p5_start');
 		$this->objectsArr['mostpopular_searches_obj'] = $this->mostpopular_module->RenderMostpopularSearchesArea();
-		#$this->benchmark->mark('p5_end');
-		#$this->benchmark->mark('p6_start');
+		$this->benchmark->mark('p5_end');
+		$this->benchmark->mark('p6_start');
 		$this->objectsArr['rating_recomend_obj'] = $this->rating_module->RenderRatingRecomendArea();
-		#$this->benchmark->mark('p6_end');
-		#$this->benchmark->mark('p7_start');
+		$this->benchmark->mark('p6_end');
+		$this->benchmark->mark('p7_start');
 		$this->objectsArr['rating_products_obj'] = $this->rating_module->RenderRatingProductsArea();
-		#$this->benchmark->mark('p7_end');
-		#$this->benchmark->mark('p8_start');	
+		$this->benchmark->mark('p7_end');
+		$this->benchmark->mark('p8_start');	
 		$this->objectsArr['advertise_center_obj'] = $this->advertise_module->RenderCenterLinksAdvertiseArea();
-		#$this->benchmark->mark('p8_end');
-		#$this->benchmark->mark('p9_start');
+		$this->benchmark->mark('p8_end');
+		$this->benchmark->mark('p9_start');
 		$this->objectsArr['advertise_right_obj'] = $this->advertise_module->RenderRightLinksAdvertiseArea();
-		#$this->benchmark->mark('p9_end');
-		#$this->benchmark->mark('p10_start');
+		$this->benchmark->mark('p9_end');
+		$this->benchmark->mark('p10_start');
 		$this->objectsArr['googleads_right_obj'] = $this->advertise_module->RenderGoogleAds_234x60_Area();
-		#$this->benchmark->mark('p10_end');
-		#$this->benchmark->mark('p11_start');
+		$this->benchmark->mark('p10_end');
+		$this->benchmark->mark('p11_start');
 		$this->objectsArr['googleads_left_obj'] = $this->advertise_module->RenderGoogleAds_120x90_Area();
-		#$this->benchmark->mark('p11_end');
-		#$this->benchmark->mark('p12_start');
+		$this->benchmark->mark('p11_end');
+		$this->benchmark->mark('p12_start');
 		$this->objectsArr['linkchanges_area_obj'] = $this->linkchanges_module->RenderLinkchangesArea();
-		#$this->benchmark->mark('p12_end');
-		#$this->benchmark->mark('p13_start');
+		$this->benchmark->mark('p12_end');
+		$this->benchmark->mark('p13_start');
 		$this->objectsArr['relatedcats_area_obj'] = $this->relatedcats_module->RenderRelatedCatsArea();
-		#$this->benchmark->mark('p14_end');
-		#$this->benchmark->mark('p15_start');
+		$this->benchmark->mark('p14_end');
+		$this->benchmark->mark('p15_start');
 		$this->objectsArr['quickmenu_area_obj'] = $this->quickmenu_module->RenderQuickmenuArea();
-		#$this->benchmark->mark('p15_end');
-		#$this->benchmark->mark('p16_start');
+		$this->benchmark->mark('p15_end');
+		$this->benchmark->mark('p16_start');
 		$this->objectsArr['footermenu_area_obj'] = $this->quickmenu_module->RenderFootermenuArea();
-		#$this->benchmark->mark('p16_end');
-		#$this->benchmark->mark('p17_start');
+		$this->benchmark->mark('p16_end');
+		$this->benchmark->mark('p17_start');
 		$this->objectsArr['contactstoolbar_area_obj'] = $this->contacts_module->RenderContactsToolbar();
-		#$this->benchmark->mark('p17_end');
-		#$this->benchmark->mark('p18_start');
+		$this->benchmark->mark('p17_end');
+		$this->benchmark->mark('p18_start');
 		$this->objectsArr['metatitle_area_obj'] = $this->keywords_module->RenderMetatitleArea();
-		#$this->benchmark->mark('p18_end');
-		#$this->benchmark->mark('p19_start');
+		$this->benchmark->mark('p18_end');
+		$this->benchmark->mark('p19_start');
 		$this->objectsArr['metadescription_area_obj'] = $this->keywords_module->RenderMetadescriptionArea();
-		#$this->benchmark->mark('p19_end');
+		$this->benchmark->mark('p19_end');
 		
 	}
 	
@@ -126,18 +132,18 @@ class Categories extends Controller
 	
 	public function ShowCategory()
 	{
-		#$this->benchmark->mark('p20_start');
+		$this->benchmark->mark('p20_start');
 		$this->objectsArr['categories_area_obj'] = $this->categories_module->RenderCategoryContent();
-		#$this->benchmark->mark('p20_end');
-		#$this->benchmark->mark('p21_start');
+		$this->benchmark->mark('p20_end');
+		$this->benchmark->mark('p21_start');
 		$this->objectsArr['navline_area_obj'] = $this->navline_module->RenderNavigationLine();
-		#$this->benchmark->mark('p21_end');
-		#$this->benchmark->mark('p22_start');
+		$this->benchmark->mark('p21_end');
+		$this->benchmark->mark('p22_start');
 		$this->objectsArr['filters_area_obj'] = $this->filters_module->RenderCategoryFilters();
-		#$this->benchmark->mark('p22_end');
-		#$this->benchmark->mark('p23_start');
+		$this->benchmark->mark('p22_end');
+		$this->benchmark->mark('p23_start');
 		$this->objectsArr['keywords_area_obj'] = $this->keywords_module->RenderKeywordsArea($this->objectsArr['categories_area_obj']);
-		#$this->benchmark->mark('p23_end');
+		$this->benchmark->mark('p23_end');
 		$this->load->view('layouts/category.php', $this->objectsArr);
 	}
 	

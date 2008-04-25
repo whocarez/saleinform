@@ -48,6 +48,7 @@ class Mostpopular_module
 	
 	public function RenderMostpopularTabbedArea($tab=null)
 	{
+		$this->ciObject->benchmark->mark('mostpopular_area_start');
 		$parsARR = array('countriesRID'=>$this->_current_mostpopular_country_rid, 
 							'regionsRID'=>$this->_current_mostpopular_region_rid, 
 							'citiesRID'=>$this->_current_mostpopular_city_rid, 		
@@ -58,6 +59,7 @@ class Mostpopular_module
 			$tab = random_element(array('stores', 'brands'));
 		}
 		$this->objectsArr['mostpopular_current_tab'] = $tab;
+		
 		if($this->ciObject->uri->segment(1)=='categories') 
 		{
 			/* Get Most rated products from current category */		
@@ -68,6 +70,7 @@ class Mostpopular_module
 				$parsARR['catRID'] = $this->_current_mostpopular_uri_assoc['c'];
 			}
 		}
+		
 		$resultARR = $this->ciObject->mostpopular_model->GetTopBrands($parsARR);
 		if(!$resultARR) return '';
 		$this->ciObject->load->helper('text');
@@ -76,10 +79,12 @@ class Mostpopular_module
 			$resultARR[$key]['descr'] = character_limiter($row['descr'], 45);
 			$resultARR[$key]['brand_link'] = anchor(base_url().index_page().'/brands/b/'.$resultARR[$key]['rid'], $resultARR[$key]['name']);
 		}
+			
 		$this->objectsArr['mostpopular_brands_arr'] = $resultARR;
 		$this->objectsArr['mostpopular_all_brands_link'] = anchor(base_url().index_page().'/brands', $this->ciObject->lang->line('MOSTPOPULAR_MODULE_ALL_BRANDS_TITLE'), 'class="c69"');
 		$resultARR = $this->ciObject->mostpopular_model->GetTopStores($parsARR);
 		if(!$resultARR) return '';
+		
 		foreach($resultARR as $key=>$row) 
 		{
 			$resultARR[$key]['descr'] = character_limiter($row['descr'], 45);
@@ -87,6 +92,7 @@ class Mostpopular_module
 		}
 		$this->objectsArr['mostpopular_clients_arr'] = $resultARR;
 		$this->objectsArr['mostpopular_all_clients_link'] = anchor(base_url().index_page().'/clients', $this->ciObject->lang->line('MOSTPOPULAR_MODULE_ALL_CLIENTS_TITLE'), 'class="c69"');
+		$this->ciObject->benchmark->mark('mostpopular_area_end');	
 		return $this->ciObject->load->view('modules/mostpopular_module/tabledarea.php',$this->objectsArr, True);
 	}
 

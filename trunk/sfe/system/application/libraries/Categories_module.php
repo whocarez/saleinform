@@ -219,7 +219,9 @@ class Categories_module
 		$PARS['c']=$currentCATEGORY;
 		$this->_RenderSortByDropdown($currentCATEGORY);	
 		$resultARR = $this->ciObject->categories_model->GetOffersByCategory($PARS);
-		if (!$resultARR) 
+		$this->_categories_quan_of_offers = $this->ciObject->categories_model->GetQueryRowsQuan();
+		
+		if (!$this->_categories_quan_of_offers) 
 		{
 			$this->objectsArr['categories_category_offers_table']=$this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_NO_OFFERS');
 			if(count($this->_categories_current_uri_assoc)>1) $this->objectsArr['categories_category_offers_table']=$this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_NO_FINDED');	
@@ -248,9 +250,10 @@ class Categories_module
 	                    'table_close'         => '</table></div>'
     	    	      );
 			$this->ciObject->table->set_template($tmpl);		
-			$this->_categories_quan_of_offers = count($resultARR);
-			$resultARR = array_slice($resultARR, $this->_categories_current_page, $this->STN_categories_offers_quan_per_page);
+			#$this->_categories_quan_of_offers = count($resultARR);
+			#$resultARR = array_slice($resultARR, $this->_categories_current_page, $this->STN_categories_offers_quan_per_page);
 			$this->objectsArr['categories_category_guide_link'] = ($resultARR[0]['guideRID'])?anchor(site_url().'/guides/c/'.$this->_categories_current_category_rid, $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_GUIDE_LINK')):'';
+			$this->ciObject->benchmark->mark('cat_builddata_start');
 			foreach($resultARR as $row)
 			{
 				$tableROW = array();
@@ -261,10 +264,10 @@ class Categories_module
 				$tableROW[] = $this->_RenderPriceCell($row);
 				$this->ciObject->table->add_row($tableROW);
 			}
-			
 			$this->objectsArr['categories_category_offers_table']=$this->ciObject->table->generate();
 			$this->objectsArr['categories_category_offers_pagination']=$this->GetOffersPagination();
 		}
+		
 		return $this->ciObject->load->view('modules/categories_module/catoffers.php',$this->objectsArr, True); 
 	}
 	
