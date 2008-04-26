@@ -3,6 +3,7 @@ function ShowWareDetails($forest)
 {
         foreach ($forest as $tree)
         {
+			if(!count($tree['childNodes']) && !$tree['value']) continue;
 			echo '<tr>';
 			if (count($tree['childNodes']))
 			{

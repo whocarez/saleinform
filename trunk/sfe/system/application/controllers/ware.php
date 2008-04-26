@@ -9,7 +9,13 @@ class Ware extends Controller
 	public function __construct()
 	{
 		parent::Controller();
-		#$this->output->enable_profiler(TRUE);
+		// { Enable profiler for admin only
+		$currentSESS = $this->session->userdata('_SI_');
+		if(isset($currentSESS['SI_LOGIN']['_USER_LOGIN_']) && $currentSESS['SI_LOGIN']['_USER_LOGIN_'] == 'admin'){
+			$this->output->enable_profiler(True);		
+		}
+		else $this->output->enable_profiler(False);
+		// } Enable profiler for admin only
 		/* load needed libraries */	
 		$this->load->library('lang_module');
 		$this->load->library('settings_module');
