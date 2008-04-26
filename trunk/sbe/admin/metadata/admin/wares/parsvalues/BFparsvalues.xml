@@ -9,8 +9,8 @@
 	<BizCtrlList>
 		<BizCtrl DisplayName="ID" FieldName="Id" Name="bctrl_Id" Sortable="Y" DisplayMode="READ"/>
 		<BizCtrl DisplayName="Параметр" FieldName="_parsfilters_rid" Sortable="Y" Required="Y" Name="bctrl__parsfilters_rid" Enabled="N" Hidden="N" DisplayMode="NEW|EDIT"/>
-		<BizCtrl DisplayName="Значение" FieldName="value" Sortable="Y" Required="N" Name="bctrl_value" />
-		<BizCtrl DisplayName="Значение" FieldName="" Sortable="Y" Required="N" Name="bctrl_value_edit" Type="listbox" SelectFrom="admin.wares.warespars.BOwarespars_parsvalues[value:value], [_categories_rid]={@admin.wares.catpars.BOcatpars:Field[_categories_rid].Value} AND [_pars_rid]={@admin.wares.catpars.BOcatpars:Field[_pars_rid].Value}" HTMLAttr="&lt;option value= &gt;&lt;/option&gt;" DisplayMode="NEW|EDIT|QUERY">
+		<BizCtrl DisplayName="Значение" FieldName="value" Sortable="Y" Required="N" Name="bctrl_value" Value="{@:Control[bctrl_value_edit].Value}"/>
+		<BizCtrl DisplayName="Значение" FieldName="" Sortable="Y" Required="N" Name="bctrl_value_edit" SelectFrom="admin.wares.warespars.BOwarespars_parsvalues[value:value], [_categories_rid]={@admin.wares.catpars.BOcatpars:Field[_categories_rid].Value} AND [_pars_rid]={@admin.wares.catpars.BOcatpars:Field[_pars_rid].Value}" HTMLAttr="&lt;option value= &gt;&lt;/option&gt;" DisplayMode="NEW|EDIT">
 			<EventHandler Name="onchange" Event="onchange" Function="UpdateForm();"/>		
 		</BizCtrl>
 		<BizCtrl DisplayName="Примечание" FieldName="descr" Name="bctrl_descr" Required="N" Sortable="N" Width="400" Type="Textarea" DisplayMode="NEW|EDIT"/>

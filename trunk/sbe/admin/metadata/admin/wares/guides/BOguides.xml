@@ -5,9 +5,9 @@
 		<BizField Column="name" Join="categories_join" Name="_categories_name" Type="Text"/>
 		<!--  -->
 		<BizField Column="rid" Name="Id" />
-		<BizField Column="_categories_rid" Name="_categories_rid" Type="Number" Required="Y"/>
+		<BizField Column="_categories_rid" Name="_categories_rid"/>
 		<BizField Column="title" Name="title" Type="Text" Required="Y"/>
-		<BizField Column="content" Name="content" Type="Text" Required="Y"/>
+		<BizField Column="content" Name="content" Type="Text" />
 		<BizField Column="archive" Name="archive" DefaultValue="0" Type="Text"/>
 		<BizField Column="" Name="archive_display_value" Value="{(@:Field[archive].Value == '1')?'Да':'Нет'}"/>
 		<BizField Column="descr" Name="descr" Type="Text" />

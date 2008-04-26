@@ -23,7 +23,7 @@
 	</BizFieldList>
 	<TableJoins>
 		<Join Name="wares_join" Table="_wares" Column="rid" ColumnRef="_wares_rid" JoinType="INNER JOIN" />
-		<Join Name="pars_join" Table="_pars" Column="rid" ColumnRef="_pars_rid" JoinType="INNER JOIN"/>				
+		<Join Name="pars_join" Table="_pars" Column="rid" ColumnRef="_pars_rid" JoinType="INNER JOIN"/>		
 		<!-- 
 		<Join Name="catpars_join" Table="_catpars"  JoinRef="wares_join" Column="rid" ColumnRef="_categories_rid" JoinType="INNER JOIN"/>				
 		 -->

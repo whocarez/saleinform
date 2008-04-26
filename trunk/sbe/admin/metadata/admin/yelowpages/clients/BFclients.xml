@@ -44,7 +44,7 @@
 		<BizCtrl DisplayName="Телефоны" FieldName="wphones" Name="bctrl_wphones" Required="Y" DisplayMode="EDIT|NEW" Width="300"/>
 		<BizCtrl DisplayName="Skype" FieldName="skype" Name="bctrl_skype" DisplayMode="EDIT|NEW" Width="300"/>
 		<BizCtrl DisplayName="Icq" FieldName="icq" Name="bctrl_icq" DisplayMode="EDIT|NEW" Width="300"/>
-		<BizCtrl DisplayName="WWW" FieldName="url" Name="bctrl_url" Required="Y" DisplayMode="READ|EDIT|NEW" Sortable="Y" Width="300"/>
+		<BizCtrl DisplayName="WWW" FieldName="url" Name="bctrl_url" Link="{@:Control[bctrl_url].Value}" Required="Y" DisplayMode="READ|EDIT|NEW" Sortable="Y" Width="300"/>
 		<!-- 
 		<BizCtrl DisplayName="Рейтинг" FieldName="_cluopinions_mark" Name="bctrl__cluopinions_mark" Required="Y" DisplayMode="READ" Sortable="N"/>
 		 -->
@@ -68,7 +68,7 @@
 		<BizCtrl DisplayName="E-mail прайса" FieldName="price_email" Enabled="{(@:Control[bctrl_price_load].Value == '1')?'Y':'N'}" Name="bctrl_price_email" DisplayMode="EDIT|NEW" Width="300"/>
 		<BizCtrl DisplayName="URL прайса" FieldName="price_url" Enabled="{(@:Control[bctrl_price_load].Value == '1')?'Y':'N'}" Name="bctrl_price_url" DisplayMode="EDIT|NEW" Width="300"/>
 		<BizCtrl DisplayName="Контактные телефоны" FieldName="contact_phones" Enabled="{(@:Control[bctrl_price_load].Value == '1')?'Y':'N'}" Name="bctrl_contact_phones" DisplayMode="EDIT|NEW" Width="300"/>
-		<BizCtrl DisplayName="Контактный email" FieldName="contact_email" Sortable="N" Enabled="{(@:Control[bctrl_price_load].Value == '1')?'Y':'N'}" Name="bctrl_contact_email" DisplayMode="READ|EDIT|NEW" Width="300"/>
+		<BizCtrl DisplayName="Контактный email" FieldName="contact_email" Link="mailto:{@:Control[bctrl_contact_email].Value}" Sortable="N" Enabled="{(@:Control[bctrl_price_load].Value == '1')?'Y':'N'}" Name="bctrl_contact_email" DisplayMode="READ|EDIT|NEW" Width="300"/>
 		<BizCtrl DisplayName="Контактное лицо" FieldName="contact_person" Enabled="{(@:Control[bctrl_price_load].Value == '1')?'Y':'N'}" Name="bctrl_contact_person" DisplayMode="EDIT|NEW" Width="300"/>
 		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="admin.shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
 		<BizCtrl DisplayName="Архивный" FieldName="archive_display_value" Name="bctrl_archive_display_value" Required="N" Sortable="N" DisplayMode="READ" />

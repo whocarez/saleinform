@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BizDataObj Class="BizDataObj" DBName="Default" Description="Add description of BizDataObj" IdGeneration="Identity" InheritFrom="" Name="BOpritemsquan" OtherSQLRule="GROUP BY [_clients_rid]" Package="admin.reports.pritemsquan" SearchRule="" SortRule="" Table="_pritems">
+<BizDataObj Class="BizDataObj" DBName="Default" Description="Add description of BizDataObj" IdGeneration="Identity" InheritFrom="" Name="BOpritemsquan" OtherSQLRule="GROUP BY [_clients_rid] ORDER BY [_countries_name]" Package="admin.reports.pritemsquan" SearchRule="" SortRule="" Table="_pritems">
 	<BizFieldList>
 		<!--  -->
 		<BizField Column="name" Join="cities_join" Name="_cities_name" Type="Text"/>
 		<BizField Column="name" Join="countries_join" Name="_countries_name" Type="Text"/>
 		<BizField Column="name" Join="clients_join" Name="_clients_name" Type="Text"/>
-		<BizField Column="name" Join="cltypes_join" Name="_cltypes_name" Type="Text"/>
 		<BizField Column="name" Join="regions_join" Name="_regions_name" Type="Text"/>
 		<!--  -->		
 		<BizField Column="rid" Name="Id" />
 		<BizField Column="_clients_rid" Name="_clients_rid" Type="Number" Required="Y"/>
-		<BizField Column="price_date" Name="price_date" Type="DateTime" Required="Y"/>
-		<BizField Column="" Name="itemsCount" SQLExpr="COUNT([_pritems_rid])"/>
+		<BizField Column="prdate" Name="price_date" Type="DateTime" Required="Y"/>
+		<BizField Column="" Name="itemsCount" SQLExpr="COUNT([Id])"/>
 		<BizField Column="" Name="archive_display_value" Value="{(@:Field[archive].Value == '1')?'Да':'Нет'}"/>
 		<BizField Column="archive" Name="archive" />
 		<BizField Column="descr" Name="descr" />

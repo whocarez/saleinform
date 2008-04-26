@@ -59,5 +59,6 @@
    </MenuItem>
    <MenuItem URL="" Target="" Caption="Отчеты" Icon="">
 		<MenuItem URL="controller.php?view=admin.reports.tmpcontent.BVtmpcontent" Target="" Caption="Незагруженные товары" />       
+		<MenuItem URL="controller.php?view=admin.reports.pritemsquan.BVpritemsquan" Target="" Caption="Загруженные товары" />
    </MenuItem>
 </Menu>
