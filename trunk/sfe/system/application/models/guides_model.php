@@ -39,5 +39,23 @@ class Guides_model extends Model
 		return FALSE;
 	}
 	
+	public function GetGuideImages($guideRID)
+	{
+		if(!$guideRID) return FALSE;
+		$this->db->select('_guidesimages.*');
+		$this->db->from('_guidesimages');
+		$this->db->where(array('_guides_rid'=>$guideRID, 'archive'=>'0'));
+		$this->db->groupby('size');
+		$this->db->orderby('name');
+		
+		$query = $this->db->get();
+		if($query->num_rows()) 
+		{
+			return $query->result_array();
+		}
+		return FALSE;
+	}
+	
+	
 }
 ?>
