@@ -285,7 +285,7 @@ class Categories_model extends Model
 						JOIN _catpars ON _catpars._pars_rid = _warespars._pars_rid AND _catpars.archive = 0 AND _catpars._categories_rid = '$categoryRID' 
 						JOIN _parsfilters ON _parsfilters._catpars_rid = _catpars.rid AND _parsfilters.archive = 0 AND ($ts) 
 						JOIN _parsvalues ON _parsvalues._parsfilters_rid = _parsfilters.rid AND _parsvalues.archive = 0 
-						WHERE _warespars.value LIKE CONCAT('%',_parsvalues.value,'%') AND _warespars.archive=0)	AND ";
+						WHERE _warespars.value LIKE CONCAT(_parsvalues.value) AND _warespars.archive=0)	AND ";
 		}
 		$qSTRING =  substr($qSTRING, 0, -4);
 		#echo $qSTRING;

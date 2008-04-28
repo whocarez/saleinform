@@ -123,7 +123,7 @@ class Filters_model extends Model
 		$this->db->join('_pars', "_pars.rid=_warespars._pars_rid  AND _pars.archive='0'");
 		$this->db->join('_catpars', "_pars.rid=_catpars._pars_rid  AND _catpars.archive='0' AND _catpars.filtered='1'");
 		$this->db->join('_parsfilters', "_catpars.rid=_parsfilters._catpars_rid  AND _parsfilters.archive='0'");
-		$this->db->join('_parsvalues', "_parsfilters.rid=_parsvalues._parsfilters_rid  AND _parsvalues.archive='0' AND _warespars.value LIKE CONCAT('%',_parsvalues.value,'%')");
+		$this->db->join('_parsvalues', "_parsfilters.rid=_parsvalues._parsfilters_rid  AND _parsvalues.archive='0' AND _warespars.value LIKE CONCAT(_parsvalues.value)");
 		$this->db->join('_clients', '_pritems._clients_rid=_clients.rid AND _clients.archive=0');
 		if($cititesRID)
 		{
