@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<BizForm BizDataObj="admin.wares.parsvalues.BOparsvalues" Class="BizForm" Description="Add description of BizForm" InheritFrom="" Name="BFparsvalues" Package="admin.wares.parsvalues" PageSize="14" SearchRule="" Title="Значения фильтров" jsClass="parsvaluesjbForm">
+<BizForm BizDataObj="admin.wares.parsvalues.BOparsvalues" Class="BizForm" Description="Add description of BizForm" InheritFrom="" Name="BFparsvalues" Package="admin.wares.parsvalues" PageSize="14" SearchRule="" Title="Значения фильтров" jsClass="jbForm">
 	<DisplayModes>
 		<Mode DataFormat="array" Name="QUERY" TemplateFile="edit.tpl"/>
 		<Mode DataFormat="array" Name="EDIT" TemplateFile="edit.tpl"/>
@@ -9,8 +9,8 @@
 	<BizCtrlList>
 		<BizCtrl DisplayName="ID" FieldName="Id" Name="bctrl_Id" Sortable="Y" DisplayMode="READ"/>
 		<BizCtrl DisplayName="Параметр" FieldName="_parsfilters_rid" Sortable="Y" Required="Y" Name="bctrl__parsfilters_rid" Enabled="N" Hidden="N" DisplayMode="NEW|EDIT"/>
-		<BizCtrl DisplayName="Значение" FieldName="value" Sortable="Y" Required="N" Name="bctrl_value" Value="{@:Control[bctrl_value_edit].Value}"/>
-		<BizCtrl DisplayName="Значение" FieldName="" Sortable="Y" Required="N" Name="bctrl_value_edit" SelectFrom="admin.wares.warespars.BOwarespars_parsvalues[value:value], [_categories_rid]={@admin.wares.catpars.BOcatpars:Field[_categories_rid].Value} AND [_pars_rid]={@admin.wares.catpars.BOcatpars:Field[_pars_rid].Value}" HTMLAttr="size=8 onchange=SetFilterValue();" DisplayMode="NEW|EDIT">
+		<BizCtrl DisplayName="Значение" FieldName="value" Sortable="Y" Required="N" Name="bctrl_value" />
+		<BizCtrl DisplayName="Значение" FieldName="" Sortable="Y" Required="N" Name="bctrl_value_edit" SelectFrom="admin.wares.warespars.BOwarespars_parsvalues[value:value], [_categories_rid]={@admin.wares.catpars.BOcatpars:Field[_categories_rid].Value} AND [_pars_rid]={@admin.wares.catpars.BOcatpars:Field[_pars_rid].Value}" HTMLAttr="size=8 onchange=&quot;javascript:$(&apos;bctrl_value&apos;).value=$(&apos;bctrl_value_edit&apos;).value;&quot;" DisplayMode="NEW|EDIT">
 		</BizCtrl>
 		<BizCtrl DisplayName="Примечание" FieldName="descr" Name="bctrl_descr" Required="N" Sortable="N" Width="400" Type="Textarea" DisplayMode="NEW|EDIT"/>
 		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="admin.shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
