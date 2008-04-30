@@ -32,8 +32,8 @@
 */
 
 $active_group = "default";
-$db['default']['hostname'] = "soad";
-$db['default']['username'] = "saleinform";
+$db['default']['hostname'] = "62.149.25.12";
+$db['default']['username'] = "saleinfo_sfedb";
 $db['default']['password'] = "korn17";
 $db['default']['database'] = "saleinform";
 $db['default']['dbdriver'] = "mysql";

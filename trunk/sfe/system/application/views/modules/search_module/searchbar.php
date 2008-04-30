@@ -1,7 +1,3 @@
-<div style="position: relative; z-index: 99999;">
-	<span style="width: 70px; position: absolute; top: 70px; left: 300px;" id="rZ_md"> 
-	</span>
-</div>
 <script type="text/javascript">
 <!--
 	function buildAction()
@@ -55,26 +51,67 @@
 </script>
 
 <div class="zs">
-<div id="z" style="margin: 15px 0px 0px;">
-<div class="left" style="float: left; text-align: center; width: 260px;">
-	<a href="#"> <img style="position: relative; top: 17px;" src="<?php echo base_url();?>/images/logo.png" alt="<?php echo $logo_title; ?>" border="0" height="36" width="250"></a>
-</div>
-<div style="margin-left: 260px;">
-<div style="float: left; padding-right: 25px;" id="zz">
-<div><span style="float: right; width: 170px;"> </span>
-<div class="rp1">
-<?php foreach($header_items as $key=>$item) { ?>
-<a class="<?php echo ($search_current_header_item==$key)?'mC':'mCG';?>" href="<?php echo $item[1]?>">
-	<div class="mL">
-		<div class="mR">
-			<div class="p_100s"></div>
-			<span id="s-"><?php echo $item[0]?></span>
-		</div>
+	<div>
+		<ul id="vsearchtabs">
+		<?php $theFirst = true; $currNum = 0; foreach($header_items as $key=>$item) { $currNum++;?>
+			<li <?php if($theFirst) {$theFirst = False;?>class="first on"<?php } ?>>
+				<a href="<?php echo $item[1]?>">
+					<?php echo ($search_current_header_item==$key)?('<strong>'.$item[0].'</strong>'):$item[0];?>
+				</a>
+			</li>	
+		<?php } ?>
+			<li class="last ignore">
+				<dl id="vsearchm">
+					<script type="text/javascript">
+						function ShowMore(){
+							if($('vsearchmore').hasClassName('on')) {
+								$('vsearchmore').removeClassName('on');
+								$('vslist').hide();
+							}
+							else {
+								$('vsearchmore').addClassName('on');
+								$('vslist').show();
+							}
+						}
+					</script>
+					<dt>
+						<a href="#" id="vsearchmore" onclick="ShowMore();">More</a>
+					</dt>
+					<dd id="vslist" style="display: none;">
+						<div>
+							<ul>
+								<li class="first">
+									<a class="vs_answers" href="r/av/*http://answers.yahoo.com/search/search_result">Answers</a>
+								</li>
+								<li>
+									<a class="vs_audio" href="r/aw/*-http://audio.search.yahoo.com/search/audio">Audio</a>
+								</li>
+								<li>
+									<a class="vs_directory" href="r/b0/*-http://search.yahoo.com/search/dir">Directory</a>
+								</li>
+								<li>
+									<a class="vs_jobs" href="r/b4/*-http://hotjobs.yahoo.com/job-search">Jobs</a>
+								</li>
+								<li>
+									<a class="vs_news" href="r/b1/*-http://news.search.yahoo.com/search/news">News</a>
+								</li>
+								<li class="last">
+									<a href="r/cq">All Search Services</a>
+								</li>
+							</ul>
+						</div>
+					</dd>
+				</dl>
+			</li>		
+		</ul>
 	</div>
-</a> 
-<?php } ?>
-</div>
-<div class="fq1">
+	<div class="left" style="float: left; text-align: center; width: 260px;">
+		<a href="<?php echo site_url(); ?>"> 
+			<img style="position: relative;background-color: transparent;" src="<?php echo base_url();?>/images/logo.png" alt="<?php echo $logo_title; ?>" border="0" height="36" width="250">
+		</a>
+	</div>
+	<div style="margin: 0px 20px 0px 265px;">
+
 <?php echo form_open('', array('id'=>"searchForm", 'name'=>"searchForm", 'onSubmit'=>"buildAction()", 'style'=>"padding: 0px; margin-top: 0px;"))?>
 	<div class="fq2">
 		<div class="fq3">
@@ -90,9 +127,7 @@
 		</span>
 	</div>
 <?php echo form_close();?>
+
 </div>
 </div>
-</div>
-</div>
-<iframe style="display: none;"></iframe></div>
-</div>
+
