@@ -605,12 +605,6 @@ class PriceXML
 						$stmt8->bindParam(':model_alias', $itemAlias);
 						$stmt8->execute();
 						
-						# попытка найти товар в справочнике товаров
-						if(!$itemVendor || !$itemModel) {
-							$stmt_ASS = $this->DB->prepare("SELECT SFE_GetPrItemsWaresRid('{$itemName}')");
-							$stmt_ASS->execute();
-						}
-
 						$itemRid = $this->DB->lastInsertId();
 						// Заливаем цены
 						$stmt9 = $this->DB->prepare("INSERT INTO _prices(_pritems_rid, _prtypes_rid, _currency_rid, price)
@@ -678,6 +672,11 @@ class PriceXML
 						$itemAlias = $this->toTranslit($itemAlias);
 						$stmt8->bindParam(':model_alias', $itemAlias);
 						$stmt8->execute();
+
+						# попытка найти товар в справочнике товаров
+						$stmt_ASS = $this->DB->prepare("SELECT SFE_GetPrItemsWaresRid('{$itemName}')");
+						$stmt_ASS->execute();
+						
 						$itemRid = $this->DB->lastInsertId();
 						// Заливаем цены
 						$stmt9 = $this->DB->prepare("INSERT INTO _prices(_pritems_rid, _prtypes_rid, _currency_rid, price)
