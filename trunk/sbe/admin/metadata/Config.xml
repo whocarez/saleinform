@@ -2,7 +2,7 @@
 <Config>
    <DataSource>
       <!-- -->
-      <Database Name="Default" Driver="PDO_MYSQL" Server="localhost" DBName="saleinform" User="saleinform" Password="saleinform" />
+      <Database Name="Default" Driver="PDO_MYSQL" Server="nirvana" DBName="saleinform" User="saleinform" Password="saleinform" />
       <!--  --> 
    </DataSource>
 </Config>
