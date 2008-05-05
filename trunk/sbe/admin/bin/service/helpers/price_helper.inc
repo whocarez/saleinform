@@ -339,7 +339,7 @@ class PriceXML
 		$stmt2 = $this->DB->prepare("SELECT * FROM _clcategories WHERE _clients_rid = :_clients_rid AND _categories_rid is not NULL" );
 		$stmt2->bindParam(':_clients_rid', $this->clientsRid);
 		$stmt2->execute();
-		
+		$quanIndex = 0;
 		# 3. Для каждой прописанной категории получить перечень параметров предложения
 		while ($row2 = $stmt2->fetch(PDO::FETCH_NAMED)){
 			# 4. Получить перечень предложений по категории
@@ -674,8 +674,8 @@ class PriceXML
 						$stmt8->execute();
 
 						# попытка найти товар в справочнике товаров
-						$stmt_ASS = $this->DB->prepare("SELECT SFE_GetPrItemsWaresRid('{$itemName}')");
-						$stmt_ASS->execute();
+						#$stmt_ASS = $this->DB->prepare("SELECT SFE_GetPrItemsWaresRid('{$itemName}')");
+						#$stmt_ASS->execute();
 						
 						$itemRid = $this->DB->lastInsertId();
 						// Заливаем цены
@@ -717,6 +717,8 @@ class PriceXML
 					$stmt->bindParam(':_tmppricesstorage_rid', $this->tmppricesstorageRID);
 					$stmt->execute();
 				}
+				$quanIndex++;
+				BizSystem::log(LOG_DEBUG, "--------------->", "Load in real Storage {$quanIndex}/{$this->LOADS_quan}\n");
 			}
 		}
 	}
