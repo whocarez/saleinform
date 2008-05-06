@@ -550,10 +550,8 @@ a:hover{
 	z-index:100;
 }
 .b_h,.b_h_hd,.b_hz{
-	position:relative;
+	/*position:relative;*/
 	width:100%;
-	/*line-height:28px;
-	height:28px;*/
 }
 .b_h_hd{
 	visibility:hidden;
@@ -1194,7 +1192,13 @@ SPAN.bul,A.bul{
 	width:10em;
 }
 
-#vsearchtabs dt a:hover, #vsearchtabs dt a.on {
+#vsearchtabs dt a:hover{
+	background-position:2em -454px;
+	border:1px solid #B0BEC7;
+	margin:-1px 0pt;
+	text-decoration:none;
+}
+#vsearchtabs dt a.on {
 	background-position:2em -505px;
 	border:1px solid #B0BEC7;
 	margin:-1px 0pt;
