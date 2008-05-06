@@ -148,7 +148,7 @@ class Categories_module
 	public function RenderSubcategoriesContent()
 	{
 		$categoriesLIST = $this->ciObject->categories_model->GetCategoriesArr();
-		$currentCATEGORY = $this->ciObject->categories_model->GetCategoryArr($this->_categories_current_category_rid);
+		$currentCATEGORY = $this->ciObject->categories_model->GetCategoryArr($this->_categories_current_category_rid, $this->_GetPars());
 		$currentCATEGORYIMAGES = $this->ciObject->categories_model->GetCategoryImages($this->_categories_current_category_rid, 'ICON');
 		if($currentCATEGORYIMAGES)	$this->objectsArr['categories_image_icon'] = $this->GetCategoryImage($currentCATEGORYIMAGES,'ICON');
 		else $this->objectsArr['categories_image_icon'] = '';
@@ -191,7 +191,7 @@ class Categories_module
 	public function RenderCategoryOffers()
 	{
 		/* generate current URL step by step */
-		$currentCATEGORY = $this->ciObject->categories_model->GetCategoryArr($this->_categories_current_category_rid);
+		$currentCATEGORY = $this->ciObject->categories_model->GetCategoryArr($this->_categories_current_category_rid, $this->_GetPars());
 		$currentCATEGORYIMAGES = $this->ciObject->categories_model->GetCategoryImages($this->_categories_current_category_rid, 'ICON');
 		if($currentCATEGORYIMAGES) $this->objectsArr['categories_image_icon'] = $this->GetCategoryImage($currentCATEGORYIMAGES,'ICON');
 		else $this->objectsArr['categories_image_icon'] = '';

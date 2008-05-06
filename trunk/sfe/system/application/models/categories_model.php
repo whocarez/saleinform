@@ -12,11 +12,13 @@ class Categories_model extends Model
 	
 	public function GetCategoriesArr($categoriesRID=null)
 	{
-		$this->db->select('*');
+		$this->db->select('_categories.*');
 		$this->db->from('_categories');
-		if($categoriesRID!==null) $this->db->where(array('_categories_rid'=>$categoriesRID, 'archive'=>'0'));
-		else $this->db->where(array('archive'=>'0'));
-		$this->db->orderby('name');
+		if($categoriesRID!==null) {
+			$this->db->where(array('_categories._categories_rid'=>$categoriesRID, '_categories.archive'=>'0'));
+		}
+		else $this->db->where(array('_categories.archive'=>'0'));
+		$this->db->orderby('_categories.name');
 		$query = $this->db->get();
 		if($query->num_rows()) 
 		{
@@ -25,12 +27,40 @@ class Categories_model extends Model
 		return FALSE;
 	}
 	
-	public function GetCategoryArr($categoriesRID)
+	public function GetCategoryArr($categoriesRID, $parsARR = null)
 	{
-		$this->db->select('*');
+		/*
+		$countriesRID = $parsARR['cn_c'];
+		$cititesRID = $parsARR['c_c'];
+		$regionsRID = $parsARR['r_c'];
+		*/
+		$this->db->select('_categories.*');
 		$this->db->from('_categories');
-		$this->db->where(array('rid'=>$categoriesRID, 'archive'=>'0'));
-		$this->db->orderby('name');
+		$this->db->where(array('_categories.rid'=>$categoriesRID, '_categories.archive'=>'0'));
+		# join with _pritems and geotargeting
+		/*		
+		$this->db->join('_pritems', '_pritems._categories_rid = _categories.rid and _pritems.archive = 0', 'LEFT');
+		$this->db->join('_clients', '_clients.rid=_pritems._clients_rid AND _clients.archive=0');
+		if($cititesRID)
+		{
+			$this->db->join('_cities', '_cities.rid=_clients._cities_rid');
+			$this->db->where(array('_clients._cities_rid'=>$cititesRID));
+		}
+		else if(!$cititesRID && $regionsRID)
+		{
+			$this->db->join('_cities', '_cities.rid=_clients._cities_rid');
+			$this->db->join('_regions', "_regions.rid=_cities._regions_rid AND _regions.rid='$regionsRID'");
+		}
+		else
+		{
+			$this->db->join('_cities', '_cities.rid=_clients._cities_rid');
+			$this->db->join('_regions', '_regions.rid=_cities._regions_rid');
+			$this->db->join('_countries', "_countries.rid=_regions._countries_rid AND _countries.rid='$countriesRID'");
+		}
+		$this->db->groupby('_categories.rid');
+		*/
+		$this->db->orderby('_categories.name');
+		
 		$query = $this->db->get();
 		if($query->num_rows()) 
 		{

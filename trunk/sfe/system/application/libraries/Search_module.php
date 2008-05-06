@@ -10,6 +10,7 @@ class Search_module
 	private $objectsArr = array(); # object's array
 	/* { Module settings */
 	private $STN_search_header_items = array();# main menu items
+	private $STN_search_header_more_items = array();# main more menu items
 	private $STN_search_title; # search title
 	private $STN_search_logo_title; # logo title
 	private $STN_search_btn_caption; # caption of search button
@@ -35,6 +36,7 @@ class Search_module
 		$this->objectsArr['search_current_category_rid'] = '';
 		$this->objectsArr['search_current_search_string_empty'] = $this->ciObject->lang->line('SEARCH_MODULE_SEARCH_STRING_EMPTY');
 		$this->objectsArr['search_current_search_btn_value'] = $this->ciObject->lang->line('SEARCH_MODULE_BTN_VALUE');
+		$this->objectsArr['search_current_search_more_tab'] = $this->ciObject->lang->line('SEARCH_MODULE_HEAD_MORE_TAB');
 		$this->objectsArr['search_current_search_string'] = '';		
 		if(!$this->ciObject->uri->segment(1))
 		{
@@ -45,6 +47,11 @@ class Search_module
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_BRANDS_TAB'), base_url().index_page().'/brands'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_SHOPS_TAB'), base_url().index_page().'/clients'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_HELP_TAB'), base_url().index_page().'/help')); # main menu items
+			$this->STN_search_header_more_items = array(array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_SETTINGS_TAB'), base_url().index_page().'/settings'),
+														array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_NEWS_TAB'), base_url().index_page().'/news'),
+														array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_ADVERTIZE_TAB'), base_url().index_page().'/advertize'),
+														array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_FORUM_TAB'), base_url().'/forum'),
+														array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_CONTACTS_TAB'), base_url().index_page().'/contacts'));
 			$this->objectsArr['search_current_header_item'] = 0;			
 		}
 		else if($this->ciObject->uri->segment(1)=='categories')
@@ -158,6 +165,7 @@ class Search_module
 		
 		$this->objectsArr['logo_title'] = $this->STN_search_logo_title;
 		$this->objectsArr['header_items'] = $this->STN_search_header_items;
+		$this->objectsArr['more_header_items'] = $this->STN_search_header_more_items;
 		return $this->ciObject->load->view('modules/search_module/searchbar.php',$this->objectsArr, True);
 	}
 }

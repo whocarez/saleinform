@@ -209,6 +209,7 @@ iframe.SG {
 .o,.b_z {
 	border-top:1px solid #B0BEC7;
 }
+
 .box {
 	border-top:0;
 }
@@ -802,14 +803,16 @@ input.znak{
 }
 .proj_bul{
 	list-style:none;
-	background:url("../images/bul.gif") no-repeat 4px 7px; 
+	background:url("../images/icons_1.8.gif") no-repeat -8px 0px; 
 	padding-left:13px; 
 	margin-left:7px;
-	white-space:nowrap
+	white-space:nowrap;
+	font-weight: bold;
 }
 .mmk_bul{
 	list-style:none;
-	float:left;background:url("../images/bul.gif") no-repeat 4px 7px; 
+	float:left;
+	background:url("../images/icons_1.8.gif") no-repeat -8px 0px; 
 	padding-left:13px; 
 	margin-left:0px;
 	white-space:nowrap;
@@ -1157,7 +1160,7 @@ SPAN.bul,A.bul{
 	border-left:1px solid #B0BEC7;
 	height:14px;
 	line-height:14px;
-	padding:1px 18px 0pt 5px;
+	padding:1px 23px 0pt 5px;
 	position:relative;
 	text-transform:lowercase;
 	border-right: none;
@@ -1192,7 +1195,7 @@ SPAN.bul,A.bul{
 }
 
 #vsearchtabs dt a:hover, #vsearchtabs dt a.on {
-	background-position:2em -454px;
+	background-position:2em -505px;
 	border:1px solid #B0BEC7;
 	margin:-1px 0pt;
 	text-decoration:none;

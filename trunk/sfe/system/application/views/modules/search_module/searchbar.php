@@ -60,49 +60,43 @@
 				</a>
 			</li>	
 		<?php } ?>
+		<?php if($more_header_items) { ?>
 			<li class="last ignore">
 				<dl id="vsearchm">
 					<script type="text/javascript">
 						function ShowMore(){
-							if($('vsearchmore').hasClassName('on')) {
-								$('vsearchmore').removeClassName('on');
-								$('vslist').hide();
-							}
-							else {
-								$('vsearchmore').addClassName('on');
-								$('vslist').show();
-							}
+							$('vsearchmore').addClassName('on');
+							$('vslist').show();
+						}
+						
+						function HideMore(){
+							$('vsearchmore').removeClassName('on');
+							$('vslist').hide();
+						}
+						
+						function ShowHideMore(){
+							if($('vsearchmore').hasClassName('on')) HideMore();
+							else ShowMore();
+							return;
 						}
 					</script>
 					<dt>
-						<a href="#" id="vsearchmore" onclick="ShowMore();">More</a>
+						<a href="#" id="vsearchmore" onclick="ShowHideMore();" "><?php echo $search_current_search_more_tab; ?></a>
 					</dt>
 					<dd id="vslist" style="display: none;">
 						<div>
 							<ul>
-								<li class="first">
-									<a class="vs_answers" href="r/av/*http://answers.yahoo.com/search/search_result">Answers</a>
-								</li>
+								<?php foreach($more_header_items as $mKey=>$mItem) {?>
 								<li>
-									<a class="vs_audio" href="r/aw/*-http://audio.search.yahoo.com/search/audio">Audio</a>
+									<a href="<?php echo $mItem[1]?>"><?php echo $mItem[0]; ?></a>
 								</li>
-								<li>
-									<a class="vs_directory" href="r/b0/*-http://search.yahoo.com/search/dir">Directory</a>
-								</li>
-								<li>
-									<a class="vs_jobs" href="r/b4/*-http://hotjobs.yahoo.com/job-search">Jobs</a>
-								</li>
-								<li>
-									<a class="vs_news" href="r/b1/*-http://news.search.yahoo.com/search/news">News</a>
-								</li>
-								<li class="last">
-									<a href="r/cq">All Search Services</a>
-								</li>
+								<?php } ?>
 							</ul>
 						</div>
 					</dd>
 				</dl>
-			</li>		
+			</li>
+			<?php } ?>		
 		</ul>
 	</div>
 	<div class="left" style="float: left; text-align: center; width: 260px;">

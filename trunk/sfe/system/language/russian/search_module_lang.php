@@ -12,6 +12,9 @@ $lang['SEARCH_MODULE_SEARCH_THIS_CAT'] = 'искать только в этом 
 $lang['SEARCH_MODULE_BTN_VALUE'] = 'Найти';
 $lang['SEARCH_MODULE_SEARCH_STRING_EMPTY'] = 'Строка поиска не должна быть пустой!';
 $lang['SEARCH_MODULE_HEAD_ADVERTIZE_TAB'] = 'Реклама';
+$lang['SEARCH_MODULE_HEAD_FORUM_TAB'] = 'Форум';
+$lang['SEARCH_MODULE_HEAD_CONTACTS_TAB'] = 'Контакты';
 $lang['SEARCH_MODULE_HEAD_NEWS_TAB'] = 'Новости';
+$lang['SEARCH_MODULE_HEAD_MORE_TAB'] = 'еще';
 /* } SEARCH MODULE */
 ?>
