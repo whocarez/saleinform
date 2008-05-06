@@ -1,5 +1,5 @@
 <div>
-<?php echo anchor(base_url().index_page().'/clients', '0 - 9');?>&nbsp;
+<?php echo anchor(base_url().index_page().'/clients/l/l09', '0 - 9');?>&nbsp;
 <?php echo anchor(base_url().index_page().'/clients/l/a', 'A');?>&nbsp;
 <?php echo anchor(base_url().index_page().'/clients/l/b', 'B');?>&nbsp;
 <?php echo anchor(base_url().index_page().'/clients/l/c', 'C');?>&nbsp;

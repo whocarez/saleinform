@@ -78,8 +78,7 @@ class Clients_module
 	{
 		$parsARR = $this->GetPars();
 		$SR = null;
-		if(!$this->_current_clients_nav_letter) $SR = '0-9';
-		else $SR = $this->_current_clients_nav_letter;
+		if($this->_current_clients_nav_letter) $SR = $this->_current_clients_nav_letter;
 		$this->objectsArr['clients_module_client_current_letter'] = mb_strtoupper($SR, 'UTF-8');
 		$parsARR['sr'] = $SR;
 		$resultARR = $this->ciObject->clients_model->GetClientsByLetter($parsARR);

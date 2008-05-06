@@ -58,14 +58,14 @@ class Clients_model extends Model
 			$this->db->join('_countries', '_countries.rid=_regions._countries_rid');
 			$this->db->where(array('_countries.rid'=>$countryRID));
 		}
-		if($sr=='0-9')
+		if($sr=='l09')
 		{
 			$this->db->where("( _clients.name REGEXP '^0' OR _clients.name REGEXP '^1' OR _clients.name REGEXP '^2' OR
 								_clients.name REGEXP '^3' OR _clients.name REGEXP '^4' OR _clients.name REGEXP '^5' OR
 								_clients.name REGEXP '^6' OR _clients.name REGEXP '^7' OR _clients.name REGEXP '^8' OR
 								_clients.name REGEXP '^9')");
 		}
-		else
+		else if($sr)
 		{ 
 			$t = mb_strtoupper($sr, 'UTF-8');  
 			$this->db->where("(_clients.name REGEXP '^$sr' OR  _clients.name REGEXP '^$t')");
