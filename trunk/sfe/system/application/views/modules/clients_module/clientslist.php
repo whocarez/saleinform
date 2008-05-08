@@ -12,7 +12,7 @@
 								<div id="market_cnt">
 									<?php echo $clients_module_client_letters_nav;?>
 									<div style="background-color: #F2F5F8;margin-top: 10px; margin-bottom: 10px;">
-										<strong>'<?php echo $clients_module_client_current_letter;?>'</strong> 
+										<strong><?php echo $clients_module_client_current_letter;?></strong> 
 										&nbsp;<?php echo $clients_module_clients_count_find;?>
 										&nbsp;<?php echo $clients_module_clients_list_count;?>
 									</div>
