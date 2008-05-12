@@ -102,7 +102,7 @@
 	</div>
 	<div class="left" style="float: left; text-align: center; width: 260px;">
 		<a href="<?php echo site_url(); ?>"> 
-			<img style="position: relative;background-color: transparent;" src="<?php echo base_url();?>/images/logo.png" alt="<?php echo $logo_title; ?>" border="0" height="36" width="250">
+			<img style="position: relative;background-color: transparent;" src="<?php echo base_url();?>/images/logo.gif" alt="<?php echo $logo_title; ?>" border="0" height="36" width="250">
 		</a>
 	</div>
 	<div style="margin: 0px 20px 0px 265px;">
