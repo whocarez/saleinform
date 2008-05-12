@@ -835,12 +835,12 @@ input.znak{
 span.r_it{
 	color:#999
 }
-UL.bul LI,UL.bul_inline LI,.tv3,.w4,DIV.bul,SPAN.bul,A.bul{
+UL.bul LI,UL.bul_inline LI,DIV.bul,SPAN.bul,A.bul{
 	list-style:none;
 	margin-left:-3px;
 	padding:0 4px 0 11px;
 	line-height:16px;
-	background:url("../images/bul.gif") no-repeat 4px 7px;
+	background:url("../images/icons_1.8.gif") no-repeat -8px 0px;
 }
 #r_cnt .item_bul{
 	color:#aaa;
@@ -1139,10 +1139,19 @@ SPAN.bul,A.bul{
 	list-style-position: outside;
 }
 
+#vsearchtabs li.last 
+{
+	border-left:1px solid #B0BEC7;
+}
+
 #vsearchtabs li a {
 	font-size:93%;
 	padding:0pt 7px;
 	border-right: 1px solid #fff;
+}
+
+#vsearchtabs li.last a {
+	border-right: none;
 }
 
 #vsearchtabs dl {

@@ -53,8 +53,9 @@
 <div class="zs">
 	<div>
 		<ul id="vsearchtabs">
-		<?php $theFirst = true; $currNum = 0; foreach($header_items as $key=>$item) { $currNum++;?>
-			<li <?php if($theFirst) {$theFirst = False;?>class="first on"<?php } ?>>
+		<?php $theFirst = true; $currNum = 0; $countItems = count($header_items);
+			foreach($header_items as $key=>$item) { $currNum++;?>
+			<li <?php if($theFirst) {$theFirst = False;?>class="first on"<?php } ?> <?php if($currNum==$countItems) {?>class="last on"<?php } ?>>
 				<a href="<?php echo $item[1]?>">
 					<?php echo ($search_current_header_item==$key)?('<strong>'.$item[0].'</strong>'):$item[0];?>
 				</a>

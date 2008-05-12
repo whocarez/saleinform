@@ -165,7 +165,8 @@ class Search_module
 		
 		$this->objectsArr['logo_title'] = $this->STN_search_logo_title;
 		$this->objectsArr['header_items'] = $this->STN_search_header_items;
-		$this->objectsArr['more_header_items'] = $this->STN_search_header_more_items;
+		#$this->objectsArr['more_header_items'] = $this->STN_search_header_more_items;
+		$this->objectsArr['more_header_items'] = array(); # пока не используем до утряски дизайна
 		return $this->ciObject->load->view('modules/search_module/searchbar.php',$this->objectsArr, True);
 	}
 }
