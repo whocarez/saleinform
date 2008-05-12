@@ -11,7 +11,7 @@
 |	http://www.your-site.com/
 |
 */
-$config['base_url']	= "http://localhost/sfe";
+$config['base_url']	= "http://www.saleinform.com/";
 
 /*
 |--------------------------------------------------------------------------

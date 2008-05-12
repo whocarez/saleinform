@@ -42,6 +42,6 @@ $db['default']['active_r'] = TRUE;
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
-$db['default']['cachedir'] = $_SERVER['DOCUMENT_ROOT'].'/sfe/cache';
+$db['default']['cachedir'] = $_SERVER['DOCUMENT_ROOT'].'/cache';
 
 ?>

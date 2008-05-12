@@ -165,7 +165,7 @@ bmD.write('<sc'+'ript type="text/javascript" language="javascript" src="http://c
 <!--bigmir)net TOP 100-->
 </div>
 <!-- { Bigmir stats -->	
-<div style="float:right;margin-right:5px;">
+<div style="margin-right:5px;">
 <!--begin of Rambler's Top100 code -->
 <a href="http://top100.rambler.ru/top100/">
 <img src="http://counter.rambler.ru/top100.cnt?1200866" alt="" width=1 height=1 border=0></a>

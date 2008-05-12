@@ -15,7 +15,7 @@
 											<span style="float: left;"><?php echo $siclub_password_label?>:</span>
 											<input name="password_siclub" style="float: right; width: 120px;" type="password">
 										</div>
-										<div>
+										<div style="clear: both; white-space: nowrap;">
 											<input name="subm_siclub" style="border: 0px;margin-top: 3px; line-height: 17px; text-align: center; width: 80px;" class="btn" value="Войти" type="submit">
 										</div>
 										<div style="text-align: left; margin-top: 5px;">

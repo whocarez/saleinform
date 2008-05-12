@@ -550,7 +550,7 @@ a:hover{
 	z-index:100;
 }
 .b_h,.b_h_hd,.b_hz{
-	/*position:relative;*/
+	line-height: 1.22em;
 	width:100%;
 }
 .b_h_hd{
