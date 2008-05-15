@@ -570,11 +570,18 @@ class PriceXML
 						$itemModel = null;
 						$itemName = null;
 						$itemDescr = null;
-						if($brandRid = $this->GetBrand($attrsArray['VENDOR'])) $itemVendor = $brandRid;
-						if($wareRid = $this->GetWare($attrsArray['MODEL'], $itemVendor)) $itemModel = $wareRid;
+
 						if(isset($attrsArray['TYPEPREFIX']) && !empty($attrsArray['TYPEPREFIX'])){
 							$itemName = $attrsArray['TYPEPREFIX'].' '.$attrsArray['VENDOR'].' '.$attrsArray['MODEL'];
 						} else $itemName = $attrsArray['VENDOR'].' '.$attrsArray['MODEL'];
+						// Осуществяем поиск в таблице ассоциаций
+						if($result = $this->GetWareRID($itemName)){ 
+							$itemVendor = $result['_brands_rid'];
+							$itemModel = $result['_wares_rid'];
+						} else {
+							if($brandRid = $this->GetBrand($attrsArray['VENDOR'])) $itemVendor = $brandRid;
+							if($wareRid = $this->GetWare($attrsArray['MODEL'], $itemVendor)) $itemModel = $wareRid;
+						}
 						if(isset($attrsArray['DESCRIPTION']) && !empty($attrsArray['DESCRIPTION']))	$itemDescr = $attrsArray['DESCRIPTION'];
 						$stmt8 = $this->DB->prepare("INSERT INTO _pritems (_clients_rid, _categories_rid, ".($itemVendor?"_brands_rid,":'').
 																			($itemModel?"_wares_rid,":'')." _availabletypes_rid, name, short_descr,
@@ -756,6 +763,16 @@ class PriceXML
 		return False;
 	}
 	
+	public function GetWareRID($wareNAME){
+		$stmt = $this->DB->prepare("SELECT _categories_rid, _wares_rid, _brands_rid FROM _waresassoc
+									WHERE _waresassoc.name = :name AND _waresassoc.archive = 0");
+		$stmt->bindParam(':name', $wareNAME);
+		$stmt->execute();
+		$row = $stmt->fetch(PDO::FETCH_NAMED);
+		if($row) return $row;
+		else return False;
+	}
+	
 	public function PrepareXML(){
 		if(isset($this->docARR['YML_CATALOG']['SHOP']['CURRENCIES']['CURRENCY']['ATTRIBUTES'])){ 
 			$this->docARR['YML_CATALOG']['SHOP']['CURRENCIES']['CURRENCY'][] = $this->docARR['YML_CATALOG']['SHOP']['CURRENCIES']['CURRENCY'];
@@ -765,6 +782,7 @@ class PriceXML
 		//var_dump($this->docARR['YML_CATALOG']['SHOP']['CURRENCIES']['CURRENCY']);
 		//echo $this->clientsRid.'->'.count($this->docARR['YML_CATALOG']['SHOP']['CURRENCIES']['CURRENCY']).'<br>';	
 	}
+	
 	
 	public function toTranslit($string)
 	{
