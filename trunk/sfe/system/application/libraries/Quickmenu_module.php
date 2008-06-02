@@ -20,7 +20,7 @@ class Quickmenu_module
 														anchor(site_url().'/clients', $this->ciObject->lang->line('QUICKMENU_MODULE_ITEM_SHOPS')),
 														anchor(site_url().'/news', $this->ciObject->lang->line('QUICKMENU_MODULE_ITEM_NEWS')),
 														anchor(site_url().'/guides', $this->ciObject->lang->line('QUICKMENU_MODULE_ITEM_GUIDES')),
-														anchor(base_url().'forum', $this->ciObject->lang->line('QUICKMENU_MODULE_ITEM_FORUM')),
+														/*anchor(base_url().'forum', $this->ciObject->lang->line('QUICKMENU_MODULE_ITEM_FORUM')),*/
 														anchor(site_url().'/advertize', $this->ciObject->lang->line('QUICKMENU_MODULE_ITEM_ADVERTIZE')),
 														anchor(site_url().'/contacts', $this->ciObject->lang->line('QUICKMENU_MODULE_ITEM_NCONTACTS')),
 														anchor(site_url().'/help', $this->ciObject->lang->line('QUICKMENU_MODULE_ITEM_HELP')));

@@ -104,16 +104,6 @@ $templates['normal_header'] ='<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transi
 <body id="mainBody" style="text-align: center;">
 <center>
 	<div class="md" id="" style="">
-		<!-- { Top header area  -->
-		<div class="topMN">
-			<div style="float: left;">
-				<span id="aset">
-				</span>
-			</div>
-			<div style="margin-left: 60%; text-align: right;">
-			</div>
-		</div>
-		<!-- } Top header area  -->
 		<div id="main_cnt">
 			<table style="margin: 0pt; padding: 0pt; width: 100%; font-size: 100%;" border="0">
 				<tbody>
@@ -121,12 +111,7 @@ $templates['normal_header'] ='<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transi
 						<td>
 							<!-- ************************************** -->
 
-
-<div style="position: relative; z-index: 99999;">
-	<span style="width: 70px; position: absolute; top: 70px; left: 300px;" id="rZ_md"> 
-	</span>
-</div>
-<script type="text/javascript">
+							<script type="text/javascript">
 <!--
 	function buildAction()
 	{
@@ -179,89 +164,57 @@ $templates['normal_header'] ='<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transi
 </script>
 
 <div class="zs">
-<div id="z" style="margin: 15px 0px 0px;">
-<div class="left" style="float: left; text-align: center; width: 260px;">
-	<a href="#"> <img style="position: relative; top: 17px;" src="http://www.saleinform.com/images/logo.png" alt="Saleinform.com - сравнение цен" border="0" height="36" width="250"></a>
+	<div>
+		<ul id="vsearchtabs">
+					<li class="first on">
+				<a href="http://www.saleinform.com/">
+					<strong>Главная</strong>				</a>
+			</li>	
+					<li>
+				<a href="http://www.saleinform.com/index.php/categories">
+					Категории				</a>
+			</li>	
+					<li>
+				<a href="http://www.saleinform.com/index.php/guides">
+					Покупателю				</a>
+			</li>	
+					<li>
+				<a href="http://www.saleinform.com/index.php/brands">
+					Бренды				</a>
+			</li>	
+					<li>
+				<a href="http://www.saleinform.com/index.php/clients">
+					Магазины				</a>
+			</li>	
+					<li class="last on">
+				<a href="http://www.saleinform.com/index.php/help">
+					Помощь				</a>
+			</li>	
+						
+		</ul>
+	</div>
+	<div style="float: left; text-align: center; width: 260px;" class="left">
+		<a href="http://www.saleinform.com/index.php"> 
+			<img width="250" height="36" border="0" alt="Saleinform.com - сравнение цен" src="http://www.saleinform.com//images/logo.gif" style="position: relative; background-color: transparent;"/>
+		</a>
+	</div>
+	<div style="margin: 0px 20px 0px 265px;">
 
-</div>
-<div style="margin-left: 260px;">
-<div style="float: left; padding-right: 25px;" id="zz">
-<div><span style="float: right; width: 170px;"> </span>
-<div class="rp1">
-<a class="mCG" href="http://www.saleinform.com/">
-	<div class="mL">
-		<div class="mR">
-			<div class="p_100s"></div>
-			<span id="s-">Главная</span>
-		</div>
-
-	</div>
-</a> 
-<a class="mCG" href="http://www.saleinform.com/index.php/categories">
-	<div class="mL">
-		<div class="mR">
-			<div class="p_100s"></div>
-			<span id="s-">Категории</span>
-		</div>
-	</div>
-
-</a> 
-<a class="mCG" href="http://www.saleinform.com/index.php/guides">
-	<div class="mL">
-		<div class="mR">
-			<div class="p_100s"></div>
-			<span id="s-">Покупателю</span>
-		</div>
-	</div>
-</a> 
-<a class="mC" href="http://www.saleinform.com/forum">
-	<div class="mL">
-		<div class="mR">
-			<div class="p_100s"></div>
-			<span id="s-">Форум</span>
-		</div>
-	</div>
-</a> 
-<a class="mCG" href="http://www.saleinform.com/index.php/clients">
-	<div class="mL">
-
-		<div class="mR">
-			<div class="p_100s"></div>
-			<span id="s-">Магазины</span>
-		</div>
-	</div>
-</a> 
-<a class="mCG" href="http://www.saleinform.com/index.php/help">
-	<div class="mL">
-		<div class="mR">
-
-			<div class="p_100s"></div>
-			<span id="s-">Помощь</span>
-		</div>
-	</div>
-</a> 
-</div>
-<div class="fq1">
-<form action="http://www.saleinform.com/index.php" method="post" id="searchForm" name="searchForm" onSubmit="buildAction()" style="padding: 0px; margin-top: 0px;">	<div class="fq2">
+<form style="padding: 0px; margin-top: 0px;" onsubmit="buildAction()" name="searchForm" id="searchForm" method="post" action="http://www.saleinform.com/index.php">	<div class="fq2">
 		<div class="fq3">
-			<input id="sb" style="height: 25px; width: 120px;" class="y_button" value="Найти" type="submit" >
-
+			<input type="submit" value="Найти" class="y_button" style="height: 25px; width: 120px;" id="sb"/>
 		</div>
 		<div class="MQ">
-			<input id="searchString" name="searchString" class="mainQ" value="" type="text">
-			<input id="categoryRid" name="categoryRid" value="" type="hidden">
-			<input id="formAction" name="formAction" value="http://www.saleinform.com/index.php/categories/" type="hidden">
+			<input type="text" value="" class="mainQ" name="searchString" id="searchString"/>
+			<input type="hidden" value="" name="categoryRid" id="categoryRid"/>
+			<input type="hidden" value="http://www.saleinform.com/index.php/categories/" name="formAction" id="formAction"/>
 		</div>
-		<span id="rgn_s" class="a" style="z-index: 9999; margin-left: -4px;">
+		<span style="z-index: 9999; margin-left: -4px;" class="a" id="rgn_s">
 				</span>
 	</div>
-
 </form>
+
 </div>
-</div>
-</div>
-</div>
-<iframe style="display: none;"></iframe></div>
 </div>
 
 							<!-- ************************************** -->
