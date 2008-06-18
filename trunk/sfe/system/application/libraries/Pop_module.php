@@ -32,7 +32,6 @@ class Pop_module
 	
 	public function _SetCategoryPop()
 	{
-		
 		$this->ciObject->load->library('user_agent');
 		if($this->ciObject->uri->segment(1)=='categories' && isset($this->_current_pop_uri_assoc['c']) && $this->ciObject->agent->is_browser())
 		{
