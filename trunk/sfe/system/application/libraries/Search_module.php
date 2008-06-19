@@ -46,11 +46,11 @@ class Search_module
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_GUIDES_TAB'), base_url().index_page().'/guides'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_BRANDS_TAB'), base_url().index_page().'/brands'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_SHOPS_TAB'), base_url().index_page().'/clients'),
-													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_HELP_TAB'), base_url().index_page().'/help')); # main menu items
+													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_ADVERTIZE_TAB'), base_url().index_page().'/advertize'));
 			$this->STN_search_header_more_items = array(array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_SETTINGS_TAB'), base_url().index_page().'/settings'),
 														array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_NEWS_TAB'), base_url().index_page().'/news'),
-														array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_ADVERTIZE_TAB'), base_url().index_page().'/advertize'),
 														array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_FORUM_TAB'), base_url().'/forum'),
+														array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_HELP_TAB'), base_url().index_page().'/help'),														
 														array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_CONTACTS_TAB'), base_url().index_page().'/contacts'));
 			$this->objectsArr['search_current_header_item'] = 0;			
 		}
@@ -69,7 +69,7 @@ class Search_module
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_GUIDES_TAB'), base_url().index_page().'/guides'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_BRANDS_TAB'), base_url().index_page().'/brands'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_SHOPS_TAB'), base_url().index_page().'/clients'),
-													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_HELP_TAB'), base_url().index_page().'/help')); # main menu items
+													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_ADVERTIZE_TAB'), base_url().index_page().'/advertize')); # main menu items
 			$this->objectsArr['search_current_header_item'] = 1;
 		}
 		else if($this->ciObject->uri->segment(1)=='clients')
@@ -80,7 +80,7 @@ class Search_module
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_GUIDES_TAB'), base_url().index_page().'/guides'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_BRANDS_TAB'), base_url().index_page().'/brands'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_SHOPS_TAB'), base_url().index_page().'/clients'),
-													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_HELP_TAB'), base_url().index_page().'/help')); # main menu items
+													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_ADVERTIZE_TAB'), base_url().index_page().'/advertize')); # main menu items
 			$this->objectsArr['search_current_header_item'] = 4;			
 		}
 		else if($this->ciObject->uri->segment(1)=='brands')
@@ -91,7 +91,7 @@ class Search_module
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_GUIDES_TAB'), base_url().index_page().'/guides'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_BRANDS_TAB'), base_url().index_page().'/brands'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_SHOPS_TAB'), base_url().index_page().'/clients'),
-													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_HELP_TAB'), base_url().index_page().'/help')); # main menu items
+													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_ADVERTIZE_TAB'), base_url().index_page().'/advertize')); # main menu items
 			$this->objectsArr['search_current_header_item'] = 3;			
 		}
 		else if($this->ciObject->uri->segment(1)=='guides')
@@ -102,7 +102,7 @@ class Search_module
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_GUIDES_TAB'), base_url().index_page().'/guides'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_BRANDS_TAB'), base_url().index_page().'/brands'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_SHOPS_TAB'), base_url().index_page().'/clients'),
-													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_HELP_TAB'), base_url().index_page().'/help')); # main menu items
+													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_ADVERTIZE_TAB'), base_url().index_page().'/advertize')); # main menu items
 			$this->objectsArr['search_current_header_item'] = 2;			
 		}
 		else if($this->ciObject->uri->segment(1)=='settings')
@@ -113,7 +113,7 @@ class Search_module
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_SETTINGS_TAB'), base_url().index_page().'/settings'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_BRANDS_TAB'), base_url().index_page().'/brands'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_SHOPS_TAB'), base_url().index_page().'/clients'),
-													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_HELP_TAB'), base_url().index_page().'/help')); # main menu items
+													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_ADVERTIZE_TAB'), base_url().index_page().'/advertize')); # main menu items
 			$this->objectsArr['search_current_header_item'] = 2;			
 		}
 		else if($this->ciObject->uri->segment(1)=='help')
@@ -124,7 +124,7 @@ class Search_module
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_GUIDES_TAB'), base_url().index_page().'/guides'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_BRANDS_TAB'), base_url().index_page().'/brands'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_SHOPS_TAB'), base_url().index_page().'/clients'),
-													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_HELP_TAB'), base_url().index_page().'/help')); # main menu items
+													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_ADVERTIZE_TAB'), base_url().index_page().'/advertize')); # main menu items
 			$this->objectsArr['search_current_header_item'] = 5;			
 		}
 		
@@ -159,7 +159,7 @@ class Search_module
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_GUIDES_TAB'), base_url().index_page().'/guides'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_BRANDS_TAB'), base_url().index_page().'/brands'),
 													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_SHOPS_TAB'), base_url().index_page().'/clients'),
-													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_HELP_TAB'), base_url().index_page().'/help')); # main menu items
+													array($this->ciObject->lang->line('SEARCH_MODULE_HEAD_ADVERTIZE_TAB'), base_url().index_page().'/advertize')); # main menu items
 			$this->objectsArr['search_current_header_item'] = 200;			
 		}
 		

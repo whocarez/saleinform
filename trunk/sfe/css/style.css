@@ -91,7 +91,15 @@ body,table{
 	font-family: arial,helvetica,clean,sans-serif;
 }
 small {
-	color:#999
+	color:#999;
+	background:transparent url(../images/icons_1.8.gif) no-repeat scroll 0pt;
+	height:0.8em;
+	margin:0pt 0pt 0pt 1px;
+	padding:0pt 5px 0pt 40px;
+	position:absolute;	
+}
+small.new {
+	background-position:-13px -604px;
 }
 .gray{
 	color:#999;

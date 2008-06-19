@@ -421,8 +421,8 @@ class Categories_module
 
 	public function _RenderCompanyRatingCell($row)
 	{
-		$row['write_rewiev_title'] = anchor(base_url().index_page().'/cluops/c/'.$row['clientRID'], $this->ciObject->lang->line('CATEGORIES_MODULE_WARE_REWIEV_TITLE'));	
-		$row['ware_rewievs_title'] = anchor(base_url().index_page().'/clients/o/'.$row['clientRID'], $this->ciObject->lang->line('CATEGORIES_MODULE_WARE_REWIEVES_TITLE'));
+		$row['write_rewiev_title'] = anchor(base_url().index_page().'/cluops/c/'.$row['clientRID'], $this->ciObject->lang->line('CATEGORIES_MODULE_CLIENT_REWIEV_TITLE'));	
+		$row['ware_rewievs_title'] = anchor(base_url().index_page().'/clients/o/'.$row['clientRID'], $this->ciObject->lang->line('CATEGORIES_MODULE_CLIENT_REWIEVES_TITLE'));
 		return $this->ciObject->load->view('modules/categories_module/_cellclientrating.php',$row, True);
 	}
 	
@@ -440,7 +440,8 @@ class Categories_module
 						'class'=>'btn',
 						'type'=>'button',
 						/*'target'=>$row['isgrouped']?'':'_blank',*/
-						'onclick'=>"window.location.href='".addslashes($row['categories_category_button_link'])."'"		  	
+						/*'onclick'=>"window.location.href='".addslashes($row['categories_category_button_link'])."'"*/	
+						'onclick'=>"window.open('".addslashes($row['categories_category_button_link'])."')"	  	
             			);
 		$row['categories_category_ware_button']=form_input($button_data);	
 		return $this->ciObject->load->view('modules/categories_module/_cellprice.php',$row, True);

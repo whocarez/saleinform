@@ -58,6 +58,7 @@
 			<li <?php if($theFirst) {$theFirst = False;?>class="first on"<?php } ?> <?php if($currNum==$countItems) {?>class="last on"<?php } ?>>
 				<a href="<?php echo $item[1]?>">
 					<?php echo ($search_current_header_item==$key)?('<strong>'.$item[0].'</strong>'):$item[0];?>
+					<?php if($currNum==$countItems) {?><small class="new"></small><?php } ?>
 				</a>
 			</li>	
 		<?php } ?>

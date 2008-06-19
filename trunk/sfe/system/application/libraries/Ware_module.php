@@ -393,8 +393,8 @@ class Ware_module
 	
 	public function _RenderCompanyRatingCell($row)
 	{
-		$row['write_rewiev_title'] = anchor(base_url().index_page().'/cluops/c/'.$row['clientRID'], $this->ciObject->lang->line('CATEGORIES_MODULE_WARE_REWIEV_TITLE'));	
-		$row['ware_rewievs_title'] = anchor(base_url().index_page().'/clients/o/'.$row['clientRID'], $this->ciObject->lang->line('CATEGORIES_MODULE_WARE_REWIEVES_TITLE'));
+		$row['write_rewiev_title'] = anchor(base_url().index_page().'/cluops/c/'.$row['clientRID'], $this->ciObject->lang->line('CATEGORIES_MODULE_CLIENT_REWIEV_TITLE'));	
+		$row['ware_rewievs_title'] = anchor(base_url().index_page().'/clients/o/'.$row['clientRID'], $this->ciObject->lang->line('CATEGORIES_MODULE_CLIENT_REWIEVES_TITLE'));
 		return $this->ciObject->load->view('modules/ware_module/_cellrating.php',$row, True);
 	}
 
@@ -409,7 +409,8 @@ class Ware_module
               			'style'=>'float:right; border: 0px;margin-top: 0px; line-height: 17px; text-align: center; width: 80px;',
 						'class'=>'btn',
 						'type'=>'button',
-						'onclick'=>"window.location.href='".$row['ware_offer_button_link']."'"		  	
+						/*'onclick'=>"window.location.href='".$row['ware_offer_button_link']."'"*/		  	
+						'onclick'=>"window.open('".$row['ware_offer_button_link']."');"
             			);
 		$row['ware_offer_button']=form_input($button_data);	
 		return $this->ciObject->load->view('modules/ware_module/_cellprice.php',$row, True);
