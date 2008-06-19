@@ -38,20 +38,25 @@ class PriceXML
         	$this->ERROR_content .= sprintf("ERROR: Ошибка загрузки прайса по адресу: %s\n", $this->priceURL); 
 		}
 		else {
-			$xmlName = tempnam(APP_HOME.'/tmpfiles/prices/', 'price_');
-			$xmlContent = $doc->saveXML();
-			unlink($xmlName);
-			$fXML = fopen($xmlName.'.xml', 'w') or die("can't open pdf file to write");
-      		fwrite($fXML, $xmlContent) or die("can't write to the pdf file");
-      		fclose($fXML);
-      		unset($doc);
-      		$doc = new DOMDocument();
-      		$doc->load($xmlName.'.xml');
-      		if(!$doc->validate()) $this->ERROR_content .= sprintf("ERROR: Ошибка валидации прайса\n");
-			$parser = new XMLParser($xmlName.'.xml', 'file', 1);
-			$this->docARR = $parser->getTree();      
-			$this->PrepareXML();		
-      		unlink($xmlName.'.xml');
+			try{
+				$xmlName = tempnam(APP_HOME.'/tmpfiles/prices/', 'price_');
+				$xmlContent = $doc->saveXML();
+				unlink($xmlName);
+				$fXML = fopen($xmlName.'.xml', 'w') or die("can't open pdf file to write");
+      			fwrite($fXML, $xmlContent) or die("can't write to the pdf file");
+      			fclose($fXML);
+      			unset($doc);
+      			$doc = new DOMDocument();
+      			$doc->load($xmlName.'.xml');
+      			if(!$doc->validate()) $this->ERROR_content .= sprintf("ERROR: Ошибка валидации прайса\n");
+				$parser = new XMLParser($xmlName.'.xml', 'file', 1);
+				$this->docARR = $parser->getTree();      
+				$this->PrepareXML();		
+      			unlink($xmlName.'.xml');
+			} catch (Exception $e) {
+				$this->ERROR_content .= sprintf($e->getMessage());
+				return False;
+			}
 		}
 		if(mktime(0, 0, 0, date("m"), date("d")-14, date("Y"))<=$this->docARR['YML_CATALOG']['ATTRIBUTES']['DATE']){
 			$this->ERROR_content .= sprintf("ERROR: Прайс устарел.");
