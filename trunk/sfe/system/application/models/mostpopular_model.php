@@ -68,7 +68,7 @@ class Mostpopular_model extends Model
 			$this->db->where(array('_countries.rid'=>$parsARR['countriesRID']));
 		}
 		$this->db->groupby('_clients.rid');
-		$this->db->orderby('count(_clients.rid) DESC');
+		$this->db->orderby('rand()');
 		$this->db->limit(10);
 		$query = $this->db->get();
 		if($query->num_rows()) return $query->result_array();
