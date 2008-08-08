@@ -107,7 +107,7 @@
 									<div style="padding:0px 0;margin:4px 0;overflow:hidden;border:1px dashed #B1BFC7;border-left:0;border-right:0;border-bottom: 0;"></div>									
 									<?php } ?>
 									<?php if($filters_module_filters_brands_list){ ?>									
-									<div style="margin-bottom: 10px; font-size: 100%;max-height:197px;overflow-y:auto;overflow-x:hidden;">
+									<div style="margin-bottom: 10px; font-size: 100%;max-height:197px;height:197px;overflow-y:auto;overflow-x:hidden;">
 										<div>
 											<b><?php echo $filters_module_brands_field_title;?></b>
 										</div>

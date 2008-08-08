@@ -6,7 +6,7 @@ $lang['CONTACTS_MODULE_WRITE_ERROR_DESCR'] = 'Уважаемый посетит�
 												напишите кратко о характере ошибки.
 												Это поможет нам как можно быстрее выявить и устранить причины ошибки.';
 $lang['CONTACTS_MODULE_WRITE_TO_FRIEND'] = 'Переслать другу'; 
-$lang['CONTACTS_MODULE_WRITE_TO_FORUM'] = 'Обсудить на форуме'; 
+$lang['CONTACTS_MODULE_WRITE_TO_FORUM'] = 'Обсудить на форуме(скоро)'; 
 $lang['CONTACTS_MODULE_WRITE_COMMENT'] = 'Комментарий';
 $lang['CONTACTS_MODULE_NAME_SENDER_TITLE'] = 'Имя отправителя';
 $lang['CONTACTS_MODULE_EMAIL_SENDER_TITLE'] = 'Ваш E-mail';
