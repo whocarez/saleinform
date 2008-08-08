@@ -49,7 +49,14 @@
 				<!-- { Login area -->
 				<?php echo $login_area_obj;?>				
 				<!-- } Login area -->
-
+				
+				<!-- { Advertizing area -->
+				<?php 
+					$imgSTR = "<img src=\"".base_url()."/images/adv/free_price.gif\" border=0>";
+					echo '<a href="'.index_page().'/advertize'.'">'.$imgSTR.'</a>'; 
+				?>
+				<!-- } Advertizing area -->
+				
 				<!-- { Quickmenu area -->
 				<?php echo $quickmenu_area_obj;?>				
 				<!-- } Quickmenu area -->
