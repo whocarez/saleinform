@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<BizView Class="BizView" Description="Система администрирования" Name="BVnewscategories" Package="admin.content.newscategories" Template="layouts/layout_two_cols.tpl">
-	<ControlList>
-		<Control Name="mainmenu" Form="admin.shared.BFmainmenu"/>
-		<Control Name="right_panel_content_1" Form="admin.content.newscategories.BFnewscategories" SubCtrls="admin.content.news.BFnews"/>
-		<Control Name="right_content" Form="admin.content.news.BFnews"/>
-	</ControlList>
-</BizView>

@@ -1,8 +1,0 @@
-<?xml version="1.0" standalone="no"?>
-<Config>
-   <DataSource>
-      <!-- -->
-      <Database Name="Default" Driver="PDO_MYSQL" Server="localhost" DBName="saleinform" User="root" Password="" />
-      <!--  --> 
-   </DataSource>
-</Config>

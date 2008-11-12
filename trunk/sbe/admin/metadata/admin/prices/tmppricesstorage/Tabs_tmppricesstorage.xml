@@ -1,8 +1,0 @@
-<?xml version="1.0" standalone="no"?>
-<Tabs Name="Tabs_tmppricesstorage" Package="admin.prices.tmppricesstorage" Class="HTMLTabs" TemplateFile="tabs.tpl">
-   <TabViews>
-      <View Name="tmppritemspars" URL="" View="admin.prices.tmppricesstorage.BVtmppricesstorage" Caption="Параметры" Icon=""/>
-      <View Name="tmppritemsprices" URL="" View="admin.prices.tmppricesstorage.BVtmppricesstorage_prices" Caption="Цены" Icon=""/>
-      <View Name="tmppritemsimages" URL="" View="admin.prices.tmppricesstorage.BVtmppricesstorage_images" Caption="Изображения" Icon=""/>
-   </TabViews>
-</Tabs>

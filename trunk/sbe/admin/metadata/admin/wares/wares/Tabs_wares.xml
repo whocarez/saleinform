@@ -1,9 +1,0 @@
-<?xml version="1.0" standalone="no"?>
-<Tabs Name="Tabs_wares" Package="admin.wares.wares" Class="HTMLTabs" TemplateFile="tabs.tpl">
-   <TabViews>
-      <View Name="warespars" URL="" View="admin.wares.wares.BVwares_warespars" Caption="Параметры" Icon=""/>
-      <View Name="waresimage" URL="" View="admin.wares.wares.BVwares_waresimages" Caption="Изображения" Icon=""/>
-      <View Name="waresopinions" URL="" View="admin.wares.wares.BVwares_waresuopinions" Caption="Отзывы" Icon=""/>
-      <View Name="waresrewievs" URL="" View="admin.wares.wares.BVwares_waresrewievs" Caption="Обзоры" Icon=""/>
-   </TabViews>
-</Tabs>

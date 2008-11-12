@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<BizView Class="BizView" Description="Система администрирования" Name="BVrelatedcats" Package="admin.wares.relatedcats" Template="layouts/layout_two_cols.tpl">
-	<ControlList>
-		<Control Name="mainmenu" Form="admin.shared.BFmainmenu"/>
-		<Control Name="right_panel_content_1" Form="admin.wares.wares.BFcategories" SubCtrls="admin.wares.relatedcats.BFrelatedcats"/>
-		<Control Name="right_panel_content_2" Form="admin.wares.relatedcats.BFrelatedcats" />
-	</ControlList>
-</BizView>

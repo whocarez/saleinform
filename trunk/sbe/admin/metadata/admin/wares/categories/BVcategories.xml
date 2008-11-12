@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<BizView Class="BizView" Description="Система администрирования" Name="BVcategories" Package="admin.wares.categories" Template="layouts/layout_simple.tpl">
-	<ControlList>
-		<Control Name="mainmenu" Form="admin.shared.BFmainmenu"/>
-		<Control Name="right_content" Form="admin.wares.categories.BFcategories"/>
-	</ControlList>
-</BizView>
