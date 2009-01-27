@@ -7,7 +7,7 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	${h.stylesheet_link('/css/style.css')}
+	${h.h_tags.stylesheet_link('/css/style.css')}
 	<link rel="SHORTCUT ICON" href="../img/si.png">
 </head>
 <body id="mainBody">

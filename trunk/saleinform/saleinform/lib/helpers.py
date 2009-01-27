@@ -5,4 +5,5 @@ available to Controllers. This module is available to both as 'h'.
 """
 # Import helpers as desired, or define your own, ie:
 # from webhelpers.html.tags import checkbox, password
-from webhelpers.html.tags import *
+import webhelpers.html.tags as h_tags 
+import webhelpers.text as h_text
