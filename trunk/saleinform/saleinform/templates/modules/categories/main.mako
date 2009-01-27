@@ -5,7 +5,11 @@
 		<li>
 			<h4>
 				${h.h_tags.link_to(cat.name, url='/categories/'+cat.slug)}
-				${h.h_text.truncate(', '.join([h.h_tags.link_to(z.name, url='/categories/'+z.slug) for z in c.subcategories]), length=50, indicator='...', whole_word=False)}				
+				<%
+					print cat.rid
+					subs = [h.h_tags.link_to(z.name, url='/categories/'+z.slug) for z in c.subcategories if z._parent_rid == cat_rid]
+				%>
+				${h.h_text.truncate(', '.join(subs), length=50, indicator='...', whole_word=False)}				
 			</h4>
 		</li>
 	% endfor

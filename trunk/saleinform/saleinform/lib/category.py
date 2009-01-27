@@ -29,10 +29,9 @@ class Category:
         """Получить подкатегории второго уровня"""
         c.subcategories = si.meta.Session.query(si.Categories.name, si.Categories.slug, si.Catparents._parent_rid).\
                             join((si.Catparents, si.Catparents._categories_rid==si.Categories.rid)).\
-                            filter(si.Catparents.num == 2).\
+                            filter(si.Catparents.level == 2).\
                             group_by(si.Categories.rid, si.Categories.name, si.Categories.slug, si.Catparents._parent_rid).\
                             order_by(si.Categories.name).\
                             all() 
-        return render('/modules/categories/main.mako')
-
+        return
     

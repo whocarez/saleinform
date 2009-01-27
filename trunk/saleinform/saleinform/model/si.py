@@ -32,7 +32,7 @@ _catparents =  sa.Table('_catparents', meta.metadata,
                      sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
                      sa.Column(u'_categories_rid', sa.types.Integer(), primary_key=False, nullable=False),
                      sa.Column(u'_parent_rid', sa.types.Integer(), primary_key=False, nullable=False),
-                     sa.Column(u'num', sa.types.Integer(), primary_key=False, nullable=False),
+                     sa.Column(u'level', sa.types.Integer(), primary_key=False, nullable=False),
                      sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__catparents1'),
                      sa.ForeignKeyConstraint([u'_parent_rid'], [u'_categories.rid'], name=u'FK__catparents2'),)
 sa.Index(u'_secondary2_1', _catparents.c._categories_rid, _catparents.c._parent_rid, unique=True)

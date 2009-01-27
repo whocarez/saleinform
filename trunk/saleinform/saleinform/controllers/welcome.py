@@ -17,8 +17,6 @@ log = logging.getLogger(__name__)
 class WelcomeController(BaseController):
     
     def renderModules(self):
-        c.TOPNAVIGATOR = Navigator().renderMainTopNavigator() 
-        c.FOOTERNAVIGATOR = Navigator().renderFooterNavigator() 
         c.SEARCHBAR = Search().renderSearchBar()
         c.CATEGORIES_LIST = Category().renderCategoriesMain()
         pass

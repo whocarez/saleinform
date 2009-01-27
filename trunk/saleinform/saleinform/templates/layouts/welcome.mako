@@ -14,15 +14,15 @@
 	<div class="md" id="" style="">
 		<div id="main_cnt">
 			<div>
-				${c.TOPNAVIGATOR}
+				<%include file="/modules/navigator/maintopnav.mako"/>
 			</div>
 			<div>
-				${c.SEARCHBAR}
+				<%include file="/modules/search/searchbar.mako"/>
 			</div>
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
 				<tr>
 					<td id="left" style="width: 280px;">
-						${c.CATEGORIES_LIST}
+						<%include file="/modules/categories/main.mako"/>
 					</td>
 					<td class="cTD">
 					</td>
@@ -32,7 +32,7 @@
 			</table>
 		</div>
 		<div>
-			${c.FOOTERNAVIGATOR}
+			<%include file="/modules/navigator/footernav.mako"/>
 		</div>
 	</div>
 </body>

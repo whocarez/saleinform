@@ -11,4 +11,4 @@ class Search:
         pass
     
     def renderSearchBar(self):
-        return render('/modules/search/searchbar.mako')
+        pass

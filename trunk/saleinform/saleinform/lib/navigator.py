@@ -2,7 +2,7 @@
 from saleinform.lib.base import render
 class Navigator:
     def renderMainTopNavigator(self):
-        return render('/modules/navigator/maintopnav.mako')
+        pass
 
     def renderFooterNavigator(self):
-        return render('/modules/navigator/footernav.mako')
+        pass
