@@ -27,11 +27,15 @@ class Category:
                         limit(self.mainListLimit).\
                         all()
         """Получить подкатегории второго уровня"""
-        c.subcategories = si.meta.Session.query(si.Categories.name, si.Categories.slug, si.Catparents._parent_rid).\
-                            join((si.Catparents, si.Catparents._categories_rid==si.Categories.rid)).\
-                            filter(si.Catparents.level == 2).\
-                            group_by(si.Categories.rid, si.Categories.name, si.Categories.slug, si.Catparents._parent_rid).\
-                            order_by(si.Categories.name).\
+        subquery = si.meta.Session.query(si.Catparents._parent_rid, si.Categories.name, si.Categories.slug).\
+                        join((si.Categories, si.Catparents._parent_rid==si.Categories.rid)).\
+                        filter(si.Catparents.level == 2).\
+                        group_by(si.Catparents._parent_rid, si.Categories.name, si.Categories.slug).\
+                        subquery()
+        c.subcategories = si.meta.Session.query(si.Catparents._categories_rid, subquery.c.slug, subquery.c.name, si.Catparents._parent_rid).\
+                            filter(subquery.c._parent_rid == si.Catparents._categories_rid).\
+                            filter(si.Catparents.level == 1).\
+                            order_by(func.random()).\
                             all() 
         return
     

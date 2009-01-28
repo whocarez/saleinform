@@ -183,7 +183,7 @@ div.catslist ul li {
 	border-color:#CBE3FF;
 	border-style:solid;
 	border-width:0 0 1px;
-	line-height:24px;
+	height:34px;
 	margin:0;
 	padding:6px 0;
 }
@@ -191,9 +191,15 @@ div.catslist ul li.last-cat-item {
 	border-width:0 0 0px;
 }
 
-div.catslist ul li h4 {
-	font-size:120%;
+div.catslist ul li div{
 	margin-left: 45px;
+}
+div.catslist ul li div h4 {
+	font-size:110%;
+}
+
+div.catslist ul li div span {
+	font-size:100%;
 }
 
 div.catslist ul li h4 a {
@@ -201,9 +207,19 @@ div.catslist ul li h4 a {
 	text-decoration:none;
 }
 
+div.catslist ul li h4 a:hover {
+	color:#15345C;
+	text-decoration:underline;
+}
+
 div.catslist ul li a {
 	color:#919191;
 	text-decoration:none;
+}
+
+div.catslist ul li a:hover {
+	color:#919191;
+	text-decoration:underline;
 }
 
 div.CategoryBrowserFooter {
