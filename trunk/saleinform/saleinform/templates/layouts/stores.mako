@@ -17,15 +17,16 @@
 	<div class="md" id="" style="">
 		<div id="main_cnt">
 			<div>
-				<%include file="/modules/navigator/maintopnav.mako"/>
+				<%include file="/modules/navigator/topnav.mako"/>
 			</div>
 			<div>
-				<%include file="/modules/search/searchbar.mako"/>
+				<%include file="/modules/categories/topmenu.mako"/>
+				<%include file="/modules/search/narrowbar.mako"/>
 			</div>
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
 				<tr>
 					<td id="left" style="width: 280px;">
-						<%include file="/modules/categories/main.mako"/>
+						
 					</td>
 					<td class="cTD">
 					</td>

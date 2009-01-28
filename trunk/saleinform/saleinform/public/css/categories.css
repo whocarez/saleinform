@@ -1,0 +1,151 @@
+@CHARSET "UTF-8";
+/* { Список категорий на главной */
+div.catslist{
+	background-image:url(../img/catsmain_bg.png);
+	border-top: 1px solid #93c0ff;
+	color:#919191;
+	font-size:11px;
+	margin: 5px 0px 0px 0px;
+	padding:0;
+	width: 280px;
+	position:relative;
+}
+
+div.catslist ul {
+	list-style-type:none;
+	padding:0 1px;
+}
+
+div.catslist ul li {
+	background-repeat:no-repeat;
+	border-color:#CBE3FF;
+	border-style:solid;
+	border-width:0 0 1px;
+	/*height:24px;*/
+	margin:0;
+	padding:6px 0;
+}
+div.catslist ul li.last-cat-item {
+	border-width:0 0 0px;
+}
+
+div.catslist ul li div{
+	margin-left: 45px;
+}
+div.catslist ul li div h4 {
+	font-size:110%;
+}
+
+div.catslist ul li div span {
+	font-size:100%;
+}
+
+div.catslist ul li h4 a {
+	color:#15345C;
+	text-decoration:none;
+}
+
+div.catslist ul li h4 a:hover {
+	color:#15345C;
+	text-decoration:underline;
+}
+
+div.catslist ul li a {
+	color:#919191;
+	text-decoration:none;
+}
+
+div.catslist ul li a:hover {
+	color:#919191;
+	text-decoration:underline;
+}
+
+div.CategoryBrowserFooter {
+	background-color:#FFFFFF;
+	background-image:url(../img/catsmain_bottom.png);
+	background-repeat:no-repeat;
+	height:6px;
+	margin-bottom:0px;
+	position:relative;
+	width:280px;
+	z-index:11;
+}
+/* } Список категорий на главной */
+
+/* { TOP список категорий */
+#menuContent {
+	background:transparent url(http://images.us.ciao.com/ius/images/crux/background/main_nav_ul_line.gif) repeat-x scroll 0 23px;
+	height:24px;
+	margin:0;
+	padding:0;
+	width:100%;
+}
+#menuContent #mainNavUs{
+	clear:both;
+	margin: 0 auto;
+}
+#menuContent #mainNavUs ul.mainMenuUs {
+	font-size:12px;
+	margin:0;
+	padding:0;
+	text-align:center;
+	white-space:nowrap;
+}
+
+#menuContent #mainNavUs li {
+	float:left;
+	font-size:12px;
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	margin:0 0 0 1px;
+	padding:0;
+	top:1px;
+}
+
+#menuContent #mainNavUs a {
+	background:transparent url(http://images.us.ciao.com/ius/images/crux/background/main_nav_left.gif) no-repeat scroll 0 0;
+	border-bottom:1px solid #6288BA;
+	cursor:pointer;
+	display:block;
+	float:left;
+	font-size:12px;
+	height:23px;
+	padding:0 0 0 11px;
+	text-decoration:none;
+}
+
+#menuContent #mainNavUs a span {
+	float:none;
+}
+#menuContent #mainNavUs a span {
+	background:transparent url(http://images.us.ciao.com/ius/images/crux/background/main_nav_right.gif) no-repeat scroll right top;
+	color:#575757;
+	cursor:pointer;
+	display:block;
+	float:left;
+	font-size:12px;
+	height:15px;
+	padding:5px 11px 3px 0;
+}
+
+#menuContent #mainNavUs a span span.biggerFont {
+	background:transparent none repeat scroll 0 50%;
+	display:inline;
+	font-size:14px;
+	line-height:12px;
+	margin:0;
+	padding:0 0 11px;
+}
+
+#menuContent #mainNavUs a:hover {
+	background-position:0 -28px;
+}
+
+#menuContent #mainNavUs a:hover span {
+	background-position:100% -28px;
+}
+#menuContent #mainNavUs a:hover span {
+	color:#FFFFFF;
+}
+/* } TOP список категорий */

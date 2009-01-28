@@ -3,9 +3,9 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1233182617.786
-_template_filename='D:\\Projects\\ECLIPSE\\PYLONS\\saleinform\\saleinform\\templates/layouts/welcome.mako'
-_template_uri='/layouts/welcome.mako'
+_modified_time = 1233179420.1889999
+_template_filename='D:\\Projects\\ECLIPSE\\PYLONS\\saleinform\\saleinform\\templates/layouts/stores.mako'
+_template_uri='/layouts/stores.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
 _source_encoding='utf-8'
 from webhelpers.html import escape
@@ -33,15 +33,15 @@ def render_body(context,**pageargs):
         __M_writer(escape(h.h_tags.stylesheet_link('/css/search.css')))
         __M_writer(u'\n\t<link rel="SHORTCUT ICON" href="../img/si.png">\n</head>\n<body id="mainBody">\n\t<div class="md" id="" style="">\n\t\t<div id="main_cnt">\n\t\t\t<div>\n\t\t\t\t')
         # SOURCE LINE 20
-        runtime._include_file(context, '/modules/navigator/maintopnav.mako', _template_uri)
+        runtime._include_file(context, '/modules/navigator/topnav.mako', _template_uri)
         __M_writer(u'\n\t\t\t</div>\n\t\t\t<div>\n\t\t\t\t')
         # SOURCE LINE 23
-        runtime._include_file(context, '/modules/search/searchbar.mako', _template_uri)
-        __M_writer(u'\n\t\t\t</div>\n\t\t\t<table width="100%" border="0" cellpadding="0" cellspacing="0">\n\t\t\t\t<tr>\n\t\t\t\t\t<td id="left" style="width: 280px;">\n\t\t\t\t\t\t')
-        # SOURCE LINE 28
-        runtime._include_file(context, '/modules/categories/main.mako', _template_uri)
-        __M_writer(u'\n\t\t\t\t\t</td>\n\t\t\t\t\t<td class="cTD">\n\t\t\t\t\t</td>\n\t\t\t\t\t<td class="right" width="240">\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</table>\n\t\t</div>\n\t\t<div>\n\t\t\t')
-        # SOURCE LINE 38
+        runtime._include_file(context, '/modules/categories/topmenu.mako', _template_uri)
+        __M_writer(u'\n\t\t\t\t')
+        # SOURCE LINE 24
+        runtime._include_file(context, '/modules/search/narrowbar.mako', _template_uri)
+        __M_writer(u'\n\t\t\t</div>\n\t\t\t<table width="100%" border="0" cellpadding="0" cellspacing="0">\n\t\t\t\t<tr>\n\t\t\t\t\t<td id="left" style="width: 280px;">\n\t\t\t\t\t\t\n\t\t\t\t\t</td>\n\t\t\t\t\t<td class="cTD">\n\t\t\t\t\t</td>\n\t\t\t\t\t<td class="right" width="240">\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t</table>\n\t\t</div>\n\t\t<div>\n\t\t\t')
+        # SOURCE LINE 39
         runtime._include_file(context, '/modules/navigator/footernav.mako', _template_uri)
         __M_writer(u'\n\t\t</div>\n\t</div>\n</body>\n</html>')
         return ''

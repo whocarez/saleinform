@@ -3,8 +3,8 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1233086618.234
-_template_filename='D:\\PROJECTS\\ECLIPSE\\PYLONS\\saleinform\\saleinform\\templates/modules/navigator/maintopnav.mako'
+_modified_time = 1233176278.221
+_template_filename='D:\\Projects\\ECLIPSE\\PYLONS\\saleinform\\saleinform\\templates/modules/navigator/maintopnav.mako'
 _template_uri='/modules/navigator/maintopnav.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
 _source_encoding='utf-8-'
@@ -42,7 +42,7 @@ def render_body(context,**pageargs):
         __M_writer(u'</span></a></li>\n\t\t\t<li><a target="_self" title="')
         # SOURCE LINE 9
         __M_writer(escape(_(u'\u041c\u0430\u0433\u0430\u0437\u0438\u043d\u044b')))
-        __M_writer(u'" href="/product_lists_overview.php"><span>')
+        __M_writer(u'" href="/stores"><span>')
         __M_writer(escape(_(u'\u041c\u0430\u0433\u0430\u0437\u0438\u043d\u044b')))
         __M_writer(u'</span></a></li>\n\t\t\t<li class="navifirst"><a target="_self" title="')
         # SOURCE LINE 10

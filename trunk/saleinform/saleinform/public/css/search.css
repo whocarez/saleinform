@@ -1,0 +1,80 @@
+@CHARSET "UTF-8";
+/* { Домашняя верхняя панель */
+.home-top-left{
+	background: transparent url(../img/home_top_left.jpg) no-repeat scroll 0%; 
+	width: 9px; 
+	height: 123px; 
+	float: left;	
+}
+.home-top-right{
+	background: transparent url(../img/home_top_right.jpg) no-repeat scroll 0%; 
+	width: 9px; 
+	height: 123px; 
+	float: right;	
+}
+
+.zs{
+	height:123px;
+	margin-bottom: 0px;
+	background: transparent url(../img/home_top_bg.jpg) repeat-x;
+}
+
+.home-slogan{
+	width: 397px;
+	height: 48px;
+	background: transparent url(../img/header_text.png) no-repeat;
+	float: left;
+	margin: 50px 0px 0px 600px;
+	position: absolute; 
+}
+
+.fq2{
+	width: 484px;
+	height: 101px;
+	margin: 22px 10px 10px 40px;
+	background: transparent url(../img/home_search_bg.png) repeat-x;
+	position:absolute;
+}
+
+div.fq2 h4 {
+	color:#15345C;
+	font-size:13px;
+	margin:0pt;
+	padding:10px 0px 0px 10px;
+}
+
+div.fq2 form{
+	position: absolute;
+	padding: 10px;
+}
+
+.mainQ {
+	border:1px solid #7F9DB9;
+	color:#000000;
+	line-height:28px;
+	height: 28px;	
+	font-size:150%;
+	width:355px;
+	margin-top: 5px;
+}
+.searchSubmit{
+	margin: 5px 0px 0px 5px;
+	vertical-align:top;
+	height: 30px;
+	width: 90px;
+	background:transparent url(../img/search_submit_big.png);
+	border: none;
+	color: #994800;
+	font-size: 130%;
+	cursor: pointer;
+}
+/* } Домашняя верхняя панель */
+
+/* { Узкая панель */
+.zs-narrow{
+	height:61px;
+	margin-bottom: 0px;
+	background: #385382 url(http://images.us.ciao.com/ius/images/crux/background/header_bg_small.gif) repeat-x scroll center bottom;
+	border: 1px solid #93C0FF;
+}
+/* } Узкая панель */
