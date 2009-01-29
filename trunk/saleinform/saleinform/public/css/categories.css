@@ -86,7 +86,7 @@ div.CategoryBrowserFooter {
 }
 #menuContent #mainNavUs ul.mainMenuUs {
 	font-size:12px;
-	margin:0;
+	margin:0px 0px 0px 30px;
 	padding:0;
 	text-align:center;
 	white-space:nowrap;

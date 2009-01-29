@@ -1,3 +1,4 @@
+#-*-coding: utf-8 -*-
 """Setup the saleinform application"""
 import logging
 from saleinform.config.environment import load_environment
@@ -14,4 +15,4 @@ def setup_app(command, conf, vars):
     # Create the tables if they aren't there already
     si.meta.metadata.drop_all()
     si.meta.metadata.create_all(checkfirst=True)
-    
+    #TODO: развертывание базы
