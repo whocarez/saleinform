@@ -8,6 +8,8 @@
 		</ul>
 	</div>	
 	<div class="logo">
-		<img src="../img/logo.gif">
+		<a target="_self" title="${_(u'Сревнение цен интернет магазинов, поиск товаров')}" href="/login">
+			<img src="../img/logo.gif" border="0">
+		</a>
 	</div>
 </div>

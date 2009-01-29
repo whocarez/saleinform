@@ -15,8 +15,20 @@ body{
 	min-width: 970px;
 	margin: 0px 10px 10px 10px;
 }
+
+h1{
+	font-size: 120%;
+	margin-bottom:10px;
+}
+
+a:link {
+	color:#0000CC;
+}
+
 .logo{
 	width: 360px;
 	padding: 2px 0px 5px 0px;
 }
+
+
 

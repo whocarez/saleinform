@@ -11,6 +11,7 @@
 	${h.h_tags.stylesheet_link('/css/navigator.css')}
 	${h.h_tags.stylesheet_link('/css/categories.css')}
 	${h.h_tags.stylesheet_link('/css/search.css')}
+	${h.h_tags.stylesheet_link('/css/stores.css')}
 	<link rel="SHORTCUT ICON" href="../img/si.png">
 </head>
 <body id="mainBody">
@@ -23,17 +24,9 @@
 				<%include file="/modules/categories/topmenu.mako"/>
 				<%include file="/modules/search/narrowbar.mako"/>
 			</div>
-			<table width="100%" border="0" cellpadding="0" cellspacing="0">
-				<tr>
-					<td id="left" style="width: 280px;">
-						
-					</td>
-					<td class="cTD">
-					</td>
-					<td class="right" width="240">
-					</td>
-				</tr>
-			</table>
+			<div>
+				<%include file="/modules/stores/list.mako"/>
+			</div>
 		</div>
 		<div>
 			<%include file="/modules/navigator/footernav.mako"/>

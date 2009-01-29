@@ -5,9 +5,9 @@
 }
 .navigator_container{
 	float:right;
-	margin:0;
-	padding:0;
-	position:relative;
+	margin:5px 0px 0px 0px;
+	font-size: 95%;
+	
 }
 ul.navigator_items li{
 	float:right;
@@ -102,3 +102,10 @@ ul.simple_items li a:hover{
 
 
 /* } Навиация для других разделов */
+
+/* { Навигация подвала */
+div.footer_nav{
+	padding-top: 20px;
+	text-align: center;
+}
+/* } Навигация подвала */

@@ -1,0 +1,59 @@
+@CHARSET "UTF-8";
+table.resultrangetop3bd {
+	border-color: #CCCCCC;
+	border-style:solid solid none;
+	border-width:1px 1px 0pt;
+	width:100%;
+}
+
+.bg2norm {
+	background-color:#FEFDC3;
+}
+
+.letterShopsNavHead {
+	height:26px;
+	padding-left:7px;
+	text-align:left;
+	white-space:nowrap;
+}
+
+table.priceComp, table.common {
+	background-color:#BDD7EF;
+	width:100%;
+}
+
+thead th, thead td {
+	font-size:13px;
+	font-weight:normal;
+	height:40px;
+	padding-left:9px;
+	padding-right:8px;
+	white-space:nowrap;
+	background-color:#EDF6FF;
+}
+
+table.common tbody td {
+	background:#FFFFFF none repeat scroll 0%;
+	color:#7D7D7D;
+	padding:10px;
+	text-align:center;
+}
+
+.alignLeft {
+	text-align:left !important;
+}
+
+.resultrangedownbg3, .resultrangedownbg32 {
+	border-color:#BDD7EF;
+	border-style:none solid solid;
+	border-width:0pt 1px 1px;
+	width:100%;
+}
+
+td.rangenextpage {
+	height:26px;
+	padding-right:7px;
+	text-align:right;
+	white-space:nowrap;
+	width:20%;
+}

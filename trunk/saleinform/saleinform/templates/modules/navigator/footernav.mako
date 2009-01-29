@@ -8,6 +8,5 @@
 		<a href="/" title="${_(u'FAQ')}">${_(u'FAQ')}</a>&nbsp;-&nbsp;
 		<a href="/" title="${_(u'Реклама')}">${_(u'Реклама')}</a>
 	</div>
-		
 	Copyright &copy; 2006-2009 <a href="" class="c69" style="font-size: 100%;">Saleinform</a>&nbsp;&nbsp;All rights reserved
 </div>
