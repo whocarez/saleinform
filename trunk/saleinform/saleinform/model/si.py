@@ -115,38 +115,31 @@ sa.Index(u'FK__clcategories5', _clcategories.c._clients_rid, unique=False)
 _clients =  sa.Table('_clients', meta.metadata,
                   sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
                   sa.Column(u'_cities_rid', sa.types.Integer(), primary_key=False, nullable=False),
-                  sa.Column(u'_urforms_rid', sa.types.Integer(), primary_key=False, nullable=False),
                   sa.Column(u'_cltypes_rid', sa.types.Integer(), primary_key=False, nullable=False),
                   sa.Column(u'name', sa.types.String(length=255), primary_key=False, nullable=False),
-                  sa.Column(u'image', sa.types.Binary(length=None), primary_key=False),
-                  sa.Column(u'zip', sa.types.String(length=25), primary_key=False, nullable=False),
-                  sa.Column(u'street', sa.types.String(length=255), primary_key=False, nullable=False),
-                  sa.Column(u'build', sa.types.String(length=255), primary_key=False, nullable=False),
-                  sa.Column(u'wphones', sa.types.String(length=255), primary_key=False, nullable=False),
+                  sa.Column(u'logo', sa.types.String(length=255), primary_key=False),
+                  sa.Column(u'address', sa.types.String(length=255), primary_key=False, nullable=False),
+                  sa.Column(u'phones', sa.types.String(length=255), primary_key=False, nullable=False),
                   sa.Column(u'skype', sa.types.String(length=255), primary_key=False),
                   sa.Column(u'icq', sa.types.String(length=255), primary_key=False),
-                  sa.Column(u'msn', sa.types.String(length=255), primary_key=False),
                   sa.Column(u'url', sa.types.String(length=255), primary_key=False, nullable=False),
-                  sa.Column(u'pr_load', sa.types.Boolean(), primary_key=False, nullable=False),
-                  sa.Column(u'pr_actual_days', sa.types.Integer(), primary_key=False),
-                  sa.Column(u'pr_email', sa.types.String(length=255), primary_key=False),
-                  sa.Column(u'descr', sa.types.String(length=512), primary_key=False, nullable=False),
+                  sa.Column(u'isloaded', sa.types.Boolean(), primary_key=False, nullable=False),
+                  sa.Column(u'actual_days', sa.types.Integer(), primary_key=False),
+                  sa.Column(u'price_email', sa.types.String(length=255), primary_key=False),
+                  sa.Column(u'price_url', sa.types.String(length=255), primary_key=False),
                   sa.Column(u'creadits_info', sa.types.Boolean(), primary_key=False, nullable=False),
                   sa.Column(u'delivery_info', sa.types.String(length=512), primary_key=False, nullable=False),
                   sa.Column(u'worktime_info', sa.types.String(length=512), primary_key=False, nullable=False),
-                  sa.Column(u'reg_date', sa.types.DateTime(timezone=False), primary_key=False, nullable=False),
+                  sa.Column(u'descr', sa.types.String(length=512), primary_key=False, nullable=False),
                   sa.Column(u'contact_phones', sa.types.String(length=255), primary_key=False),
                   sa.Column(u'contact_email', sa.types.String(length=255), primary_key=False),
                   sa.Column(u'contact_person', sa.types.String(length=255), primary_key=False),
                   sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                  sa.Column(u'pr_url', sa.types.String(length=255), primary_key=False),
                   sa.Column(u'active', sa.types.Boolean(), primary_key=False),
                   sa.Column(u'popularity', sa.types.Integer(), primary_key=False),
                   sa.ForeignKeyConstraint([u'_cities_rid'], [u'_cities.rid'], name=u'FK__clients_1'),
-                  sa.ForeignKeyConstraint([u'_cltypes_rid'], [u'_cltypes.rid'], name=u'FK__clients_3'),
-                  sa.ForeignKeyConstraint([u'_urforms_rid'], [u'_urforms.rid'], name=u'FK__clients_2'),)
+                  sa.ForeignKeyConstraint([u'_cltypes_rid'], [u'_cltypes.rid'], name=u'FK__clients_3'),)
 sa.Index(u'_secondary6', _clients.c._cities_rid, _clients.c.name, unique=True)
-sa.Index(u'_urforms_rid6', _clients.c._urforms_rid, unique=False)
 sa.Index(u'_cltypes_rid6', _clients.c._cltypes_rid, unique=False)
 
 # типы клиентов
@@ -604,18 +597,6 @@ _ucallbacks =  sa.Table('_ucallbacks', meta.metadata,
     )
 
 
-_urforms =  sa.Table('_urforms', meta.metadata,
-                  sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
-                  sa.Column(u'name', sa.types.String(length=255), primary_key=False, nullable=False),
-                  sa.Column(u'little_name', sa.types.String(length=25), primary_key=False, nullable=False),
-                  sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
-                  sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
-                  sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-    )
-sa.Index(u'_secondary38', _urforms.c.name, unique=True)
-
-
-
 _users =  sa.Table('_users', meta.metadata,
                 sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
                 sa.Column(u'_clients_rid', sa.types.Integer(), primary_key=False, nullable=False),
@@ -792,7 +773,6 @@ class Tmppritemscources(object): pass
 class Tmppritemsimgs(object): pass
 class Tmppritemspars(object): pass
 class Ucallbacks(object): pass
-class Urforms(object): pass
 class Users(object): pass
 class Wares(object): pass
 class Waresimages(object): pass
@@ -845,7 +825,6 @@ orm.mapper(Tmppritemscources, _tmppritemscources)
 orm.mapper(Tmppritemsimgs, _tmppritemsimgs)
 orm.mapper(Tmppritemspars,_tmppritemspars)
 orm.mapper(Ucallbacks, _ucallbacks)
-orm.mapper(Urforms, _urforms)
 orm.mapper(Users, _users)
 orm.mapper(Wares, _wares)
 orm.mapper(Waresimages, _waresimages)
