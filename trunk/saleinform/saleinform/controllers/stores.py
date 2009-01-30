@@ -12,11 +12,13 @@ log = logging.getLogger(__name__)
 from saleinform.lib.navigator import Navigator
 from saleinform.lib.search import Search
 from saleinform.lib.category import Category
+from saleinform.lib.stores import StoresContainer 
 
 class StoresController(BaseController):
     def renderModules(self):
-        c.SEARCHBAR = Search().renderSearchBar()
-        c.CATEGORIES_LIST = Category().renderTopMenu()
+        Search().renderSearchBar()
+        Category().renderTopMenu()
+        StoresContainer().renderStoresList()
         pass
 
     def index(self):

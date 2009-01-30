@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1233247097.1337049
+_modified_time = 1233333030.7056141
 _template_filename='/home/mazvv/Projects/PYLONS/saleinform/saleinform/templates/modules/stores/list.mako'
 _template_uri='/modules/stores/list.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -17,6 +17,7 @@ def render_body(context,**pageargs):
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         map = context.get('map', UNDEFINED)
+        c = context.get('c', UNDEFINED)
         h = context.get('h', UNDEFINED)
         range = context.get('range', UNDEFINED)
         chr = context.get('chr', UNDEFINED)
@@ -51,7 +52,25 @@ def render_body(context,**pageargs):
         __M_writer(u'</th>\r\n\t\t\t<th>')
         # SOURCE LINE 25
         __M_writer(escape(_(u'\u0421\u0430\u0439\u0442 \u043c\u0430\u0433\u0430\u0437\u0438\u043d\u0430')))
-        __M_writer(u'</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tr>\r\n\t\t<td>\r\n\t\t</td>\r\n\t\t<td class="alignLeft">\r\n\t\t\tAdorama.com\r\n\t\t</td>\r\n        <td class="noWrap">\r\n        \t<img alt="" src="http://images.us.ciao.com/ius/images/stars/2003/stars40.gif"/><br/>\r\n        \t<small><a href="http://www.ciao.com/Adorama_com__15482215">15 Ratings</a>        \t\t\t\t\t</small>\r\n        </td>\r\n        <td class="noWrap">\r\n\t\t\t<b><a href="http://www.ciao.com/shopping_partners/Adorama_com__5030188">Show Products</a></b>\r\n   \t\t</td>\r\n        <td class="maintabCOLnar2">\r\n\t\t</td>\r\n\t</tr>\r\n\t<tr>\r\n    \t<td>\r\n\t\t</td>\r\n\t\t<td class="alignLeft">Amazon.com</td>\r\n    \t<td class="noWrap">\r\n        <img alt="" src="http://images.us.ciao.com/ius/images/stars/2003/stars45.gif"/><br/>\r\n        \t<small><a href="http://www.ciao.com/Amazon_com__15446580">281 Ratings</a>        \t\t\t\t\t</small>\r\n        </td>\r\n        <td class="noWrap">\r\n\t\t\t<b><a href="http://www.ciao.com/shopping_partners/Amazon_com__5030062">Show Products</a></b>\r\n        </td>\r\n        <td class="maintabCOLnar2">\r\n\t\t</td>\r\n\t</tr>\r\n</table>\r\n\r\n<table cellspacing="0" class="resultrangedownbg3 bg2norm">\r\n\t<tr>\r\n\t\t<td class="rangenextpage">\r\n\t\t</td>\r\n\t</tr>\r\n</table>\r\n\r\n')
+        __M_writer(u'</th>\r\n\t\t</tr>\r\n\t</thead>\r\n')
+        # SOURCE LINE 28
+        for store in c.stores:
+            # SOURCE LINE 29
+            __M_writer(u'\t<tr>\r\n\t\t<td>\r\n\t\t</td>\r\n\t\t<td class="alignLeft">\r\n\t\t\t')
+            # SOURCE LINE 33
+            __M_writer(escape(store.name))
+            __M_writer(u'\r\n\t\t</td>\r\n        <td class="noWrap">\r\n        \t')
+            # SOURCE LINE 36
+            __M_writer(escape(store.popularity))
+            __M_writer(u'\r\n        \t<img alt="" src="http://images.us.ciao.com/ius/images/stars/2003/stars40.gif"/><br/>\r\n        \t<small><a href="http://www.ciao.com/Adorama_com__15482215">15 Ratings</a>        \t\t\t\t\t</small>\r\n        </td>\r\n        <td class="noWrap">\r\n\t\t\t<b><a href="http://www.ciao.com/shopping_partners/Adorama_com__5030188">')
+            # SOURCE LINE 41
+            __M_writer(escape(_(u'\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c \u0442\u043e\u0432\u0430\u0440\u044b')))
+            __M_writer(u'</a></b>\r\n   \t\t</td>\r\n        <td class="maintabCOLnar2">\r\n        \t')
+            # SOURCE LINE 44
+            __M_writer(escape(store.url))
+            __M_writer(u'\r\n\t\t</td>\r\n\t</tr>\r\n')
+        # SOURCE LINE 48
+        __M_writer(u'</table>\r\n\r\n<table cellspacing="0" class="resultrangedownbg3 bg2norm">\r\n\t<tr>\r\n\t\t<td class="rangenextpage">\r\n\t\t</td>\r\n\t</tr>\r\n</table>\r\n\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()

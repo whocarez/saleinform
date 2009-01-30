@@ -24,3 +24,6 @@ class StoresContainer:
 
     def renderNewStores(self):
         pass
+
+    def renderStoresList(self):
+        c.stores = si.meta.Session.query(si.Clients).all();

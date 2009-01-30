@@ -25,36 +25,26 @@
 			<th>${_(u'Сайт магазина')}</th>
 		</tr>
 	</thead>
+	% for store in c.stores:
 	<tr>
 		<td>
 		</td>
 		<td class="alignLeft">
-			Adorama.com
+			${store.name}
 		</td>
         <td class="noWrap">
+        	${store.popularity}
         	<img alt="" src="http://images.us.ciao.com/ius/images/stars/2003/stars40.gif"/><br/>
         	<small><a href="http://www.ciao.com/Adorama_com__15482215">15 Ratings</a>        					</small>
         </td>
         <td class="noWrap">
-			<b><a href="http://www.ciao.com/shopping_partners/Adorama_com__5030188">Show Products</a></b>
+			<b><a href="http://www.ciao.com/shopping_partners/Adorama_com__5030188">${_(u'Показать товары')}</a></b>
    		</td>
         <td class="maintabCOLnar2">
+        	${store.url}
 		</td>
 	</tr>
-	<tr>
-    	<td>
-		</td>
-		<td class="alignLeft">Amazon.com</td>
-    	<td class="noWrap">
-        <img alt="" src="http://images.us.ciao.com/ius/images/stars/2003/stars45.gif"/><br/>
-        	<small><a href="http://www.ciao.com/Amazon_com__15446580">281 Ratings</a>        					</small>
-        </td>
-        <td class="noWrap">
-			<b><a href="http://www.ciao.com/shopping_partners/Amazon_com__5030062">Show Products</a></b>
-        </td>
-        <td class="maintabCOLnar2">
-		</td>
-	</tr>
+	% endfor
 </table>
 
 <table cellspacing="0" class="resultrangedownbg3 bg2norm">
