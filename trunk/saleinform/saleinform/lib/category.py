@@ -17,7 +17,7 @@ class Category:
 
     def renderCategoriesMain(self):
         c.categories = self.getTopCategories()
-        c.subcategoris = self.getSecondLevelCategories()
+        c.subcategories = self.getSecondLevelCategories()
         return
     
     def renderTopMenu(self):
