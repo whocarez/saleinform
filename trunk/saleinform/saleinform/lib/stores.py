@@ -25,10 +25,11 @@ class StoresContainer:
     def renderNewStores(self):
         pass
 
-    def renderStoresList(self, letter=176):
-        print str(chr(letter))
-        sLetter = unicode(str(chr(letter))+'%', 'UTF-8')
-        bLetter = unicode(str(chr(letter))+'%', 'UTF-8')
+    def renderStoresList(self, letter=u'A'):
+        c.letter = letter
+        sLetter = letter.lower()+'%'
+        bLetter = letter.upper()+'%'
         c.stores = si.meta.Session.query(si.Clients).\
                     filter(or_(si.Clients.name.like(sLetter), si.Clients.name.like(bLetter))).\
                     all();
+        

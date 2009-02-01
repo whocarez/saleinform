@@ -13,7 +13,7 @@
 			for z in c.subcategories: 
 				if z._parent_rid == cat.rid:
 					if rest_length > 0: 
-						link_text = h.h_text.truncate(z.name, length=rest_length, indicator='...', whole_word=False)
+						link_text = h.h_text.truncate(z.name, length=rest_length, indicator='...', whole_word=True)
 						subs.append(h.h_tags.link_to(link_text, url='/categories/'+z.slug, title=z.name))
 						rest_length = rest_length - len(z.name)
 					else: break

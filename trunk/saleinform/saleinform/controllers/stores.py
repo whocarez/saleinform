@@ -18,9 +18,14 @@ class StoresController(BaseController):
     def renderModules(self):
         Search().renderSearchBar()
         Category().renderTopMenu()
-        StoresContainer().renderStoresList()
         pass
 
     def index(self):
         self.renderModules()
+        StoresContainer().renderStoresList()
         return render('/layouts/stores.mako')
+    
+    def letter(self, letter=u'A'):
+        self.renderModules()
+        StoresContainer().renderStoresList(letter)
+        return render('/layouts/stores.mako')    
