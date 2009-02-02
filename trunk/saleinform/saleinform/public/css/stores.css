@@ -57,3 +57,12 @@ td.rangenextpage {
 	white-space:nowrap;
 	width:20%;
 }
+.to-store-btn{
+	background: transparent url(../img/to_store_btn.png) no-repeat right top;
+	width: 90px;
+	height: 20px;
+	border: none;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}

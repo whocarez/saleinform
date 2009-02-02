@@ -11,8 +11,8 @@
 		</ul>
 	</div>	
 	<div class="logo">
-		<a target="_self" title="${_(u'Сревнение цен интернет магазинов, поиск товаров')}" href="/login">
-			<img src="../img/logo.gif" border="0">
+		<a target="_self" title="${_(u'Сравнение цен интернет магазинов, поиск товаров')}" href="/">
+			${h.h_tags.image('./img/logo.gif', u'Сравнение цен интернет магазинов, поиск товаров', border="0")}
 		</a>
 	</div>
 </div>

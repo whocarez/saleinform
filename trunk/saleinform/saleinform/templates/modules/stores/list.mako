@@ -74,6 +74,7 @@
     	<tr>
 			<th>${_(u'Логотип')}</th>
 			<th>${_(u'Название магазина')}</th>
+			<th>${_(u'Место размещения')}</th>
 			<th>${_(u'Рейтинг')}</th>
 			<th>${_(u'Товары')}</th>
 			<th>${_(u'Сайт магазина')}</th>
@@ -82,6 +83,9 @@
 	% for store in c.stores:
 	<tr>
 		<td>
+		</td>
+		<td class="alignLeft">
+			${store.name}
 		</td>
 		<td class="alignLeft">
 			${store.name}
@@ -95,7 +99,7 @@
 			<b><a href="http://www.ciao.com/shopping_partners/Adorama_com__5030188">${_(u'Показать товары')}</a></b>
    		</td>
         <td class="maintabCOLnar2">
-        	${h.h_tags.link_to(_(u'Перейти'), url=store.url)}
+        	${h.h_tools.button_to(_(u'Перейти >'), url(controller='statistic', action='store', id=store.rid), class_='to-store-btn')}
 		</td>
 	</tr>
 	% endfor

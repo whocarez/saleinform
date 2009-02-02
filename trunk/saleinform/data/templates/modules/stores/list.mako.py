@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1233407637.7809999
+_modified_time = 1233485436.8280001
 _template_filename='D:\\PROJECTS\\ECLIPSE\\PYLONS\\saleinform\\saleinform\\templates/modules/stores/list.mako'
 _template_uri='/modules/stores/list.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -16,6 +16,7 @@ def render_body(context,**pageargs):
     context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        url = context.get('url', UNDEFINED)
         h = context.get('h', UNDEFINED)
         c = context.get('c', UNDEFINED)
         _ = context.get('_', UNDEFINED)
@@ -202,31 +203,37 @@ def render_body(context,**pageargs):
         __M_writer(escape(_(u'\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043c\u0430\u0433\u0430\u0437\u0438\u043d\u0430')))
         __M_writer(u'</th>\n\t\t\t<th>')
         # SOURCE LINE 77
-        __M_writer(escape(_(u'\u0420\u0435\u0439\u0442\u0438\u043d\u0433')))
+        __M_writer(escape(_(u'\u041c\u0435\u0441\u0442\u043e \u0440\u0430\u0437\u043c\u0435\u0449\u0435\u043d\u0438\u044f')))
         __M_writer(u'</th>\n\t\t\t<th>')
         # SOURCE LINE 78
-        __M_writer(escape(_(u'\u0422\u043e\u0432\u0430\u0440\u044b')))
+        __M_writer(escape(_(u'\u0420\u0435\u0439\u0442\u0438\u043d\u0433')))
         __M_writer(u'</th>\n\t\t\t<th>')
         # SOURCE LINE 79
+        __M_writer(escape(_(u'\u0422\u043e\u0432\u0430\u0440\u044b')))
+        __M_writer(u'</th>\n\t\t\t<th>')
+        # SOURCE LINE 80
         __M_writer(escape(_(u'\u0421\u0430\u0439\u0442 \u043c\u0430\u0433\u0430\u0437\u0438\u043d\u0430')))
         __M_writer(u'</th>\n\t\t</tr>\n\t</thead>\n')
-        # SOURCE LINE 82
+        # SOURCE LINE 83
         for store in c.stores:
-            # SOURCE LINE 83
+            # SOURCE LINE 84
             __M_writer(u'\t<tr>\n\t\t<td>\n\t\t</td>\n\t\t<td class="alignLeft">\n\t\t\t')
-            # SOURCE LINE 87
+            # SOURCE LINE 88
+            __M_writer(escape(store.name))
+            __M_writer(u'\n\t\t</td>\n\t\t<td class="alignLeft">\n\t\t\t')
+            # SOURCE LINE 91
             __M_writer(escape(store.name))
             __M_writer(u'\n\t\t</td>\n        <td class="noWrap">\n        \t')
-            # SOURCE LINE 90
+            # SOURCE LINE 94
             __M_writer(escape(store.popularity))
             __M_writer(u'\n        \t<img alt="" src="http://images.us.ciao.com/ius/images/stars/2003/stars40.gif"/><br/>\n        \t<small><a href="http://www.ciao.com/Adorama_com__15482215">15 Ratings</a>        \t\t\t\t\t</small>\n        </td>\n        <td class="noWrap">\n\t\t\t<b><a href="http://www.ciao.com/shopping_partners/Adorama_com__5030188">')
-            # SOURCE LINE 95
+            # SOURCE LINE 99
             __M_writer(escape(_(u'\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c \u0442\u043e\u0432\u0430\u0440\u044b')))
             __M_writer(u'</a></b>\n   \t\t</td>\n        <td class="maintabCOLnar2">\n        \t')
-            # SOURCE LINE 98
-            __M_writer(escape(h.h_tags.link_to(_(u'\u041f\u0435\u0440\u0435\u0439\u0442\u0438'), url=store.url)))
+            # SOURCE LINE 102
+            __M_writer(escape(h.h_tools.button_to(_(u'\u041f\u0435\u0440\u0435\u0439\u0442\u0438 >'), url(controller='statistic', action='store', id=store.rid), class_='to-store-btn')))
             __M_writer(u'\n\t\t</td>\n\t</tr>\n')
-        # SOURCE LINE 102
+        # SOURCE LINE 106
         __M_writer(u'</table>\n\n<table cellspacing="0" class="resultrangedownbg3 bg2norm">\n\t<tr>\n\t\t<td class="rangenextpage">\n\t\t</td>\n\t</tr>\n</table>\n\n')
         return ''
     finally:
