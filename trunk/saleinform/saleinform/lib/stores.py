@@ -32,8 +32,4 @@ class StoresContainer:
         c.stores = si.meta.Session.query(si.Clients).\
                     filter(or_(si.Clients.name.like(sLetter), si.Clients.name.like(bLetter))).\
                     all();
-        session['test'] = []
-        session['test'].append('ttt')
-        session['test'].append('yyy')
-        session['test'].append('111')
          
