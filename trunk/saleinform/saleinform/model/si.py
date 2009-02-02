@@ -3,6 +3,14 @@ import sqlalchemy as sa
 from sqlalchemy import orm
 from saleinform.model import meta
 
+# сессии
+_sessions = sa.Table('_sessions', meta.metadata,
+                         sa.Column(u'id', sa.types.Integer(), autoincrement=True, primary_key=True, nullable=False),
+                         sa.Column(u'namespace', sa.types.String(length=255), primary_key=False),
+                         sa.Column(u'accessed', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
+                         sa.Column(u'created', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
+                         sa.Column(u'data',  sa.types.Binary(length=None), primary_key=False),) 
+
 # доступность
 _availabletypes =  sa.Table('_availabletypes', meta.metadata,
                          sa.Column(u'rid', sa.types.Integer(), autoincrement=True, primary_key=True, nullable=False),
@@ -782,6 +790,7 @@ class Waresrewievs(object): pass
 class Waresopinions(object): pass
 class Sys_options(object): pass
 class Sys_users(object): pass
+class Sessions(object): pass
 
 
 orm.mapper(Availabletypes, _availabletypes)
@@ -834,3 +843,4 @@ orm.mapper(Waresrewievs, _waresrewievs)
 orm.mapper(Waresopinions, _waresuopinions)
 orm.mapper(Sys_options, sys_options)
 orm.mapper(Sys_users, sys_users)
+orm.mapper(Sessions, _sessions)
