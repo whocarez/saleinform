@@ -27,6 +27,9 @@ class SetPopularity:
         if session['p_c'].count(self.objRid)==0:
                 session['p_c'].append(self.objRid)
                 session.save()
+                category = si.meta.Session.query(si.Categories.popularity).one()
+                category.popularity += 1
+                si.meta.Session.commit()
             
 
     def productPopulate(self):
@@ -44,5 +47,9 @@ class SetPopularity:
         if session['p_s'].count(self.objRid)==0:
                 session['p_s'].append(self.objRid)
                 session.save()
+                store = si.meta.Session.query(si.Stores.popularity).one()
+                store.popularity += 1
+                si.meta.Session.commit()
+                
                    
                    

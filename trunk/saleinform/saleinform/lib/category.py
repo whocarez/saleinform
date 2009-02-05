@@ -9,6 +9,8 @@ from pylons.i18n import get_lang, set_lang
 from saleinform.model import si
 from sqlalchemy.sql import func
 from sqlalchemy.sql import expression
+from saleinform.lib import popularity
+
 
 class Category:
     
