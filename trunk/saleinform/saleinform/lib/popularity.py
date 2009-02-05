@@ -27,7 +27,7 @@ class SetPopularity:
         if session['p_c'].count(self.objRid)==0:
                 session['p_c'].append(self.objRid)
                 session.save()
-                category = si.meta.Session.query(si.Categories.popularity).one()
+                category = si.meta.Session.query(si.Categories.popularity).filter(si.Categories.rid == self.objRid).one()
                 category.popularity += 1
                 si.meta.Session.commit()
             
@@ -39,6 +39,10 @@ class SetPopularity:
         if session['p_p'].count(self.objRid)==0:
                 session['p_p'].append(self.objRid)
                 session.save()
+                product = si.meta.Session.query(si.Wares.popularity).filter(si.Wares.rid == self.objRid).one()
+                product.popularity += 1
+                si.meta.Session.commit()
+                
         
     def storePopulate(self):
         if not session.has_key('p_s'): 
@@ -47,7 +51,7 @@ class SetPopularity:
         if session['p_s'].count(self.objRid)==0:
                 session['p_s'].append(self.objRid)
                 session.save()
-                store = si.meta.Session.query(si.Stores.popularity).one()
+                store = si.meta.Session.query(si.Stores.popularity).filter(si.Stores.rid == self.objRid).one()
                 store.popularity += 1
                 si.meta.Session.commit()
                 

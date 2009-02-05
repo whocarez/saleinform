@@ -1,6 +1,7 @@
 #-*-coding: utf-8 -*-
 import sqlalchemy as sa
 from sqlalchemy import orm
+from sqlalchemy import schema
 from saleinform.model import meta
 
 # сессии
@@ -85,7 +86,7 @@ sa.Index(u'_currency_rid9', _countries.c._currency_rid, unique=False)
 # регионы
 _regions =  sa.Table('_regions', meta.metadata,
                   sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
-                  sa.Column(u'_countries_rid', sa.types.Integer(), primary_key=False, nullable=False),
+                  sa.Column(u'_countries_rid', sa.types.Integer(), schema.ForeignKey('_countries.rid'), primary_key=False, nullable=False),
                   sa.Column(u'name', sa.types.String(length=45), primary_key=False, nullable=False),
                   sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                   sa.Column(u'display_name', sa.types.String(length=45), primary_key=False, nullable=False),
@@ -824,7 +825,7 @@ orm.mapper(Pritems, _pritems)
 orm.mapper(Pritemsimgs, _pritemsimgs)
 orm.mapper(Prloadsorganizes, _prloadsorganizer)
 orm.mapper(Prtypes, _prtypes)
-orm.mapper(Regions, _regions)
+orm.mapper(Regions, _regions, properties = {'country': orm.relation(Countries, orm.backref('country')) })
 orm.mapper(Relatedcats, _relatedcats)
 orm.mapper(Tmpprices, _tmpprices)
 orm.mapper(Tmppricesstorage, _tmppricesstorage)

@@ -12,7 +12,7 @@
 	</div>	
 	<div class="logo">
 		<a target="_self" title="${_(u'Сравнение цен интернет магазинов, поиск товаров')}" href="/">
-			${h.h_tags.image('./img/logo.gif', u'Сравнение цен интернет магазинов, поиск товаров', border="0")}
+			${h.h_tags.image('/img/logo.gif', u'Сравнение цен интернет магазинов, поиск товаров', border="0")}
 		</a>
 	</div>
 </div>
