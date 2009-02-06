@@ -20,9 +20,14 @@ def make_map():
 
     # CUSTOM ROUTES HERE
     map.connect('/', controller='welcome', action='index') # default controller
+    
     map.connect('/stores', controller='stores', action='index') # stores
     map.connect('/stores/letter', controller='stores', action='index') # stores
-    map.connect('/stores/letter/{letter}', controller='stores', action='letter') # stores        
+    map.connect('/stores/letter/{letter}', controller='stores', action='letter') # stores
+
+    map.connect('/members', controller='members', action='index') # members
+    map.connect('/members/{action}/{id}', controller='members') # members
+            
     map.connect('/{controller}/{action}')
     map.connect('/{controller}/{action}/{id}')
 

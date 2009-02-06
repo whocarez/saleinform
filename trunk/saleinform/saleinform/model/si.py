@@ -12,6 +12,17 @@ _sessions = sa.Table('_sessions', meta.metadata,
                          sa.Column(u'created', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
                          sa.Column(u'data',  sa.types.Binary(length=None), primary_key=False),) 
 
+# пользователи портала
+_members =  sa.Table('_members', meta.metadata,
+                  sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
+                  sa.Column(u'email', sa.types.String(length=255), primary_key=False, nullable=False),
+                  sa.Column(u'login', sa.types.String(length=255), primary_key=False, nullable=False),
+                  sa.Column(u'password', sa.types.String(length=255), primary_key=False, nullable=False),
+                  sa.Column(u'active', sa.types.Boolean(), primary_key=False),
+                  sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),)
+sa.Index(u'secondary15', _members.c.login, unique=False)
+
+
 # доступность
 _availabletypes =  sa.Table('_availabletypes', meta.metadata,
                          sa.Column(u'rid', sa.types.Integer(), autoincrement=True, primary_key=True, nullable=False),
@@ -64,16 +75,25 @@ sa.Index(u'FK__categoriesimages3', _categoriesimages.c._categories_rid, unique=F
 # города
 _cities =  sa.Table('_cities', meta.metadata,
                  sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
-                 sa.Column(u'_regions_rid', sa.types.Integer(), primary_key=False, nullable=False),
+                 sa.Column(u'_regions_rid', sa.types.Integer(), schema.ForeignKey(u'_regions.rid', onupdate='cascade'), primary_key=False, nullable=False),
                  sa.Column(u'name', sa.types.String(length=45), primary_key=False, nullable=False),
                  sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                  sa.ForeignKeyConstraint([u'_regions_rid'], [u'_regions.rid'], name=u'FK__cities_1'),)
 sa.Index(u'_secondary4', _cities.c._regions_rid, _cities.c.name, unique=True)
 
+# валюты
+_currency =  sa.Table('_currency', meta.metadata,
+                   sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
+                   sa.Column(u'code', sa.types.String(length=45), primary_key=False, nullable=False),
+                   sa.Column(u'name', sa.types.String(length=45), primary_key=False, nullable=False),
+                   sa.Column(u'endword', sa.types.String(length=45), primary_key=False),)
+sa.Index(u'_secondary11', _currency.c.code, unique=True)
+sa.Index(u'_thierd11', _currency.c.name, unique=True)
+
 # страны
 _countries =  sa.Table('_countries', meta.metadata,
                     sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
-                    sa.Column(u'_currency_rid', sa.types.Integer(), primary_key=False, nullable=False),
+                    sa.Column(u'_currency_rid', sa.types.Integer(), schema.ForeignKey(u'_currency.rid'), nullable=False),
                     sa.Column(u'code', sa.types.String(length=45), primary_key=False, nullable=False),
                     sa.Column(u'name', sa.types.String(length=45), primary_key=False, nullable=False),
                     sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
@@ -92,15 +112,6 @@ _regions =  sa.Table('_regions', meta.metadata,
                   sa.Column(u'display_name', sa.types.String(length=45), primary_key=False, nullable=False),
                   sa.ForeignKeyConstraint([u'_countries_rid'], [u'_countries.rid'], name=u'FK__regions_1'),)
 sa.Index(u'_secondary29', _regions.c._countries_rid, _regions.c.name, unique=True)
-
-# валюты
-_currency =  sa.Table('_currency', meta.metadata,
-                   sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
-                   sa.Column(u'code', sa.types.String(length=45), primary_key=False, nullable=False),
-                   sa.Column(u'name', sa.types.String(length=45), primary_key=False, nullable=False),
-                   sa.Column(u'endword', sa.types.String(length=45), primary_key=False),)
-sa.Index(u'_secondary11', _currency.c.code, unique=True)
-sa.Index(u'_thierd11', _currency.c.name, unique=True)
 
 # катагории клиентов
 _clcategories =  sa.Table('_clcategories', meta.metadata,
@@ -164,16 +175,15 @@ sa.Index(u'_secondary7', _cltypes.c.name, unique=True)
 _cluopinions =  sa.Table('_cluopinions', meta.metadata,
                       sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
                       sa.Column(u'_clients_rid', sa.types.Integer(), primary_key=False, nullable=False),
-                      sa.Column(u'opinion', sa.types.Text(length=None), primary_key=False, nullable=False),
+                      sa.Column(u'opinion', sa.types.String(length=512), primary_key=False, nullable=False),
                       sa.Column(u'_members_rid', sa.types.Integer(), primary_key=False, nullable=False),
-                      sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
-                      sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                       sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
                       sa.Column(u'mark', sa.types.Integer(), primary_key=False, nullable=False),
                       sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__cluopinions_1'),
                       sa.ForeignKeyConstraint([u'_members_rid'], [u'_members.rid'], name=u'FK__cluopinions_2'), )
 sa.Index(u'_clients_rid8', _cluopinions.c._clients_rid, unique=False)
 sa.Index(u'FK__cluopinions_8', _cluopinions.c._members_rid, unique=False)
+
 
 _currcources =  sa.Table('_currcources', meta.metadata,
                       sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
@@ -257,22 +267,6 @@ _linkstocategories =  sa.Table('_linkstocategories', meta.metadata,
                             sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),)
 
 
-_members =  sa.Table('_members', meta.metadata,
-                  sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
-                  sa.Column(u'display_name', sa.types.String(length=255), primary_key=False, nullable=False),
-                  sa.Column(u'login', sa.types.String(length=255), primary_key=False, nullable=False),
-                  sa.Column(u'password', sa.types.String(length=255), primary_key=False, nullable=False),
-                  sa.Column(u'email', sa.types.String(length=255), primary_key=False, nullable=False),
-                  sa.Column(u'subscribed', sa.types.Boolean(), primary_key=False),
-                  sa.Column(u'archive', sa.types.Boolean(), primary_key=False),
-                  sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
-                  sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                  sa.Column(u'activate_code', sa.types.String(length=255), primary_key=False),
-                  sa.Column(u'activate_status', sa.types.Boolean(), primary_key=False),)
-sa.Index(u'secondary15', _members.c.login, unique=False)
-
-
-
 _news =  sa.Table('_news', meta.metadata,
                sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
                sa.Column(u'title', sa.types.String(length=255), primary_key=False, nullable=False),
@@ -351,16 +345,6 @@ _popularcategories =  sa.Table('_popularcategories', meta.metadata,
                             sa.Column(u'sessionID', sa.types.String(length=112), primary_key=False, nullable=False),
                             sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__popularcategories'),)
 sa.Index(u'_categories_rid21', _popularcategories.c._categories_rid, _popularcategories.c.sessionID, unique=True)
-
-
-
-_popularclients =  sa.Table('_popularclients', meta.metadata,
-                         sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
-                         sa.Column(u'_clients_rid', sa.types.Integer(), primary_key=False, nullable=False),
-                         sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False),
-                         sa.Column(u'sessionID', sa.types.String(length=112), primary_key=False, nullable=False),
-                         sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__popularclients'),)
-sa.Index(u'rid22', _popularclients.c._clients_rid, _popularclients.c.sessionID, unique=True)
 
 
 
@@ -765,7 +749,6 @@ class Officialcources(object): pass
 class Pars(object): pass
 class Parsvalues(object): pass
 class Popularcategories(object): pass
-class Popularclients(object): pass
 class Popularwares(object): pass
 class Prices(object): pass
 class Pritems(object): pass
@@ -798,14 +781,14 @@ orm.mapper(Availabletypes, _availabletypes)
 orm.mapper(Categories, _categories)
 orm.mapper(Catparents, _catparents)
 orm.mapper(Categoriesimages, _categoriesimages)
-orm.mapper(Cities, _cities)
+orm.mapper(Cities, _cities, properties={'clients': orm.relation(Clients, backref='city', primaryjoin=_clients.c._cities_rid==_cities.c.rid)})
 orm.mapper(Clcategories, _clcategories)
 orm.mapper(Clients, _clients)
 orm.mapper(Cltypes, _cltypes)
 orm.mapper(Cluopinions, _cluopinions)
-orm.mapper(Countries, _countries)
+orm.mapper(Currency, _currency, properties={'countries': orm.relation(Countries, backref='country', primaryjoin=_countries.c._currency_rid==_currency.c.rid)})
+orm.mapper(Countries, _countries, properties={'regions': orm.relation(Regions, backref='country', primaryjoin=_countries.c.rid==_regions.c._countries_rid)})
 orm.mapper(Currcources, _currcources)
-orm.mapper(Currency, _currency)
 orm.mapper(Findqueries, _findqueries)
 orm.mapper(Guides, _guides)
 orm.mapper(Guidesimages, _guidesimages)
@@ -818,14 +801,13 @@ orm.mapper(Officialcources, _officialcources)
 orm.mapper(Pars, _pars)
 orm.mapper(Parsvalues, _parsvalues)
 orm.mapper(Popularcategories, _popularcategories)
-orm.mapper(Popularclients, _popularclients)
 orm.mapper(Popularwares, _popularwares)
 orm.mapper(Prices, _prices)
 orm.mapper(Pritems, _pritems)
 orm.mapper(Pritemsimgs, _pritemsimgs)
 orm.mapper(Prloadsorganizes, _prloadsorganizer)
 orm.mapper(Prtypes, _prtypes)
-orm.mapper(Regions, _regions, properties = {'country': orm.relation(Countries, orm.backref('country')) })
+orm.mapper(Regions, _regions, properties={'cities': orm.relation(Cities, backref='region', primaryjoin=_cities.c._regions_rid==_regions.c.rid)})
 orm.mapper(Relatedcats, _relatedcats)
 orm.mapper(Tmpprices, _tmpprices)
 orm.mapper(Tmppricesstorage, _tmppricesstorage)
@@ -845,3 +827,4 @@ orm.mapper(Waresopinions, _waresuopinions)
 orm.mapper(Sys_options, sys_options)
 orm.mapper(Sys_users, sys_users)
 orm.mapper(Sessions, _sessions)
+

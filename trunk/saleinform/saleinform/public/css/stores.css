@@ -35,7 +35,7 @@ thead th, thead td {
 table.common tbody td {
 	background:#FFFFFF none repeat scroll 0%;
 	color:#7D7D7D;
-	padding:10px;
+	padding:3px 3px 3px 10px;
 	text-align:center;
 }
 
@@ -65,4 +65,11 @@ td.rangenextpage {
 	color: white;
 	font-weight: bold;
 	cursor: pointer;
+}
+.country-flag{
+}
+.store-location{
+	display: table-cell; 
+	vertical-align: middle;
+	height: 50px;
 }

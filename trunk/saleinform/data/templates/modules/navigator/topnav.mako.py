@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1233873040.27195
+_modified_time = 1233956046.1448669
 _template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/modules/navigator/topnav.mako'
 _template_uri='/modules/navigator/topnav.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -28,7 +28,7 @@ def render_body(context,**pageargs):
         __M_writer(u'</span></a></li>\r\n\t\t\t<li><a target="_self" class="orangeUs" title="')
         # SOURCE LINE 6
         __M_writer(escape(_(u'\u0412\u043e\u0439\u0442\u0438')))
-        __M_writer(u'" href="/login"><span>')
+        __M_writer(u'" href="/members"><span>')
         __M_writer(escape(_(u'\u0412\u043e\u0439\u0442\u0438')))
         __M_writer(u'</span></a></li>\r\n\t\t\t<li><a target="_self" class="grayUs" title="')
         # SOURCE LINE 7

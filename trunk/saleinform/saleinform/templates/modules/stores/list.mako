@@ -85,13 +85,17 @@
 		<td>
 		</td>
 		<td class="alignLeft">
-			${store.name}
+			${store.Clients.name}
 		</td>
 		<td class="alignLeft">
-			${store.name}
+			${h.h_tags.image('/img/flags/'+store.Countries.code+'.png', store.Countries.name, align='left', class_='country-flag')}
+			<div class="store-location">
+				<strong>${store.Cities.name}</strong><br>
+				${store.Regions.name}
+			</div>
 		</td>
         <td class="noWrap">
-        	${store.popularity}
+        	${store.Clients.popularity}
         	<img alt="" src="http://images.us.ciao.com/ius/images/stars/2003/stars40.gif"/><br/>
         	<small><a href="http://www.ciao.com/Adorama_com__15482215">15 Ratings</a>        					</small>
         </td>
@@ -99,7 +103,7 @@
 			<b><a href="http://www.ciao.com/shopping_partners/Adorama_com__5030188">${_(u'Показать товары')}</a></b>
    		</td>
         <td class="maintabCOLnar2">
-        	${h.h_tools.button_to(_(u'Перейти >'), url(controller='statistic', action='store', id=store.rid), class_='to-store-btn')}
+        	${h.h_tools.button_to(_(u'Перейти >'), url(controller='statistic', action='store', id=store.Clients.rid), class_='to-store-btn')}
 		</td>
 	</tr>
 	% endfor

@@ -29,7 +29,10 @@ class StoresContainer:
         c.letter = letter
         sLetter = letter.lower()+'%'
         bLetter = letter.upper()+'%'
-        c.stores = si.meta.Session.query(si.Clients).\
+        c.stores = si.meta.Session.query(si.Clients, si.Cities, si.Regions, si.Countries).\
+                    join((si.Cities, si.Cities.rid==si.Clients._cities_rid)).\
+                    join((si.Regions, si.Regions.rid==si.Cities._regions_rid)).\
+                    join((si.Countries, si.Countries.rid==si.Regions._countries_rid)).\
                     filter(or_(si.Clients.name.like(sLetter), si.Clients.name.like(bLetter))).\
                     all();
          
