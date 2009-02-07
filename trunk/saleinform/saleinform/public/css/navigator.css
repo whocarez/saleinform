@@ -107,5 +107,6 @@ ul.simple_items li a:hover{
 div.footer_nav{
 	padding-top: 20px;
 	text-align: center;
+	clear: both;
 }
 /* } Навигация подвала */
