@@ -8,7 +8,7 @@
 >
 <span class="grey">${_(u'Войти на сайт')}</span>
 </div>
-<div style="clear: both;"/>
+<div style="clear: both;"></div>
 
 <table class="wd750">
 	<tr>
@@ -23,7 +23,6 @@
 		<td class="loginHD1"><span class="subhdl">${_(u'Новый пользователь?')}</span></td>
 		<td class="loginHD1"><span class="subhdl">${_(u'Уже зарегистрированы на сайте?')}</span></td>
 	</tr>
-	<form target="_self" action="register.php" method="post"/>
 	<tr>
 		<td class="loginCOL1 bg12light">
 			${_(u'Если у Вас еще нет учетной записи на нашем сайте, пожалуйста, сперва зарегистрируйтесь.')}<br/><br/>
@@ -37,34 +36,35 @@
   				<li>${_(u'и многое другое...')}</li>
 			</ul>
 			<div class="padT5">
-				<input type="submit" value="${_(u'Регистрация')} >" name="Submit" class="w150"/>
+				${h.h_tags.form('/members/register', target='_self', method="post")}
+				${h.h_tags.submit('Submit', value=_(u'Регистрация >'), tabindex="3", maxlength="255", size="40", class_='w150')}
+				${h.h_tags.end_form()}
 			</div>
-			<form target="_self" action="login_check.php" method="post">
-			</form>
 		</td>
 		<td class="loginCOL2 bgwhite">
+			${h.h_tags.form('/members/login', target='_self', method="get")}
 			${_(u'Пожалуйста, введите Ваши логин')} <br/>${_(u'и пароль.')}<br/><br/>
+			${h.h_tags.hidden('loginAction', value="todo")}<br/>
 			<span class="subhdl">${_(u'Логин')}</span><br/>
-			<input type="text" value="" tabindex="1" maxlength="255" size="40" name="LoginName"/><br/>
+			${h.h_tags.text('login', value="", tabindex="1", maxlength="255", size="40")}<br/>
 			<span class="subgrey">${_(u'Забыли Ваш')}</span> 
 			<a class="small" href="send_password.php">${_(u'логин')}</a>
 			<span class="subgrey">?</span><br/><br/>
 			<span class="subhdl">${_(u'Пароль')}</span><br/>
-			<input type="password" value="" tabindex="2" maxlength="255" size="40" name="Password"/>
-			
+			${h.h_tags.password('password', value="", tabindex="2", maxlength="255", size="40")}<br/>
+			<span class="subgrey">Важно: Ваши логин и пароль регистрозависимы</span><br/>
+			<span class="subgrey">${_(u'Забыли Ваш')}</span> 
+			<a class="small" href="send_password.php">${_(u'пароль')}</a><span class="subgrey">?</span><br/>
 			<br/>
-			<span class="subgrey">Important: Your Ciao name and password are case sensitive</span><br/>
-			<span class="subgrey">Forgotten your</span> <a class="small" href="send_password.php">password</a><span class="subgrey">?</span><br/>
-			<br/>
-			<input type="hidden" value="/login.php" name="referrer"/>
-			<input type="hidden" value="addNewUser" name="todo"/>
-			<input type="submit" value="Login >" tabindex="3" name="Submit" class="w150"/>
+			${h.h_tags.submit('Submit', value=_(u'Войти >'), tabindex="3", maxlength="255", size="40", class_='w150')}<br/>
 			<br/>
 			<br/>
 			<div class="floatchkbx1">
-				<input type="checkbox" name="autologin"/>
+				${h.h_tags.checkbox('autologin', value='1', tabindex="4")}
 			</div>
-			<span class="subgrey">Keep me signed in on this computer </span>
+			<span class="subgrey">${_(u'Запомнить меня на этом компьютере')}</span>
+			${h.h_tags.end_form()}
+			
 		</td>
 	</tr>
 </table>
