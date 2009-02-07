@@ -7,8 +7,7 @@ from pylons import request, response, session, tmpl_context as c
 from saleinform.lib.base import render
 from pylons.i18n import get_lang, set_lang
 from saleinform.model import si
-from sqlalchemy.sql import func
-from sqlalchemy.sql import expression
+from sqlalchemy.sql import func, expression, or_, and_
 from saleinform.lib import popularity
 
 
@@ -20,12 +19,7 @@ class MembersContainer:
     def renderLoginForm(self):
         return
     
-    def renderTopMenu(self):
-        """Отобразить верхнее однострочное меню категорий"""
-        c.categories = self.getTopCategories()[:7]
-        return
-        
-        
+    
     def getTopCategories(self):
         """получить первые N самых популярных категорий"""
         subquery = si.meta.Session.query(si.Categories.popularity, si.Catparents._parent_rid).\
