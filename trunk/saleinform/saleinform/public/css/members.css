@@ -193,3 +193,17 @@ div.registerContainer #signup_btn{
 	display:block;
 	margin: 16px auto 0px;
 }
+div.registerContainer .registerCaptcha {
+	margin:5px 0 0 170px;
+	width:193px;
+}
+div.leftSide {
+	float:left;
+	width:370px;
+}
+div.captchaExplainText {
+	float:right;
+	margin:0 0px 0 0;
+	padding:0;
+	width:130px;
+}

@@ -7,7 +7,7 @@ Random collections of images
 # Copyright (C) 2004 Micah Dowty <micah@navi.cx>
 #
 
-from Captcha import File
+from saleinform.lib.Captcha import File
 import Image
 
 

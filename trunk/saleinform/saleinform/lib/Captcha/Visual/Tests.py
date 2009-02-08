@@ -7,8 +7,8 @@ Visual CAPTCHA tests
 # Copyright (C) 2004 Micah Dowty <micah@navi.cx>
 #
 
-from Captcha.Visual import Text, Backgrounds, Distortions, ImageCaptcha
-from Captcha import Words
+from saleinform.lib.Captcha.Visual import Text, Backgrounds, Distortions, ImageCaptcha
+from saleinform.lib.Captcha import Words
 import random
 
 __all__ = ["PseudoGimpy", "AngryGimpy", "AntiSpam"]

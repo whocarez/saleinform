@@ -7,7 +7,7 @@ Background layers for visual CAPTCHAs
 # Copyright (C) 2004 Micah Dowty <micah@navi.cx>
 #
 
-from Captcha.Visual import Layer, Pictures
+from saleinform.lib.Captcha.Visual import Layer, Pictures
 import random, os
 import ImageDraw, Image
 

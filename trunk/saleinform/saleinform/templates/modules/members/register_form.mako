@@ -17,6 +17,18 @@
 		if($('#info_'+blockName).css('display')=='block') $('#info_'+blockName).hide('slow');
 		else $('#info_'+blockName).show('slow');
 	}
+
+	function ReloadCaptcha(){
+		$.ajax({
+			  type: "POST",
+			  url: "gencaptcha",
+			  data: "",
+			  success: function(img){
+				$('#i_captcha').attr('src', '/img/ajax-loader.gif');
+			    $('#i_captcha').attr('src', img);
+			  }
+			});
+	}
 	//-->
 	</script>
 	<div class="headerBar">
@@ -62,13 +74,18 @@
 		</div>
 
 		<div class="registerLine2">
-			<label for="captcha">${_(u'Пожалуйста, введите код, изображенный на картинке')}</label>
-			${h.h_tags.password('captcha', value="", id="confirm_password")}
+			<div class="leftSide">
+				<label for="captcha">${_(u'Пожалуйста, введите слово, изображенное на картинке')}</label>
+				${h.h_tags.image(c.captcha, _(u'Введите символы, изображенные на картинке'), border="0", id="i_captcha")}
+				${h.h_tags.text('captcha', value="", id="confirm_password", class_="registerCaptcha")}
+			</div>
+			<div class="captchaExplainText">
+				<span class="subgrey">${_(u'Плохо различимо изображение?')}</span>
+				${h.h_tags.link_to(_(u'Перегенерировать изображение'), url='javascript:void(0);', onClick="ReloadCaptcha();")}
+			</div>
+			<div style="clear: both;"></div>
 		</div>
-
-		<div style="clear: both;">
-		</div>
-
+		
 		<div>
 			${h.h_tags.submit('signup', _(u'Отправить'), id="signup_btn")}
 		</div>

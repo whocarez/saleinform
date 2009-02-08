@@ -25,11 +25,17 @@ class MembersController(BaseController):
         return 'login form'
 
     def register(self):
-        captcha.SCaptcha()
+        c.captcha = self.gencaptcha()
         return render('/layouts/register.mako')
 
     @validate(schema=members.SignupForm(), form='register')
     def signup(self):
         #TODO: доделать
         return 'signup form'
+    
+    def gencaptcha(self):
+        """
+        генерируем captcha
+        """
+        return captcha.SCaptcha().get()
         

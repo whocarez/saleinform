@@ -7,7 +7,7 @@ Distortion layers for visual CAPTCHAs
 # Copyright (C) 2004 Micah Dowty <micah@navi.cx>
 #
 
-from Captcha.Visual import Layer
+from saleinform.lib.Captcha.Visual import Layer
 import ImageDraw, Image
 import random, math
 

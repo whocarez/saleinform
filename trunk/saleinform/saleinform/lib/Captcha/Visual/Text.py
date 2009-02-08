@@ -8,7 +8,7 @@ Text generation for visual CAPTCHAs.
 #
 
 import random, os
-from Captcha import Visual, File
+from saleinform.lib.Captcha import Visual, File
 import ImageFont, ImageDraw
 
 
