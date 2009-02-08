@@ -24,6 +24,7 @@
 		<div class="RightControlArea"></div>
 		<h3 class="ModuleTitle">${_(u'Регистрация нового пользователя')}</h3>
 	</div>
+	${h.h_tags.form('/members/signup', target='_self', method="post")}
 	<div class="registerBody">
 		<div class="registerLine1">
 			<label for="login">${_(u'Логин')}</label>
@@ -56,15 +57,27 @@
 
 		<div class="registerLine1">
 			<label for="gender">${_(u'Ваш пол')}</label>
-			${h.h_tags.radio('gender', value="M", class_='registerRadio')}<span class="registerRadio">${_(u'Мужской')}</span>
+			${h.h_tags.radio('gender', value="M", checked=True, class_='registerRadio')}<span class="registerRadio">${_(u'Мужской')}</span>
 			${h.h_tags.radio('gender', value="F", class_='registerRadio')}<span class="registerRadio">${_(u'Женский')}</span>
 		</div>
 
-		<div class="registerLine1">
+		<div class="registerLine2">
 			<label for="captcha">${_(u'Пожалуйста, введите код, изображенный на картинке')}</label>
-			${h.h_tags.password('confirm_password', value="", id="confirm_password")}
+			${h.h_tags.password('captcha', value="", id="confirm_password")}
 		</div>
-		
+
+		<div style="clear: both;">
+		</div>
+
+		<div>
+			${h.h_tags.submit('signup', _(u'Отправить'), id="signup_btn")}
+		</div>
 	</div>
+	${h.h_tags.end_form()}
+	<div class="LowerModuleBorder">
+		<div class="FooterBar">
+			<div class="RightCorner"></div>
+		</div>
+	</div>	
 </div>
 

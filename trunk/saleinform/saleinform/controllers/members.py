@@ -10,6 +10,7 @@ log = logging.getLogger(__name__)
 from pylons.decorators import validate
 from saleinform.lib.navigator import Navigator
 from saleinform.lib.validators import members
+from saleinform.lib import captcha 
 
 class MembersController(BaseController):
     def renderModules(self):
@@ -22,7 +23,13 @@ class MembersController(BaseController):
     def login(self):
         #TODO: доделать
         return 'login form'
-    
+
     def register(self):
+        captcha.SCaptcha()
         return render('/layouts/register.mako')
+
+    @validate(schema=members.SignupForm(), form='register')
+    def signup(self):
+        #TODO: доделать
+        return 'signup form'
         

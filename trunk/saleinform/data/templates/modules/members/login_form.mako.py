@@ -3,8 +3,8 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1234030963.751317
-_template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/modules/members/login_form.mako'
+_modified_time = 1234096649.109
+_template_filename='D:\\PROJECTS\\ECLIPSE\\PYLONS\\saleinform\\saleinform\\templates/modules/members/login_form.mako'
 _template_uri='/modules/members/login_form.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
 _source_encoding='utf-8-'
@@ -70,7 +70,7 @@ def render_body(context,**pageargs):
         __M_writer(escape(h.h_tags.end_form()))
         __M_writer(u'\n\t\t\t</div>\n\t\t</td>\n\t\t<td class="loginCOL2 bgwhite">\n\t\t\t')
         # SOURCE LINE 45
-        __M_writer(escape(h.h_tags.form('/members/login', target='_self', method="get")))
+        __M_writer(escape(h.h_tags.form('/members/login', target='_self', method="post")))
         __M_writer(u'\n\t\t\t')
         # SOURCE LINE 46
         __M_writer(escape(_(u'\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0412\u0430\u0448\u0438 \u043b\u043e\u0433\u0438\u043d')))
@@ -115,7 +115,7 @@ def render_body(context,**pageargs):
         __M_writer(u'</span>\n\t\t\t')
         # SOURCE LINE 66
         __M_writer(escape(h.h_tags.end_form()))
-        __M_writer(u'\n\t\t</td>\n\t</tr>\n</table>')
+        __M_writer(u'\n\t\t\t\n\t\t</td>\n\t</tr>\n</table>')
         return ''
     finally:
         context.caller_stack._pop_frame()

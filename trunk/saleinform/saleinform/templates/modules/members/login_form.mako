@@ -42,7 +42,7 @@
 			</div>
 		</td>
 		<td class="loginCOL2 bgwhite">
-			${h.h_tags.form('/members/login', target='_self', method="get")}
+			${h.h_tags.form('/members/login', target='_self', method="post")}
 			${_(u'Пожалуйста, введите Ваши логин')} <br/>${_(u'и пароль.')}<br/><br/>
 			${h.h_tags.hidden('loginAction', value="todo")}<br/>
 			<span class="subhdl">${_(u'Логин')}</span><br/>
