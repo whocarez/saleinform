@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1234127120.7596259
+_modified_time = 1234127388.6007209
 _template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/modules/members/register_form.mako'
 _template_uri='/modules/members/register_form.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -27,7 +27,7 @@ def render_body(context,**pageargs):
         __M_writer(u'</a>\n>\n<span class="grey">')
         # SOURCE LINE 9
         __M_writer(escape(_(u'\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f')))
-        __M_writer(u'</span>\n</div>\n<div style="clear: both;">\n</div>\n<div class="registerContainer">\n\t<script type="text/javascript">\n\t<!--\n\tfunction InfoProcessing(blockName){\n\t\tif($(\'#info_\'+blockName).css(\'display\')==\'block\') $(\'#info_\'+blockName).hide(\'slow\');\n\t\telse $(\'#info_\'+blockName).show(\'slow\');\n\t}\n\n\tfunction ReloadCaptcha(){\n\t\t$.ajax({\n\t\t\t  type: "POST",\n\t\t\t  url: "gencaptcha",\n\t\t\t  data: "",\n\t\t\t  success: function(img){\n\t\t\t\t$(\'#i_captcha\').attr(\'src\', \'/img/ajax-loader.gif\');\n\t\t\t    //$(\'#i_captcha\').attr(\'src\', img);\n\t\t\t  }\n\t\t\t});\n\t}\n\t//-->\n\t</script>\n\t<div class="headerBar">\n\t\t<div class="RightCorner"></div>\n\t\t<div class="RightControlArea"></div>\n\t\t<h3 class="ModuleTitle">')
+        __M_writer(u'</span>\n</div>\n<div style="clear: both;">\n</div>\n<div class="registerContainer">\n\t<script type="text/javascript">\n\t<!--\n\tfunction InfoProcessing(blockName){\n\t\tif($(\'#info_\'+blockName).css(\'display\')==\'block\') $(\'#info_\'+blockName).hide(\'slow\');\n\t\telse $(\'#info_\'+blockName).show(\'slow\');\n\t}\n\n\tfunction ReloadCaptcha(){\n\t\t$.ajax({\n\t\t\t  type: "POST",\n\t\t\t  url: "gencaptcha",\n\t\t\t  data: "",\n\t\t\t  success: function(img){\n\t\t\t\t$(\'#i_captcha\').attr(\'src\', \'/img/ajax-loader.gif\');\n\t\t\t    $(\'#i_captcha\').attr(\'src\', img);\n\t\t\t  }\n\t\t\t});\n\t}\n\t//-->\n\t</script>\n\t<div class="headerBar">\n\t\t<div class="RightCorner"></div>\n\t\t<div class="RightControlArea"></div>\n\t\t<h3 class="ModuleTitle">')
         # SOURCE LINE 37
         __M_writer(escape(_(u'\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f \u043d\u043e\u0432\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f')))
         __M_writer(u'</h3>\n\t</div>\n\t')
