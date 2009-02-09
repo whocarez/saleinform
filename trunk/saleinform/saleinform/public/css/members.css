@@ -121,7 +121,8 @@ h3.ModuleTitle {
 	font-weight:bold;
 	padding:5px 0 0 9px;
 }
-.registerBody{
+.registerBody, 
+.registerComplete{
 	border-left:1px solid #EBEBEB;
 	border-right:1px solid #EBEBEB;
 }
@@ -197,13 +198,29 @@ div.registerContainer .registerCaptcha {
 	margin:5px 0 0 170px;
 	width:193px;
 }
+
 div.leftSide {
 	float:left;
 	width:370px;
+}
+div.registerContainer div.leftSide span.error-message {
+	margin:5px 0 0 170px;
+	width:193px;
 }
 div.captchaExplainText {
 	float:right;
 	margin:0 0px 0 0;
 	padding:0;
 	width:130px;
+}
+div.ThankYouIcon{
+	width: 100px;
+	float: left;
+}
+div.ThankYouIconText{
+	padding: 10px;
+	margin-left: 100px;
+}
+div.registerIntro{
+	padding: 10px;
 }

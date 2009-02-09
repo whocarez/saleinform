@@ -3,12 +3,15 @@
 Mazvv 22-01-2009
 Members 
 """
-from pylons import request, response, session, tmpl_context as c
+from pylons import request, response, session, config, tmpl_context as c
 from saleinform.lib.base import render
-from pylons.i18n import get_lang, set_lang
+from pylons.i18n import get_lang, set_lang, _
 from saleinform.model import si
 from sqlalchemy.sql import func, expression, or_, and_
 from saleinform.lib import popularity
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 
 class MembersContainer:
@@ -46,3 +49,36 @@ class MembersContainer:
                             order_by(func.random()).\
                             all() 
         return subcategories
+    
+    def createAccount(self):
+        """Создать аккаунт пользователя
+        """
+        self.sendACode(request.params['login'], request.params['email'])
+        try:
+            newAccount = si.Members()
+            newAccount.email = request.params['email']
+            newAccount.login = request.params['login']
+            newAccount.password = request.params['password']
+            newAccount.gender = request.params['gender']
+            newAccount.acode = unicode(session.id)
+            newAccount.active = False
+            si.meta.Session.add(newAccount)
+            si.meta.Session.commit()
+            return True
+        except:
+            si.meta.Session.rollback()
+            return False
+
+    def sendACode(self, login_to, email_to):
+        c.code = session.id
+        msg = MIMEMultipart('alternative')
+        msg['Subject'] = "Активация учетной записи на Saleinform.com"
+        msg['From'] = u'Saleinform.com'
+        msg['To'] = login_to
+        html = '' #render('/mails/activate_code.mako')
+        part = MIMEText(html, 'html')
+        msg.attach(part)
+        SMTPServer = smtplib.SMTP(config['smtp_server'])
+        SMTPServer.sendmail(config['info_email_from'], email_to, msg.as_string())
+        SMTPServer.quit()
+        

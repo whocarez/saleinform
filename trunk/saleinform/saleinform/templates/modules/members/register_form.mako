@@ -19,12 +19,13 @@
 	}
 
 	function ReloadCaptcha(){
+		var date = new Date();
+		var timestamp = date.getTime();
 		$.ajax({
 			  type: "POST",
 			  url: "gencaptcha",
 			  data: "",
 			  success: function(img){
-				$('#i_captcha').attr('src', '/img/ajax-loader.gif');
 			    $('#i_captcha').attr('src', img);
 			  }
 			});

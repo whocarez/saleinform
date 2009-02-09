@@ -3,6 +3,8 @@ import sqlalchemy as sa
 from sqlalchemy import orm
 from sqlalchemy import schema
 from saleinform.model import meta
+from sqlalchemy.sql import func
+
 
 # сессии
 _sessions = sa.Table('_sessions', meta.metadata,
@@ -12,14 +14,27 @@ _sessions = sa.Table('_sessions', meta.metadata,
                          sa.Column(u'created', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
                          sa.Column(u'data',  sa.types.Binary(length=None), primary_key=False),) 
 
+# cистемные переменные
+_options =  sa.Table('_options', meta.metadata,
+                     sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
+                     sa.Column(u'name', sa.types.String(length=45), primary_key=False, nullable=False),
+                     sa.Column(u'value', sa.types.String(length=2048), primary_key=False, nullable=False),
+                     sa.Column(u'cod', sa.types.String(length=5), primary_key=False, nullable=False),
+                     sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),)
+sa.Index(u'_secondary46', _options.c.name, unique=True)
+
 # пользователи портала
 _members =  sa.Table('_members', meta.metadata,
                   sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
                   sa.Column(u'email', sa.types.String(length=255), primary_key=False, nullable=False),
                   sa.Column(u'login', sa.types.String(length=255), primary_key=False, nullable=False),
                   sa.Column(u'password', sa.types.String(length=255), primary_key=False, nullable=False),
+                  sa.Column(u'acode', sa.types.String(length=255), primary_key=False, nullable=False),
+                  sa.Column(u'gender', sa.types.String(length=1), primary_key=False, nullable=False),
+                  sa.Column(u'role', sa.types.Integer(), primary_key=False, nullable=False, default=3), #1 - Admin, 2 - Moderator, 3 - User
+                  sa.Column(u'popularity', sa.types.Integer(), primary_key=False, nullable=False, default=0),
                   sa.Column(u'active', sa.types.Boolean(), primary_key=False),
-                  sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),)
+                  sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False, default=func.now()),)
 sa.Index(u'secondary15', _members.c.login, unique=False)
 
 
@@ -702,29 +717,6 @@ sa.Index(u'FK__waresuopinions_45', _waresuopinions.c._members_rid, unique=False)
 
 
 
-sys_options =  sa.Table('sys_options', meta.metadata,
-                     sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
-                     sa.Column(u'name', sa.types.String(length=45), primary_key=False, nullable=False),
-                     sa.Column(u'value', sa.types.Text(length=None), primary_key=False, nullable=False),
-                     sa.Column(u'cod', sa.types.String(length=5), primary_key=False, nullable=False),
-                     sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
-                     sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-    
-    
-    )
-sa.Index(u'_secondary46', sys_options.c.name, unique=True)
-
-
-
-sys_users =  sa.Table('sys_users', meta.metadata,
-                   sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
-                   sa.Column(u'userid', sa.types.String(length=45), primary_key=False, nullable=False),
-                   sa.Column(u'password', sa.types.String(length=45), primary_key=False, nullable=False),
-                   sa.Column(u'archive', sa.types.Integer(), primary_key=False),
-                   sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),)
-sa.Index(u'_secondary48', sys_users.c.userid, unique=True)
-
-
 class Availabletypes(object): pass
 class Categories(object): pass
 class Catparents(object): pass
@@ -772,8 +764,7 @@ class Waresmarks(object): pass
 class Warespars(object): pass
 class Waresrewievs(object): pass
 class Waresopinions(object): pass
-class Sys_options(object): pass
-class Sys_users(object): pass
+class Options(object): pass
 class Sessions(object): pass
 
 
@@ -824,7 +815,6 @@ orm.mapper(Waresmarks, _waresmarks)
 orm.mapper(Warespars, _warespars)
 orm.mapper(Waresrewievs, _waresrewievs)
 orm.mapper(Waresopinions, _waresuopinions)
-orm.mapper(Sys_options, sys_options)
-orm.mapper(Sys_users, sys_users)
+orm.mapper(Options, _options)
 orm.mapper(Sessions, _sessions)
 

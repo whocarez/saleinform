@@ -9,8 +9,8 @@ from saleinform.lib.base import BaseController, render
 log = logging.getLogger(__name__)
 from pylons.decorators import validate
 from saleinform.lib.navigator import Navigator
-from saleinform.lib.validators import members
-from saleinform.lib import captcha 
+from saleinform.lib.validators import members as v_members
+from saleinform.lib import captcha, members 
 
 class MembersController(BaseController):
     def renderModules(self):
@@ -19,7 +19,7 @@ class MembersController(BaseController):
     def index(self):
         return render('/layouts/login.mako')
 
-    @validate(schema=members.LoginForm(), form='index')
+    @validate(schema=v_members.LoginForm(), form='index')
     def login(self):
         #TODO: доделать
         return 'login form'
@@ -28,14 +28,14 @@ class MembersController(BaseController):
         c.captcha = self.gencaptcha()
         return render('/layouts/register.mako')
 
-    @validate(schema=members.SignupForm(), form='register')
+    @validate(schema=v_members.SignupForm(), form='register')
     def signup(self):
-        #TODO: доделать
-        return 'signup form'
+        if not members.MembersContainer().createAccount():
+            c.tname = 'error'
+        else: c.tname = 'complete' 
+        return render('/layouts/register_complete.mako')
     
     def gencaptcha(self):
-        """
-        генерируем captcha
-        """
+        """генерируем captcha"""
         return captcha.SCaptcha().get()
         

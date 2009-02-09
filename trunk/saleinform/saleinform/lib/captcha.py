@@ -1,6 +1,6 @@
 #-*-coding: utf-8 -*-
 from pylons import session, config
-import os
+import os, time
 from saleinform.lib.Captcha.Visual.Tests import PseudoGimpy, AngryGimpy, AntiSpam
 
 class SCaptcha:
@@ -8,13 +8,22 @@ class SCaptcha:
     captchaImg = None
     
     def __init__(self):
-        g = PseudoGimpy()
-        i = g.render([199, 78])
-        session['captcha'] = g.solutions
-        session.save()
-        print g.solutions
-        i.save(''.join([config['pylons.paths']['static_files'], self.captchaPath, session.id, '.png']))
-        self.captchaImg = ''.join([self.captchaPath, session.id, '.png'])
+        pass
 
     def get(self):
+        g = PseudoGimpy()
+        i = g.render([199, 78])
+        session['captcha'] = g.solutions[0]
+        session.save()
+        imgName = ''.join([str(time.time()).replace('.', ''), '.png'])
+        i.save(''.join([config['pylons.paths']['static_files'], self.captchaPath, imgName]))
+        self.captchaImg = ''.join([self.captchaPath,  imgName])
         return self.captchaImg
+    
+    def validate(self, captchaValue = None):
+        """
+        Проверка валидности 
+        """
+        if session['captcha'] == captchaValue:
+            return True
+        return False
