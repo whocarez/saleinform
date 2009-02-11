@@ -13,7 +13,7 @@
 	</li>
 	% endfor
 	<li ${setId(u'', c.currentCategorySlug)}>
-		${h.h_tags.link_to(h.h_builder.literal(''.join(['<span><strong>',_(u'Еще...'),'</strong></span>'])), url="/categories/", target="_parent", title=_(u'Показать все категории'))}
+		${h.h_tags.link_to(h.h_builder.literal(''.join(['<span><strong>',_(u'Еще...'),'</strong></span>'])), url="/categories", target="_parent", title=_(u'Показать все категории'))}
 	</li>
 </ul>
 </div>

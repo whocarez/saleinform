@@ -231,3 +231,10 @@ table.wd750 {style_us.css (line 566)
 	width:100%;
 }
 /* } Обзор категорий */
+/* { Дерево категорий */
+td.bcrumbhdl {
+	height:10px;
+	padding-top:5px;
+	vertical-align:top;
+}
+/* } Дерево категорий */

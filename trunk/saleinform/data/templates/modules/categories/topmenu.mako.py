@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1234300871.09097
+_modified_time = 1234352319.2821679
 _template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/modules/categories/topmenu.mako'
 _template_uri='/modules/categories/topmenu.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -40,7 +40,7 @@ def render_body(context,**pageargs):
         __M_writer(escape(setId(u'', c.currentCategorySlug)))
         __M_writer(u'>\r\n\t\t')
         # SOURCE LINE 16
-        __M_writer(escape(h.h_tags.link_to(h.h_builder.literal(''.join(['<span><strong>',_(u'\u0415\u0449\u0435...'),'</strong></span>'])), url="/categories/", target="_parent", title=_(u'\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c \u0432\u0441\u0435 \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438'))))
+        __M_writer(escape(h.h_tags.link_to(h.h_builder.literal(''.join(['<span><strong>',_(u'\u0415\u0449\u0435...'),'</strong></span>'])), url="/categories", target="_parent", title=_(u'\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c \u0432\u0441\u0435 \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438'))))
         __M_writer(u'\r\n\t</li>\r\n</ul>\r\n</div>\r\n</div>\r\n')
         return ''
     finally:

@@ -80,3 +80,55 @@ class CategoriesList(object):
                         all()
         return categories
     
+
+# simple tree builder.
+# (node, parent, title)
+els = (
+       (1, 0, 'a'),
+       (2, 1, 'b'),
+       (3, 1, 'c'),
+       (4, 0, 'd'),
+       (5, 4, 'e'),
+       (6, 5, 'f'),
+       (7, 4, 'g')
+)
+
+class CategoryNode:
+    def __init__(self, n, c):
+        self.rid = n
+        self.category = c
+        self.children = []
+
+class CategoriesTree:
+    treeMap = {}
+    Root = CategoryNode(0, None)
+    treeMap[Root.rid] = Root
+
+    def __init__(self, categoriesList):
+        self.categoriesList = categoriesList
+    
+    def buildTree(self):    
+        for element in self.categoriesList:
+            nodeRid = element.rid
+            parentRid = element._parent_rid
+        
+            if not nodeRid in self.treeMap:
+                self.treeMap[nodeRid] = CategoryNode(nodeRid, element)
+            else:
+                self.treeMap[nodeRid].rid = nodeRid
+                self.treeMap[nodeRid].category = element
+
+            if not parentRid in self.treeMap:
+                self.treeMap[parentRid] = CategoryNode(0, None)
+    
+            self.treeMap[parentRid].children.append(self.treeMap[nodeRid])
+            return     
+
+node = CategoriesTree(els).buildTree().treeMap
+def print_map(node, lvl=0):
+    for n in node.children:
+        print '    ' * lvl + n.category
+        if len(n.children) > 0:
+            print_map(n, lvl+1)
+print_map(Root)
+
