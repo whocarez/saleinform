@@ -25,12 +25,15 @@ div.catslist ul li {
 	margin:0;
 	padding:6px 0;
 }
+div.catslist ul li img{
+	float: left;
+}
 div.catslist ul li.last-cat-item {
 	border-width:0 0 0px;
 }
 
 div.catslist ul li div{
-	margin-left: 45px;
+	margin: 0px 5px 0px 45px;
 }
 div.catslist ul li div h4 {
 	font-size:110%;
@@ -148,4 +151,83 @@ div.CategoryBrowserFooter {
 #menuContent #mainNavUs a:hover span {
 	color:#FFFFFF;
 }
+#menuContent #mainNavUs #current a {
+	background-position:0 -28px;
+	border:medium none;
+	cursor:pointer;
+	height:24px;
+}
+#menuContent #mainNavUs #current a span {
+	background-position:100% -28px;
+	color:#FFFFFF;
+	cursor:pointer;
+	font-weight:normal;
+	height:15px;
+	padding:5px 11px 4px 0;
+}
+.ctr {
+	text-align:center;
+}
 /* } TOP список категорий */
+/* { Обзор категорий */
+table.wd510, table.layoutshell, table.navigation {
+	border-collapse:collapse;
+	border-spacing:0;
+	width:100%;
+}
+td.layoutL{
+	text-align:left;
+	vertical-align:top;
+}
+div.breadCrumb2-US {
+	padding:9px 1px 10px 0;
+	text-align:left;
+}
+div.breadCrumb2-US a, div.breadCrumb2-US a:visited, div.breadCrumb2-US a:active {
+	color:#7D7D7D;
+	font-weight:normal;
+	text-decoration:underline;
+}
+td.hdlpad1 {
+	padding-bottom:8px;
+}
+.headline, a.large:link, a.large:visited, a.large:hover, a.large:active {
+	font-size:150%;
+}
+td.layoutR {
+	vertical-align:top;
+	width:230px;
+}
+table.topprod {
+	border:1px solid #BDD7EF;
+	border-collapse:collapse;
+	margin-top:17px;
+	text-align:left;
+	width:230px;
+}
+td.topprodhdl {
+	border-bottom:1px solid #BDD7EF;
+	height:23px;
+	text-align:center;
+}
+.bg3dark, .bg3norm, .bgdark {
+	background:#BDD7EF none repeat scroll 0 0;
+}
+.keyword, a.hdl, .subhdl, .naviontxt {
+	font-weight:bold;
+}
+a.cathdl:link, a.cathdl:visited, a.cathdl:hover, a.cathdl:active {
+	font-size: 110%;
+	font-weight:bold;
+}
+table.layoutshell a:hover, 
+table.layoutshell a:active {
+	color:#FF7F00;
+}
+table.wd750 {style_us.css (line 566)
+	border-collapse:collapse;
+	border-spacing:0;
+	text-align:left;
+	width:100%;
+}
+/* } Обзор категорий */

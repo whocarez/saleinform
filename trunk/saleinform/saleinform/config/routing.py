@@ -25,6 +25,11 @@ def make_map():
     map.connect('/stores/letter', controller='stores', action='index') # stores
     map.connect('/stores/letter/{letter}', controller='stores', action='letter') # stores
 
+    map.connect('/categories', controller='categories', action='index') # categories
+    map.connect('/categories/details', controller='categories', action='details') # categories tree
+    map.connect('/categories/{slug}', controller='categories', action='index') # category
+    
+
     map.connect('/members', controller='members', action='index') # members
     map.connect('/members/{action}/{id}', controller='members') # members
             

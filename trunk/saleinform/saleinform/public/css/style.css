@@ -35,6 +35,10 @@ a:link {
 	font-size:95%;
 	font-weight:normal;
 }
+.greyb {
+	color:#7D7D7D;
+	font-weight:bold;
+}
 .error-message{
 	color:#FF0000;
 	margin: 5px 0px 0px 0px;
@@ -42,6 +46,12 @@ a:link {
 	background: transparent url(../img/error_16x16.png) no-repeat left top;
 	padding-left: 20px;
 }
-
+hr {
+	background:#CECECE none repeat scroll 0 0;
+	border:medium none;
+	color:#CECECE;
+	height:1px;
+	margin: 5px 0px 5px 0px;
+}
 
 

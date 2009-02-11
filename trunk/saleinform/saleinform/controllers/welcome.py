@@ -6,19 +6,15 @@ from pylons.controllers.util import abort, redirect_to
 
  
 from saleinform.lib.base import BaseController, render
-#from saleinform import model
-#load libraries
-from saleinform.lib.navigator import Navigator
-from saleinform.lib.search import Search
-from saleinform.lib.category import Category
+import saleinform.lib.modules as S_Modules
 
 log = logging.getLogger(__name__)
 
 class WelcomeController(BaseController):
     
     def renderModules(self):
-        c.SEARCHBAR = Search().renderSearchBar()
-        c.CATEGORIES_LIST = Category().renderCategoriesMain()
+        S_Modules.Search().renderSearchBar()
+        S_Modules.CategoriesList().getMainMenu()
         pass
         
     def index(self):

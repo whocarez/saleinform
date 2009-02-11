@@ -2,11 +2,12 @@
 <div class="top_nav">
 	<div class="navigator_container">
 		<ul class="navigator_items">
-			<li><a target="_self" title="${_(u'Помощь')}" href="/help"><span>${_(u'Помощь')}</span></a></li>
-			<li class="navimember"><a target="_self" title="${_(u'Регистрация')}" href="/members/register"><span>${_(u'Регистрация')}</span></a></li>
-			<li class="navimember"><a target="_self" title="${_(u'Войти')}" href="/members"><span>${_(u'Войти')}</span></a></li>
-			<li><a target="_self" title="${_(u'Магазины')}" href="/stores"><span>${_(u'Магазины')}</span></a></li>
-			<li class="navifirst"><a target="_self" title="${_(u'Сравнить цены')}" href="/"><span>${_(u'Сравнить цены')}</span></a></li>
+			<li>${h.h_tags.link_to(h.h_builder.literal(''.join(['<span>',_(u'Помощь'),'</span>'])), url='/help', title=_(u'Помощь'))}</li>
+			<li class="navimember">${h.h_tags.link_to(h.h_builder.literal(''.join(['<span>',_(u'Регистрация'),'</span>'])), url='/members/register', title=_(u'Регистрация'))}</li>
+			<li class="navimember">${h.h_tags.link_to(h.h_builder.literal(''.join(['<span>',_(u'Войти'),'</span>'])), url='/members', title=_(u'Войти'))}</li>
+			<li>${h.h_tags.link_to(h.h_builder.literal(''.join(['<span>',_(u'Настроить'),'</span>'])), url='/members/options', title=_(u'Настроить'))}</li>
+			<li>${h.h_tags.link_to(h.h_builder.literal(''.join(['<span>',_(u'Магазины'),'</span>'])), url='/stores', title=_(u'Магазины'))}</li>
+			<li class="navifirst">${h.h_tags.link_to(h.h_builder.literal(''.join(['<span>',_(u'Сравнить цены'),'</span>'])), url='/', title=_(u'Сравнить цены'))}</li>
 		</ul>
 	</div>	
 	<div class="logo">

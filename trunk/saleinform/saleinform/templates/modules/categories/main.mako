@@ -1,24 +1,15 @@
 #-*-coding: utf-8 -*-
+<%namespace name="subcats" file="subcats_links.mako"/>
 <div class="catslist">
 	<ul>
 	% for cat in c.categories:
 		<li>
+			${h.h_tags.link_to(h.h_tags.image('/img/categories/icons/empty.png', cat.name, border="0"), url='/categories/'+cat.slug)}
 			<div>
 			<h4>
 				${h.h_tags.link_to(cat.name, url='/categories/'+cat.slug)}
 			</h4>
-			<%
-			rest_length = 25
-			subs = []
-			for z in c.subcategories: 
-				if z._parent_rid == cat.rid:
-					if rest_length > 0: 
-						link_text = h.h_text.truncate(z.name, length=rest_length, indicator='...', whole_word=True)
-						subs.append(h.h_tags.link_to(link_text, url='/categories/'+z.slug, title=z.name))
-						rest_length = rest_length - len(z.name)
-					else: break
-			%>
-			${h.h_builder.literal(', '.join(subs))}
+			${subcats.subcatsAnchors(c.subcategories, cat.rid, rest_length=30)}
 			</div>
 		</li>
 	% endfor
