@@ -237,4 +237,29 @@ td.bcrumbhdl {
 	padding-top:5px;
 	vertical-align:top;
 }
+div.tree-link-bold{
+	font-weight: bold;
+	margin-top: 15px;
+}
+
+.level0{
+	margin-left: 0px;
+}
+.level1{
+	margin-left: 20px;
+}
+.level2{
+	margin-left: 40px;
+}
+.level3{
+	margin-left: 60px;
+}
+
+.level4{
+	margin-left: 80px;
+}
+.level5{
+	margin-left: 100px;
+}
+
 /* } Дерево категорий */

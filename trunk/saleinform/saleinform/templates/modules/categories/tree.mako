@@ -1,7 +1,9 @@
 #-*-coding:utf-8-*-
+<%page cached="False"/>
 <%doc>
 	дерево всех категорий
 </%doc>
+<%namespace name="tree" file="tree_links.mako"/>
 <table class="wd750">
 	<tr>
     	<td align="center" class="bcrumbhdl">
@@ -14,5 +16,10 @@
         	<span class="headline">${_(u'Дерево категорий')}</span>
         	<hr noshade="noshade"/>
     	</td>
+	</tr>
+	<tr>
+		<td>
+			${tree.treeBuilder(c.a_categories_tree.Root)}
+		</td>
 	</tr>
 </table>

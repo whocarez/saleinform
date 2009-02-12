@@ -10,7 +10,6 @@ from saleinform.model import si
 from sqlalchemy.sql import func, and_
 from sqlalchemy.sql import expression
 
-
 class CategoriesList(object):
 
     def __init__(self):
@@ -35,8 +34,12 @@ class CategoriesList(object):
         return
     
     def getCategoriesTree(self):
-        pass
-        
+        categories = si.meta.Session.query(si.Categories.rid, si.Categories.name, si.Categories.slug, si.Categories.meta_title, \
+                                           expression.select([si.Catparents._parent_rid], si.Catparents._categories_rid == si.Categories.rid).order_by(si.Catparents.level.desc()).limit(1).label('_parent_rid')).\
+                                           filter(~si.Categories.archive).order_by(si.Categories.name, si.Categories.rid).all()
+        c.a_categories_tree = CategoriesTree(categories)
+        #print_map(c.a_categories_tree.Root)
+        return 
         
     def _getTopCategories(self):
         """получить первые N самых популярных категорий"""
@@ -81,54 +84,37 @@ class CategoriesList(object):
         return categories
     
 
-# simple tree builder.
-# (node, parent, title)
-els = (
-       (1, 0, 'a'),
-       (2, 1, 'b'),
-       (3, 1, 'c'),
-       (4, 0, 'd'),
-       (5, 4, 'e'),
-       (6, 5, 'f'),
-       (7, 4, 'g')
-)
-
-class CategoryNode:
-    def __init__(self, n, c):
+class Node:
+    def __init__(self, n, s):
         self.rid = n
-        self.category = c
+        self.category = s
         self.children = []
 
 class CategoriesTree:
-    treeMap = {}
-    Root = CategoryNode(0, None)
-    treeMap[Root.rid] = Root
-
-    def __init__(self, categoriesList):
-        self.categoriesList = categoriesList
     
-    def buildTree(self):    
-        for element in self.categoriesList:
-            nodeRid = element.rid
-            parentRid = element._parent_rid
+    def __init__(self, categories):
+        self.treeMap = {}
+        self.Root = Node(None, "Root")
+        self.treeMap[self.Root.rid] = self.Root
         
-            if not nodeRid in self.treeMap:
-                self.treeMap[nodeRid] = CategoryNode(nodeRid, element)
+        for element in categories:
+            nodeId = element.rid
+            parentId = element._parent_rid
+            
+            if not nodeId in self.treeMap:
+                self.treeMap[nodeId] = Node(nodeId, element)
             else:
-                self.treeMap[nodeRid].rid = nodeRid
-                self.treeMap[nodeRid].category = element
+                self.treeMap[nodeId].rid = nodeId
+                self.treeMap[nodeId].category = element
 
-            if not parentRid in self.treeMap:
-                self.treeMap[parentRid] = CategoryNode(0, None)
-    
-            self.treeMap[parentRid].children.append(self.treeMap[nodeRid])
-            return     
+            if not parentId in self.treeMap:
+                self.treeMap[parentId] = Node(None, '')
+            self.treeMap[parentId].children.append(self.treeMap[nodeId])     
 
-node = CategoriesTree(els).buildTree().treeMap
+        
 def print_map(node, lvl=0):
     for n in node.children:
-        print '    ' * lvl + n.category
+        print '    ' * lvl + n.category.name
         if len(n.children) > 0:
             print_map(n, lvl+1)
-print_map(Root)
 
