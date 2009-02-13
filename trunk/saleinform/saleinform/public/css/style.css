@@ -22,7 +22,7 @@ h1{
 	margin-bottom:10px;
 }
 
-a:link {
+a:link, a:VISITED {
 	color:#0000CC;
 }
 

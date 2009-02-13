@@ -10,13 +10,16 @@ table.resultrangetop3bd {
 	background-color:#FEFDC3;
 }
 
-.letterShopsNavHead {
+td.letterShopsNavHead {
 	height:26px;
 	padding-left:7px;
 	text-align:left;
 	white-space:nowrap;
+	font-weight: bold;
 }
-
+td.letterShopsNavHead a{
+	font-weight: normal;
+}
 table.priceComp, table.common {
 	background-color:#BDD7EF;
 	width:100%;

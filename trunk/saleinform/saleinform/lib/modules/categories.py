@@ -38,9 +38,7 @@ class CategoriesList(object):
                                            expression.select([si.Catparents._parent_rid], si.Catparents._categories_rid == si.Categories.rid).order_by(si.Catparents.level.desc()).limit(1).label('_parent_rid')).\
                                            filter(~si.Categories.archive).order_by(si.Categories.name, si.Categories.rid).all()
         c.a_categories_tree = CategoriesTree(categories)
-        toplevel_quan = len(self._getTopLevelCategories())
-        
-        #print_map(c.a_categories_tree.Root)
+        c.a_col_quan = int(len(self._getTopLevelCategories())/3)+1
         return 
         
     def _getTopCategories(self):
@@ -49,9 +47,9 @@ class CategoriesList(object):
                         join((si.Catparents, si.Catparents._categories_rid==si.Categories.rid)).filter(~si.Categories.archive).subquery()
         clause = ~si.Categories.rid.in_(expression.select([si.Catparents._categories_rid]))
         categories = si.meta.Session.query(si.Categories.rid, si.Categories.name, si.Categories.slug, si.Categories.meta_title, (func.sum(si.Categories.popularity)+func.sum(subquery.c.popularity)).label('popularity')).\
-                        filter(subquery.c._parent_rid == si.Categories.rid).\
+                        outerjoin((subquery, si.Categories.rid == subquery.c._parent_rid, )).\
                         filter(clause).\
-                        group_by(si.Categories.rid, si.Categories.name, si.Categories.slug, si.Categories.slug, si.Categories.meta_title).order_by('popularity desc').\
+                        group_by(si.Categories.rid, si.Categories.name, si.Categories.slug, si.Categories.slug, si.Categories.meta_title).order_by('popularity desc nulls last').\
                         limit(self.mainListLimit).\
                         all()
         return categories
@@ -79,7 +77,7 @@ class CategoriesList(object):
                         join((si.Catparents, si.Catparents._categories_rid==si.Categories.rid)).filter(~si.Categories.archive).subquery()
         clause = ~si.Categories.rid.in_(expression.select([si.Catparents._categories_rid]))
         categories = si.meta.Session.query(si.Categories.rid, si.Categories.name, si.Categories.slug, si.Categories.meta_title).\
-                        filter(subquery.c._parent_rid == si.Categories.rid).\
+                        outerjoin((subquery, si.Categories.rid == subquery.c._parent_rid, )).\
                         filter(clause).\
                         group_by(si.Categories.rid, si.Categories.name, si.Categories.slug, si.Categories.meta_title).order_by(si.Categories.name).\
                         all()

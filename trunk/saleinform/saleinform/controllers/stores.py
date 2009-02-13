@@ -9,23 +9,16 @@ from saleinform import model
 
 log = logging.getLogger(__name__)
 
-from saleinform.lib.navigator import Navigator
-from saleinform.lib.search import Search
-from saleinform.lib.category import Category
-from saleinform.lib.stores import StoresContainer 
+import saleinform.lib.modules as S_Modules
 
 class StoresController(BaseController):
     def renderModules(self):
-        Search().renderSearchBar()
-        Category().renderTopMenu()
+        S_Modules.Search().renderSearchBar()
+        S_Modules.CategoriesList().getTopMenu()
         pass
 
-    def index(self):
+    def index(self, letter=u'A'):
         self.renderModules()
-        StoresContainer().renderStoresList()
+        S_Modules.StoresList().getList(letter)
         return render('/layouts/stores.mako')
     
-    def letter(self, letter=u'A'):
-        self.renderModules()
-        StoresContainer().renderStoresList(letter)
-        return render('/layouts/stores.mako')    
