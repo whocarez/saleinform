@@ -38,6 +38,8 @@ class CategoriesList(object):
                                            expression.select([si.Catparents._parent_rid], si.Catparents._categories_rid == si.Categories.rid).order_by(si.Catparents.level.desc()).limit(1).label('_parent_rid')).\
                                            filter(~si.Categories.archive).order_by(si.Categories.name, si.Categories.rid).all()
         c.a_categories_tree = CategoriesTree(categories)
+        toplevel_quan = len(self._getTopLevelCategories())
+        
         #print_map(c.a_categories_tree.Root)
         return 
         
