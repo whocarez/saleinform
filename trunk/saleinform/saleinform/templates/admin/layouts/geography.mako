@@ -11,6 +11,7 @@
 	${h.h_tags.javascript_link('/js/dropdowntabs.js')}
 	${h.h_tags.stylesheet_link('/css/style.css')}
 	${h.h_tags.stylesheet_link('/css/glowtabs.css')}
+	${h.h_tags.stylesheet_link('/css/admin_countries.css')}
 	<link rel="SHORTCUT ICON" href="../img/si.png">
 </head>
 <body id="mainBody">
@@ -20,13 +21,7 @@
 				<%include file="/admin/modules/navigation/hnavigator.mako"/>
 			</div>
 			<div style="clear: both;">
-				${h.h_tags.form(url='/admin/geography', method="post")}
-				${h.h_tags.hidden('action','save')}
-				<table>
-					${h.h_builder.literal(c.a_countries.render())}
-				</table>
-				${h.h_tags.submit('submit',_(u'Сохранить'))}
-				${h.h_tags.end_form()}
+				<%include file="/admin/modules/countries/list.mako"/>
 			</div>
 		</div>
 		<div>

@@ -6,9 +6,7 @@ from pylons.controllers.util import abort, redirect_to
 
 from saleinform.lib.base import BaseController, render
 from saleinform.model import si
-
-from formalchemy.tables import Grid
-from formalchemy.forms import FieldSet
+from saleinform.lib.modules.countries import CountriesList
 
 log = logging.getLogger(__name__)
 
@@ -20,18 +18,7 @@ class AGeographyController(BaseController):
         Валюты
     """
     def index(self):
-        countries = Grid(si.Countries)
-        countries.configure(options=[countries.name.label(_(u'Наименование')).required(), 
-                                     countries.code.label(_(u'Код')).required(),
-                                     countries.archive.label(_(u'Архив')),], 
-                                     exclude = [countries.createdt], readonly=False)
-        record = si.meta.Session.query(si.Countries).all()
-        c.a_countries = countries.bind(record, data=request.POST or None)
-        if request.POST and c.a_countries.validate():
-            c.a_countries.sync()
-            #si.meta.Session.update(record)
-            #si.meta.Session.commit()
-        
+        c.a_countries = CountriesList().getList()
         return render('/admin/layouts/geography.mako')
         
         

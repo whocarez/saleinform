@@ -184,6 +184,18 @@ _cluopinions =  sa.Table('_cluopinions', meta.metadata,
 sa.Index(u'_clients_rid8', _cluopinions.c._clients_rid, unique=False)
 sa.Index(u'FK__cluopinions_8', _cluopinions.c._members_rid, unique=False)
 
+# оффициальные курсы валют
+_officialcources =  sa.Table('_officialcources', meta.metadata,
+                          sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
+                          sa.Column(u'_currency_rid', sa.types.Integer(), primary_key=False, nullable=False),
+                          sa.Column(u'_countries_rid', sa.types.Integer(), primary_key=False, nullable=False),
+                          sa.Column(u'courcedate', sa.types.Date(), primary_key=False, nullable=False),
+                          sa.Column(u'cource', sa.types.Float(precision=None, asdecimal=False), primary_key=False, nullable=False),
+                          sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
+                          sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__officialcources_1'),
+                          sa.ForeignKeyConstraint([u'_countries_rid'], [u'_countries.rid'], name=u'FK__officialcources_2'),)
+sa.Index(u'_secondary18', _officialcources.c._currency_rid, _officialcources.c._countries_rid, _officialcources.c.courcedate, unique=True)
+sa.Index(u'_countries_rid18', _officialcources.c._countries_rid, unique=False)
 
 _currcources =  sa.Table('_currcources', meta.metadata,
                       sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
@@ -299,21 +311,6 @@ _newscategories =  sa.Table('_newscategories', meta.metadata,
 sa.Index(u'_secondary17', _newscategories.c.name, _newscategories.c._newscategories_rid, unique=True)
 sa.Index(u'_categories_rid17', _newscategories.c._newscategories_rid, unique=False)
 
-
-
-_officialcources =  sa.Table('_officialcources', meta.metadata,
-                          sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
-                          sa.Column(u'_currency_rid', sa.types.Integer(), primary_key=False, nullable=False),
-                          sa.Column(u'_countries_rid', sa.types.Integer(), primary_key=False, nullable=False),
-                          sa.Column(u'courcedate', sa.types.Date(), primary_key=False, nullable=False),
-                          sa.Column(u'cource', sa.types.Float(precision=None, asdecimal=False), primary_key=False, nullable=False),
-                          sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
-                          sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
-                          sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                          sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__officialcources_1'),
-                          sa.ForeignKeyConstraint([u'_countries_rid'], [u'_countries.rid'], name=u'FK__officialcources_2'),)
-sa.Index(u'_secondary18', _officialcources.c._currency_rid, _officialcources.c._countries_rid, _officialcources.c.courcedate, unique=True)
-sa.Index(u'_countries_rid18', _officialcources.c._countries_rid, unique=False)
 
 
 _pars =  sa.Table('_pars', meta.metadata,
