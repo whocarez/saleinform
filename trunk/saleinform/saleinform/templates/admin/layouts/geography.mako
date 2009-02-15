@@ -19,8 +19,14 @@
 			<div>
 				<%include file="/admin/modules/navigation/hnavigator.mako"/>
 			</div>
-			<div>
-				${c.a_countries}
+			<div style="clear: both;">
+				${h.h_tags.form(url='/admin/geography', method="post")}
+				${h.h_tags.hidden('action','save')}
+				<table>
+					${h.h_builder.literal(c.a_countries.render())}
+				</table>
+				${h.h_tags.submit('submit',_(u'Сохранить'))}
+				${h.h_tags.end_form()}
 			</div>
 		</div>
 		<div>
