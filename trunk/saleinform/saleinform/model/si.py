@@ -131,21 +131,14 @@ _regions =  sa.Table('_regions', meta.metadata,
                   sa.ForeignKeyConstraint([u'_countries_rid'], [u'_countries.rid'], name=u'FK__regions_1'),)
 sa.Index(u'_secondary29', _regions.c._countries_rid, _regions.c.name, unique=True)
 
-# катагории клиентов
+# категории клиента
+"""указывают категории, в которых работают магазины"""
 _clcategories =  sa.Table('_clcategories', meta.metadata,
                        sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
                        sa.Column(u'_categories_rid', sa.types.Integer(), primary_key=False),
-                       sa.Column(u'_clcategories_rid', sa.types.Integer(), primary_key=False, nullable=False),
                        sa.Column(u'_clients_rid', sa.types.Integer(), primary_key=False, nullable=False),
-                       sa.Column(u'clrid', sa.types.Integer(), primary_key=False),
-                       sa.Column(u'name', sa.types.String(length=45), primary_key=False, nullable=False),
-                       sa.Column(u'image', sa.types.Binary(length=None), primary_key=False),
-                       sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
-                       sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
-                       sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
                        sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__clcategories1'),
                        sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__clcategories2'),)
-sa.Index(u'_clcategories_rid5', _clcategories.c._clcategories_rid, _clcategories.c._clients_rid, _clcategories.c.clrid, unique=True)
 sa.Index(u'_categories_rid5', _clcategories.c._categories_rid, unique=False)
 sa.Index(u'FK__clcategories5', _clcategories.c._clients_rid, unique=False)
 
@@ -153,7 +146,6 @@ sa.Index(u'FK__clcategories5', _clcategories.c._clients_rid, unique=False)
 _clients =  sa.Table('_clients', meta.metadata,
                   sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
                   sa.Column(u'_cities_rid', sa.types.Integer(), primary_key=False, nullable=False),
-                  sa.Column(u'_cltypes_rid', sa.types.Integer(), primary_key=False, nullable=False),
                   sa.Column(u'name', sa.types.String(length=255), primary_key=False, nullable=False),
                   sa.Column(u'logo', sa.types.String(length=255), primary_key=False),
                   sa.Column(u'address', sa.types.String(length=255), primary_key=False, nullable=False),
@@ -175,19 +167,9 @@ _clients =  sa.Table('_clients', meta.metadata,
                   sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
                   sa.Column(u'active', sa.types.Boolean(), primary_key=False),
                   sa.Column(u'popularity', sa.types.Integer(), primary_key=False),
-                  sa.ForeignKeyConstraint([u'_cities_rid'], [u'_cities.rid'], name=u'FK__clients_1'),
-                  sa.ForeignKeyConstraint([u'_cltypes_rid'], [u'_cltypes.rid'], name=u'FK__clients_3'),)
+                  sa.ForeignKeyConstraint([u'_cities_rid'], [u'_cities.rid'], name=u'FK__clients_1'),)
 sa.Index(u'_secondary6', _clients.c._cities_rid, _clients.c.name, unique=True)
-sa.Index(u'_cltypes_rid6', _clients.c._cltypes_rid, unique=False)
-
-# типы клиентов
-_cltypes =  sa.Table('_cltypes', meta.metadata,
-                  sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
-                  sa.Column(u'name', sa.types.String(length=45), primary_key=False, nullable=False),
-                  sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
-                  sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
-                  sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),)
-sa.Index(u'_secondary7', _cltypes.c.name, unique=True)
+sa.Index(u'FK__cities6', _clients.c._cities_rid, unique=False)
 
 # отзывы на клиентов
 _cluopinions =  sa.Table('_cluopinions', meta.metadata,
@@ -379,20 +361,16 @@ sa.Index(u'_wares_rid23', _popularwares.c._wares_rid, _popularwares.c.sessionID,
 _prices =  sa.Table('_prices', meta.metadata,
                  sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
                  sa.Column(u'_pritems_rid', sa.types.Integer(), primary_key=False, nullable=False),
-                 sa.Column(u'_prtypes_rid', sa.types.Integer(), primary_key=False, nullable=False),
                  sa.Column(u'_currency_rid', sa.types.Integer(), primary_key=False, nullable=False),
                  sa.Column(u'price', sa.types.Float(precision=None, asdecimal=False), primary_key=False),
                  sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                  sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                  sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
                  sa.ForeignKeyConstraint([u'_pritems_rid'], [u'_pritems.rid'], name=u'FK__prices_1'),
-                 sa.ForeignKeyConstraint([u'_prtypes_rid'], [u'_prtypes.rid'], name=u'FK__prices_2'),
                  sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__prices_3'),
     
     )
-sa.Index(u'_secondary24', _prices.c._pritems_rid, _prices.c._prtypes_rid, unique=True)
 sa.Index(u'_currency_rid24', _prices.c._currency_rid, unique=False)
-sa.Index(u'_prtypes_rid24', _prices.c._prtypes_rid, unique=False)
 
 
 _pritems =  sa.Table('_pritems', meta.metadata,
@@ -459,19 +437,6 @@ sa.Index(u'_clients_rid27', _prloadsorganizer.c._clients_rid, unique=False)
 
 
 
-_prtypes =  sa.Table('_prtypes', meta.metadata,
-                  sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
-                  sa.Column(u'cod', sa.types.String(length=45), primary_key=False),
-                  sa.Column(u'name', sa.types.String(length=255), primary_key=False),
-                  sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
-                  sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-   
-    )
-sa.Index(u'_secondary28', _prtypes.c.cod, unique=True)
-sa.Index(u'_thierd28', _prtypes.c.name, unique=True)
-
-
-
 _relatedcats =  sa.Table('_relatedcats', meta.metadata,
                       sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
                       sa.Column(u'_categories_rid', sa.types.Integer(), primary_key=False, nullable=False),
@@ -485,7 +450,6 @@ sa.Index(u'_secondary30', _relatedcats.c._categories_rid, _relatedcats.c.related
 _tmpprices =  sa.Table('_tmpprices', meta.metadata,
                     sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
                     sa.Column(u'_tmppritems_rid', sa.types.Integer(), primary_key=False, nullable=False),
-                    sa.Column(u'_prtypes_rid', sa.types.Integer(), primary_key=False, nullable=False),
                     sa.Column(u'_currency_rid', sa.types.Integer(), primary_key=False, nullable=False),
                     sa.Column(u'price', sa.types.Float(precision=None, asdecimal=False), primary_key=False),
                     sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
@@ -493,13 +457,8 @@ _tmpprices =  sa.Table('_tmpprices', meta.metadata,
                     sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
                     sa.ForeignKeyConstraint([u'_tmppritems_rid'], [u'_tmppritems.rid'], name=u'FK__tmpprices1'),
                     sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__tmpprices2'),
-                    sa.ForeignKeyConstraint([u'_prtypes_rid'], [u'_prtypes.rid'], name=u'FK__tmpprices3'),
     )
-sa.Index(u'_prtypes_rid31', _tmpprices.c._prtypes_rid, unique=False)
 sa.Index(u'_currency_rid31', _tmpprices.c._currency_rid, unique=False)
-sa.Index(u'_secondary31', _tmpprices.c._tmppritems_rid, _tmpprices.c._prtypes_rid, unique=False)
-
-
 
 _tmppricesstorage =  sa.Table('_tmppricesstorage', meta.metadata,
                            sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
@@ -727,7 +686,6 @@ class Categoriesimages(object): pass
 class Cities(object): pass
 class Clcategories(object): pass
 class Clients(object): pass
-class Cltypes(object): pass
 class Cluopinions(object): pass
 class Countries(object): pass
 class Currcources(object): pass
@@ -749,7 +707,6 @@ class Prices(object): pass
 class Pritems(object): pass
 class Pritemsimgs(object): pass
 class Prloadsorganizes(object): pass
-class Prtypes(object): pass
 class Regions(object): pass
 class Relatedcats(object): pass
 class Tmpprices(object): pass
@@ -778,7 +735,6 @@ orm.mapper(Categoriesimages, _categoriesimages)
 orm.mapper(Cities, _cities, properties={'clients': orm.relation(Clients, backref='city', primaryjoin=_clients.c._cities_rid==_cities.c.rid)})
 orm.mapper(Clcategories, _clcategories)
 orm.mapper(Clients, _clients)
-orm.mapper(Cltypes, _cltypes)
 orm.mapper(Cluopinions, _cluopinions)
 orm.mapper(Currency, _currency, properties={'countries': orm.relation(Countries, backref='country', primaryjoin=_countries.c._currency_rid==_currency.c.rid)})
 orm.mapper(Countries, _countries, properties={'regions': orm.relation(Regions, backref='country', primaryjoin=_countries.c.rid==_regions.c._countries_rid)})
@@ -800,7 +756,6 @@ orm.mapper(Prices, _prices)
 orm.mapper(Pritems, _pritems)
 orm.mapper(Pritemsimgs, _pritemsimgs)
 orm.mapper(Prloadsorganizes, _prloadsorganizer)
-orm.mapper(Prtypes, _prtypes)
 orm.mapper(Regions, _regions, properties={'cities': orm.relation(Cities, backref='region', primaryjoin=_cities.c._regions_rid==_regions.c.rid)})
 orm.mapper(Relatedcats, _relatedcats)
 orm.mapper(Tmpprices, _tmpprices)

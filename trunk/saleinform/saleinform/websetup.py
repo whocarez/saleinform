@@ -17,13 +17,19 @@ def setup_app(command, conf, vars):
     si.meta.metadata.create_all(checkfirst=True)
     # развертываем базу
     print "Data Loading..."
+    print "Categories table..."
     for row in setup_reader('_categories.csv'): si._categories.insert().execute(row)
+    print "Catparents table..."
     for row in setup_reader('_catparents.csv'): si._catparents.insert().execute(row)
+    print "Currency table..."
     for row in setup_reader('_currency.csv'): si._currency.insert().execute(row)
-    for row in setup_reader('_cltypes.csv'): si._cltypes.insert().execute(row)
+    print "Countries table..."
     for row in setup_reader('_countries.csv'): si._countries.insert().execute(row)
+    print "Regions table..."
     for row in setup_reader('_regions.csv'): si._regions.insert().execute(row)
+    print "Cities table..."
     for row in setup_reader('_cities.csv'): si._cities.insert().execute(row)
+    print "Clients table..."
     for row in setup_reader('_clients.csv'): si._clients.insert().execute(row)
     
 def setup_reader(csvFile, encoding="UTF-8"):
