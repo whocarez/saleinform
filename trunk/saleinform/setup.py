@@ -16,6 +16,7 @@ setup(
         "psycopg2",
         "Pylons>=0.9.7",
         "SQLAlchemy>=0.5",
+        "FormAlchemy>=1.1",
         "Mako",
         "PIL",
     ],

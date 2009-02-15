@@ -736,7 +736,7 @@ orm.mapper(Cities, _cities, properties={'clients': orm.relation(Clients, backref
 orm.mapper(Clcategories, _clcategories)
 orm.mapper(Clients, _clients)
 orm.mapper(Cluopinions, _cluopinions)
-orm.mapper(Currency, _currency, properties={'countries': orm.relation(Countries, backref='country', primaryjoin=_countries.c._currency_rid==_currency.c.rid)})
+orm.mapper(Currency, _currency, properties={'countries': orm.relation(Countries, backref='currency', primaryjoin=_countries.c._currency_rid==_currency.c.rid)})
 orm.mapper(Countries, _countries, properties={'regions': orm.relation(Regions, backref='country', primaryjoin=_countries.c.rid==_regions.c._countries_rid)})
 orm.mapper(Currcources, _currcources)
 orm.mapper(Findqueries, _findqueries)

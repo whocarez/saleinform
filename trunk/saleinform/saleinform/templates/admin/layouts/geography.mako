@@ -20,6 +20,7 @@
 				<%include file="/admin/modules/navigation/hnavigator.mako"/>
 			</div>
 			<div>
+				${c.a_countries}
 			</div>
 		</div>
 		<div>
