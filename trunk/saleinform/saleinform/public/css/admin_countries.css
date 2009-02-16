@@ -1,6 +1,13 @@
 @CHARSET "UTF-8";
-table.admin-countries{
+div.countries-container{
 	margin: 10px;
+	position: relative;
+}
+div.countries-toolbar{
+	padding: 5px;
+	text-align: left;
+}
+table.admin-countries{
 	width: 30%;
 	background-color: #fafafa;
 	border: 1px #d79900 solid;
