@@ -9,7 +9,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	${h.h_tags.javascript_link('/js/jquery-1.3.1.min.js')}
 	${h.h_tags.javascript_link('/js/dropdowntabs.js')}
-	${h.h_tags.javascript_link('/js/jquery.formobserver.js')}
 	${h.h_tags.stylesheet_link('/css/style.css')}
 	${h.h_tags.stylesheet_link('/css/glowtabs.css')}
 	${h.h_tags.stylesheet_link('/css/admin_countries.css')}

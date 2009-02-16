@@ -19,6 +19,10 @@ class AGeographyController(BaseController):
     """
     def index(self):
         c.a_countries = CountriesList().getList()
+        c.a_message = u''
+        if request.POST.get('action', None):
+            self._saveFromGrid()
+            
         return render('/admin/layouts/geography.mako')
         
         
@@ -36,3 +40,7 @@ class AGeographyController(BaseController):
             si.meta.Session.commit()
         
         return render('/admin/layouts/geography.mako')
+
+    def _saveFromGrid(self):
+        CountriesList().fromArchive()
+        return True

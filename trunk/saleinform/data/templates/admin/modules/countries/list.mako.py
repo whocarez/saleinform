@@ -3,8 +3,8 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1234788108.1005061
-_template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/admin/modules/countries/list.mako'
+_modified_time = 1234791604.964
+_template_filename='D:\\PROJECTS\\ECLIPSE\\PYLONS\\saleinform\\saleinform\\templates/admin/modules/countries/list.mako'
 _template_uri='/admin/modules/countries/list.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
 _source_encoding='utf-8'
@@ -18,7 +18,6 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         h = context.get('h', UNDEFINED)
         c = context.get('c', UNDEFINED)
-        str = context.get('str', UNDEFINED)
         _ = context.get('_', UNDEFINED)
         __M_writer = context.writer()
         # SOURCE LINE 1
@@ -58,7 +57,7 @@ def render_body(context,**pageargs):
             __M_writer(escape(row.currency_code))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
             # SOURCE LINE 22
-            __M_writer(escape(h.h_tags.checkbox('archive_'+str(row.rid), value=row.rid, checked=row.archive, label=None)))
+            __M_writer(escape(h.h_tags.checkbox('archive', value=row.rid, checked=row.archive, label=None)))
             __M_writer(u'</td>\n\t\t\t\t\t</tr>\n')
         # SOURCE LINE 25
         __M_writer(u'\t\t\t\t</table>\n\t\t\t\t')
@@ -67,7 +66,7 @@ def render_body(context,**pageargs):
         __M_writer(u'\n\t\t\t\t')
         # SOURCE LINE 27
         __M_writer(escape(h.h_tags.end_form()))
-        __M_writer(u'\n\t\t\t</div>\n<script type="text/javascript">\n<!--\n$(document).ready(function(){\n\t  $(\'#countries\').FormObserve();\n});\n//-->\n</script>\n\t\t\t\n')
+        __M_writer(u'\n\t\t\t</div>\n\t\t\t\n')
         return ''
     finally:
         context.caller_stack._pop_frame()

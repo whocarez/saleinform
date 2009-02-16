@@ -22,4 +22,17 @@ class CountriesList(object):
                     join((si.Currency, si.Currency.rid==si.Countries._currency_rid)).\
                     order_by(self.defaultSort).all()
         return countries
+    
+    def toArchive(self, countries = []):
+        """Отправить страны в архив
+        """
+        si.meta.Session.update().values({si.Countries.archive:False})
+        si.meta.Session.commit()
+        return countries
 
+    def fromArchive(self, countries = []):
+        """Вынести все страны из архива
+        """
+        si.meta.Session.update().values({si.Countries.archive:False})
+        si.meta.Session.commit()
+        return countries
