@@ -23,16 +23,35 @@ class CountriesList(object):
                     order_by(self.defaultSort).all()
         return countries
     
-    def toArchive(self, countries = []):
+    def toArchive(self, rids):
         """Отправить страны в архив
         """
-        si.meta.Session.update().values({si.Countries.archive:False})
-        si.meta.Session.commit()
-        return countries
+        try:
+            countries = si.meta.Session.query(si.Countries).filter(si.Countries.rid.in_(rids)).update({si.Countries.archive:True})        
+            si.meta.Session.commit()
+        except:
+            si.meta.Session.rollback()
+            return False
+        return True
 
-    def fromArchive(self, countries = []):
+    def fromArchive(self):
         """Вынести все страны из архива
         """
-        si.meta.Session.update().values({si.Countries.archive:False})
-        si.meta.Session.commit()
-        return countries
+        try:
+            countries = si.meta.Session.query(si.Countries).update({si.Countries.archive:False})
+            si.meta.Session.commit()
+        except:
+            si.meta.Session.rollback()
+            return False
+        return True
+
+    def deleteCountries(self, rids):
+        """Удалить страны
+        """
+        try:
+            countries = si.meta.Session.query(si.Countries).filter(si.Countries.rid.in_(rids)).delete()        
+            si.meta.Session.commit()
+        except:
+            si.meta.Session.rollback()
+            return False
+        return True

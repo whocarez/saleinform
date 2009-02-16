@@ -18,29 +18,13 @@ class AGeographyController(BaseController):
         Валюты
     """
     def index(self):
-        c.a_countries = CountriesList().getList()
-        c.a_message = u''
+        c.a_operation_status = None
         if request.POST.get('action', None):
-            self._saveFromGrid()
-            
+            c.a_operation_status = True
+            if not CountriesList().deleteCountries(request.POST.getall('check_countries')): c.a_operation_status = False # удалим отмеченные
+            if not CountriesList().fromArchive(): c.a_operation_status = False # сначала все страны вынесем из архива    
+            if not CountriesList().toArchive(request.POST.getall('archive')): c.a_operation_status = False # а теперь отправим в архив нужные
+        c.a_countries = CountriesList().getList()            
         return render('/admin/layouts/geography.mako')
         
         
-    def save(self, rid = None):
-        countries = FieldSet(si.Countries)
-        countries.configure(options=[countries.name.label(_(u'Наименование')).required(), 
-                                     countries.code.label(_(u'Код')).required(),
-                                     countries.archive.label(_(u'Архив')),], 
-                                     exclude = [countries.createdt], readonly=False)
-        record = si.meta.Session.query(si.Countries).first()
-        c.a_countries = countries.bind(record, data=request.params or None)
-        if request.params and c.a_countries.validate():
-            c.a_countries.sync()
-            si.meta.Session.update(record)
-            si.meta.Session.commit()
-        
-        return render('/admin/layouts/geography.mako')
-
-    def _saveFromGrid(self):
-        CountriesList().fromArchive()
-        return True

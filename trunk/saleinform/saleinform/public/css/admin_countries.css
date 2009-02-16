@@ -1,7 +1,6 @@
 @CHARSET "UTF-8";
 div.countries-container{
-	margin: 10px;
-	position: relative;
+	padding-top: 10px;
 }
 div.countries-toolbar{
 	padding: 5px;
