@@ -1,11 +1,9 @@
 #-*-coding: utf-8 -*-
 import formencode
 from saleinform.model import si
-from saleinform.lib import members, captcha
-from sqlalchemy.sql import and_, or_, func
 from pylons import request
 
-formencode.api.set_stdtranslation(domain="FormEncode", languages=["ru"])
+#formencode.api.set_stdtranslation(domain="FormEncode", languages=["ru"])
 class checkUser(formencode.validators.FancyValidator):
     def _to_python(self, value, state):
         u = si.meta.Session.query(func.count(si.Members.rid).label('uquan')).filter(and_(si.Members.login==value, si.Members.password==request.params.get('password'))).all()
@@ -51,4 +49,4 @@ class SignupForm(formencode.Schema):
     gender = formencode.validators.String(not_empty=True)
     captcha = formencode.All(formencode.validators.String(not_empty=True), checkCaptcha())  
     chained_validators = [formencode.validators.FieldsMatch('password', 'confirm_password')]
-    
+        

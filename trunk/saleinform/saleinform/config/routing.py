@@ -33,7 +33,9 @@ def make_map():
     map.connect('/members/{action}/{id}', controller='members') # members
 
     # ------------------------ Admin -------------------------------
-    map.connect('/admin/geography', controller='admin/a_geography', action='index') # categories
+    map.connect('/admin/geography', controller='admin/a_geography', action='index')
+    map.connect('/admin/geography/action', controller='admin/a_geography', action='processing')
+    map.connect('/admin/geography/action/{rid}', controller='admin/a_geography', action='processing')
     
 
     map.connect('/{controller}/{action}')

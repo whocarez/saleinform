@@ -21,7 +21,7 @@
 				<%include file="/admin/modules/navigation/hnavigator.mako"/>
 			</div>
 			<div style="clear: both;">
-				<%include file="/admin/modules/countries/list.mako"/>
+				<%include file="/admin/modules/countries/${c.a_template_name}"/>
 			</div>
 		</div>
 		<div>

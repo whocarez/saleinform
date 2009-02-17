@@ -69,8 +69,8 @@ _catparents =  sa.Table('_catparents', meta.metadata,
                      sa.Column(u'_categories_rid', sa.types.Integer(), primary_key=False, nullable=False),
                      sa.Column(u'_parent_rid', sa.types.Integer(), primary_key=False, nullable=False),
                      sa.Column(u'level', sa.types.Integer(), primary_key=False, nullable=False),
-                     sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__catparents1'),
-                     sa.ForeignKeyConstraint([u'_parent_rid'], [u'_categories.rid'], name=u'FK__catparents2'),)
+                     sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__catparents1', onupdate="CASCADE", ondelete="CASCADE"),
+                     sa.ForeignKeyConstraint([u'_parent_rid'], [u'_categories.rid'], name=u'FK__catparents2', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'_secondary2_1', _catparents.c._categories_rid, _catparents.c._parent_rid, unique=True)
 sa.Index(u'_categories_rid2_1', _catparents.c._categories_rid, unique=False)
 sa.Index(u'_parent_rid2_1', _catparents.c._parent_rid, unique=False)
@@ -86,17 +86,17 @@ _categoriesimages =  sa.Table('_categoriesimages', meta.metadata,
                            sa.Column(u'archive', sa.types.Boolean(), primary_key=False),
                            sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                            sa.Column(u'imgtype', sa.types.String(length=45), primary_key=False),
-                           sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__categoriesimages'),
+                           sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__categoriesimages', onupdate="CASCADE", ondelete="CASCADE"),
     )
 sa.Index(u'FK__categoriesimages3', _categoriesimages.c._categories_rid, unique=False)
 
 # города
 _cities =  sa.Table('_cities', meta.metadata,
                  sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
-                 sa.Column(u'_regions_rid', sa.types.Integer(), schema.ForeignKey(u'_regions.rid', onupdate='cascade'), primary_key=False, nullable=False),
+                 sa.Column(u'_regions_rid', sa.types.Integer(), schema.ForeignKey(u'_regions.rid', onupdate='cascade', ondelete="CASCADE"), primary_key=False, nullable=False),
                  sa.Column(u'name', sa.types.String(length=45), primary_key=False, nullable=False),
                  sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
-                 sa.ForeignKeyConstraint([u'_regions_rid'], [u'_regions.rid'], name=u'FK__cities_1'),)
+                 sa.ForeignKeyConstraint([u'_regions_rid'], [u'_regions.rid'], name=u'FK__cities_1', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'_secondary4', _cities.c._regions_rid, _cities.c.name, unique=True)
 
 # валюты
@@ -111,12 +111,13 @@ sa.Index(u'_thierd11', _currency.c.name, unique=True)
 # страны
 _countries =  sa.Table('_countries', meta.metadata,
                     sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
-                    sa.Column(u'_currency_rid', sa.types.Integer(), schema.ForeignKey(u'_currency.rid'), nullable=False),
+                    sa.Column(u'_currency_rid', sa.types.Integer(), schema.ForeignKey(u'_currency.rid', onupdate="CASCADE", ondelete="CASCADE"), nullable=False),
+                    sa.Column(u'image_name', sa.types.String(length=45), primary_key=False, nullable=True),
                     sa.Column(u'code', sa.types.String(length=45), primary_key=False, nullable=False),
                     sa.Column(u'name', sa.types.String(length=45), primary_key=False, nullable=False),
-                    sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
-                    sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                    sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__countries_1'),)
+                    sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False, default=False),
+                    sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False, default=func.now()),
+                    sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__countries_1', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'_secondary9', _countries.c.code, unique=True)
 sa.Index(u'_thierd9', _countries.c.name, unique=True)
 sa.Index(u'_currency_rid9', _countries.c._currency_rid, unique=False)
@@ -124,11 +125,11 @@ sa.Index(u'_currency_rid9', _countries.c._currency_rid, unique=False)
 # регионы
 _regions =  sa.Table('_regions', meta.metadata,
                   sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
-                  sa.Column(u'_countries_rid', sa.types.Integer(), schema.ForeignKey('_countries.rid'), primary_key=False, nullable=False),
+                  sa.Column(u'_countries_rid', sa.types.Integer(), schema.ForeignKey('_countries.rid', onupdate="CASCADE", ondelete="CASCADE"), primary_key=False, nullable=False),
                   sa.Column(u'name', sa.types.String(length=45), primary_key=False, nullable=False),
                   sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                   sa.Column(u'display_name', sa.types.String(length=45), primary_key=False, nullable=False),
-                  sa.ForeignKeyConstraint([u'_countries_rid'], [u'_countries.rid'], name=u'FK__regions_1'),)
+                  sa.ForeignKeyConstraint([u'_countries_rid'], [u'_countries.rid'], name=u'FK__regions_1', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'_secondary29', _regions.c._countries_rid, _regions.c.name, unique=True)
 
 # категории клиента
@@ -137,8 +138,8 @@ _clcategories =  sa.Table('_clcategories', meta.metadata,
                        sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
                        sa.Column(u'_categories_rid', sa.types.Integer(), primary_key=False),
                        sa.Column(u'_clients_rid', sa.types.Integer(), primary_key=False, nullable=False),
-                       sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__clcategories1'),
-                       sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__clcategories2'),)
+                       sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__clcategories1', onupdate="CASCADE", ondelete="CASCADE"),
+                       sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__clcategories2', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'_categories_rid5', _clcategories.c._categories_rid, unique=False)
 sa.Index(u'FK__clcategories5', _clcategories.c._clients_rid, unique=False)
 
@@ -167,7 +168,7 @@ _clients =  sa.Table('_clients', meta.metadata,
                   sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
                   sa.Column(u'active', sa.types.Boolean(), primary_key=False),
                   sa.Column(u'popularity', sa.types.Integer(), primary_key=False),
-                  sa.ForeignKeyConstraint([u'_cities_rid'], [u'_cities.rid'], name=u'FK__clients_1'),)
+                  sa.ForeignKeyConstraint([u'_cities_rid'], [u'_cities.rid'], name=u'FK__clients_1', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'_secondary6', _clients.c._cities_rid, _clients.c.name, unique=True)
 sa.Index(u'FK__cities6', _clients.c._cities_rid, unique=False)
 
@@ -179,8 +180,8 @@ _cluopinions =  sa.Table('_cluopinions', meta.metadata,
                       sa.Column(u'_members_rid', sa.types.Integer(), primary_key=False, nullable=False),
                       sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
                       sa.Column(u'mark', sa.types.Integer(), primary_key=False, nullable=False),
-                      sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__cluopinions_1'),
-                      sa.ForeignKeyConstraint([u'_members_rid'], [u'_members.rid'], name=u'FK__cluopinions_2'), )
+                      sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__cluopinions_1', onupdate="CASCADE", ondelete="CASCADE"),
+                      sa.ForeignKeyConstraint([u'_members_rid'], [u'_members.rid'], name=u'FK__cluopinions_2', onupdate="CASCADE", ondelete="CASCADE"), )
 sa.Index(u'_clients_rid8', _cluopinions.c._clients_rid, unique=False)
 sa.Index(u'FK__cluopinions_8', _cluopinions.c._members_rid, unique=False)
 
@@ -192,8 +193,8 @@ _officialcources =  sa.Table('_officialcources', meta.metadata,
                           sa.Column(u'courcedate', sa.types.Date(), primary_key=False, nullable=False),
                           sa.Column(u'cource', sa.types.Float(precision=None, asdecimal=False), primary_key=False, nullable=False),
                           sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                          sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__officialcources_1'),
-                          sa.ForeignKeyConstraint([u'_countries_rid'], [u'_countries.rid'], name=u'FK__officialcources_2'),)
+                          sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__officialcources_1', onupdate="CASCADE", ondelete="CASCADE"),
+                          sa.ForeignKeyConstraint([u'_countries_rid'], [u'_countries.rid'], name=u'FK__officialcources_2', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'_secondary18', _officialcources.c._currency_rid, _officialcources.c._countries_rid, _officialcources.c.courcedate, unique=True)
 sa.Index(u'_countries_rid18', _officialcources.c._countries_rid, unique=False)
 
@@ -206,8 +207,8 @@ _currcources =  sa.Table('_currcources', meta.metadata,
                       sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                       sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                       sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                      sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__currcources_1'),
-                      sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__currcources_2'),)
+                      sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__currcources_1', onupdate="CASCADE", ondelete="CASCADE"),
+                      sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__currcources_2', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'_secondary10', _currcources.c._currency_rid, _currcources.c._clients_rid, _currcources.c.courcedate, unique=True)
 sa.Index(u'_clients_rid10', _currcources.c._clients_rid, unique=False)
 
@@ -220,7 +221,7 @@ _findqueries =  sa.Table('_findqueries', meta.metadata,
                       sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                       sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
                       sa.Column(u'_categories_rid', sa.types.Integer(), primary_key=False),
-                      sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__findqueries'),)
+                      sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__findqueries', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'FK__findqueries12', _findqueries.c._categories_rid, unique=False)
 
 
@@ -242,7 +243,7 @@ _guides =  sa.Table('_guides', meta.metadata,
                 sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                 sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
                 sa.Column(u'_categories_rid', sa.types.Integer(), primary_key=False, nullable=False),
-                sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__guides'),)
+                sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__guides', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'FK__advertises13', _guides.c._categories_rid, unique=False)
 
 
@@ -257,7 +258,7 @@ _guidesimages =  sa.Table('_guidesimages', meta.metadata,
                        sa.Column(u'archive', sa.types.Boolean(), primary_key=False),
                        sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                        sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False),
-                       sa.ForeignKeyConstraint([u'_guides_rid'], [u'_guides.rid'], name=u'FK__guidesimages'),)
+                       sa.ForeignKeyConstraint([u'_guides_rid'], [u'_guides.rid'], name=u'FK__guidesimages', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'FK__categoriesimages14', _guidesimages.c._guides_rid, unique=False)
 
 
@@ -295,7 +296,7 @@ _news =  sa.Table('_news', meta.metadata,
                sa.Column(u'author', sa.types.String(length=255), primary_key=False, nullable=False),
                sa.Column(u'source_name', sa.types.String(length=255), primary_key=False),
                sa.Column(u'source_link', sa.types.String(length=255), primary_key=False),
-               sa.ForeignKeyConstraint([u'_newscategories_rid'], [u'_newscategories.rid'], name=u'FK__news'),)
+               sa.ForeignKeyConstraint([u'_newscategories_rid'], [u'_newscategories.rid'], name=u'FK__news', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'FK__news16', _news.c._newscategories_rid, unique=False)
 
 
@@ -330,7 +331,7 @@ _parsvalues =  sa.Table('_parsvalues', meta.metadata,
                      sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                      sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                      sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                     sa.ForeignKeyConstraint([u'_pars_rid'], [u'_pars.rid'], name=u'FK__parsvalues'),)
+                     sa.ForeignKeyConstraint([u'_pars_rid'], [u'_pars.rid'], name=u'FK__parsvalues', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'_secondary20', _parsvalues.c._pars_rid, _parsvalues.c.value, unique=True)
 
 
@@ -340,7 +341,7 @@ _popularcategories =  sa.Table('_popularcategories', meta.metadata,
                             sa.Column(u'archive', sa.types.Boolean(), primary_key=False),
                             sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False),
                             sa.Column(u'sessionID', sa.types.String(length=112), primary_key=False, nullable=False),
-                            sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__popularcategories'),)
+                            sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__popularcategories', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'_categories_rid21', _popularcategories.c._categories_rid, _popularcategories.c.sessionID, unique=True)
 
 
@@ -350,7 +351,7 @@ _popularwares =  sa.Table('_popularwares', meta.metadata,
                        sa.Column(u'_wares_rid', sa.types.Integer(), primary_key=False, nullable=False),
                        sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False),
                        sa.Column(u'sessionID', sa.types.String(length=112), primary_key=False, nullable=False),
-                       sa.ForeignKeyConstraint([u'_wares_rid'], [u'_wares.rid'], name=u'FK__popularwares'),
+                       sa.ForeignKeyConstraint([u'_wares_rid'], [u'_wares.rid'], name=u'FK__popularwares', onupdate="CASCADE", ondelete="CASCADE"),
     )
 sa.Index(u'_wares_rid23', _popularwares.c._wares_rid, _popularwares.c.sessionID, unique=True)
 
@@ -363,8 +364,8 @@ _prices =  sa.Table('_prices', meta.metadata,
                  sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                  sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                  sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                 sa.ForeignKeyConstraint([u'_pritems_rid'], [u'_pritems.rid'], name=u'FK__prices_1'),
-                 sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__prices_3'),
+                 sa.ForeignKeyConstraint([u'_pritems_rid'], [u'_pritems.rid'], name=u'FK__prices_1', onupdate="CASCADE", ondelete="CASCADE"),
+                 sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__prices_3', onupdate="CASCADE", ondelete="CASCADE"),
     
     )
 sa.Index(u'_currency_rid24', _prices.c._currency_rid, unique=False)
@@ -387,10 +388,10 @@ _pritems =  sa.Table('_pritems', meta.metadata,
                   sa.Column(u'delivery', sa.types.String(length=255), primary_key=False),
                   sa.Column(u'offer_id', sa.types.String(length=45), primary_key=False, nullable=False),
                   sa.Column(u'model_alias', sa.types.String(length=255), primary_key=False),
-                  sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__pritems'),
-                  sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__pritems_1'),
-                  sa.ForeignKeyConstraint([u'_wares_rid'], [u'_wares.rid'], name=u'FK__pritems_4'),
-                  sa.ForeignKeyConstraint([u'_availabletypes_rid'], [u'_availabletypes.rid'], name=u'FK__pritems_5'),
+                  sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__pritems', onupdate="CASCADE", ondelete="CASCADE"),
+                  sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__pritems_1', onupdate="CASCADE", ondelete="CASCADE"),
+                  sa.ForeignKeyConstraint([u'_wares_rid'], [u'_wares.rid'], name=u'FK__pritems_4', onupdate="CASCADE", ondelete="CASCADE"),
+                  sa.ForeignKeyConstraint([u'_availabletypes_rid'], [u'_availabletypes.rid'], name=u'FK__pritems_5', onupdate="CASCADE", ondelete="CASCADE"),
     
     )
 sa.Index(u'_clients_rid25', _pritems.c._clients_rid, _pritems.c.archive, _pritems.c.offer_id, _pritems.c.prdate, unique=True)
@@ -410,7 +411,7 @@ _pritemsimgs =  sa.Table('_pritemsimgs', meta.metadata,
                       sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                       sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                       sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                      sa.ForeignKeyConstraint([u'_pritems_rid'], [u'_pritems.rid'], name=u'FK__pritemsimgs1'),
+                      sa.ForeignKeyConstraint([u'_pritems_rid'], [u'_pritems.rid'], name=u'FK__pritemsimgs1', onupdate="CASCADE", ondelete="CASCADE"),
     
     )
 sa.Index(u'FK__pritemsimgs26', _pritemsimgs.c._pritems_rid, unique=False)
@@ -427,7 +428,7 @@ _prloadsorganizer =  sa.Table('_prloadsorganizer', meta.metadata,
                            sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                            sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                            sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                           sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__prloadsorganizer_1'),
+                           sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__prloadsorganizer_1', onupdate="CASCADE", ondelete="CASCADE"),
     
     )
 sa.Index(u'_clients_rid27', _prloadsorganizer.c._clients_rid, unique=False)
@@ -440,7 +441,7 @@ _relatedcats =  sa.Table('_relatedcats', meta.metadata,
                       sa.Column(u'related_categories_rid', sa.types.Integer(), primary_key=False, nullable=False),
                       sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                       sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                      sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__relatedcats_1'),
+                      sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__relatedcats_1', onupdate="CASCADE", ondelete="CASCADE"),
     )
 sa.Index(u'_secondary30', _relatedcats.c._categories_rid, _relatedcats.c.related_categories_rid, unique=True)
 
@@ -452,8 +453,8 @@ _tmpprices =  sa.Table('_tmpprices', meta.metadata,
                     sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                     sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                     sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                    sa.ForeignKeyConstraint([u'_tmppritems_rid'], [u'_tmppritems.rid'], name=u'FK__tmpprices1'),
-                    sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__tmpprices2'),
+                    sa.ForeignKeyConstraint([u'_tmppritems_rid'], [u'_tmppritems.rid'], name=u'FK__tmpprices1', onupdate="CASCADE", ondelete="CASCADE"),
+                    sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__tmpprices2', onupdate="CASCADE", ondelete="CASCADE"),
     )
 sa.Index(u'_currency_rid31', _tmpprices.c._currency_rid, unique=False)
 
@@ -466,7 +467,7 @@ _tmppricesstorage =  sa.Table('_tmppricesstorage', meta.metadata,
                            sa.Column(u'clurl', sa.types.String(length=255), primary_key=False),
                            sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                            sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                           sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__tmppricesstorage1'),
+                           sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__tmppricesstorage1', onupdate="CASCADE", ondelete="CASCADE"),
     )
 sa.Index(u'_clients_rid32', _tmppricesstorage.c._clients_rid, unique=True)
 
@@ -484,9 +485,9 @@ _tmppritems =  sa.Table('_tmppritems', meta.metadata,
                      sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                      sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                      sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                     sa.ForeignKeyConstraint([u'_tmppricesstorage_rid'], [u'_tmppricesstorage.rid'], name=u'FK__tmppritems3'),
-                     sa.ForeignKeyConstraint([u'_availabletypes_rid'], [u'_availabletypes.rid'], name=u'FK__tmppritems_5'),
-                     sa.ForeignKeyConstraint([u'_clcategories_rid'], [u'_clcategories.rid'], name=u'FK__tmppritems_2'),
+                     sa.ForeignKeyConstraint([u'_tmppricesstorage_rid'], [u'_tmppricesstorage.rid'], name=u'FK__tmppritems3', onupdate="CASCADE", ondelete="CASCADE"),
+                     sa.ForeignKeyConstraint([u'_availabletypes_rid'], [u'_availabletypes.rid'], name=u'FK__tmppritems_5', onupdate="CASCADE", ondelete="CASCADE"),
+                     sa.ForeignKeyConstraint([u'_clcategories_rid'], [u'_clcategories.rid'], name=u'FK__tmppritems_2', onupdate="CASCADE", ondelete="CASCADE"),
     )
 sa.Index(u'offer_id33', _tmppritems.c._tmppricesstorage_rid, _tmppritems.c.offer_id, unique=True)
 sa.Index(u'_categories_rid33', _tmppritems.c._clcategories_rid, unique=False)
@@ -502,7 +503,7 @@ _tmppritemsattrs =  sa.Table('_tmppritemsattrs', meta.metadata,
                           sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                           sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                           sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                          sa.ForeignKeyConstraint([u'_tmppritems_rid'], [u'_tmppritems.rid'], name=u'FK__tmppritemsattrs'),
+                          sa.ForeignKeyConstraint([u'_tmppritems_rid'], [u'_tmppritems.rid'], name=u'FK__tmppritemsattrs', onupdate="CASCADE", ondelete="CASCADE"),
     )
 sa.Index(u'FK__tmppritemsattrs34', _tmppritemsattrs.c._tmppritems_rid, unique=False)
 
@@ -515,8 +516,8 @@ _tmppritemscources =  sa.Table('_tmppritemscources', meta.metadata,
                             sa.Column(u'cource', sa.types.Float(precision=None, asdecimal=False), primary_key=False, nullable=False),
                             sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                             sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                            sa.ForeignKeyConstraint([u'_tmppricesstorage_rid'], [u'_tmppricesstorage.rid'], name=u'FK__tmppritemscources1'),
-                            sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__tmppritemscources2'),
+                            sa.ForeignKeyConstraint([u'_tmppricesstorage_rid'], [u'_tmppricesstorage.rid'], name=u'FK__tmppritemscources1', onupdate="CASCADE", ondelete="CASCADE"),
+                            sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__tmppritemscources2', onupdate="CASCADE", ondelete="CASCADE"),
     
     )
 sa.Index(u'FK__tmppritemscources35', _tmppritemscources.c._currency_rid, unique=False)
@@ -533,7 +534,7 @@ _tmppritemsimgs =  sa.Table('_tmppritemsimgs', meta.metadata,
                          sa.Column(u'image', sa.Binary(length=None), primary_key=False, nullable=False),
                          sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                          sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                         sa.ForeignKeyConstraint([u'_tmppritems_rid'], [u'_tmppritems.rid'], name=u'FK__tmppritemsimgs1'),
+                         sa.ForeignKeyConstraint([u'_tmppritems_rid'], [u'_tmppritems.rid'], name=u'FK__tmppritemsimgs1', onupdate="CASCADE", ondelete="CASCADE"),
     )
 sa.Index(u'FK__tmppritemsimgs36', _tmppritemsimgs.c._tmppritems_rid, unique=False)
 
@@ -545,8 +546,8 @@ _tmppritemspars =  sa.Table('_tmppritemspars', meta.metadata,
                          sa.Column(u'value', sa.types.Text(length=None), primary_key=False),
                          sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                          sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                         sa.ForeignKeyConstraint([u'_pars_rid'], [u'_pars.rid'], name=u'FK__tmppritemspars'),
-                         sa.ForeignKeyConstraint([u'_tmppritems_rid'], [u'_tmppritems.rid'], name=u'FK__tmppritemspars1'),
+                         sa.ForeignKeyConstraint([u'_pars_rid'], [u'_pars.rid'], name=u'FK__tmppritemspars', onupdate="CASCADE", ondelete="CASCADE"),
+                         sa.ForeignKeyConstraint([u'_tmppritems_rid'], [u'_tmppritems.rid'], name=u'FK__tmppritemspars1', onupdate="CASCADE", ondelete="CASCADE"),
     
     )
 sa.Index(u'_secondary37', _tmppritemspars.c._tmppritems_rid, _tmppritemspars.c._pars_rid, unique=True)
@@ -574,7 +575,7 @@ _users =  sa.Table('_users', meta.metadata,
                 sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                 sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                 sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__users_1'),
+                sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__users_1', onupdate="CASCADE", ondelete="CASCADE"),
     
     )
 sa.Index(u'_secondary39', _users.c.login, unique=True)
@@ -590,7 +591,7 @@ _wares =  sa.Table('_wares', meta.metadata,
                 sa.Column(u'popularity', sa.types.Integer(), primary_key=False),
                 sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                 sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__wares_2'),
+                sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__wares_2', onupdate="CASCADE", ondelete="CASCADE"),
     )
 sa.Index(u'_categories_rid40', _wares.c._categories_rid, unique=False)
 
@@ -605,7 +606,7 @@ _waresimages =  sa.Table('_waresimages', meta.metadata,
                       sa.Column(u'name', sa.types.String(length=45), primary_key=False),
                       sa.Column(u'type', sa.types.String(length=45), primary_key=False),
                       sa.Column(u'size', sa.types.String(length=45), primary_key=False),
-                      sa.ForeignKeyConstraint([u'_wares_rid'], [u'_wares.rid'], name=u'FK__waresimages_1'),
+                      sa.ForeignKeyConstraint([u'_wares_rid'], [u'_wares.rid'], name=u'FK__waresimages_1', onupdate="CASCADE", ondelete="CASCADE"),
     
     )
 sa.Index(u'_wares_rid41', _waresimages.c._wares_rid, unique=False)
@@ -620,7 +621,7 @@ _waresmarks =  sa.Table('_waresmarks', meta.metadata,
                      sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                      sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                      sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                     sa.ForeignKeyConstraint([u'_wares_rid'], [u'_wares.rid'], name=u'FK__waresmarks_1'),
+                     sa.ForeignKeyConstraint([u'_wares_rid'], [u'_wares.rid'], name=u'FK__waresmarks_1', onupdate="CASCADE", ondelete="CASCADE"),
     
     )
 sa.Index(u'_wares_rid42', _waresmarks.c._wares_rid, unique=False)
@@ -635,8 +636,8 @@ _warespars =  sa.Table('_warespars', meta.metadata,
                     sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                     sa.Column(u'descr', sa.types.Text(length=None), primary_key=False),
                     sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
-                    sa.ForeignKeyConstraint([u'_wares_rid'], [u'_wares.rid'], name=u'FK__warespars_1'),
-                    sa.ForeignKeyConstraint([u'_pars_rid'], [u'_pars.rid'], name=u'FK__warespars_2'),
+                    sa.ForeignKeyConstraint([u'_wares_rid'], [u'_wares.rid'], name=u'FK__warespars_1', onupdate="CASCADE", ondelete="CASCADE"),
+                    sa.ForeignKeyConstraint([u'_pars_rid'], [u'_pars.rid'], name=u'FK__warespars_2', onupdate="CASCADE", ondelete="CASCADE"),
     
     )
 sa.Index(u'_secondary43', _warespars.c._wares_rid, _warespars.c._pars_rid, unique=True)
@@ -652,7 +653,7 @@ _waresrewievs =  sa.Table('_waresrewievs', meta.metadata,
                        sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                        sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
                        sa.Column(u'review_title', sa.types.String(length=255), primary_key=False, nullable=False),
-                       sa.ForeignKeyConstraint([u'_wares_rid'], [u'_wares.rid'], name=u'FK__waresrewievs'),
+                       sa.ForeignKeyConstraint([u'_wares_rid'], [u'_wares.rid'], name=u'FK__waresrewievs', onupdate="CASCADE", ondelete="CASCADE"),
     
     )
 sa.Index(u'_secondary44', _waresrewievs.c._wares_rid, _waresrewievs.c.review_title, unique=True)
@@ -667,8 +668,8 @@ _waresuopinions =  sa.Table('_waresuopinions', meta.metadata,
                          sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                          sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
                          sa.Column(u'mark', sa.types.Integer(), primary_key=False, nullable=False),
-                         sa.ForeignKeyConstraint([u'_wares_rid'], [u'_wares.rid'], name=u'FK__waresuopinions'),
-                         sa.ForeignKeyConstraint([u'_members_rid'], [u'_members.rid'], name=u'FK__waresuopinions1'),
+                         sa.ForeignKeyConstraint([u'_wares_rid'], [u'_wares.rid'], name=u'FK__waresuopinions', onupdate="CASCADE", ondelete="CASCADE"),
+                         sa.ForeignKeyConstraint([u'_members_rid'], [u'_members.rid'], name=u'FK__waresuopinions1', onupdate="CASCADE", ondelete="CASCADE"),
     
     )
 sa.Index(u'_wares_rid45', _waresuopinions.c._wares_rid, unique=False)

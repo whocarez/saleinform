@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1234822418.3061481
+_modified_time = 1234908779.4731431
 _template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/admin/modules/countries/list.mako'
 _template_uri='/admin/modules/countries/list.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -18,6 +18,7 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         h = context.get('h', UNDEFINED)
         c = context.get('c', UNDEFINED)
+        str = context.get('str', UNDEFINED)
         _ = context.get('_', UNDEFINED)
         __M_writer = context.writer()
         # SOURCE LINE 1
@@ -37,52 +38,62 @@ def render_body(context,**pageargs):
             __M_writer(escape(_(u'\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f \u043d\u0435 \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u044b, \u0441\u043a\u043e\u0440\u0435\u0435 \u0432\u0441\u0435\u0433\u043e \u0438\u0437-\u0437\u0430 \u043d\u0430\u043b\u0438\u0447\u0438\u044f \u0437\u0430\u0432\u0438\u0441\u0438\u043c\u044b\u0445 \u0437\u0430\u043f\u0438\u0441\u0435\u0439.')))
             __M_writer(u'\n\t\t\t\t</div>\n')
         # SOURCE LINE 12
-        __M_writer(u'\t\t\t\t')
+        __M_writer(u'\t\t\t\t<div class="countries-toolbar">\n\t\t\t\t\t<div class="add-tool">')
+        # SOURCE LINE 13
+        __M_writer(escape(h.h_tags.link_to(_(u'\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c'), url='/admin/geography/action')))
+        __M_writer(u'</div>\n\t\t\t\t</div>\n\t\t\t\t')
+        # SOURCE LINE 15
         __M_writer(escape(h.h_tags.form(url='/admin/geography', method="post", id="countries")))
         __M_writer(u'\n\t\t\t\t')
-        # SOURCE LINE 13
+        # SOURCE LINE 16
         __M_writer(escape(h.h_tags.hidden('action','save')))
         __M_writer(u'\n\t\t\t\t<table class="admin-countries" cellpadding="0" cellspacing="0">\n\t\t\t\t\t<thead>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>')
-        # SOURCE LINE 17
+        # SOURCE LINE 20
         __M_writer(escape(h.h_tags.checkbox('check_all', value=0, checked=False, label=None, id="check_all")))
-        __M_writer(u'</th>\n\t\t\t\t\t\t\t<th>')
-        # SOURCE LINE 18
+        __M_writer(u'</th>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t\t<th>')
+        # SOURCE LINE 22
         __M_writer(escape(_(u'\u041d\u0430\u0438\u043c\u0435\u043d\u043e\u0432\u0430\u043d\u0438\u0435')))
         __M_writer(u'</th>\n\t\t\t\t\t\t\t<th>')
-        # SOURCE LINE 19
+        # SOURCE LINE 23
         __M_writer(escape(_(u'\u041a\u043e\u0434')))
         __M_writer(u'</th>\n\t\t\t\t\t\t\t<th>')
-        # SOURCE LINE 20
+        # SOURCE LINE 24
         __M_writer(escape(_(u'\u0412\u0430\u043b\u044e\u0442\u0430')))
         __M_writer(u'</th>\n\t\t\t\t\t\t\t<th>')
-        # SOURCE LINE 21
+        # SOURCE LINE 25
         __M_writer(escape(_(u'\u0410\u0440\u0445\u0438\u0432')))
-        __M_writer(u'</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n')
-        # SOURCE LINE 24
+        __M_writer(u'</th>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n')
+        # SOURCE LINE 29
         for row in c.a_countries:
-            # SOURCE LINE 25
+            # SOURCE LINE 30
             __M_writer(u'\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 26
+            # SOURCE LINE 31
             __M_writer(escape(h.h_tags.checkbox('check_countries', value=row.rid, checked=False, label=None)))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 27
+            # SOURCE LINE 32
+            __M_writer(escape(h.h_tags.image(row.image_name, alt=row.name)))
+            __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
+            # SOURCE LINE 33
             __M_writer(escape(row.name))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 28
+            # SOURCE LINE 34
             __M_writer(escape(row.code))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 29
+            # SOURCE LINE 35
             __M_writer(escape(row.currency_code))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 30
+            # SOURCE LINE 36
             __M_writer(escape(h.h_tags.checkbox('archive', value=row.rid, checked=row.archive, label=None)))
+            __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
+            # SOURCE LINE 37
+            __M_writer(escape(h.h_tags.link_to(h.h_tags.image('/img/icons/pencil.png', _(u'\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c'), border="0"), '/admin/geography/action/'+str(row.rid), title=_(u'\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c'))))
             __M_writer(u'</td>\n\t\t\t\t\t</tr>\n')
-        # SOURCE LINE 33
+        # SOURCE LINE 40
         __M_writer(u'\t\t\t\t</table>\n\t\t\t\t')
-        # SOURCE LINE 34
+        # SOURCE LINE 41
         __M_writer(escape(h.h_tags.submit('submit',_(u'\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c'))))
         __M_writer(u'\n\t\t\t\t')
-        # SOURCE LINE 35
+        # SOURCE LINE 42
         __M_writer(escape(h.h_tags.end_form()))
         __M_writer(u'\n\t\t\t</div>\n\t\t\t\n\t\t\t<script type="text/javascript">\n                $(document).ready(function(){\n                        $("#countries > table > thead > tr > th > #check_all").click(function(){\n                                var checked_status = this.checked;\n                                $("input[name=\'check_countries\']").each(function(){\n                                        this.checked = checked_status;\n                                });\n                        });\n                });\n\t\t\t</script>\n\t\t\t\n\t\t\t\n')
         return ''
