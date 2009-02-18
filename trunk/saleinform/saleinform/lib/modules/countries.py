@@ -60,34 +60,27 @@ class CountriesList(object):
     
     def processingCountry(self, rid=None):
         """Создание/Редактирование данных"""
-        #try:
-        if rid:
-            country = si.meta.Session.query(si.Countries).filter(si.Countries.rid==rid).first()
-        else: 
-            country = si.Countries()
-        country.code=request.params['code']
-        country.name=request.params['name'] 
-        country.image_name='/img/flags/'+request.params['code']+'_'+request.params['image_name'].filename
-        country._currency_rid=request.params['_currency_rid']
-        country.archive=request.params.get('archive', False)
-        si.meta.Session.add(country)
-        si.meta.Session.commit()
-        flagFile = open(os.path.join(config['pylons.paths']['static_files'], 'img', 'flags', request.params['code']+'_'+request.params['image_name'].filename), 'w')
-        shutil.copyfileobj(request.params['image_name'].file, flagFile)
-        request.params['image_name'].file.close()
-        flagFile.close()
-        return country.rid
-        #except:
-        #    si.meta.Session.rollback()
-        #    return False
+        try:
+            if rid:
+                country = si.meta.Session.query(si.Countries).filter(si.Countries.rid==rid).first()
+            else: 
+                country = si.Countries()
+                country.code=request.params['code']
+                country.name=request.params['name'] 
+                country.image_name='/img/flags/'+request.params['code']+'_'+request.params['image_name'].filename
+                country._currency_rid=request.params['_currency_rid']
+                country.archive=request.params.get('archive', False)
+                si.meta.Session.add(country)
+                si.meta.Session.commit()
+                flagFile = open(os.path.join(config['pylons.paths']['static_files'], 'img', 'flags', request.params['code']+'_'+request.params['image_name'].filename), 'w')
+                shutil.copyfileobj(request.params['image_name'].file, flagFile)
+                request.params['image_name'].file.close()
+                flagFile.close()
+            return country.rid
+        except:
+            si.meta.Session.rollback()
+            return False
 
     def getCountry(self, rid):
         return si.meta.Session.query(si.Countries).filter(si.Countries.rid==rid).first()
-        
-class CurrenciesList:
-    def __init__(self):
-        pass
-    
-    def getCurrencies(self):
-        return si.meta.Session.query(si.Currency).all()
         

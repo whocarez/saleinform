@@ -4,7 +4,7 @@
 </%doc>
 <h3>Добавление страны</h3>
 <div class="back-link">
-	${h.h_tags.link_to(_(u'Назад к списку стран'), '/admin/geography')}
+	${h.h_tags.link_to(_(u'Назад к списку стран'), '/admin/countries')}
 </div>
 % if c.a_operation_status==True:
 <div class="message-save-success">
@@ -16,7 +16,7 @@
 </div>
 % endif
 
-${h.h_tags.form(url='/admin/geography/action', method="post", multipart=True, id="countries")}
+${h.h_tags.form(url='/admin/countries/action', method="post", multipart=True, id="countries")}
 ${h.h_tags.hidden('action','add')}
 <div class="country-processing">
 	<table width="50%">

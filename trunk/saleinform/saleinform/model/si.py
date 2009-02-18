@@ -190,12 +190,10 @@ _officialcources =  sa.Table('_officialcources', meta.metadata,
                           sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
                           sa.Column(u'_currency_rid', sa.types.Integer(), primary_key=False, nullable=False),
                           sa.Column(u'_countries_rid', sa.types.Integer(), primary_key=False, nullable=False),
-                          sa.Column(u'courcedate', sa.types.Date(), primary_key=False, nullable=False),
-                          sa.Column(u'cource', sa.types.Float(precision=None, asdecimal=False), primary_key=False, nullable=False),
-                          sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
+                          sa.Column(u'cource', sa.types.Float(precision=None, asdecimal=False), primary_key=False, nullable=True, default=0),
+                          sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False, default=func.now()),
                           sa.ForeignKeyConstraint([u'_currency_rid'], [u'_currency.rid'], name=u'FK__officialcources_1', onupdate="CASCADE", ondelete="CASCADE"),
                           sa.ForeignKeyConstraint([u'_countries_rid'], [u'_countries.rid'], name=u'FK__officialcources_2', onupdate="CASCADE", ondelete="CASCADE"),)
-sa.Index(u'_secondary18', _officialcources.c._currency_rid, _officialcources.c._countries_rid, _officialcources.c.courcedate, unique=True)
 sa.Index(u'_countries_rid18', _officialcources.c._countries_rid, unique=False)
 
 _currcources =  sa.Table('_currcources', meta.metadata,

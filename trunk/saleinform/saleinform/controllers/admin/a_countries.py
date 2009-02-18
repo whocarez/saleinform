@@ -6,19 +6,16 @@ from pylons.controllers.util import abort, redirect_to
 
 from saleinform.lib.base import BaseController, render
 from saleinform.model import si
-from saleinform.lib.modules.countries import CountriesList, CurrenciesList
+from saleinform.lib.modules.countries import CountriesList
+from saleinform.lib.modules.currency import CurrencyList
 from pylons.decorators import validate
 from saleinform.lib.validators import countries as v_countries
 
 log = logging.getLogger(__name__)
 
-class AGeographyController(BaseController):
+class ACountriesController(BaseController):
     a_operation_status = None
-    """Управление географическими справочниками
-        Страны
-        Регионы
-        Города
-        Валюты
+    """Управление странами
     """
     def index(self):
         if request.POST.get('action', None):
@@ -28,13 +25,13 @@ class AGeographyController(BaseController):
             if not CountriesList().toArchive(request.POST.getall('archive')): self.a_operation_status = False # а теперь отправим в архив нужные
         c.a_countries = CountriesList().getList()    
         c.a_operation_status = self.a_operation_status
-        c.a_template_name = 'list.mako' 
-        return render('/admin/layouts/geography.mako')
+        c.a_template_name = 'countries_list.mako' 
+        return render('/admin/layouts/countries.mako')
 
     @validate(schema=v_countries.CountryForm(), form='processing')
     def processing(self, rid=None):
         """Создание или редактирование записи"""
-        c.a_currencies = CurrenciesList().getCurrencies()
+        c.a_currencies = CurrencyList().getList()
         if rid: 
             c.a_country = CountriesList().getCountry(rid)
             c.a_template_name = 'country_edit.mako'
@@ -54,6 +51,6 @@ class AGeographyController(BaseController):
                 else:
                     redirect_to('action/'+str(newRid))
         c.a_operation_status = self.a_operation_status
-        return render('/admin/layouts/geography.mako')
+        return render('/admin/layouts/countries.mako')
         
                 

@@ -4,7 +4,7 @@
 </%doc>
 <h3>Редактирование страны</h3>
 <div class="back-link">
-	${h.h_tags.link_to(_(u'Назад к списку стран'), '/admin/geography')}
+	${h.h_tags.link_to(_(u'Назад к списку стран'), '/admin/countries')}
 </div>
 
 % if c.a_operation_status==True:
@@ -17,7 +17,7 @@
 </div>
 % endif
 
-${h.h_tags.form(url='/admin/geography/action/'+str(c.a_country.rid), method="post", multipart=True, id="countries")}
+${h.h_tags.form(url='/admin/countries/action/'+str(c.a_country.rid), method="post", multipart=True, id="countries")}
 ${h.h_tags.hidden('action','add')}
 <div class="country-processing">
 	<table width="50%">

@@ -33,10 +33,15 @@ def make_map():
     map.connect('/members/{action}/{id}', controller='members') # members
 
     # ------------------------ Admin -------------------------------
-    map.connect('/admin/geography', controller='admin/a_geography', action='index')
-    map.connect('/admin/geography/action', controller='admin/a_geography', action='processing')
-    map.connect('/admin/geography/action/{rid}', controller='admin/a_geography', action='processing')
+    # Countries
+    map.connect('/admin/countries', controller='admin/a_countries', action='index')
+    map.connect('/admin/countries/action', controller='admin/a_countries', action='processing')
+    map.connect('/admin/countries/action/{rid}', controller='admin/a_countries', action='processing')
     
+    # Currency
+    map.connect('/admin/currency', controller='admin/a_currency', action='index')
+    map.connect('/admin/currency/action', controller='admin/a_currency', action='processing')
+    map.connect('/admin/currency/action/{rid}', controller='admin/a_currency', action='processing')
 
     map.connect('/{controller}/{action}')
     map.connect('/{controller}/{action}/{id}')

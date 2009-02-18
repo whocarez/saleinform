@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1234907574.264816
+_modified_time = 1234973261.467335
 _template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/admin/modules/countries/country_edit.mako'
 _template_uri='/admin/modules/countries/country_edit.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -24,7 +24,7 @@ def render_body(context,**pageargs):
         # SOURCE LINE 4
         __M_writer(u'\n<h3>\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0441\u0442\u0440\u0430\u043d\u044b</h3>\n<div class="back-link">\n\t')
         # SOURCE LINE 7
-        __M_writer(escape(h.h_tags.link_to(_(u'\u041d\u0430\u0437\u0430\u0434 \u043a \u0441\u043f\u0438\u0441\u043a\u0443 \u0441\u0442\u0440\u0430\u043d'), '/admin/geography')))
+        __M_writer(escape(h.h_tags.link_to(_(u'\u041d\u0430\u0437\u0430\u0434 \u043a \u0441\u043f\u0438\u0441\u043a\u0443 \u0441\u0442\u0440\u0430\u043d'), '/admin/countries')))
         __M_writer(u'\n</div>\n\n')
         # SOURCE LINE 10
         if c.a_operation_status==True:
@@ -43,7 +43,7 @@ def render_body(context,**pageargs):
         # SOURCE LINE 19
         __M_writer(u'\n')
         # SOURCE LINE 20
-        __M_writer(escape(h.h_tags.form(url='/admin/geography/action/'+str(c.a_country.rid), method="post", multipart=True, id="countries")))
+        __M_writer(escape(h.h_tags.form(url='/admin/countries/action/'+str(c.a_country.rid), method="post", multipart=True, id="countries")))
         __M_writer(u'\n')
         # SOURCE LINE 21
         __M_writer(escape(h.h_tags.hidden('action','add')))

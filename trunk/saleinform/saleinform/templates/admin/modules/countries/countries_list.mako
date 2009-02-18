@@ -10,9 +10,9 @@
 				</div>
 				% endif
 				<div class="countries-toolbar">
-					<div class="add-tool">${h.h_tags.link_to(_(u'Добавить'), url='/admin/geography/action')}</div>
+					<div class="add-tool">${h.h_tags.link_to(_(u'Добавить'), url='/admin/countries/action')}</div>
 				</div>
-				${h.h_tags.form(url='/admin/geography', method="post", id="countries")}
+				${h.h_tags.form(url='/admin/countries', method="post", id="countries")}
 				${h.h_tags.hidden('action','save')}
 				<table class="admin-countries" cellpadding="0" cellspacing="0">
 					<thead>
@@ -34,7 +34,7 @@
 						<td>${row.code}</td>
 						<td>${row.currency_code}</td>
 						<td>${h.h_tags.checkbox('archive', value=row.rid, checked=row.archive, label=None)}</td>
-						<td>${h.h_tags.link_to(h.h_tags.image('/img/icons/pencil.png', _(u'Редактировать запись'), border="0"), '/admin/geography/action/'+str(row.rid), title=_(u'Редактировать запись'))}</td>
+						<td>${h.h_tags.link_to(h.h_tags.image('/img/icons/pencil.png', _(u'Редактировать запись'), border="0"), '/admin/countries/action/'+str(row.rid), title=_(u'Редактировать запись'))}</td>
 					</tr>
 					% endfor
 				</table>
