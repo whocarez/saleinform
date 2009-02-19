@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1234997599.638974
+_modified_time = 1235072131.0035369
 _template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/admin/modules/currency/cources_list.mako'
 _template_uri='/admin/modules/currency/cources_list.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -42,7 +42,7 @@ def render_body(context,**pageargs):
         # SOURCE LINE 12
         __M_writer(u'\t\t\t\t<div class="currency-toolbar">\n\t\t\t\t\t<div class="refresh-tool">')
         # SOURCE LINE 13
-        __M_writer(escape(h.h_tags.link_to(_(u'\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u043a\u0443\u0440\u0441\u044b'), url='/admin/currency/refresh')))
+        __M_writer(escape(h.h_tags.link_to(_(u'\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u043a\u0443\u0440\u0441\u044b \u0432\u0430\u043b\u044e\u0442'), url='/admin/currency/refresh')))
         __M_writer(u'</div>\n\t\t\t\t</div>\n\t\t\t\t')
         # SOURCE LINE 15
         __M_writer(escape(h.h_tags.form(url='/admin/currency', method="post", id="currency")))
