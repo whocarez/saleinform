@@ -42,6 +42,7 @@ def make_map():
     map.connect('/admin/currency', controller='admin/a_currency', action='index')
     map.connect('/admin/currency/action', controller='admin/a_currency', action='processing')
     map.connect('/admin/currency/action/{rid}', controller='admin/a_currency', action='processing')
+    map.connect('/admin/currency/refresh', controller='admin/a_currency', action='refresh')
 
     map.connect('/{controller}/{action}')
     map.connect('/{controller}/{action}/{id}')

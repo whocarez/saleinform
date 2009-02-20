@@ -9,6 +9,7 @@ from saleinform.lib.modules.currency import CurrencyList
 from saleinform.lib.modules.countries import CountriesList
 from pylons.decorators import validate
 from saleinform.lib.validators import currency as v_currency
+from saleinform.lib.robots import currency_robot
 
 log = logging.getLogger(__name__)
 
@@ -61,4 +62,12 @@ class ACurrencyController(BaseController):
         c.a_cources = CurrencyList().getOfficalCources()
         c.a_coperation_status = self.a_coperation_status
         return
+    
+    def refresh(self):
+        """Обновление курсов валют
+        """
+        for country in CountriesList().getList():
+            if country.code in dir(currency_robot):
+                eval('currency_robot.%s()'%country.code) 
+        redirect_to('/admin/currency')
         

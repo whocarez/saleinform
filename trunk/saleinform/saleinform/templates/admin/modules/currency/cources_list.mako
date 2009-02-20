@@ -48,6 +48,7 @@
 							% endfor
 						</tr>
 						% endfor
+						
 					</thead>
 				</table>
 				${h.h_tags.submit('submit',_(u'Сохранить'))}

@@ -3,8 +3,8 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1235072131.0035369
-_template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/admin/modules/currency/cources_list.mako'
+_modified_time = 1235120389.375
+_template_filename='D:\\PROJECTS\\ECLIPSE\\PYLONS\\saleinform\\saleinform\\templates/admin/modules/currency/cources_list.mako'
 _template_uri='/admin/modules/currency/cources_list.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
 _source_encoding='utf-8'
@@ -106,11 +106,11 @@ def render_body(context,**pageargs):
             # SOURCE LINE 49
             __M_writer(u'\t\t\t\t\t\t</tr>\n')
         # SOURCE LINE 51
-        __M_writer(u'\t\t\t\t\t</thead>\n\t\t\t\t</table>\n\t\t\t\t')
-        # SOURCE LINE 53
+        __M_writer(u'\t\t\t\t\t\t\n\t\t\t\t\t</thead>\n\t\t\t\t</table>\n\t\t\t\t')
+        # SOURCE LINE 54
         __M_writer(escape(h.h_tags.submit('submit',_(u'\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c'))))
         __M_writer(u'\n\t\t\t\t')
-        # SOURCE LINE 54
+        # SOURCE LINE 55
         __M_writer(escape(h.h_tags.end_form()))
         __M_writer(u'\n\t\t\t</div>\n\t\t\t\n\t\t\t<script type="text/javascript">\n                $(document).ready(function(){\n                        $("#currency > table > thead > tr > th > #check_all").click(function(){\n                                var checked_status = this.checked;\n                                $("input[name=\'check_currency\']").each(function(){\n                                        this.checked = checked_status;\n                                });\n                        });\n                });\n\t\t\t</script>\n\t\t\t\n\t\t\t\n')
         return ''

@@ -32,7 +32,7 @@ class UACurrency(ContentHandler):
         if name == 'change': self.insideChange = False
         if name == 'date': self.insideDate = False
         if name == 'item':
-            if self.currency['char3'] in self.CL:
+            if self.currency['code'] in self.CL:
                 self.currenciesList.append(self.currency)
             self.currency = {}
 
@@ -43,36 +43,33 @@ class UACurrency(ContentHandler):
         if self.insideChange: self.currency['change'] = ch
         if self.insideDate: self.currency['date'] = ch
         
-def UAParse():
+def UA():
     URL = 'http://bank-ua.com/export/currrate.xml'
     try:
         parser = make_parser()   
         curHandler = UACurrency()
         parser.setContentHandler(curHandler)
         parser.parse(urllib2.urlopen(URL))
-        print curHandler.currenciesList
     except:
-        return u'Ошибка получения данных от НБУ'
-
+        return False
+    
     # засовываем данные в базу
-    si.meta.Session.query(si.Officialcources).\
-    join((si.Countries, si.Countries.rid == si.Officialcources._countries_rid)).\
-    filter(si.Countries.code=='UA').delete()
-    
-    countryRow = si.meta.Session.query(si.Countries).filter(si.Countries.code=='UA').first()
-    
-    for currency in self.currenciesList:
-        currencyRow = si.meta.Session.query(si.Currency).filter(si.Currency.code==currency['char3']).first()
+    countryRow = si.meta.Session.query(si.Countries).filter(si.Countries.code==u'UA').first()
+    countryCurrency = si.meta.Session.query(si.Currency).filter(si.Currency.rid==countryRow._currency_rid).first()
+    curHandler.currenciesList.append({'code':countryCurrency.code, 'size':1, 'rate':1, 'change':0, 'date':u''})
+    si.meta.Session.query(si.Officialcources).filter(si.Officialcources._countries_rid==countryRow.rid).delete()
+    for currency in curHandler.currenciesList:
+        currencyRow = si.meta.Session.query(si.Currency).filter(si.Currency.code==currency['code']).first()
         if not currencyRow: continue
         officialCource = si.Officialcources()
         officialCource._currency_rid=currencyRow.rid
         officialCource._countries_rid=countryRow.rid
-        officialCource.cource=currency['rate']/currency['size']
+        officialCource.cource=round(float(currency['rate'])/float(currency['size']), 4)
         si.meta.Session.add(officialCource)
+        si.meta.Session.commit()
+    return True
         
          
-    
-UAParse()    
     
          
             
