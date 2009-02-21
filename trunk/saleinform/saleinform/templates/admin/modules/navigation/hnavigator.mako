@@ -24,6 +24,7 @@
 <div class="dropmenudiv_d" id="dropmenu1_d" style="top: 830px; left: 252px; visibility: hidden;">
 	${h.h_tags.link_to(_(u'Страны'), url='/admin/countries', title=_(u'Страны'), rel="dropmenu1_d", style="border-top-width: 0pt;")}
 	${h.h_tags.link_to(_(u'Валюты'), url='/admin/currency', title=_(u'Валюты'), rel="dropmenu1_d", style="border-top-width: 0pt;")}
+	${h.h_tags.link_to(_(u'Регионы и города'), url='/admin/regions', title=_(u'Регионы и города'), rel="dropmenu1_d", style="border-top-width: 0pt;")}
 </div>
 
 <div style="width: 150px; top: 830px; left: 351px; visibility: hidden;" class="dropmenudiv_d" id="dropmenu2_d">

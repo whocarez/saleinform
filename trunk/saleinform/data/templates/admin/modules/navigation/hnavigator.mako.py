@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1234973524.1469381
+_modified_time = 1235255275.1562459
 _template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/admin/modules/navigation/hnavigator.mako'
 _template_uri='/admin/modules/navigation/hnavigator.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -44,6 +44,9 @@ def render_body(context,**pageargs):
         __M_writer(u'\n\t')
         # SOURCE LINE 26
         __M_writer(escape(h.h_tags.link_to(_(u'\u0412\u0430\u043b\u044e\u0442\u044b'), url='/admin/currency', title=_(u'\u0412\u0430\u043b\u044e\u0442\u044b'), rel="dropmenu1_d", style="border-top-width: 0pt;")))
+        __M_writer(u'\n\t')
+        # SOURCE LINE 27
+        __M_writer(escape(h.h_tags.link_to(_(u'\u0420\u0435\u0433\u0438\u043e\u043d\u044b \u0438 \u0433\u043e\u0440\u043e\u0434\u0430'), url='/admin/regions', title=_(u'\u0420\u0435\u0433\u0438\u043e\u043d\u044b \u0438 \u0433\u043e\u0440\u043e\u0434\u0430'), rel="dropmenu1_d", style="border-top-width: 0pt;")))
         __M_writer(u'\n</div>\n\n<div style="width: 150px; top: 830px; left: 351px; visibility: hidden;" class="dropmenudiv_d" id="dropmenu2_d">\n\t<a href="http://www.cssdrive.com" style="border-top-width: 0pt;">CSS Drive</a>\n\t<a href="http://www.javascriptkit.com">JavaScript Kit</a>\n\t<a href="http://www.codingforums.com">Coding Forums</a>\n\t<a href="http://www.javascriptkit.com/jsref/">JavaScript Reference</a>\n</div>\n\n<script type="text/javascript">\n<!--\n\ttabdropdown.init("glowmenu", "auto")\n//->\n</script>')
         return ''
     finally:
