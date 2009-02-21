@@ -17,6 +17,7 @@ setup(
         "Pylons>=0.9.7",
         "SQLAlchemy>=0.5",
         "FormAlchemy>=1.1",
+        "soaplib",
         "Mako",
         "PIL",
     ],
