@@ -37,8 +37,11 @@ class AClientsController(BaseController):
                 if request.POST.get('s_place', None)!=u'': searchRule['place'] = request.POST.get('s_place')
                 session['clients_search_rule'] = searchRule
                 session.save()
-                
-        a_clients = ClientsList().getList()
+        sortRule = session.get('clients_sort_rule')
+        cList = ClientsList()
+        a_clients = cList.getList()
+        c.a_sort = cList.defaultSort
+        c.a_sortrule = cList.defaultSortRule
         c.a_operation_status = self.a_operation_status
         page = paginate.Page(a_clients, items_per_page=10, item_count=len(a_clients), page=request.GET.get("page", 1))
         c.a_pager = page.pager()
@@ -76,3 +79,17 @@ class AClientsController(BaseController):
             del session['clients_search_rule'] 
             session.save()
         redirect_to('/admin/clients')
+        
+    def sort(self):
+        if request.GET.get('s', None):
+            if session.has_key('clients_sort_rule'):
+                sortRule = session.get('clients_sort_rule')
+                if sortRule.get('column', None) ==  request.GET.get('s'):
+                    if sortRule.get('rule') == 'asc': sortRule['rule']='desc'
+                    else: sortRule['rule']='asc'
+                    session['clients_sort_rule'] = sortRule
+                else:
+                    session['clients_sort_rule'] = {'column':request.GET.get('s'), 'rule':'asc'}
+            else: session['clients_sort_rule'] = {'column':request.GET.get('s'), 'rule':'asc'}
+            session.save()
+        redirect_to('/admin/clients')        

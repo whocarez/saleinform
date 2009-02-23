@@ -13,15 +13,21 @@ import os, shutil
 
 class ClientsList(object):
 
-    def __init__(self, sort=None):
-        self.defaultSort = sort or si.Clients.name
+    def __init__(self):
+        self.sortabledCols = {'name':si.Clients.name, 'createdt':si.Clients.createdt}
+        self.defaultSort = si.Clients.name
+        self.defaultSortRule = 'asc'
+        if session.get('clients_sort_rule', None):
+            if session['clients_sort_rule']['column'] in self.sortabledCols.keys():
+                self.defaultSort = self.sortabledCols.get(session['clients_sort_rule']['column'])
+            self.defaultSortRule = session['clients_sort_rule']['rule']
 
     def getList(self, **kargs):
         """Возвращает список клиентов
         """
         clients = si.meta.Session.query(si.Clients.rid, si.Clients.name, si.Clients.logo, si.Clients.address, si.Clients.phones,\
                                           si.Clients.skype, si.Clients.icq, si.Clients.url, si.Clients.isloaded, si.Clients.active,\
-                                          si.Clients.contact_phones, si.Clients.contact_email, si.Clients.contact_person,
+                                          si.Clients.contact_phones, si.Clients.contact_email, si.Clients.contact_person, si.Clients.createdt,
                                           si.Cities.name.label('cityName'), si.Regions.name.label('regionName'), si.Countries.name.label('countryName'),\
                                           si.Countries.image_name).\
                     join((si.Cities, si.Cities.rid==si.Clients._cities_rid),\
@@ -34,8 +40,10 @@ class ClientsList(object):
             for key, rule in searchRule.iteritems():
                 if key == 'name': clients = clients.filter(si.Clients.name.like('%'+rule+'%'))
                 if key == 'place': clients = clients.filter(or_(si.Cities.name.like('%'+rule+'%'), si.Regions.name.like('%'+rule+'%'), si.Countries.name.like('%'+rule+'%')))
-        
-        clients = clients.order_by(self.defaultSort).all()
+        if self.defaultSortRule=='asc':
+            clients = clients.order_by(self.defaultSort.asc()).all()
+        else:
+            clients = clients.order_by(self.defaultSort.desc()).all()
         return clients
     
     def toActive(self, rids):
@@ -92,42 +100,44 @@ class ClientsList(object):
     
     def processingClients(self, rid=None):
         """Создание/Редактирование данных"""
-        try:
-            if rid:
-                client = si.meta.Session.query(si.Clients).filter(si.Clients.rid==rid).first()
-            else: 
-                client = si.Clients()
-            client.name = request.params['name']
-            client._cities_rid = request.params['_cities_rid']
-            client.address = request.params['address']
-            client.phones = request.params['phones']
-            client.skype = request.params['skype']
-            client.icq = request.params['icq']
-            client.url = request.params['url']
-            client.creadits_info = request.POST.get('creadits_info', False)
-            client.delivery_info = request.params['delivery_info']
-            client.worktime_info = request.params['worktime_info']
-            client.descr = request.params['descr']
-            client.isloaded = request.POST.get('isloaded', False)
-            client.actual_days = request.params['actual_days']
-            client.price_email = request.params['price_email']
-            client.price_url = request.params['price_url']
-            client.contact_phones = request.params['contact_phones']
-            client.contact_email = request.params['contact_email']
-            client.contact_person = request.params['contact_person']
-            client.active = request.POST.get('active', False)
-            client.popularity = request.params['popularity']
-            client.logo = '/img/cllogos/'+'_'+request.params['logo'].filename
-            si.meta.Session.add(client)
-            si.meta.Session.commit()
-            logoFile = open(os.path.join(config['pylons.paths']['static_files'], 'img', 'cllogos', request.params['code']+'_'+request.params['logo'].filename), 'w')
-            shutil.copyfileobj(request.params['logo'].file, logoFile)
-            request.params['logo'].file.close()
-            logoFile.close()
-            return client.rid
-        except:
-            si.meta.Session.rollback()
-            return False
+        #try:
+        if rid:
+            client = si.meta.Session.query(si.Clients).filter(si.Clients.rid==rid).first()
+        else: 
+            client = si.Clients()
+        client.name = request.params['name']
+        client._cities_rid = request.params['_cities_rid']
+        client.address = request.params['address']
+        client.phones = request.params['phones']
+        client.skype = request.params['skype']
+        client.icq = request.params['icq']
+        client.url = request.params['url']
+        client.creadits_info = request.POST.get('creadits_info', False)
+        client.delivery_info = request.params['delivery_info']
+        client.worktime_info = request.params['worktime_info']
+        client.descr = request.params['descr']
+        client.isloaded = request.POST.get('isloaded', False)
+        client.actual_days = request.params['actual_days']
+        client.price_email = request.params['price_email']
+        client.price_url = request.params['price_url']
+        client.contact_phones = request.params['contact_phones']
+        client.contact_email = request.params['contact_email']
+        client.contact_person = request.params['contact_person']
+        client.active = request.POST.get('active', False)
+        client.popularity = request.params['popularity']
+        si.meta.Session.add(client)
+        si.meta.Session.commit()
+        client.logo = '/img/cllogos/'+str(client.rid)+'_'+request.params['logo'].filename
+        logoFile = open(os.path.join(config['pylons.paths']['static_files'], 'img', 'cllogos', str(client.rid)+'_'+request.params['logo'].filename), 'w')
+        shutil.copyfileobj(request.params['logo'].file, logoFile)
+        request.params['logo'].file.close()
+        logoFile.close()
+        si.meta.Session.add(client)
+        si.meta.Session.commit()
+        return client.rid
+        #except:
+        #    si.meta.Session.rollback()
+        #    return False
 
     def getClient(self, rid):
         return si.meta.Session.query(si.Clients).filter(si.Clients.rid==rid).first()

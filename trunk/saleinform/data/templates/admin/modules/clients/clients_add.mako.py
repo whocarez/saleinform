@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1235410407.4773829
+_modified_time = 1235420073.2446179
 _template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/admin/modules/clients/clients_add.mako'
 _template_uri='/admin/modules/clients/clients_add.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -100,7 +100,7 @@ def render_body(context,**pageargs):
         __M_writer(escape(_(u'\u041a\u0440\u0435\u0434\u0438\u0442')))
         __M_writer(u'</label>\n\t\t</td>\n\t\t<td>\n\t\t\t')
         # SOURCE LINE 93
-        __M_writer(escape(h.h_tags.checkbox('creadits_info', value="", id="creadits_info")))
+        __M_writer(escape(h.h_tags.checkbox('creadits_info', value=True, id="creadits_info")))
         __M_writer(u'\n\t\t</td>\n\t</tr>\n\t<tr>\n\t\t<td width="40%">\n\t\t\t<label for="code">')
         # SOURCE LINE 98
         __M_writer(escape(_(u'\u0414\u043e\u0441\u0442\u0430\u0432\u043a\u0430')))
@@ -124,7 +124,7 @@ def render_body(context,**pageargs):
         __M_writer(escape(_(u'\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430 \u043f\u0440\u0430\u0439\u0441\u043e\u0432')))
         __M_writer(u'</label>\n\t\t</td>\n\t\t<td>\n\t\t\t')
         # SOURCE LINE 125
-        __M_writer(escape(h.h_tags.checkbox('isloaded', value="", id="isloaded")))
+        __M_writer(escape(h.h_tags.checkbox('isloaded', value=True, id="isloaded")))
         __M_writer(u'\n\t\t</td>\n\t</tr>\n\t<tr>\n\t\t<td width="40%">\n\t\t\t<label for="code">')
         # SOURCE LINE 130
         __M_writer(escape(_(u'\u0410\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u044c \u043f\u0440\u0430\u0439\u0441\u0430')))
@@ -166,7 +166,7 @@ def render_body(context,**pageargs):
         __M_writer(escape(_(u'\u0410\u043a\u0442\u0438\u0432\u043d\u044b\u0439')))
         __M_writer(u'</label>\n\t\t</td>\n\t\t<td>\n\t\t\t')
         # SOURCE LINE 181
-        __M_writer(escape(h.h_tags.checkbox('active', value="", id="active")))
+        __M_writer(escape(h.h_tags.checkbox('active', value=True, id="active")))
         __M_writer(u'\n\t\t</td>\n\t</tr>\n\t<tr>\n\t\t<td width="40%">\n\t\t\t<label for="code">')
         # SOURCE LINE 186
         __M_writer(escape(_(u'\u041f\u043e\u043f\u0443\u043b\u044f\u0440\u043d\u043e\u0441\u0442\u044c')))

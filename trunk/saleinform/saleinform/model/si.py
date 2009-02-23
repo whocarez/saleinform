@@ -162,7 +162,7 @@ _clients =  sa.Table('_clients', meta.metadata,
                   sa.Column(u'contact_phones', sa.types.String(length=255), primary_key=False),
                   sa.Column(u'contact_email', sa.types.String(length=255), primary_key=False),
                   sa.Column(u'contact_person', sa.types.String(length=255), primary_key=False),
-                  sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False),
+                  sa.Column(u'createdt', sa.types.TIMESTAMP(timezone=False), primary_key=False, nullable=False, default=func.now()),
                   sa.Column(u'active', sa.types.Boolean(), primary_key=False),
                   sa.Column(u'popularity', sa.types.Integer(), primary_key=False),
                   sa.ForeignKeyConstraint([u'_cities_rid'], [u'_cities.rid'], name=u'FK__clients_1', onupdate="CASCADE", ondelete="CASCADE"),)

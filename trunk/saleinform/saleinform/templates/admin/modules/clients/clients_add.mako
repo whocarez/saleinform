@@ -90,7 +90,7 @@ ${h.h_tags.hidden('action','add')}
 			<label for="code">${_(u'Кредит')}</label>
 		</td>
 		<td>
-			${h.h_tags.checkbox('creadits_info', value="", id="creadits_info")}
+			${h.h_tags.checkbox('creadits_info', value=True, id="creadits_info")}
 		</td>
 	</tr>
 	<tr>
@@ -122,7 +122,7 @@ ${h.h_tags.hidden('action','add')}
 			<label for="code">${_(u'Загрузка прайсов')}</label>
 		</td>
 		<td>
-			${h.h_tags.checkbox('isloaded', value="", id="isloaded")}
+			${h.h_tags.checkbox('isloaded', value=True, id="isloaded")}
 		</td>
 	</tr>
 	<tr>
@@ -178,7 +178,7 @@ ${h.h_tags.hidden('action','add')}
 			<label for="code">${_(u'Активный')}</label>
 		</td>
 		<td>
-			${h.h_tags.checkbox('active', value="", id="active")}
+			${h.h_tags.checkbox('active', value=True, id="active")}
 		</td>
 	</tr>
 	<tr>

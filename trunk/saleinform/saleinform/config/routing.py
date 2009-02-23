@@ -61,6 +61,7 @@ def make_map():
     map.connect('/admin/clients/action', controller='admin/a_clients', action='processing')
     map.connect('/admin/clients/action/{rid}', controller='admin/a_clients', action='processing')
     map.connect('/admin/clients/refresh', controller='admin/a_clients', action='refresh')
+    map.connect('/admin/clients/sort', controller='admin/a_clients', action='sort')
 
     map.connect('/{controller}/{action}')
     map.connect('/{controller}/{action}/{id}')
