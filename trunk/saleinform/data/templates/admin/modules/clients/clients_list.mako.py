@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1235343147.7428701
+_modified_time = 1235390625.6790559
 _template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/admin/modules/clients/clients_list.mako'
 _template_uri='/admin/modules/clients/clients_list.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -74,52 +74,55 @@ def render_body(context,**pageargs):
         __M_writer(u'</th>\n\t\t\t\t\t\t\t<th>')
         # SOURCE LINE 29
         __M_writer(escape(_(u'\u0410\u043a\u0442\u0438\u0432\u043d\u044b\u0439')))
-        __M_writer(u'</th>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n')
-        # SOURCE LINE 33
+        __M_writer(u'</th>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n')
+        # SOURCE LINE 34
         for row in c.a_clients:
-            # SOURCE LINE 34
-            __M_writer(u'\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>')
             # SOURCE LINE 35
+            __M_writer(u'\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>')
+            # SOURCE LINE 36
             __M_writer(escape(h.h_tags.checkbox('check_clients', value=row.rid, checked=False, label=None)))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td></td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 37
+            # SOURCE LINE 38
             __M_writer(escape(row.name))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 38
+            # SOURCE LINE 39
             __M_writer(escape(h.h_tags.image(row.image_name, alt=row.countryName)))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 39
+            # SOURCE LINE 40
             __M_writer(escape(row.cityName))
             __M_writer(u'<br>')
             __M_writer(escape(row.regionName))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 40
+            # SOURCE LINE 41
             __M_writer(escape(row.contact_phones))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 41
+            # SOURCE LINE 42
             __M_writer(escape(row.contact_email))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 42
+            # SOURCE LINE 43
             __M_writer(escape(row.contact_person))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 43
+            # SOURCE LINE 44
             __M_writer(escape(h.h_tags.checkbox('isloaded', value=row.isloaded, checked=row.isloaded, label=None)))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 44
+            # SOURCE LINE 45
             __M_writer(escape(h.h_tags.checkbox('active', value=row.active, checked=row.active, label=None)))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 45
+            # SOURCE LINE 46
             __M_writer(escape(h.h_tags.link_to(h.h_tags.image('/img/icons/pencil.png', _(u'\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c'), border="0"), '/admin/countries/action/'+str(row.rid), title=_(u'\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c'))))
-            __M_writer(u'</td>\n\t\t\t\t\t</tr>\n')
-        # SOURCE LINE 48
+            __M_writer(u'</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<div class="btnR">\n\t\t\t\t\t\t\t\t')
+            # SOURCE LINE 49
+            __M_writer(escape(h.h_tags.link_to(_(u"\u041f\u0435\u0440\u0435\u0439\u0442\u0438 >"), row.url, class_='btnL', target="_blank")))
+            __M_writer(u'\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n')
+        # SOURCE LINE 54
         __M_writer(u'\t\t\t\t</table>\n\t\t\t\t')
-        # SOURCE LINE 49
+        # SOURCE LINE 55
         __M_writer(escape(h.h_tags.submit('submit',_(u'\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c'))))
         __M_writer(u'\n\t\t\t\t')
-        # SOURCE LINE 50
+        # SOURCE LINE 56
         __M_writer(escape(h.h_tags.end_form()))
         __M_writer(u'\n\t\t\t\t<div class="pager">\n\t\t\t\t\t')
-        # SOURCE LINE 52
+        # SOURCE LINE 58
         __M_writer(escape(h.h_builder.literal(c.a_pager)))
         __M_writer(u'\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<script type="text/javascript">\n                $(document).ready(function(){\n                        $("#countries > table > thead > tr > th > #check_all").click(function(){\n                                var checked_status = this.checked;\n                                $("input[name=\'check_countries\']").each(function(){\n                                        this.checked = checked_status;\n                                });\n                        });\n                });\n\t\t\t</script>\n\t\t\t\n\t\t\t\n')
         return ''

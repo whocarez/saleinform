@@ -28,6 +28,7 @@
 							<th>${_(u'Прайс')}</th>
 							<th>${_(u'Активный')}</th>
 							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 					% for row in c.a_clients:
@@ -43,6 +44,11 @@
 						<td>${h.h_tags.checkbox('isloaded', value=row.isloaded, checked=row.isloaded, label=None)}</td>
 						<td>${h.h_tags.checkbox('active', value=row.active, checked=row.active, label=None)}</td>
 						<td>${h.h_tags.link_to(h.h_tags.image('/img/icons/pencil.png', _(u'Редактировать запись'), border="0"), '/admin/countries/action/'+str(row.rid), title=_(u'Редактировать запись'))}</td>
+						<td>
+							<div class="btnR">
+								${h.h_tags.link_to(_(u"Перейти >"), row.url, class_='btnL', target="_blank")}
+							</div>
+						</td>
 					</tr>
 					% endfor
 				</table>

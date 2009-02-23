@@ -30,7 +30,7 @@ class ClientsList(object):
                     order_by(self.defaultSort).all()
         return clients
     
-    def toArchive(self, rids):
+    def toActive(self, rids):
         """Отправить страны в архив
         """
         try:
@@ -41,7 +41,7 @@ class ClientsList(object):
             return False
         return True
 
-    def fromArchive(self):
+    def fromActive(self):
         """Вынести все страны из архива
         """
         try:
@@ -52,11 +52,11 @@ class ClientsList(object):
             return False
         return True
 
-    def deleteCountries(self, rids):
-        """Удалить страны
+    def deleteClients(self, rids):
+        """Удалить клиентов
         """
         try:
-            countries = si.meta.Session.query(si.Countries).filter(si.Countries.rid.in_(rids)).delete()        
+            clients = si.meta.Session.query(si.Clients).filter(si.Clients.rid.in_(rids)).delete()        
             si.meta.Session.commit()
             return True
         except:

@@ -40,3 +40,17 @@ div.back-link{
 	padding-left: 25px;
 	background: transparent url(../img/icons/arrow_left.png) no-repeat left center;
 }
+.btnR {
+	background:transparent url(http://images.us.ciao.com/ius/images/icons/button_orange_s_L.gif) no-repeat scroll left top;
+	margin:0;
+	padding:0 0 0 8px;
+}
+a.btnL {
+	color:#FFFFFF;
+	display:block;
+	font-weight:bold;
+	text-decoration:none;
+	background:transparent url(http://images.us.ciao.com/ius/images/icons/button_orange_s_R.gif) no-repeat scroll right top;
+	margin:0;
+	padding:5px 15px 5px 7px;
+}
