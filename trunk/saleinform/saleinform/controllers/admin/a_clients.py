@@ -6,6 +6,10 @@ from pylons.controllers.util import abort, redirect_to
 
 from saleinform.lib.base import BaseController, render
 from saleinform.lib.modules.clients import ClientsList
+from saleinform.lib.modules.countries import CountriesList
+from saleinform.lib.modules.regions import RegionsList, CitiesList
+from pylons.decorators import validate
+from saleinform.lib.validators import clients as v_clients
 
 from webhelpers import paginate
 
@@ -20,27 +24,37 @@ class AClientsController(BaseController):
         """Рисуем список клиентов
         """
         if request.POST.get('action', None):
-            self.a_operation_status = True
-            if not ClientsList().deleteClients(request.POST.getall('check_clients')): self.a_operation_status = False
-            if not ClientsList().fromArchive(): self.a_operation_status = False    
-            if not ClientsList().toArchive(request.POST.getall('archive')): self.a_operation_status = False
-        
+            if request.POST.get('action') == 'save':
+                self.a_operation_status = True
+                if not ClientsList().deleteClients(request.POST.getall('check_clients')): self.a_operation_status = False
+                if not ClientsList().fromActive(request.POST.getall('client_rid')): self.a_operation_status = False    
+                if not ClientsList().toActive(request.POST.getall('active')): self.a_operation_status = False
+                if not ClientsList().fromIsloaded(request.POST.getall('client_rid')): self.a_operation_status = False    
+                if not ClientsList().toIsloaded(request.POST.getall('isloaded')): self.a_operation_status = False
+            if request.POST.get('action') == 'search':
+                searchRule = {}
+                if request.POST.get('s_name', None)!=u'': searchRule['name'] = request.POST.get('s_name')
+                if request.POST.get('s_place', None)!=u'': searchRule['place'] = request.POST.get('s_place')
+                session['clients_search_rule'] = searchRule
+                session.save()
+                
         a_clients = ClientsList().getList()
         c.a_operation_status = self.a_operation_status
-        page = paginate.Page(a_clients, format="~10~", items_per_page=10, item_count=len(a_clients), page=request.GET.get("page", 1))
+        page = paginate.Page(a_clients, items_per_page=10, item_count=len(a_clients), page=request.GET.get("page", 1))
         c.a_pager = page.pager()
         c.a_clients = page.items
         c.a_template_name = 'clients_list.mako' 
         return render('/admin/layouts/clients.mako')
 
+    @validate(schema=v_clients.ClientsForm(), form="processing")
     def processing(self, rid=None):
         """Создание или редактирование записи"""
-        c.a_currencies = CurrencyList().getList()
+        c.a_cities = CitiesList().getList()
         if rid: 
             c.a_country = CountriesList().getCountry(rid)
-            c.a_template_name = 'country_edit.mako'
+            c.a_template_name = 'clients_edit.mako'
         else:
-            c.a_template_name = 'country_add.mako'            
+            c.a_template_name = 'clients_add.mako'            
         if request.POST.get('action', None):
             self.a_operation_status = True
             if rid:
@@ -55,4 +69,10 @@ class AClientsController(BaseController):
                 else:
                     redirect_to('action/'+str(newRid))
         c.a_operation_status = self.a_operation_status
-        return render('/admin/layouts/countries.mako')
+        return render('/admin/layouts/clients.mako')
+
+    def refresh(self):
+        if session.has_key('clients_search_rule'):
+            del session['clients_search_rule'] 
+            session.save()
+        redirect_to('/admin/clients')

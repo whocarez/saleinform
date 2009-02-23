@@ -60,6 +60,7 @@ def make_map():
     map.connect('/admin/clients', controller='admin/a_clients', action='index')
     map.connect('/admin/clients/action', controller='admin/a_clients', action='processing')
     map.connect('/admin/clients/action/{rid}', controller='admin/a_clients', action='processing')
+    map.connect('/admin/clients/refresh', controller='admin/a_clients', action='refresh')
 
     map.connect('/{controller}/{action}')
     map.connect('/{controller}/{action}/{id}')

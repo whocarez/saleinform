@@ -33,7 +33,15 @@ ${h.h_tags.hidden('action','add')}
 			<label for="code">${_(u'Логотип')}</label>
 		</td>
 		<td>
-			${h.h_tags.text('logo', value="", id="logo")}
+			${h.h_tags.file('logo', value="", id="logo")}
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Город')}</label>
+		</td>
+		<td>
+			${h.h_tags.select('_cities_rid', "", [[city.Cities.rid, city.Cities.name+'-'+city.regionName+"-"+city.countryName] for city in c.a_cities], id="_cities_rid")}
 		</td>
 	</tr>
 	<tr>
@@ -79,10 +87,42 @@ ${h.h_tags.hidden('action','add')}
 	</tr>
 	<tr>
 		<td width="40%">
+			<label for="code">${_(u'Кредит')}</label>
+		</td>
+		<td>
+			${h.h_tags.checkbox('creadits_info', value="", id="creadits_info")}
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Доставка')}</label>
+		</td>
+		<td>
+			${h.h_tags.textarea('delivery_info', value="", id="delivery_info")}
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Время работы')}</label>
+		</td>
+		<td>
+			${h.h_tags.textarea('worktime_info', value="", id="worktime_info")}
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Описание')}</label>
+		</td>
+		<td>
+			${h.h_tags.textarea('descr', value="", id="descr")}
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
 			<label for="code">${_(u'Загрузка прайсов')}</label>
 		</td>
 		<td>
-			${h.h_tags.text('isloaded', value="", id="isloaded")}
+			${h.h_tags.checkbox('isloaded', value="", id="isloaded")}
 		</td>
 	</tr>
 	<tr>
@@ -107,38 +147,6 @@ ${h.h_tags.hidden('action','add')}
 		</td>
 		<td>
 			${h.h_tags.text('price_url', value="", id="price_url")}
-		</td>
-	</tr>
-	<tr>
-		<td width="40%">
-			<label for="code">${_(u'Кредит')}</label>
-		</td>
-		<td>
-			${h.h_tags.text('creadits_info', value="", id="creadits_info")}
-		</td>
-	</tr>
-	<tr>
-		<td width="40%">
-			<label for="code">${_(u'Доставка')}</label>
-		</td>
-		<td>
-			${h.h_tags.text('delivery_info', value="", id="delivery_info")}
-		</td>
-	</tr>
-	<tr>
-		<td width="40%">
-			<label for="code">${_(u'Время работы')}</label>
-		</td>
-		<td>
-			${h.h_tags.text('worktime_info', value="", id="worktime_info")}
-		</td>
-	</tr>
-	<tr>
-		<td width="40%">
-			<label for="code">${_(u'Описание')}</label>
-		</td>
-		<td>
-			${h.h_tags.text('descr', value="", id="descr")}
 		</td>
 	</tr>
 	<tr>
@@ -170,10 +178,9 @@ ${h.h_tags.hidden('action','add')}
 			<label for="code">${_(u'Активный')}</label>
 		</td>
 		<td>
-			${h.h_tags.text('active', value="", id="active")}
+			${h.h_tags.checkbox('active', value="", id="active")}
 		</td>
 	</tr>
-	
 	<tr>
 		<td width="40%">
 			<label for="code">${_(u'Популярность')}</label>
@@ -181,45 +188,6 @@ ${h.h_tags.hidden('action','add')}
 		<td>
 			${h.h_tags.text('popularity', value="", id="popularity")}
 		</td>
-	</tr>
-	
-	
-	
-	
-	<tr>
-		<td>
-			<label for="name">${_(u'Название страны')}</label>
-		</td>
-		<td>
-			${h.h_tags.text('name', value="", id="name")}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<label for="_currency_rid">${_(u'Валюта')}</label>
-		</td>
-		<td>
-			% for currency in c.a_currencies:
-				${h.h_tags.radio('_currency_rid', value=currency.rid, id="_currency_rid", label=currency.code, checked=False)}<br>	
-			% endfor
-		</td>
-		
-	</tr>
-	<tr>
-		<td>
-			<label for="image_name">${_(u'Изображение страны')}</label>
-		</td>
-		<td>
-			${h.h_tags.file('image_name', value="", id="image_name")}
-		</td>	
-	</tr>
-	<tr>
-		<td> 
-			<label for="archive">${_(u'Архивный')}</label>
-		</td>
-		<td>
-			${h.h_tags.checkbox('archive', value=False, id="archive")}
-		</td>	
 	</tr>
 	</table>
 	${h.h_tags.submit('submit', _(u'Сохранить'))}

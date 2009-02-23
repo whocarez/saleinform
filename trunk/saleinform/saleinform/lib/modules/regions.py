@@ -58,7 +58,9 @@ class CitiesList(object):
         if regionRid:
             cities = si.meta.Session.query(si.Cities).filter(si.Cities._regions_rid==regionRid).order_by(self.defaultSort).all()
         else:
-            cities = si.meta.Session.query(si.Cities).order_by(self.defaultSort).all() 
+            cities = si.meta.Session.query(si.Cities, si.Regions.name.label('regionName'), si.Countries.name.label('countryName')).order_by(self.defaultSort).\
+            join((si.Regions, si.Regions.rid==si.Cities._regions_rid), (si.Countries, si.Countries.rid==si.Regions._countries_rid)).\
+            all() 
         return cities 
 
     def processingCities(self, rid=None):
@@ -83,3 +85,4 @@ class CitiesList(object):
     def removeCity(self, rid):
         si.meta.Session.query(si.Cities).filter(si.Cities.rid==rid).delete()
         si.meta.Session.commit()
+

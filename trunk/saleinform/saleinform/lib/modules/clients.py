@@ -7,7 +7,7 @@ from pylons import request, response, session, tmpl_context as c, config
 from saleinform.lib.base import render
 from pylons.i18n import get_lang, set_lang
 from saleinform.model import si
-from sqlalchemy.sql import func, and_
+from sqlalchemy.sql import func, and_, or_
 from sqlalchemy.sql import expression
 import os, shutil
 
@@ -26,26 +26,52 @@ class ClientsList(object):
                                           si.Countries.image_name).\
                     join((si.Cities, si.Cities.rid==si.Clients._cities_rid),\
                          (si.Regions, si.Regions.rid==si.Cities._regions_rid),\
-                         (si.Countries, si.Countries.rid==si.Regions._countries_rid)).\
-                    order_by(self.defaultSort).all()
+                         (si.Countries, si.Countries.rid==si.Regions._countries_rid))
+        
+        if session.has_key('clients_search_rule'):
+            searchRule = session.get('clients_search_rule')
+            print searchRule
+            for key, rule in searchRule.iteritems():
+                if key == 'name': clients = clients.filter(si.Clients.name.like('%'+rule+'%'))
+                if key == 'place': clients = clients.filter(or_(si.Cities.name.like('%'+rule+'%'), si.Regions.name.like('%'+rule+'%'), si.Countries.name.like('%'+rule+'%')))
+        
+        clients = clients.order_by(self.defaultSort).all()
         return clients
     
     def toActive(self, rids):
-        """Отправить страны в архив
+        """Сделать активными
         """
         try:
-            countries = si.meta.Session.query(si.Countries).filter(si.Countries.rid.in_(rids)).update({si.Countries.archive:True})        
+            clients = si.meta.Session.query(si.Clients).filter(si.Clients.rid.in_(rids)).update({si.Clients.active:True})
             si.meta.Session.commit()
         except:
             si.meta.Session.rollback()
             return False
         return True
 
-    def fromActive(self):
-        """Вынести все страны из архива
+    def fromActive(self, rids):
+        """Сделать неактивными
         """
         try:
-            countries = si.meta.Session.query(si.Countries).update({si.Countries.archive:False})
+            clients = si.meta.Session.query(si.Clients).filter(si.Clients.rid.in_(rids)).update({si.Clients.active:False}) 
+            si.meta.Session.commit()
+        except:
+            si.meta.Session.rollback()
+            return False
+        return True
+
+    def toIsloaded(self, rids):
+        try:
+            clients = si.meta.Session.query(si.Clients).filter(si.Clients.rid.in_(rids)).update({si.Clients.isloaded:True})
+            si.meta.Session.commit()
+        except:
+            si.meta.Session.rollback()
+            return False
+        return True
+
+    def fromIsloaded(self, rids):
+        try:
+            clients = si.meta.Session.query(si.Clients).filter(si.Clients.rid.in_(rids)).update({si.Clients.isloaded:False}) 
             si.meta.Session.commit()
         except:
             si.meta.Session.rollback()
