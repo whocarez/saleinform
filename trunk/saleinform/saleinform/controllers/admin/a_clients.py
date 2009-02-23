@@ -51,7 +51,7 @@ class AClientsController(BaseController):
         """Создание или редактирование записи"""
         c.a_cities = CitiesList().getList()
         if rid: 
-            c.a_country = CountriesList().getCountry(rid)
+            c.a_client = ClientsList().getClient(rid)
             c.a_template_name = 'clients_edit.mako'
         else:
             c.a_template_name = 'clients_add.mako'            
@@ -59,11 +59,11 @@ class AClientsController(BaseController):
             self.a_operation_status = True
             if rid:
                 """Редактирование"""
-                if not CountriesList().processingCountry(rid): 
+                if not ClientsList().processingClients(rid): 
                     self.a_operation_status = False
             else:
                 """Создание новой записи"""
-                newRid = CountriesList().processingCountry() 
+                newRid = ClientsList().processingClients()
                 if not newRid: 
                     self.a_operation_status = False
                 else:

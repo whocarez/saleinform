@@ -90,29 +90,45 @@ class ClientsList(object):
             return False
         
     
-    def processingCountry(self, rid=None):
+    def processingClients(self, rid=None):
         """Создание/Редактирование данных"""
         try:
             if rid:
-                country = si.meta.Session.query(si.Countries).filter(si.Countries.rid==rid).first()
+                client = si.meta.Session.query(si.Clients).filter(si.Clients.rid==rid).first()
             else: 
-                country = si.Countries()
-                country.code=request.params['code']
-                country.name=request.params['name'] 
-                country.image_name='/img/flags/'+request.params['code']+'_'+request.params['image_name'].filename
-                country._currency_rid=request.params['_currency_rid']
-                country.archive=request.params.get('archive', False)
-                si.meta.Session.add(country)
-                si.meta.Session.commit()
-                flagFile = open(os.path.join(config['pylons.paths']['static_files'], 'img', 'flags', request.params['code']+'_'+request.params['image_name'].filename), 'w')
-                shutil.copyfileobj(request.params['image_name'].file, flagFile)
-                request.params['image_name'].file.close()
-                flagFile.close()
-            return country.rid
+                client = si.Clients()
+            client.name = request.params['name']
+            client._cities_rid = request.params['_cities_rid']
+            client.address = request.params['address']
+            client.phones = request.params['phones']
+            client.skype = request.params['skype']
+            client.icq = request.params['icq']
+            client.url = request.params['url']
+            client.creadits_info = request.POST.get('creadits_info', False)
+            client.delivery_info = request.params['delivery_info']
+            client.worktime_info = request.params['worktime_info']
+            client.descr = request.params['descr']
+            client.isloaded = request.POST.get('isloaded', False)
+            client.actual_days = request.params['actual_days']
+            client.price_email = request.params['price_email']
+            client.price_url = request.params['price_url']
+            client.contact_phones = request.params['contact_phones']
+            client.contact_email = request.params['contact_email']
+            client.contact_person = request.params['contact_person']
+            client.active = request.POST.get('active', False)
+            client.popularity = request.params['popularity']
+            client.logo = '/img/cllogos/'+'_'+request.params['logo'].filename
+            si.meta.Session.add(client)
+            si.meta.Session.commit()
+            logoFile = open(os.path.join(config['pylons.paths']['static_files'], 'img', 'cllogos', request.params['code']+'_'+request.params['logo'].filename), 'w')
+            shutil.copyfileobj(request.params['logo'].file, logoFile)
+            request.params['logo'].file.close()
+            logoFile.close()
+            return client.rid
         except:
             si.meta.Session.rollback()
             return False
 
-    def getCountry(self, rid):
-        return si.meta.Session.query(si.Countries).filter(si.Countries.rid==rid).first()
+    def getClient(self, rid):
+        return si.meta.Session.query(si.Clients).filter(si.Clients.rid==rid).first()
         
