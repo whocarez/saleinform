@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1235255275.1562459
+_modified_time = 1235331750.882308
 _template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/admin/modules/navigation/hnavigator.mako'
 _template_uri='/admin/modules/navigation/hnavigator.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -34,7 +34,7 @@ def render_body(context,**pageargs):
         __M_writer(escape(h.h_tags.link_to(h.h_builder.literal('<span>'+_(u'\u0413\u0435\u043e\u0433\u0440\u0430\u0444\u0438\u044f')+'</span>'), url='/admin/countries', title=_(u'\u0413\u0435\u043e\u0433\u0440\u0430\u0444\u0438\u044f'), rel="dropmenu1_d")))
         __M_writer(u'\n\t\t</li>\n\t\t<li class="">\n\t\t\t')
         # SOURCE LINE 16
-        __M_writer(escape(h.h_tags.link_to(h.h_builder.literal('<span>'+_(u'\u0413\u0435\u043e\u0433\u0440\u0430\u0444\u0438\u044f')+'</span>'), url='/admin/geography', title=_(u'\u0413\u0435\u043e\u0433\u0440\u0430\u0444\u0438\u044f'), rel="dropmenu2_d")))
+        __M_writer(escape(h.h_tags.link_to(h.h_builder.literal('<span>'+_(u'\u041a\u043b\u0438\u0435\u043d\u0442\u044b')+'</span>'), url='/admin/clients', title=_(u'\u041a\u043b\u0438\u0435\u043d\u0442\u044b'), rel="dropmenu2_d")))
         __M_writer(u'\n\t\t</li>\n\t\t<li>\n\t\t\t')
         # SOURCE LINE 19
         __M_writer(escape(h.h_tags.link_to(h.h_builder.literal('<span>'+_(u'\u0413\u0435\u043e\u0433\u0440\u0430\u0444\u0438\u044f')+'</span>'), url='', title=_(u'\u0413\u0435\u043e\u0433\u0440\u0430\u0444\u0438\u044f'), rel="dropmenu1_d")))

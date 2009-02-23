@@ -95,7 +95,6 @@ _cities =  sa.Table('_cities', meta.metadata,
                  sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
                  sa.Column(u'_regions_rid', sa.types.Integer(), schema.ForeignKey(u'_regions.rid', onupdate='cascade', ondelete="CASCADE"), primary_key=False, nullable=False),
                  sa.Column(u'name', sa.types.String(length=45), primary_key=False, nullable=False),
-                 sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
                  sa.ForeignKeyConstraint([u'_regions_rid'], [u'_regions.rid'], name=u'FK__cities_1', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'_secondary4', _cities.c._regions_rid, _cities.c.name, unique=True)
 
@@ -127,8 +126,6 @@ _regions =  sa.Table('_regions', meta.metadata,
                   sa.Column(u'rid', sa.types.Integer(),  autoincrement=True, primary_key=True, nullable=False),
                   sa.Column(u'_countries_rid', sa.types.Integer(), schema.ForeignKey('_countries.rid', onupdate="CASCADE", ondelete="CASCADE"), primary_key=False, nullable=False),
                   sa.Column(u'name', sa.types.String(length=45), primary_key=False, nullable=False),
-                  sa.Column(u'archive', sa.types.Boolean(), primary_key=False, nullable=False),
-                  sa.Column(u'display_name', sa.types.String(length=45), primary_key=False, nullable=False),
                   sa.ForeignKeyConstraint([u'_countries_rid'], [u'_countries.rid'], name=u'FK__regions_1', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'_secondary29', _regions.c._countries_rid, _regions.c.name, unique=True)
 

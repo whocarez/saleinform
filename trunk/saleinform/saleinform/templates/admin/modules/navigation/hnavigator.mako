@@ -13,7 +13,7 @@
 			${h.h_tags.link_to(h.h_builder.literal('<span>'+_(u'География')+'</span>'), url='/admin/countries', title=_(u'География'), rel="dropmenu1_d")}
 		</li>
 		<li class="">
-			${h.h_tags.link_to(h.h_builder.literal('<span>'+_(u'География')+'</span>'), url='/admin/geography', title=_(u'География'), rel="dropmenu2_d")}
+			${h.h_tags.link_to(h.h_builder.literal('<span>'+_(u'Клиенты')+'</span>'), url='/admin/clients', title=_(u'Клиенты'), rel="dropmenu2_d")}
 		</li>
 		<li>
 			${h.h_tags.link_to(h.h_builder.literal('<span>'+_(u'География')+'</span>'), url='', title=_(u'География'), rel="dropmenu1_d")}

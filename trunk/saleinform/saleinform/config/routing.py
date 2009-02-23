@@ -44,6 +44,23 @@ def make_map():
     map.connect('/admin/currency/action/{rid}', controller='admin/a_currency', action='processing')
     map.connect('/admin/currency/refresh', controller='admin/a_currency', action='refresh')
 
+    # Regions
+    map.connect('/admin/regions', controller='admin/a_regions', action='index')
+    map.connect('/admin/regions/action', controller='admin/a_regions', action='processing')
+    map.connect('/admin/regions/action/{rid}', controller='admin/a_regions', action='processing')
+    map.connect('/admin/regions/get', controller='admin/a_regions', action='get')
+    map.connect('/admin/regions/rp', controller='admin/a_regions', action='regions_processing')
+    map.connect('/admin/regions/rp/{rid}', controller='admin/a_regions', action='regions_processing')
+    map.connect('/admin/regions/cp', controller='admin/a_regions', action='cities_processing')
+    map.connect('/admin/regions/cp/{rid}', controller='admin/a_regions', action='cities_processing')
+    map.connect('/admin/regions/rr/{rid}', controller='admin/a_regions', action='rr')
+    map.connect('/admin/regions/rc/{rid}', controller='admin/a_regions', action='rc')
+
+    # Clients
+    map.connect('/admin/clients', controller='admin/a_clients', action='index')
+    map.connect('/admin/clients/action', controller='admin/a_clients', action='processing')
+    map.connect('/admin/clients/action/{rid}', controller='admin/a_clients', action='processing')
+
     map.connect('/{controller}/{action}')
     map.connect('/{controller}/{action}/{id}')
 
