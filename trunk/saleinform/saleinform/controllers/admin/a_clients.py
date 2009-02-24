@@ -55,6 +55,7 @@ class AClientsController(BaseController):
         c.a_cities = CitiesList().getList()
         if rid: 
             c.a_client = ClientsList().getClient(rid)
+            if not c.a_client: redirect_to('/admin/clients') 
             c.a_template_name = 'clients_edit.mako'
         else:
             c.a_template_name = 'clients_add.mako'            

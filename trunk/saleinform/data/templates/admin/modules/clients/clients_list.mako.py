@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1235428527.904197
+_modified_time = 1235514716.535356
 _template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/admin/modules/clients/clients_list.mako'
 _template_uri='/admin/modules/clients/clients_list.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -191,7 +191,7 @@ def render_body(context,**pageargs):
             __M_writer(escape(h.h_tools.mail_to(row.contact_email, h.h_tags.image('/img/icons/email_go.png', _(u'\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043f\u0438\u0441\u044c\u043c\u043e'), border="0"), encode = "hex")))
             __M_writer(u'</td>\t\t\t\t\t\t\n\t\t\t\t\t\t<td>')
             # SOURCE LINE 95
-            __M_writer(escape(h.h_tags.link_to(h.h_tags.image('/img/icons/pencil.png', _(u'\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c'), border="0"), '/admin/countries/action/'+str(row.rid), title=_(u'\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c'))))
+            __M_writer(escape(h.h_tags.link_to(h.h_tags.image('/img/icons/pencil.png', _(u'\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c'), border="0"), '/admin/clients/action/'+str(row.rid), title=_(u'\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c'))))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
             # SOURCE LINE 96
             __M_writer(escape(h.h_tags.link_to(h.h_tags.image('/img/icons/arrow_right.png', _(u'\u041f\u0435\u0440\u0435\u0439\u0442\u0438 \u043d\u0430 \u0441\u0430\u0439\u0442'), border="0"), row.url, title=_(u'\u041f\u0435\u0440\u0435\u0439\u0442\u0438 \u043d\u0430 \u0441\u0430\u0439\u0442'))))

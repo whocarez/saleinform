@@ -129,13 +129,14 @@ class ClientsList(object):
         client.popularity = request.params['popularity']
         si.meta.Session.add(client)
         si.meta.Session.commit()
-        logoFile = open(os.path.join(config['pylons.paths']['static_files'], 'img', 'cllogos', 'original', str(client.rid)+'_'+request.params['logo'].filename), 'w')
-        
+        originalLogo = os.path.join(config['pylons.paths']['static_files'], 'data', 'clients', 'logos', 'original', str(client.rid)+'_'+request.params['logo'].filename)
+        thumbLogo = os.path.join(config['pylons.paths']['static_files'], 'data', 'clients', 'logos', str(client.rid)+'_'+request.params['logo'].filename)
+        logoFile = open(originalLogo, 'w')
         shutil.copyfileobj(request.params['logo'].file, logoFile)
         request.params['logo'].file.close()
         logoFile.close()
-        client.logo = '/img/cllogos/'+str(client.rid)+'_'+request.params['logo'].filename
-        #self.logoImageProcessing(logoFile, client.logo)
+        self.logoImageProcessing(logoFile, thumbLogo)
+        client.logo = thumbLogo
         si.meta.Session.add(client)
         si.meta.Session.commit()
         return client.rid
