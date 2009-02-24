@@ -9,10 +9,12 @@ from pylons.i18n import get_lang, set_lang
 from saleinform.model import si
 from sqlalchemy.sql import func, and_, or_
 from sqlalchemy.sql import expression
-import os, shutil
+import os, shutil, Image
+
 
 class ClientsList(object):
-
+    logoSize = 90, 30 # размер логотипа
+    
     def __init__(self):
         self.sortabledCols = {'name':si.Clients.name, 'createdt':si.Clients.createdt}
         self.defaultSort = si.Clients.name
@@ -127,11 +129,13 @@ class ClientsList(object):
         client.popularity = request.params['popularity']
         si.meta.Session.add(client)
         si.meta.Session.commit()
-        client.logo = '/img/cllogos/'+str(client.rid)+'_'+request.params['logo'].filename
-        logoFile = open(os.path.join(config['pylons.paths']['static_files'], 'img', 'cllogos', str(client.rid)+'_'+request.params['logo'].filename), 'w')
+        logoFile = open(os.path.join(config['pylons.paths']['static_files'], 'img', 'cllogos', 'original', str(client.rid)+'_'+request.params['logo'].filename), 'w')
+        
         shutil.copyfileobj(request.params['logo'].file, logoFile)
         request.params['logo'].file.close()
         logoFile.close()
+        client.logo = '/img/cllogos/'+str(client.rid)+'_'+request.params['logo'].filename
+        #self.logoImageProcessing(logoFile, client.logo)
         si.meta.Session.add(client)
         si.meta.Session.commit()
         return client.rid
@@ -141,4 +145,17 @@ class ClientsList(object):
 
     def getClient(self, rid):
         return si.meta.Session.query(si.Clients).filter(si.Clients.rid==rid).first()
+        
+
+    def logoImageProcessing(self, sourcePath, destPath):
+        """Обработка изображения логотипа
+        """
+        #try:
+        im = Image.open(sourcePath)
+        im.thumbnail(self.logoSize)
+        im.save(destPath)
+        return True
+        #except:
+        #    return False
+        
         
