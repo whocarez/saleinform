@@ -14,6 +14,8 @@ import os, shutil, Image
 
 class ClientsList(object):
     logoSize = 90, 30 # размер логотипа
+    originalLogoPath = os.join.path(config['pylons.paths']['static_files'], 'data', 'clients', 'logos', 'original')
+    thumbLogoPath = os.join.path(config['pylons.paths']['static_files'], 'data', 'clients', 'logos')
     
     def __init__(self):
         self.sortabledCols = {'name':si.Clients.name, 'createdt':si.Clients.createdt}
@@ -129,8 +131,8 @@ class ClientsList(object):
         client.popularity = request.params['popularity']
         si.meta.Session.add(client)
         si.meta.Session.commit()
-        originalLogo = os.path.join(config['pylons.paths']['static_files'], 'data', 'clients', 'logos', 'original', str(client.rid)+'_'+request.params['logo'].filename)
-        thumbLogo = os.path.join(config['pylons.paths']['static_files'], 'data', 'clients', 'logos', str(client.rid)+'_'+request.params['logo'].filename)
+        originalLogo = os.path.join(self.originalLogoPath, str(client.rid)+'_'+request.params['logo'].filename)
+        thumbLogo = os.path.join(self.thumbLogoPath, str(client.rid)+'_'+request.params['logo'].filename)
         logoFile = open(originalLogo, 'w')
         shutil.copyfileobj(request.params['logo'].file, logoFile)
         request.params['logo'].file.close()
