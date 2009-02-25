@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1235514716.535356
+_modified_time = 1235596260.7322321
 _template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/admin/modules/clients/clients_list.mako'
 _template_uri='/admin/modules/clients/clients_list.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -136,75 +136,78 @@ def render_body(context,**pageargs):
                 __M_writer(escape(h.h_tags.image('/img/icons/arrow_up.png', _(u'\u0421\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c'), border="0")))
                 __M_writer(u'\n')
         # SOURCE LINE 67
-        __M_writer(u'\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n')
-        # SOURCE LINE 73
+        __M_writer(u'\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n')
+        # SOURCE LINE 74
         for row in c.a_clients:
-            # SOURCE LINE 74
+            # SOURCE LINE 75
             __M_writer(u'\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t')
-            # SOURCE LINE 76
+            # SOURCE LINE 77
             __M_writer(escape(h.h_tags.checkbox('check_clients', value=row.rid, checked=False, label=None)))
             __M_writer(u'\n\t\t\t\t\t\t\t')
-            # SOURCE LINE 77
+            # SOURCE LINE 78
             __M_writer(escape(h.h_tags.hidden('client_rid', value=row.rid, checked=False, label=None)))
             __M_writer(u'\n\t\t\t\t\t\t</td>\n\t\t\t\t\t\t<td>\n')
-            # SOURCE LINE 80
+            # SOURCE LINE 81
             if row.logo==u'':
-                # SOURCE LINE 81
+                # SOURCE LINE 82
                 __M_writer(u'\t\t\t\t\t\t\t')
                 __M_writer(escape(h.h_tags.image('/img/cllogos/nologo2.gif', alt=row.name)))
                 __M_writer(u'\n')
-                # SOURCE LINE 82
-            else:
                 # SOURCE LINE 83
+            else:
+                # SOURCE LINE 84
                 __M_writer(u'\t\t\t\t\t\t\t')
                 __M_writer(escape(h.h_tags.image(row.logo, alt=row.name)))
                 __M_writer(u'\n')
-            # SOURCE LINE 85
-            __M_writer(u'\t\t\t\t\t\t</td>\n\t\t\t\t\t\t<td>')
             # SOURCE LINE 86
+            __M_writer(u'\t\t\t\t\t\t</td>\n\t\t\t\t\t\t<td>')
+            # SOURCE LINE 87
             __M_writer(escape(row.name))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 87
+            # SOURCE LINE 88
             __M_writer(escape(h.h_tags.image(row.image_name, alt=row.countryName)))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 88
+            # SOURCE LINE 89
             __M_writer(escape(row.cityName))
             __M_writer(u'<br>')
             __M_writer(escape(row.regionName))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 89
+            # SOURCE LINE 90
             __M_writer(escape(row.contact_phones))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 90
+            # SOURCE LINE 91
             __M_writer(escape(row.contact_person))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 91
+            # SOURCE LINE 92
             __M_writer(escape(h.h_tags.checkbox('isloaded', value=row.rid, checked=row.isloaded, label=None)))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 92
+            # SOURCE LINE 93
             __M_writer(escape(h.h_tags.checkbox('active', value=row.rid, checked=row.active, label=None)))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 93
+            # SOURCE LINE 94
             __M_writer(escape(row.createdt.strftime('%d/%m/%Y')))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 94
+            # SOURCE LINE 95
             __M_writer(escape(h.h_tools.mail_to(row.contact_email, h.h_tags.image('/img/icons/email_go.png', _(u'\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043f\u0438\u0441\u044c\u043c\u043e'), border="0"), encode = "hex")))
             __M_writer(u'</td>\t\t\t\t\t\t\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 95
+            # SOURCE LINE 96
             __M_writer(escape(h.h_tags.link_to(h.h_tags.image('/img/icons/pencil.png', _(u'\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c'), border="0"), '/admin/clients/action/'+str(row.rid), title=_(u'\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0437\u0430\u043f\u0438\u0441\u044c'))))
             __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
-            # SOURCE LINE 96
+            # SOURCE LINE 97
+            __M_writer(escape(h.h_tags.link_to(h.h_tags.image('/img/icons/wrench.png', _(u'\u041e\u043f\u0446\u0438\u0438 \u043a\u043b\u0438\u0435\u043d\u0442\u0430'), border="0"), '/admin/clients/options/'+str(row.rid), title=_(u'\u041e\u043f\u0446\u0438\u0438 \u043a\u043b\u0438\u0435\u043d\u0442\u0430'))))
+            __M_writer(u'</td>\n\t\t\t\t\t\t<td>')
+            # SOURCE LINE 98
             __M_writer(escape(h.h_tags.link_to(h.h_tags.image('/img/icons/arrow_right.png', _(u'\u041f\u0435\u0440\u0435\u0439\u0442\u0438 \u043d\u0430 \u0441\u0430\u0439\u0442'), border="0"), row.url, title=_(u'\u041f\u0435\u0440\u0435\u0439\u0442\u0438 \u043d\u0430 \u0441\u0430\u0439\u0442'))))
             __M_writer(u'</td>\n\t\t\t\t\t</tr>\n')
-        # SOURCE LINE 99
+        # SOURCE LINE 101
         __M_writer(u'\t\t\t\t</table>\n\t\t\t\t')
-        # SOURCE LINE 100
+        # SOURCE LINE 102
         __M_writer(escape(h.h_tags.submit('submit',_(u'\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c'))))
         __M_writer(u'\n\t\t\t\t')
-        # SOURCE LINE 101
+        # SOURCE LINE 103
         __M_writer(escape(h.h_tags.end_form()))
         __M_writer(u'\n\t\t\t\t<div class="pager">\n\t\t\t\t\t')
-        # SOURCE LINE 103
+        # SOURCE LINE 105
         __M_writer(escape(h.h_builder.literal(c.a_pager)))
         __M_writer(u'\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<script type="text/javascript">\n                $(document).ready(function(){\n                        $("#countries > table > thead > tr > th > #check_all").click(function(){\n                                var checked_status = this.checked;\n                                $("input[name=\'check_countries\']").each(function(){\n                                        this.checked = checked_status;\n                                });\n                        });\n                });\n\t\t\t</script>\n\t\t\t\n\t\t\t\n')
         return ''

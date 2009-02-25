@@ -13,7 +13,7 @@ class FlagValidation(formencode.validators.FancyValidator):
             raise formencode.validators.Invalid(u'Системная ошибка загрузки файлов', value, state)
         elif len(value.file.read()) > 5120: # не более 5 килобайт
             raise formencode.validators.Invalid(u'Размер файла не должен превышать 5К', value, state)
-        elif value.type not in ['image/png', 'image/jpg', 'image/gif']: 
+        elif value.type not in ['image/png', 'image/jpg', 'image/jpeg', 'image/gif']: 
             raise formencode.validators.Invalid(u'Поддерживаются только .jpg, .png и .gif файлы', value, state)
         value.file.seek(0)
         return value

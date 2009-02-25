@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1234974643.0637691
+_modified_time = 1235581312.988905
 _template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/admin/layouts/countries.mako'
 _template_uri='/admin/layouts/countries.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -35,7 +35,7 @@ def render_body(context,**pageargs):
         __M_writer(u'\r\n\t')
         # SOURCE LINE 14
         __M_writer(escape(h.h_tags.stylesheet_link('/css/admin_countries.css')))
-        __M_writer(u'\r\n\t<link rel="SHORTCUT ICON" href="../img/si.png">\r\n</head>\r\n<body id="mainBody">\r\n\t<div class="md" id="" style="">\r\n\t\t<div id="main_cnt">\r\n\t\t\t<div>\r\n\t\t\t\t')
+        __M_writer(u'\r\n\t<link rel="SHORTCUT ICON" href="/img/si.png">\r\n</head>\r\n<body id="mainBody">\r\n\t<div class="md" id="" style="">\r\n\t\t<div id="main_cnt">\r\n\t\t\t<div>\r\n\t\t\t\t')
         # SOURCE LINE 21
         runtime._include_file(context, '/admin/modules/navigation/hnavigator.mako', _template_uri)
         __M_writer(u'\r\n\t\t\t</div>\r\n\t\t\t<div style="clear: both;">\r\n\t\t\t\t')

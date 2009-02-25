@@ -9,11 +9,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	${h.h_tags.javascript_link('/js/jquery-1.3.1.min.js')}
 	${h.h_tags.javascript_link('/js/dropdowntabs.js')}
+	${h.h_tags.javascript_link('/js/jquery.checktree.js')}
 	${h.h_tags.stylesheet_link('/css/style.css')}
 	${h.h_tags.stylesheet_link('/css/glowtabs.css')}
 	${h.h_tags.stylesheet_link('/css/admin_clients.css')}
 	${h.h_tags.stylesheet_link('/css/admin_pager.css')}
-	<link rel="SHORTCUT ICON" href="../img/si.png">
+	${h.h_tags.stylesheet_link('/css/checktree.css')}
+	<link rel="SHORTCUT ICON" href="/img/si.png">
 </head>
 <body id="mainBody">
 	<div class="md" id="" style="">

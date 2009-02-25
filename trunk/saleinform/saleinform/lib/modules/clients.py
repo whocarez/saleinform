@@ -9,13 +9,13 @@ from pylons.i18n import get_lang, set_lang
 from saleinform.model import si
 from sqlalchemy.sql import func, and_, or_
 from sqlalchemy.sql import expression
-import os, shutil, Image
+import os
+from saleinform.lib.modules.imgprocessing import Img
 
 
 class ClientsList(object):
-    logoSize = 90, 30 # размер логотипа
-    originalLogoPath = os.join.path(config['pylons.paths']['static_files'], 'data', 'clients', 'logos', 'original')
-    thumbLogoPath = os.join.path(config['pylons.paths']['static_files'], 'data', 'clients', 'logos')
+    logo_size = 90, 30 # размер логотипа
+    logo_path = os.path.join('data', 'clients', 'logos')
     
     def __init__(self):
         self.sortabledCols = {'name':si.Clients.name, 'createdt':si.Clients.createdt}
@@ -42,8 +42,8 @@ class ClientsList(object):
             searchRule = session.get('clients_search_rule')
             print searchRule
             for key, rule in searchRule.iteritems():
-                if key == 'name': clients = clients.filter(si.Clients.name.like('%'+rule+'%'))
-                if key == 'place': clients = clients.filter(or_(si.Cities.name.like('%'+rule+'%'), si.Regions.name.like('%'+rule+'%'), si.Countries.name.like('%'+rule+'%')))
+                if key == 'name': clients = clients.filter(si.Clients.name.ilike('%'+rule+'%'))
+                if key == 'place': clients = clients.filter(or_(si.Cities.name.ilike('%'+rule+'%'), si.Regions.name.ilike('%'+rule+'%'), si.Countries.name.ilike('%'+rule+'%')))
         if self.defaultSortRule=='asc':
             clients = clients.order_by(self.defaultSort.asc()).all()
         else:
@@ -131,16 +131,10 @@ class ClientsList(object):
         client.popularity = request.params['popularity']
         si.meta.Session.add(client)
         si.meta.Session.commit()
-        originalLogo = os.path.join(self.originalLogoPath, str(client.rid)+'_'+request.params['logo'].filename)
-        thumbLogo = os.path.join(self.thumbLogoPath, str(client.rid)+'_'+request.params['logo'].filename)
-        logoFile = open(originalLogo, 'w')
-        shutil.copyfileobj(request.params['logo'].file, logoFile)
-        request.params['logo'].file.close()
-        logoFile.close()
-        self.logoImageProcessing(logoFile, thumbLogo)
-        client.logo = thumbLogo
-        si.meta.Session.add(client)
-        si.meta.Session.commit()
+        if request.params['logo'] != '':
+            client.logo = Img(self.logo_path).save_img(field_name='logo', size=self.logo_size)
+            si.meta.Session.add(client)
+            si.meta.Session.commit()
         return client.rid
         #except:
         #    si.meta.Session.rollback()
@@ -148,17 +142,3 @@ class ClientsList(object):
 
     def getClient(self, rid):
         return si.meta.Session.query(si.Clients).filter(si.Clients.rid==rid).first()
-        
-
-    def logoImageProcessing(self, sourcePath, destPath):
-        """Обработка изображения логотипа
-        """
-        #try:
-        im = Image.open(sourcePath)
-        im.thumbnail(self.logoSize)
-        im.save(destPath)
-        return True
-        #except:
-        #    return False
-        
-        

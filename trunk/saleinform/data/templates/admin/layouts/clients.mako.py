@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1235342640.5546589
+_modified_time = 1235601065.5991099
 _template_filename='/home/mazvv/Projects/Python/Pylons/saleinform/saleinform/templates/admin/layouts/clients.mako'
 _template_uri='/admin/layouts/clients.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -28,21 +28,27 @@ def render_body(context,**pageargs):
         __M_writer(escape(h.h_tags.javascript_link('/js/dropdowntabs.js')))
         __M_writer(u'\r\n\t')
         # SOURCE LINE 12
-        __M_writer(escape(h.h_tags.stylesheet_link('/css/style.css')))
+        __M_writer(escape(h.h_tags.javascript_link('/js/jquery.checktree.js')))
         __M_writer(u'\r\n\t')
         # SOURCE LINE 13
-        __M_writer(escape(h.h_tags.stylesheet_link('/css/glowtabs.css')))
+        __M_writer(escape(h.h_tags.stylesheet_link('/css/style.css')))
         __M_writer(u'\r\n\t')
         # SOURCE LINE 14
-        __M_writer(escape(h.h_tags.stylesheet_link('/css/admin_clients.css')))
+        __M_writer(escape(h.h_tags.stylesheet_link('/css/glowtabs.css')))
         __M_writer(u'\r\n\t')
         # SOURCE LINE 15
+        __M_writer(escape(h.h_tags.stylesheet_link('/css/admin_clients.css')))
+        __M_writer(u'\r\n\t')
+        # SOURCE LINE 16
         __M_writer(escape(h.h_tags.stylesheet_link('/css/admin_pager.css')))
-        __M_writer(u'\r\n\t<link rel="SHORTCUT ICON" href="../img/si.png">\r\n</head>\r\n<body id="mainBody">\r\n\t<div class="md" id="" style="">\r\n\t\t<div id="main_cnt">\r\n\t\t\t<div>\r\n\t\t\t\t')
-        # SOURCE LINE 22
+        __M_writer(u'\r\n\t')
+        # SOURCE LINE 17
+        __M_writer(escape(h.h_tags.stylesheet_link('/css/checktree.css')))
+        __M_writer(u'\r\n\t<link rel="SHORTCUT ICON" href="/img/si.png">\r\n</head>\r\n<body id="mainBody">\r\n\t<div class="md" id="" style="">\r\n\t\t<div id="main_cnt">\r\n\t\t\t<div>\r\n\t\t\t\t')
+        # SOURCE LINE 24
         runtime._include_file(context, '/admin/modules/navigation/hnavigator.mako', _template_uri)
         __M_writer(u'\r\n\t\t\t</div>\r\n\t\t\t<div style="clear: both;">\r\n\t\t\t\t')
-        # SOURCE LINE 25
+        # SOURCE LINE 27
         runtime._include_file(context, '/admin/modules/clients/' + (c.a_template_name), _template_uri)
         __M_writer(u'\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div>\r\n\t\t</div>\r\n\t</div>\r\n</body>\r\n</html>')
         return ''

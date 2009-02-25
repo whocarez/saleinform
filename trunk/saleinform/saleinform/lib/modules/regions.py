@@ -86,3 +86,8 @@ class CitiesList(object):
         si.meta.Session.query(si.Cities).filter(si.Cities.rid==rid).delete()
         si.meta.Session.commit()
 
+class DeliveryList():
+    """Список регионов доставки вместе со странами
+    """
+    def __init__(self):
+        pass

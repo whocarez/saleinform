@@ -14,7 +14,7 @@
 	${h.h_tags.stylesheet_link('/css/glowtabs.css')}
 	${h.h_tags.stylesheet_link('/css/simpletree.css')}
 	${h.h_tags.stylesheet_link('/css/admin_regions.css')}
-	<link rel="SHORTCUT ICON" href="../img/si.png">
+	<link rel="SHORTCUT ICON" href="/img/si.png">
 </head>
 <body id="mainBody">
 	<div class="md" id="" style="">

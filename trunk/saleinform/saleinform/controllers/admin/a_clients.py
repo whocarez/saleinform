@@ -10,6 +10,7 @@ from saleinform.lib.modules.countries import CountriesList
 from saleinform.lib.modules.regions import RegionsList, CitiesList
 from pylons.decorators import validate
 from saleinform.lib.validators import clients as v_clients
+from saleinform.lib.modules.categories import CategoriesList
 
 from webhelpers import paginate
 
@@ -41,6 +42,7 @@ class AClientsController(BaseController):
         cList = ClientsList()
         a_clients = cList.getList()
         c.a_sort = cList.defaultSort
+        #TODO: решить проблему с наиенованием колонок сортировки
         c.a_sortrule = cList.defaultSortRule
         c.a_operation_status = self.a_operation_status
         page = paginate.Page(a_clients, items_per_page=10, item_count=len(a_clients), page=request.GET.get("page", 1))
@@ -72,6 +74,22 @@ class AClientsController(BaseController):
                     self.a_operation_status = False
                 else:
                     redirect_to('action/'+str(newRid))
+        c.a_operation_status = self.a_operation_status
+        return render('/admin/layouts/clients.mako')
+
+    def options(self, rid=None):
+        """редактирование данных клиента"""
+        c.a_client = ClientsList().getClient(rid)
+        if not rid or not c.a_client: redirect_to('/admin/clients') 
+        c.a_template_name = 'clients_options.mako'
+        c.a_categories = CategoriesList()._getTopLevelCategories() 
+        c.a_countries = CountriesList().getList()
+        c.a_regions = RegionsList().getList()
+        c.a_cities = CitiesList().getList()
+        if request.POST.get('action', None):
+            self.a_operation_status = True
+            if not ClientsList().processingClients(rid): 
+                    self.a_operation_status = False
         c.a_operation_status = self.a_operation_status
         return render('/admin/layouts/clients.mako')
 

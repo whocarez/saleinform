@@ -21,7 +21,7 @@ class LogoValidation(formencode.validators.FancyValidator):
 class ClientsForm(formencode.Schema):
     allow_extra_fields = True
     filter_extra_fields = True
-    logo = LogoValidation(not_empty=True)
+    logo = LogoValidation()
     name = formencode.All(formencode.validators.String(not_empty=True, strip=True), formencode.validators.MinLength(2))
     _cities_rid = formencode.All(formencode.validators.Int(not_empty=True, strip=True))
     address = formencode.All(formencode.validators.String(not_empty=True, strip=True), formencode.validators.MinLength(2), formencode.validators.MaxLength(255))    

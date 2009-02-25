@@ -1,0 +1,57 @@
+@CHARSET "UTF-8";
+div.clients-options ul.delivery-tree, ul.delivery-tree * {
+	list-style-type: none;
+	margin: 0;
+	padding: 0 0 5px 0;
+}
+ul.delivery-tree img.arrow {
+	padding: 2px 0 0 0;
+	border: 0;
+	width: 20px;
+}
+ul.delivery-tree li {
+	padding: 5px 0 0 0;
+}
+ul.delivery-tree li ul {
+	padding: 0 0 0 20px;
+	margin: 0;
+}
+ul.delivery-tree label {
+	cursor: pointer;
+	padding: 2px 0;
+}
+ul.delivery-tree label.hover {
+	color: red;
+}
+
+ul.delivery-tree li .arrow {
+	width: 20px;
+	height: 20px;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	float: left;
+	background: transparent no-repeat 0 4px;
+}
+ul.delivery-tree li .collapsed {
+	background-image: url(../img/icons/collapsed.gif);
+}
+ul.delivery-tree li .expanded {
+	background-image: url(../img/icons/expanded.gif);
+}
+
+ul.delivery-tree li .checkbox {
+	width: 20px;
+	height: 18px;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	float: left;
+	background: url(../img/icons/check0.gif) no-repeat 0 0px;
+}
+ul.delivery-tree li .checked {
+	background-image: url(../img/icons/check2.gif);
+}
+ul.delivery-tree li .half_checked {
+	background-image: url(../img/icons/check1.gif);
+}

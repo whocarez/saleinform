@@ -12,7 +12,7 @@
 	${h.h_tags.stylesheet_link('/css/style.css')}
 	${h.h_tags.stylesheet_link('/css/glowtabs.css')}
 	${h.h_tags.stylesheet_link('/css/admin_currency.css')}
-	<link rel="SHORTCUT ICON" href="../img/si.png">
+	<link rel="SHORTCUT ICON" href="/img/si.png">
 </head>
 <body id="mainBody">
 	<div class="md" id="" style="">

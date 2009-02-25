@@ -9,9 +9,12 @@ from pylons.i18n import get_lang, set_lang
 from saleinform.model import si
 from sqlalchemy.sql import func, and_
 from sqlalchemy.sql import expression
-import os, shutil
+import os
+from saleinform.lib.modules.imgprocessing import Img
 
 class CountriesList(object):
+    flag_size = 30, 30 # размер логотипа
+    flag_path = os.path.join('data', 'countries', 'flags')
 
     def __init__(self, sort=None):
         self.defaultSort = sort or si.Countries.name
@@ -67,15 +70,14 @@ class CountriesList(object):
                 country = si.Countries()
             country.code=request.params['code']
             country.name=request.params['name'] 
-            country.image_name='/img/flags/'+request.params['code']+'_'+request.params['image_name'].filename
             country._currency_rid=request.params['_currency_rid']
             country.archive=request.params.get('archive', False)
             si.meta.Session.add(country)
             si.meta.Session.commit()
-            flagFile = open(os.path.join(config['pylons.paths']['static_files'], 'img', 'flags', request.params['code']+'_'+request.params['image_name'].filename), 'w')
-            shutil.copyfileobj(request.params['image_name'].file, flagFile)
-            request.params['image_name'].file.close()
-            flagFile.close()
+            if request.params.get('image_name', False) != '':
+                country.image_name = Img(self.flag_path).save_img(field_name='image_name', size=self.flag_size)
+                si.meta.Session.add(country)
+                si.meta.Session.commit()
             return country.rid
         except:
             si.meta.Session.rollback()

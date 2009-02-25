@@ -68,6 +68,7 @@
 							<th></th>
 							<th></th>
 							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 					% for row in c.a_clients:
@@ -93,6 +94,7 @@
 						<td>${row.createdt.strftime('%d/%m/%Y')}</td>
 						<td>${h.h_tools.mail_to(row.contact_email, h.h_tags.image('/img/icons/email_go.png', _(u'Отправить письмо'), border="0"), encode = "hex")}</td>						
 						<td>${h.h_tags.link_to(h.h_tags.image('/img/icons/pencil.png', _(u'Редактировать запись'), border="0"), '/admin/clients/action/'+str(row.rid), title=_(u'Редактировать запись'))}</td>
+						<td>${h.h_tags.link_to(h.h_tags.image('/img/icons/wrench.png', _(u'Опции клиента'), border="0"), '/admin/clients/options/'+str(row.rid), title=_(u'Опции клиента'))}</td>
 						<td>${h.h_tags.link_to(h.h_tags.image('/img/icons/arrow_right.png', _(u'Перейти на сайт'), border="0"), row.url, title=_(u'Перейти на сайт'))}</td>
 					</tr>
 					% endfor
