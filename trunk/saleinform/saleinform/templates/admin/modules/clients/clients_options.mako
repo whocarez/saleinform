@@ -23,10 +23,12 @@ ${h.h_tags.hidden('_clients_rid',c.a_client.rid)}
 <div class="clients-options">
 <script type="text/javascript">
 <!--
+
 $(document).ready(function(){
 $("ul.delivery-tree").checkTree({
 	});
 });
+
 //-->
 </script>
 	<table width="100%">
@@ -35,7 +37,7 @@ $("ul.delivery-tree").checkTree({
 				<h4>${_(u'Категории клиента')}</h4>
 				<span class="subgrey">${_(u'Выберите не более трех категорий, которые наиболее точно отвечают сайту клиента')}</span><br>
 				% for category in c.a_categories:
-				${h.h_tags.checkbox('_categories_rid', category.rid, label=category.name)}<br>
+				${h.h_tags.checkbox('_categories_rid', category.rid, label=category.name, checked=category.rid in c.a_clcategories)}<br>
 				% endfor
 			</td>
 			<td valign="top">
@@ -43,19 +45,19 @@ $("ul.delivery-tree").checkTree({
 				<ul class="delivery-tree">
 					% for country in c.a_countries:
 					<li>
-						${h.h_tags.checkbox('_countries_rid', country.rid)}
+						${h.h_tags.checkbox('_countries_rid', country.rid, checked = country.rid in c.a_clcountries)}
 						<label>${country.name}</label>
-						<ul style="display: none">
+						<ul >
 						% for region in c.a_regions:
 							% if region._countries_rid==country.rid:
 							<li>
-							${h.h_tags.checkbox('_regions_rid', region.rid)}
+							${h.h_tags.checkbox('_regions_rid', region.rid, checked = region.rid in c.a_clregions)}
 							<label>${region.name}</label>
 							<ul>
 							% for city in c.a_cities:
 								% if city.Cities._regions_rid==region.rid:
 								<li>
-								${h.h_tags.checkbox('_cities_rid', city.Cities.rid)}
+								${h.h_tags.checkbox('_cities_rid', city.Cities.rid, checked = city.Cities.rid in c.a_clcities)}
 								<label>${city.Cities.name}</label>
 								% endif
 								</li>

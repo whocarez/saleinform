@@ -132,8 +132,8 @@ sa.Index(u'_secondary29', _regions.c._countries_rid, _regions.c.name, unique=Tru
 # категории клиента
 """указывают категории, в которых работают магазины"""
 _clcategories =  sa.Table('_clcategories', meta.metadata,
-                       sa.Column(u'_categories_rid', sa.types.Integer(), primary_key=True),
-                       sa.Column(u'_clients_rid', sa.types.Integer(), primary_key=True, nullable=False),
+                       sa.Column(u'_categories_rid', sa.types.Integer(), schema.ForeignKey('_categories.rid', onupdate="CASCADE", ondelete="CASCADE"), primary_key=True, nullable=False),
+                       sa.Column(u'_clients_rid', sa.types.Integer(), schema.ForeignKey('_clients.rid', onupdate="CASCADE", ondelete="CASCADE"), primary_key=True, nullable=False),
                        sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__clcategories1', onupdate="CASCADE", ondelete="CASCADE"),
                        sa.ForeignKeyConstraint([u'_categories_rid'], [u'_categories.rid'], name=u'FK__clcategories2', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'_categories_rid5', _clcategories.c._categories_rid, unique=False)
@@ -165,8 +165,8 @@ sa.Index(u'_clients_rid92', _clregions.c._clients_rid, unique=False)
 _clcities =  sa.Table('_clcities', meta.metadata,
                     sa.Column(u'_cities_rid', sa.types.Integer(), schema.ForeignKey(u'_cities.rid', onupdate="CASCADE", ondelete="CASCADE"), primary_key=True, nullable=False),
                     sa.Column(u'_clients_rid', sa.types.Integer(), schema.ForeignKey(u'_clients.rid', onupdate="CASCADE", ondelete="CASCADE"), primary_key=True, nullable=False),
-                    sa.ForeignKeyConstraint([u'_cities_rid'], [u'_cities.rid'], name=u'FK__cities_92', onupdate="CASCADE", ondelete="CASCADE"),
-                    sa.ForeignKeyConstraint([u'_cities_rid'], [u'_clients.rid'], name=u'FK__clients_92', onupdate="CASCADE", ondelete="CASCADE"),)
+                    sa.ForeignKeyConstraint([u'_cities_rid'], [u'_cities.rid'], name=u'FK__cities_93', onupdate="CASCADE", ondelete="CASCADE"),
+                    sa.ForeignKeyConstraint([u'_clients_rid'], [u'_clients.rid'], name=u'FK__clients_93', onupdate="CASCADE", ondelete="CASCADE"),)
 sa.Index(u'_cities_rid93', _clcities.c._cities_rid, unique=False)
 sa.Index(u'_clients_rid93', _clcities.c._clients_rid, unique=False)
 
@@ -598,8 +598,29 @@ class Categories(object): pass
 class Catparents(object): pass
 class Categoriesimages(object): pass
 class Cities(object): pass
-class Clcategories(object): pass
+class Clcategories(object):
+    def __init__(self, _categories_rid = None, _clients_rid = None):
+        self._categories_rid = _categories_rid
+        self._clients_rid = _clients_rid
+
 class Clients(object): pass
+
+class Clcountries(object):
+    def __init__(self, _countries_rid = None, _clients_rid = None):
+        self._countries_rid = _countries_rid
+        self._clients_rid = _clients_rid
+        
+class Clregions(object):
+    def __init__(self, _regions_rid = None, _clients_rid = None):
+        self._regions_rid = _regions_rid
+        self._clients_rid = _clients_rid
+
+class Clcities(object):
+    def __init__(self, _cities_rid = None, _clients_rid = None):
+        self._cities_rid = _cities_rid
+        self._clients_rid = _clients_rid
+    
+
 class Cluopinions(object): pass
 class Countries(object): pass
 class Currcources(object): pass
@@ -642,6 +663,9 @@ orm.mapper(Categoriesimages, _categoriesimages)
 orm.mapper(Cities, _cities)
 orm.mapper(Clcategories, _clcategories)
 orm.mapper(Clients, _clients)
+orm.mapper(Clcountries, _clcountries)
+orm.mapper(Clregions, _clregions)
+orm.mapper(Clcities, _clcities)
 orm.mapper(Cluopinions, _cluopinions)
 orm.mapper(Currency, _currency)
 orm.mapper(Countries, _countries)

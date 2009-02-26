@@ -32,7 +32,18 @@ class ClientsForm(formencode.Schema):
     contact_phones = formencode.All(formencode.validators.IPhoneNumberValidator(not_empty=True, strip=True))
     contact_email = formencode.All(formencode.validators.Email(not_empty=True, strip=True))
     contact_person = formencode.All(formencode.validators.String(not_empty=True, strip=True), formencode.validators.MaxLength(32))
+
+class CategoriesValidation(formencode.Schema):
+    def _to_python(self, value, state):
+        if len(value) > 3: # не более 3 категорий
+            raise formencode.validators.Invalid(u'Выберите не более 3-х категорий', value, state)
+        value.file.seek(0)
+        return value
     
         
+class OptionsForm(formencode.Schema):
+    allow_extra_fields = True
+    filter_extra_fields = True
+    #_categories_rid = formencode.All(formencode.validators.Set(not_emplty=True, use_set=True))
         
 

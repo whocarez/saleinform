@@ -77,6 +77,7 @@ class AClientsController(BaseController):
         c.a_operation_status = self.a_operation_status
         return render('/admin/layouts/clients.mako')
 
+    @validate(schema=v_clients.OptionsForm(), form="options")
     def options(self, rid=None):
         """редактирование данных клиента"""
         c.a_client = ClientsList().getClient(rid)
@@ -86,9 +87,13 @@ class AClientsController(BaseController):
         c.a_countries = CountriesList().getList()
         c.a_regions = RegionsList().getList()
         c.a_cities = CitiesList().getList()
+        c.a_clcategories = [row._categories_rid for row in ClientsList().getClcategories(rid)]
+        c.a_clcountries = [row._countries_rid for row in ClientsList().getClcountries(rid)]
+        c.a_clregions = [row._regions_rid for row in ClientsList().getClregions(rid)]
+        c.a_clcities = [row._cities_rid for row in ClientsList().getClcities(rid)]
         if request.POST.get('action', None):
             self.a_operation_status = True
-            if not ClientsList().processingClients(rid): 
+            if not ClientsList().optionsClients(rid): 
                     self.a_operation_status = False
         c.a_operation_status = self.a_operation_status
         return render('/admin/layouts/clients.mako')

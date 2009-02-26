@@ -104,41 +104,78 @@ class ClientsList(object):
     
     def processingClients(self, rid=None):
         """Создание/Редактирование данных"""
-        #try:
-        if rid:
-            client = si.meta.Session.query(si.Clients).filter(si.Clients.rid==rid).first()
-        else: 
-            client = si.Clients()
-        client.name = request.params['name']
-        client._cities_rid = request.params['_cities_rid']
-        client.address = request.params['address']
-        client.phones = request.params['phones']
-        client.skype = request.params['skype']
-        client.icq = request.params['icq']
-        client.url = request.params['url']
-        client.creadits_info = request.POST.get('creadits_info', False)
-        client.delivery_info = request.params['delivery_info']
-        client.worktime_info = request.params['worktime_info']
-        client.descr = request.params['descr']
-        client.isloaded = request.POST.get('isloaded', False)
-        client.actual_days = request.params['actual_days']
-        client.price_email = request.params['price_email']
-        client.price_url = request.params['price_url']
-        client.contact_phones = request.params['contact_phones']
-        client.contact_email = request.params['contact_email']
-        client.contact_person = request.params['contact_person']
-        client.active = request.POST.get('active', False)
-        client.popularity = request.params['popularity']
-        si.meta.Session.add(client)
-        si.meta.Session.commit()
-        if request.params['logo'] != '':
-            client.logo = Img(self.logo_path).save_img(field_name='logo', size=self.logo_size)
+        try:
+            if rid:
+                client = si.meta.Session.query(si.Clients).filter(si.Clients.rid==rid).first()
+            else: 
+                client = si.Clients()
+            client.name = request.params['name']
+            client._cities_rid = request.params['_cities_rid']
+            client.address = request.params['address']
+            client.phones = request.params['phones']
+            client.skype = request.params['skype']
+            client.icq = request.params['icq']
+            client.url = request.params['url']
+            client.creadits_info = request.POST.get('creadits_info', False)
+            client.delivery_info = request.params['delivery_info']
+            client.worktime_info = request.params['worktime_info']
+            client.descr = request.params['descr']
+            client.isloaded = request.POST.get('isloaded', False)
+            client.actual_days = request.params['actual_days']
+            client.price_email = request.params['price_email']
+            client.price_url = request.params['price_url']
+            client.contact_phones = request.params['contact_phones']
+            client.contact_email = request.params['contact_email']
+            client.contact_person = request.params['contact_person']
+            client.active = request.POST.get('active', False)
+            client.popularity = request.params['popularity']
             si.meta.Session.add(client)
             si.meta.Session.commit()
-        return client.rid
-        #except:
-        #    si.meta.Session.rollback()
-        #    return False
+            if request.params['logo'] != '':
+                client.logo = Img(self.logo_path).save_img(field_name='logo', size=self.logo_size)
+                si.meta.Session.add(client)
+                si.meta.Session.commit()
+            return client.rid
+        except:
+            si.meta.Session.rollback()
+            return False
+
+    def optionsClients(self, rid):
+        try:
+            si.meta.Session.query(si.Clcategories).filter(si.Clcategories._clients_rid==rid).delete()
+            si.meta.Session.query(si.Clcountries).filter(si.Clcountries._clients_rid==rid).delete()
+            si.meta.Session.query(si.Clregions).filter(si.Clregions._clients_rid==rid).delete()
+            si.meta.Session.query(si.Clcities).filter(si.Clcities._clients_rid==rid).delete()
+            categories_list, countries_list, regions_list, cities_list = [], [], [], []
+            for _categories_rid in request.params.getall('_categories_rid'):
+                categories_list.append(si.Clcategories(_categories_rid=_categories_rid, _clients_rid=rid))
+            for _countries_rid in request.params.getall('_countries_rid'):
+                countries_list.append(si.Clcountries(_countries_rid=_countries_rid, _clients_rid=rid))
+            for _regions_rid in request.params.getall('_regions_rid'):
+                regions_list.append(si.Clregions(_regions_rid=_regions_rid, _clients_rid=rid))
+            for _cities_rid in request.params.getall('_cities_rid'):
+                cities_list.append(si.Clcities(_cities_rid=_cities_rid, _clients_rid=rid))
+            si.meta.Session.add_all(categories_list)
+            si.meta.Session.add_all(countries_list)
+            si.meta.Session.add_all(regions_list)
+            si.meta.Session.add_all(cities_list)
+            si.meta.Session.commit()
+        except:
+            si.meta.Session.rollback()
+            return False
+            
+        
+    def getClcategories(self, rid):
+        return si.meta.Session.query(si.Clcategories).filter(si.Clcategories._clients_rid==rid).all()
+
+    def getClcountries(self, rid):
+        return si.meta.Session.query(si.Clcountries).filter(si.Clcountries._clients_rid==rid).all()
+
+    def getClregions(self, rid):
+        return si.meta.Session.query(si.Clregions).filter(si.Clregions._clients_rid==rid).all()
+
+    def getClcities(self, rid):
+        return si.meta.Session.query(si.Clcities).filter(si.Clcities._clients_rid==rid).all()
 
     def getClient(self, rid):
         return si.meta.Session.query(si.Clients).filter(si.Clients.rid==rid).first()
