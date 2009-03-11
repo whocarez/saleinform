@@ -25,18 +25,6 @@ class Categories_module{
 	private $STN_categories_ware_images_offers_height = 100;
 	private $STN_categories_ware_miniicon_width = 41;
 	private $STN_categories_ware_miniicon_height = 29;
-	private $_categories_current_uri_assoc;
-	private $_categories_current_category_rid;
-	private $_categories_current_sort_rule; 
-	private $_categories_current_price_type;
-	private $_categories_current_main_curr_rid;
-	private $_categories_current_add_curr_rid;	
-	private $_categories_current_city_rid;
-	private $_categories_current_country_rid;
-	private $_categories_current_region_rid;
-	private $_categories_current_page;
-	private $_categories_quan_of_offers;
-	
 	
 	
 	public function __construct(){
@@ -45,39 +33,47 @@ class Categories_module{
 		$this->ciObject->load->helper('inflector');
 		$this->ciObject->load->model('categories_model');
 		$this->ciObject->load->library('keywords_module');
-		$this->ciObject->load->library('contacts_module');
-		$this->STN_categories_title = $this->ciObject->lang->line('CATEGORIES_MODULE_TABLE_TITLE');
-		$this->objectsArr['categories_title'] = $this->STN_categories_title;
-		/* { URI parsed */
-		$this->_categories_current_uri_assoc = $this->ciObject->uri->uri_to_assoc(2);
-		$this->_categories_current_category_rid = (isset($this->_categories_current_uri_assoc['c']))?$this->_categories_current_uri_assoc['c']:null;
-		$this->_categories_current_sort_rule = (isset($this->_categories_current_uri_assoc['sr']))?$this->_categories_current_uri_assoc['sr']:$this->STN_categories_default_sort_rule;
-		$this->_categories_current_price_type = (isset($this->_categories_current_uri_assoc['pp']))?$this->_categories_current_uri_assoc['pp']:$this->STN_categories_default_prtype_code;
-		$currentSESS = $this->ciObject->session->userdata('_SI_');
-		$this->_categories_current_city_rid = $currentSESS['SI_SETTINGS']['_CITY_RID_'];
-		$this->_categories_current_region_rid = $currentSESS['SI_SETTINGS']['_REGION_RID_'];
-		$this->_categories_current_country_rid = $currentSESS['SI_SETTINGS']['_COUNTRY_RID_'];
-		$this->_categories_current_main_curr_rid = $currentSESS['SI_SETTINGS']['_MAIN_CURR_RID_'];
-		$this->_categories_current_add_curr_rid = $currentSESS['SI_SETTINGS']['_ADD_CURR_RID_'];
-		$this->_categories_current_page = (isset($this->_categories_current_uri_assoc['p']))?$this->_categories_current_uri_assoc['p']:0;
-		/* } URI parsed */
 	}
 	
-	public function RenderCategoriesList(){
+	public function getCridFromSlug($slug){
+		$cArr = explode('-', $slug);
+		$cRid = (int)$cArr[0];
+		return $cRid; 
+	}
+	
+	public function renderCategoriesList(){
 		$data['categories_list'] = $this->ciObject->categories_model->getTopCategories(null);
 		$data['subcats_list'] = $this->ciObject->categories_model->getSecondLevelCategories();
 		return $this->ciObject->load->view('modules/categories_module/list.php',$data, True);
 	}
 	
-	public function RenderCategoriesTree(){
+	public function renderCategoriesTree(){
 		$data = array();
 		$data['tree'] = $this->getTree();
 		$data['cats_in_cols'] = (int)(count($this->ciObject->categories_model->getTopCategories(null))/3)+1;
 		return $this->ciObject->load->view('modules/categories_module/tree.php',$data, True);
 	}
 	
-	public function RenderCategoryContent()
-	{
+	public function renderCategory($slug=null){
+		if(!$catRid = $this->getCridFromSlug($slug)) show_404();
+		$data = array();
+		$data['currcat'] = $this->ciObject->categories_model->getCategoryInfo($catRid);
+		if(!$data['currcat']) show_404();
+		$data['path'] = $this->ciObject->categories_model->getCategoryPath($catRid);
+		# at first render subcategories content
+		$data['subcats'] = $this->ciObject->categories_model->getCategories($catRid);
+		if(count($data['subcats'])){
+			$middle = count($data['subcats'])/2;
+			if(($middle - (int)$middle) > 0) $middle++;
+			$data["middle"] = $middle;
+			$data['s_subcats'] = $this->ciObject->categories_model->getSubcategories2Level($catRid);
+			return $this->ciObject->load->view('modules/categories_module/category_ws.php',$data, True);	
+		} 
+		else return $this->ciObject->load->view('modules/categories_module/category_pr.php',$data, True);
+		
+	}
+	
+	public function RenderCategoryContent(){
 		if(is_array($this->ciObject->categories_model->GetCategoriesArr($this->_categories_current_category_rid))) return $this->RenderSubcategoriesContent();
 		else return $this->RenderCategoryOffers();
 	}

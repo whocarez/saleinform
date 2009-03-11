@@ -1,68 +1,64 @@
-<?php
-/*
- * Categories Model
- */
-class Categories_model extends Model
-{
-	public function __construct()
-	{
-		parent::Model();
-		$this->db->query("SET NAMES 'utf8'"); 		
-	}
-	
-	public function GetCategoriesArr($categoriesRID=null){
-		$this->db->select('_categories.*');
-		$this->db->from('_categories');
-		if($categoriesRID!==null) {
-			$this->db->where(array('_categories._categories_rid'=>$categoriesRID, '_categories.archive'=>'0'));
-		}
-		else $this->db->where(array('_categories.archive'=>'0'));
-		$this->db->orderby('_categories.name');
-		$query = $this->db->get();
-		return $query->num_rows()?$query->result():array();
-	}
-	
-	public function GetCategoryArr($categoriesRID, $parsARR = null){
-		/*
-		$countriesRID = $parsARR['cn_c'];
-		$cititesRID = $parsARR['c_c'];
-		$regionsRID = $parsARR['r_c'];
-		*/
-		$this->db->select('_categories.*');
-		$this->db->from('_categories');
-		$this->db->where(array('_categories.rid'=>$categoriesRID, '_categories.archive'=>'0'));
-		# join with _pritems and geotargeting
-		/*		
-		$this->db->join('_pritems', '_pritems._categories_rid = _categories.rid and _pritems.archive = 0', 'LEFT');
-		$this->db->join('_clients', '_clients.rid=_pritems._clients_rid AND _clients.archive=0');
-		if($cititesRID)
-		{
-			$this->db->join('_cities', '_cities.rid=_clients._cities_rid');
-			$this->db->where(array('_clients._cities_rid'=>$cititesRID));
-		}
-		else if(!$cititesRID && $regionsRID)
-		{
-			$this->db->join('_cities', '_cities.rid=_clients._cities_rid');
-			$this->db->join('_regions', "_regions.rid=_cities._regions_rid AND _regions.rid='$regionsRID'");
-		}
-		else
-		{
-			$this->db->join('_cities', '_cities.rid=_clients._cities_rid');
-			$this->db->join('_regions', '_regions.rid=_cities._regions_rid');
-			$this->db->join('_countries', "_countries.rid=_regions._countries_rid AND _countries.rid='$countriesRID'");
-		}
-		$this->db->groupby('_categories.rid');
-		*/
+<?php
+/*
+ * Categories Model
+ */
+class Categories_model extends Model{
+	private $ciObject;	public function __construct(){
+		parent::Model();
+		$this->ciObject = &get_instance();
+	}
+	
+	public function getCategoryPath($cRid){
+		$this->db->select('_categories.rid, _categories.slug, _categories.name');
+		$this->db->from('_catparents');
+		$this->db->join('_categories', '_categories.rid = _catparents._parent_rid');
+		$this->db->where(array('_catparents._categories_rid'=>$cRid));
+		$this->db->order_by('_catparents.level');
+		$query = $this->db->get();
+		return $query->num_rows()?$query->result():array();                
+	}
+	
+	
+	public function getCategories($categoriesRID=null){
+		$this->ciObject->load->library('settings_module');
+		$cityRid = $this->ciObject->settings_module->getCurrSetting('_CITY_RID_');
+		$regionRid = $this->ciObject->settings_module->getCurrSetting('_REGION_RID_');
+		$countryRid = $this->ciObject->settings_module->getCurrSetting('_COUNTRY_RID_');	
+		$this->db->select('_categories.*');
+		$this->db->from('_categories');
+		if($categoriesRID!==null)$this->db->where(array('_categories._categories_rid'=>$categoriesRID));
+		$this->db->where(array('_categories.archive'=>'0'));
 		$this->db->orderby('_categories.name');
-		
-		$query = $this->db->get();
-		if($query->num_rows()) 
-		{
-			return $query->row_array();
-		}
-		return FALSE;
+		$query = $this->db->get();
+		return $query->num_rows()?$query->result():array();
 	}
-	
+	public function getCategoryInfo($categoriesRID){
+		$this->db->select('_categories.*');		$this->db->from('_categories');		$this->db->where(array('_categories.rid'=>$categoriesRID, '_categories.archive'=>'0'));
+		$this->db->orderby('_categories.name');
+		$query = $this->db->get();		return $query->num_rows()?$query->row():null;
+	}
+	public function getSubcategories2Level($catRid){
+		$this->ciObject->load->library('settings_module');
+		$cityRid = $this->ciObject->settings_module->getCurrSetting('_CITY_RID_');
+		$regionRid = $this->ciObject->settings_module->getCurrSetting('_REGION_RID_');
+		$countryRid = $this->ciObject->settings_module->getCurrSetting('_COUNTRY_RID_');	
+		$this->db->select("t.*, count(_pritems.rid)  as oquan", False);
+		$this->db->from("(select _categories.* from _catparents 
+							join _categories on _categories.rid = _catparents._categories_rid
+							where _catparents._parent_rid in (select rid from _categories where _categories_rid = {$catRid})) t ");
+		$this->db->join('_pritems', '_pritems._categories_rid = t.rid', 'LEFT');
+		$this->db->join('_clients', '_clients.rid=_pritems._clients_rid', 'LEFT');
+		$this->db->join('_cities', '_cities.rid=_clients._cities_rid', 'LEFT');
+		$this->db->join('_regions', '_regions.rid=_cities._regions_rid', 'LEFT');
+		$this->db->join('_countries', '_countries.rid=_regions._countries_rid', 'LEFT');
+		if($cityRid) $this->db->where(array('_clients._cities_rid'=>$cityRid));
+		else if(!$cityRid && $regionRid) $this->db->where(array('_regions.rid'=>$regionRid));
+		else $this->db->where(array('_countries.rid'=>$countryRid));
+		$this->db->group_by("t.rid");
+		$this->db->order_by("t.name");
+		$query = $this->db->get();
+		return $query->num_rows()?$query->result():array();
+	}
 	public function GetCategoryImages($categoriesRID, $imageTYPE = null)
 	{
 		$this->db->select('_categoriesimages.*');

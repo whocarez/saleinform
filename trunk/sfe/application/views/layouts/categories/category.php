@@ -10,9 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/navigator.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/search.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/categories.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/stores.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/common.css">
-	<script src="<?php echo base_url()?>javascript/jquery-1.3.1.min.js" type="text/javascript"></script>
 	<!-- 
 	<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
 	 -->
@@ -31,7 +29,9 @@
             <table width="100%" border="0" cellpadding="0" cellspacing="0">
 				<tr>
                     <td style="padding: 10px 0px 0px 0px;" valign="top">
-                    	<?=$client_info_obj?>
+					<!-- { Categories list -->
+					<?=$categories_area_obj?>
+					<!-- } Categories list -->
                     </td>
                 </tr>
             </table>

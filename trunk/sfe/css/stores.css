@@ -183,72 +183,6 @@ p.descr{
 	height:18px;
 }
 
-#prodNav, .prodNav {
-	background-position:center bottom;
-	background-repeat:repeat-x;
-	float:left;
-	line-height:22px;
-	width:100%;
-	margin-top: 20px;
-}
-.ptab4onbd {
-	background:transparent url(../images/bg_prodnavi_3.gif) repeat top left;
-}
-
-#prodNav ul {
-	list-style-image:none;
-	list-style-position:outside;
-	list-style-type:none;
-	margin:0;
-	padding:0 10px 0;
-}
-#prodNav li {
-	display:inline;
-	margin:0;
-	padding:0;
-	
-}
-
-#prodNav a {
-	float:left;
-	font-size:13px;
-	margin:0 2px 0 0;
-	padding:0 0 0 9px;
-	text-decoration:none;
-}
-
-#prodNav a span {
-	float:none;
-}
-
-#ptab1 a{
-	background:transparent url(../images/bg_prodnavi_3_L.gif) repeat 0 0;	
-}
-#ptab1 a span{
-	padding:3px 15px 3px 6px;
-	background:transparent url(../images/bg_prodnavi_3_R.gif) repeat top right;		
-}
-
-#ptab1on a{
-	background:transparent url(../images/bg_prodnavi_3_L.gif) repeat 0 -23px;	
-}
-#ptab1on a span, #ptab2on a span, #ptab3on a span{
-	padding:3px 15px 3px 6px;
-	background:transparent url(../images/bg_prodnavi_3_R.gif) repeat right -23px;		
-}
-
-.ptab2onbd {
-	background:transparent url(../images/bg_prodnavi_12.gif) repeat 0 0;
-}
-
-#ptab2on a{
-	background:transparent url(../images/bg_prodnavi_12_L.gif) repeat 0 -23px;	
-}
-#ptab2on a span{
-	padding:3px 15px 3px 6px;
-	background:transparent url(../images/bg_prodnavi_12_R.gif) repeat right -23px;		
-}
-
 table.clientInfo{
 }
 
@@ -288,46 +222,6 @@ table.clientInfo td table td.title span{
 	font-size: 12px;
 	color: silver;
 	text-decoration: none;
-}
-
-table.resultrangetopPriceComp2 {
-	border-color: #C0C3C7;
-	border-spacing:0;
-	border-style:none solid;
-	border-width:0 1px;
-	clear:both;
-	margin:0;
-	padding:0;
-	width:100%;
-}
-.resultrangetopPriceComp2 td {
-	color:#666666;
-	font-size:12px;
-}
-td.rangearticles {
-	height:26px;
-	padding-left:7px;
-	text-align:left;
-	white-space:nowrap;
-	width:20%;
-}
-td.rangepages {
-	height:26px;
-	text-align:center;
-	width:60%;
-}
-td.rangenextpage {
-	height:26px;
-	padding-right:7px;
-	text-align:right;
-	white-space:nowrap;
-	width:20%;
-}
-.bg3boxgdt {
-	background:transparent url(../images/bg3box.gif) repeat-x 0 0;
-}
-.bg12boxgdt {
-	background:transparent url(../images/bg12box.gif) repeat-x 0 0;
 }
 
 table.review2 {
@@ -370,7 +264,7 @@ div.edit-review{
 }
 div.edit-review-header{
 	height:30px;
-	background-image:url(http://images.us.ciao.com/ius/images/crux/sprites/sprites_bg_gradient.png);
+	background-image:url(../images/sprites_bg_gradient.png);
 	background-position:0 0;
 	background-repeat:repeat-x;	
 	border-left: 1px solid #CCDEF8; 
@@ -398,7 +292,7 @@ div.review-content{
 	font-size: 12px;
 }
 div.review-content-header{
-	background-image:url(http://images.us.ciao.com/ius/images/crux/sprites/sprites_bg_gradient.png);
+	background-image:url(../images/sprites_bg_gradient.png);
 	background-position:0 -40px;
 	background-repeat:repeat-x;
 	height:30px;	
@@ -431,14 +325,14 @@ div.review-title p, div.review-review p, div.review-pos p, div.review-neg p{
 }
 
 img.quote-left {
-	background:transparent url(http://images.us.ciao.com/ius/images/crux/sprites/sprites_icon.gif) no-repeat scroll -60px top;
+	background:transparent url(../images/sprites_icon.gif) no-repeat scroll -60px top;
 	height:15px;
 	margin:0 8px 5px 0;
 	width:20px;
 }
 
 img.quote-right {
-	background:transparent url(http://images.us.ciao.com/ius/images/crux/sprites/sprites_icon.gif) no-repeat scroll -100px top;
+	background:transparent url(../images/sprites_icon.gif) no-repeat scroll -100px top;
 	height:15px;
 	margin:0 5px -16px 8px;
 	width:20px;
@@ -455,11 +349,11 @@ div.review-review textarea{
 	height:175px;
 }
 div.review-pos label{
-	background:transparent url(http://images.us.ciao.com/ius/images/crux/icons/readrev_advantages_small.gif) no-repeat left 4px;
+	background:transparent url(../images/readrev_advantages_small.gif) no-repeat left 4px;
 	padding:0 0 5px 15px;	
 }
 div.review-neg label{
-	background:transparent url(http://images.us.ciao.com/ius/images/crux/icons/readrev_disadvantages_small.gif) no-repeat left 4px;
+	background:transparent url(../images/readrev_disadvantages_small.gif) no-repeat left 4px;
 	padding:0 0 5px 15px;	
 }
 .save-button{
@@ -485,7 +379,7 @@ div.review-error{
 	font-weight: bold;
 }
 div.review-error-header{
-	background-image:url(http://images.us.ciao.com/ius/images/crux/sprites/sprites_bg_gradient.png);
+	background-image:url(../images/sprites_bg_gradient.png);
 	background-position:0 -240px;
 	background-repeat:repeat-x;
 	height:30px;

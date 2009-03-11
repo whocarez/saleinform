@@ -1,6 +1,6 @@
 *{	margin:0;	padding:0;}
 body{	font-family:arial,helvetica,clean,sans-serif;	font-size-adjust:none;	font-style:normal;	font-variant:normal;	font-weight:normal;	line-height:1.22;		min-width: 970px;	margin: 0px 10px 10px 10px;	background-color: #FFFFFF;	font-size:12px;	}
-h1{	font-size: 120%;	margin-bottom:10px;}h2{	font-size: 115%;}h3{	font-size: 105%;}h4{	font-size: 100%;}
+h1{	font-size: 170%;	font-weight: normal;	margin-bottom:10px;}h2{	font-size: 115%;}h3{	font-size: 105%;}h4{	font-size: 100%;}
 a:link, a:VISITED {	color:#0000CC;}
 
 .logo{
@@ -43,7 +43,7 @@ hr {
 	margin: 5px 0px; 
 	color: grey;
 }
-
+td{	font-size: 12px;}
 td.cTD{
 	padding: 10px;	
 }

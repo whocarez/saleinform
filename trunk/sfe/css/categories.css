@@ -1,11 +1,4 @@
-@CHARSET "UTF-8";
-/* { Список категорий на главной */
-div.catslist{
-	background-image:url(../images/catsmain_bg.png);
-	border-top: 1px solid #93c0ff;
-	color:#919191;
-	font-size:11px;
-	margin: 10px 0px 0px 0px;
+@CHARSET "UTF-8";/* { Список категорий на главной */div.catslist{	background-image:url(../images/catsmain_bg.png);	border-top: 1px solid #93c0ff;	color:#919191;	font-size:11px;	margin: 10px 0px 0px 0px;
 	padding:0;
 	width: 280px;
 	position:relative;
@@ -273,4 +266,4 @@ td.websrccat {
 	vertical-align:top;
 	width:33%;
 }
-/* } Дерево категорий */
+/* } Дерево категорий *//* { Категория */div.newIntro {	color:#7D7D7D;	font-size:13px;	margin:20px 2px 28px;}td.layoutM{	width:10px;}td.layoutR{	vertical-align:top;	width:230px;	}table.newCatTable {	background-image:url(../images/css/bg/bg_newTable.gif);	background-position:center bottom;	background-repeat:repeat-x;	border-color: #93C0FF;	border-style:none solid solid;	border-width:medium 1px 1px;	margin:0 0 20px;	width:100%;}table.newCatTable td {	padding:15px 15px 5px;}td.subcat {	padding-bottom:5px;	padding-top:10px;	vertical-align:top;	width:50%;}.newCatTable dl.subcatbox {	margin-top:0;}dl.subcatbox {	margin-bottom:10px;}table.newCatTable td a.hdl{	color:#000000;	font-size:120%;	text-decoration:none;}table.newCatTable td a.subnr {	color:#7D7D7D;	font-size:13px;	text-decoration:underline;}dl.subcatbox dd {	margin-left:5px;	padding:2px 0;}.subnr {	color:#7D7D7D;	font-size:90%;}/* } Категория */

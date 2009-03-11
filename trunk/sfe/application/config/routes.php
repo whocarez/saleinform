@@ -46,6 +46,7 @@ $route['scaffolding_trigger'] = "";
 $route['categoriestree'] = "categories/categoriestree";
 $route['client/(:any)'] = "clients/client/$1";
 $route['clients/l/(:any)'] = "clients/letter/$1";
+$route['category/(:any)'] = "categories/category/$1";
 
 
 

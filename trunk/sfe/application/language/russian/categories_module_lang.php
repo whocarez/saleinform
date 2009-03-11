@@ -6,6 +6,7 @@ $lang['CATEGORIES_PREVIEW'] = 'Обзор категорий';
 $lang['CATEGORIES_SHOW_TREE'] = 'Смотреть всё дерево категорий';
 $lang['CATEGORIES_TREE_TITLE'] = 'Дерево категорий';
 
+
 $lang['CATEGORIES_MODULE_TABLE_TITLE'] = 'Сравнение цен';
 $lang['CATEGORIES_MODULE_SHOW_ALL_CATEGORIES_TITLE'] = 'смотреть все';
 $lang['CATEGORIES_MODULE_SHOW_ALL_TITLE'] = 'Просмотр всех категорий';
