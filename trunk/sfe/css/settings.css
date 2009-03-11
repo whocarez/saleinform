@@ -1,0 +1,113 @@
+@CHARSET "UTF-8";
+div.settings-box{
+	clear: both;
+	border: 1px solid #f5e082;
+	margin-top: 10px;	
+	padding: 10px;
+	font-size: 12px;
+}
+div.settings-box h3{
+	color: #CC6600;
+	padding-bottom: 5px;
+}
+table.settings-table{
+	font-size: 12px;
+}
+table.settings-table td.label{
+	background:transparent url(../images/dots.gif) repeat-x right bottom;
+}
+table.settings-table td.label span{
+	color: #0033CC;
+	background-color:white;
+	padding-right:2px;
+}
+
+/* { Set setting */
+div.setsettings-block{
+	width: 100%;
+	line-height: 16px;
+	margin-top: 10px;
+	font-size: 12px;
+} 
+div.setsettings-header{
+	background:transparent url(../images/module_frame_borders.gif) repeat-x scroll 0 0;
+	height:23px;
+	width:100%;	
+}
+div.setsettings-right-corner{
+	background:transparent url(../images/module_frame_borders.gif) no-repeat -1991px 0;
+	float:right;
+	height:23px;
+	width:9px;	
+}
+div.setsettings-content{
+	border-left:1px solid #EBEBEB;
+	border-right:1px solid #EBEBEB;
+	font-size: 12px;
+	margin:0;
+	padding:5px 9px 0;	
+}
+div.setsettings-bottom-border{
+	clear:both;
+	height:1%;
+}
+div.setsettings-footer-bar{
+	background:transparent url(../images/module_frame_borders.gif) repeat-x 0 -23px;
+	height:9px;
+	width:100%;	
+}
+div.setsettings-bottom-right-corner{
+	background:transparent url(../images/module_frame_borders.gif) no-repeat -1991px -23px;
+	float:right;
+	height:9px;
+	width:9px;	
+}
+div.setsettings-content img{
+	padding-right: 10px;
+}
+div.setsettings-header h3{
+	color:#15345C;
+	float:left;
+	padding:5px 0 0 10px;
+}
+div.setsettings-content h4{
+	font-size:100%;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+ul.setsettings-countries li{
+	float: left;
+	list-style-position: outside;
+	list-style-image: none;
+	padding-right: 20px;
+	list-style-type: none;
+	font-size: 12px;
+}
+table.regions-list{
+	font-size: 12px;
+	width: 100%;
+}
+div.setsettings-content HR {
+	height: 1px;
+	background-color: #D9D9F9;
+}
+.settings-save-btn{
+	width: 150px;
+	height: 40px;
+	background: transparent url(../images/settings_save_btn.png) no-repeat left top;
+	border: none;
+	font-size: 150%;
+	cursor: pointer;
+	color: #FFFFFF;
+	margin-top: 10px;
+}
+.save-ok{
+	background-color: #caf6e4;
+	height: 40px;
+	vertical-align: middle;
+	padding: 4px;
+	font-size: 110%;
+	font-weight: bold;
+}
+/* } Set setting */

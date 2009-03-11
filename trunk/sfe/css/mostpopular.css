@@ -1,0 +1,43 @@
+@CHARSET "UTF-8";
+div.mostpopular-cloud{
+	width: 100%;
+	line-height: 22px;
+	margin-top: 10px;
+} 
+div.cloud-header{
+	background:transparent url(../images/top_grey_border.gif) repeat-x scroll 0 0;
+	height:9px;
+	width:100%;	
+}
+div.cloud-right-corner{
+	background:transparent url(../images/top_grey_border.gif) no-repeat -1991px 0;
+	float:right;
+	height:9px;
+	width:9px;	
+}
+div.cloud-content{
+	border-left:1px solid #EBEBEB;
+	border-right:1px solid #EBEBEB;
+	font-size: 12px;
+	margin:0;
+	padding:5px 9px 0;	
+}
+div.cloud-bottom-border{
+	clear:both;
+	height:1%;
+}
+div.cloud-footer-bar{
+	background:transparent url(../images/module_frame_borders.gif) repeat-x 0 -23px;
+	height:9px;
+	width:100%;	
+}
+div.cloud-bottom-right-corner{
+	background:transparent url(../images/module_frame_borders.gif) no-repeat -1991px -23px;
+	float:right;
+	height:9px;
+	width:9px;	
+}
+div.cloud-content span.subtitle{
+	color:#999999;
+	font-size:100%;	
+}

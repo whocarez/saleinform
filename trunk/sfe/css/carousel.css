@@ -1,0 +1,60 @@
+.carousel-component { 
+	position:relative;
+	overflow:hidden;
+	visibility:visible; /* component turns it on when first item is rendered */
+	width: auto;
+}
+				
+.carousel-component ul.carousel-list { 
+	width:3000px;
+	position:relative;
+	z-index:1; 
+}
+
+.carousel-component .carousel-list li { 
+	float:left;
+	list-style:none;
+	overflow:hidden;
+}
+
+.carousel-component .carousel-vertical li { 
+	float:none;
+	margin-bottom:0px;
+}
+
+.carousel-component ul.carousel-vertical { 
+	width:auto;
+}
+
+.carousel-component .carousel-clip-region { 
+	overflow:hidden;
+	margin:0px auto;
+	position:relative; 
+}
+
+/**
+ * Safe to override. It is safe to override background, padding, margin, color,
+ * text alignment, fonts, etc. Define a separate CSS file and override your style
+ * preferences.
+ **/
+
+.carousel-component { 
+	/*background:#3F3F3F;*/
+	padding:0 0 5px 0;
+	color:#618cbe;
+}
+.carousel-component ul.carousel-list { 
+	margin:0px;
+	padding:0px 0px 0px 0px;
+}
+.carousel-component .carousel-list li { 
+	text-align:center;
+	margin:0px 0px 0px 0px;
+	padding:0px;
+	/*font:10px verdana,arial,sans-serif;*/
+	color:#666;
+}
+.carousel-component .carousel-vertical li { 
+}
+.carousel-component ul.carousel-vertical { 
+}
