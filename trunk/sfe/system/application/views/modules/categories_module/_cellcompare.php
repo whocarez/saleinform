@@ -1,1 +1,0 @@
-<?php echo form_checkbox('cmp_'.$_wares_rid, $_categories_rid.'^#^'.$_brands_rid.'^#^'.$model_alias, FALSE, ($_wares_rid)?'id="cmp"':'id="cmp" DISABLED')?>
