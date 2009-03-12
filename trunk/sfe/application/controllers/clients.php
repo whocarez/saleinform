@@ -1,15 +1,15 @@
-<?php/* * The Clients*/class Clients extends Controller{	private $objectsArr = array();
-	public function __construct(){		parent::Controller();		$this->output->enable_profiler(TRUE);		/* load needed libraries */			$this->load->library('navline_module');		$this->load->library('categories_module');		$this->load->library('search_module');		$this->load->library('clients_module');		$this->load->library('keywords_module');		/* generate objects */		$this->objectsArr['nav_top_obj'] = $this->navline_module->RenderTopMenu();		$this->objectsArr['topmenu_obj'] = $this->categories_module->renderTabbedMenu();		$this->objectsArr['search_bar_obj'] = $this->search_module->renderNarrowBar();		$this->objectsArr['footer_area_obj'] = $this->navline_module->RenderFooterMenu();		$this->objectsArr['metatitle_area_obj'] = $this->keywords_module->RenderMetatitleArea();		$this->objectsArr['keywords_area_obj'] = $this->keywords_module->RenderKeywordsArea('');		$this->objectsArr['metadescription_area_obj'] = $this->keywords_module->RenderMetadescriptionArea();	}
-	
-	public function index(){		$this->objectsArr['settings_area_obj'] = $this->settings_module->RenderSettingsArea();		$this->objectsArr['clients_list_obj'] = $this->clients_module->RenderRetailersList();		$this->load->view('layouts/clients/clients.php', $this->objectsArr);	}
-	public function letter(){		$this->index();	}
-	public function rules(){		$this->objectsArr['clients_rules_obj'] = $this->load->view('modules/clients_module/regrules.php', null, True);		$this->load->view('layouts/clients/clientsrules.php', $this->objectsArr);	}
-	public function regform(){		$this->objectsArr['clients_form_obj'] = $this->regProcessing();		$this->load->view('layouts/clients/clientsreg.php', $this->objectsArr);	}
-	public function showproducts(){		$this->objectsArr['client_products_obj'] = $this->getClientProducts();		$this->load->view('layouts/clients/clientproducts.php', $this->objectsArr);	}
-	public function client($clientSlug, $page = 0){		$this->objectsArr['client_info_obj'] = $this->clients_module->renderClientInfo($clientSlug, $page);		$this->load->view('layouts/clients/clientinfo.php', $this->objectsArr);	}
-	public function redirect($cRid=null){		if(!$cRid) redirect('clients', 'refresh');		$this->clients_module->redirectToClient($cRid);	}		public function reviewrate(){		$this->output->enable_profiler(False);		$this->output->set_output($this->clients_module->rateReview());		}	
-	public function regProcessing(){		return $this->clients_module->registerProcessing();	}
-	public function getClientProducts(){		return $this->clients_module->getClientProducts();	}
-	public function editreview($clientSlug){		$this->objectsArr['client_info_obj'] = $this->clients_module->reviewProcessing($clientSlug);		$this->load->view('layouts/clients/editreview.php', $this->objectsArr);	}	
-}
+<?php/* * The Clients*/class Clients extends Controller{	private $objectsArr = array();
+	public function __construct(){		parent::Controller();		$this->output->enable_profiler(TRUE);		/* load needed libraries */			$this->load->library('navline_module');		$this->load->library('categories_module');		$this->load->library('search_module');		$this->load->library('clients_module');		$this->load->library('keywords_module');		/* generate objects */		$this->objectsArr['nav_top_obj'] = $this->navline_module->RenderTopMenu();		$this->objectsArr['topmenu_obj'] = $this->categories_module->renderTabbedMenu();		$this->objectsArr['search_bar_obj'] = $this->search_module->renderNarrowBar();		$this->objectsArr['footer_area_obj'] = $this->navline_module->RenderFooterMenu();		$this->objectsArr['metatitle_area_obj'] = $this->keywords_module->RenderMetatitleArea();		$this->objectsArr['keywords_area_obj'] = $this->keywords_module->RenderKeywordsArea('');		$this->objectsArr['metadescription_area_obj'] = $this->keywords_module->RenderMetadescriptionArea();	}
+	
+	public function index(){		$this->objectsArr['settings_area_obj'] = $this->settings_module->RenderSettingsArea();		$this->objectsArr['clients_list_obj'] = $this->clients_module->RenderRetailersList();		$this->load->view('layouts/clients/clients.php', $this->objectsArr);	}
+	public function letter(){		$this->index();	}
+	public function rules(){		$this->objectsArr['clients_rules_obj'] = $this->load->view('modules/clients_module/regrules.php', null, True);		$this->load->view('layouts/clients/clientsrules.php', $this->objectsArr);	}
+	public function regform(){		$this->objectsArr['clients_form_obj'] = $this->regProcessing();		$this->load->view('layouts/clients/clientsreg.php', $this->objectsArr);	}
+	public function showproducts(){		$this->objectsArr['client_products_obj'] = $this->getClientProducts();		$this->load->view('layouts/clients/clientproducts.php', $this->objectsArr);	}
+	public function client($clientSlug, $page = 0){		$this->objectsArr['client_info_obj'] = $this->clients_module->renderClientInfo($clientSlug, $page);		$this->load->view('layouts/clients/clientinfo.php', $this->objectsArr);	}
+	public function redirect($cRid=null){		if(!$cRid) redirect('clients', 'refresh');		$this->clients_module->redirectToClient($cRid);	}		public function reviewrate(){		$this->output->enable_profiler(False);		$this->output->set_output($this->clients_module->rateReview());		}	
+	public function regProcessing(){		return $this->clients_module->registerProcessing();	}
+	public function getClientProducts(){		return $this->clients_module->getClientProducts();	}
+	public function editreview($clientSlug){		$this->objectsArr['client_info_obj'] = $this->clients_module->reviewProcessing($clientSlug);		$this->load->view('layouts/clients/editreview.php', $this->objectsArr);	}	
+}
 ?>
