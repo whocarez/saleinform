@@ -50,7 +50,27 @@
 					<? } ?>
 					</td>
 				</tr>
-			</table>			
+			</table>
+			
+			<table id="trendProducts" class="TrendProducts" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr>
+						<td><?=sprintf(lang('CATEGORIES_POP_PR'), $currcat->name)?></td>
+					</tr>
+				</thead>						
+			</table>
+			
+			<table class="newRecentReviewsTable" cellspacing="0" cellpadding="0" border="0">
+				<thead>
+  					<tr>
+    					<th class="title"><?=sprintf(lang('CATEGORIES_NEW_REVIEWS'), $currcat->name)?></th>
+						<th class="more">
+							More up-to-date <a href="http://www.ciao.com/Recent_Reviews/Top100/Computers_10000034_1">reviews of Computers</a>
+						</th>
+  					</tr>
+				</thead>			
+			</table>
+						
 		</td>
 		<td class="layoutM"> </td>
 		<td class="layoutR">

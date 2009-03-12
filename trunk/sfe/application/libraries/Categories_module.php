@@ -68,8 +68,9 @@ class Categories_module{
 			$data["middle"] = $middle;
 			$data['s_subcats'] = $this->ciObject->categories_model->getSubcategories2Level($catRid);
 			return $this->ciObject->load->view('modules/categories_module/category_ws.php',$data, True);	
-		} 
-		else return $this->ciObject->load->view('modules/categories_module/category_pr.php',$data, True);
+		}
+		$data['offers'] = $this->ciObject->categories_model->GetOffersByCategory($catRid); 
+		return $this->ciObject->load->view('modules/categories_module/category_pr.php',$data, True);
 		
 	}
 	
