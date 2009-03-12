@@ -36,6 +36,15 @@ class Categories_model extends Model{
 		$this->db->orderby('_categories.name');
 		$query = $this->db->get();		return $query->num_rows()?$query->row():null;
 	}
+	public function upPopularity($cRid){
+		$path = $this->getCategoryPath($cRid);
+		$rids = array($cRid);
+		foreach($path as $c) $rids[] = (int)$c->rid;
+		$inStr = '('.implode(',', $rids).')';
+		$this->db->query("update _categories set popularity = popularity+1 where rid in {$inStr}");
+		return True;	
+	}
+	
 	public function getSubcategories2Level($catRid){
 		$cityRid = $this->ciObject->settings_module->getCurrSetting('_CITY_RID_');
 		$regionRid = $this->ciObject->settings_module->getCurrSetting('_REGION_RID_');
@@ -217,29 +226,6 @@ class Categories_model extends Model{
 		return $query->row()->rowsQuan; 	
 	}
 	
-	public function getTopCategories($limit=15){
-		$this->db->select('_categories.*, _categoriesimages.rid as imgRid, _categoriesimages.name as imgName, _categoriesimages.image as image');
-		$this->db->from('_categories');
-		$this->db->join('_categoriesimages', "_categoriesimages._categories_rid = _categories.rid AND _categoriesimages.imgtype='ICON'", 'LEFT');
-		$this->db->where('( not _categories._categories_rid ) and _categories.archive = 0');
-		$this->db->order_by('global_popularity desc');
-		$this->db->group_by('_categories.rid');
-		if($limit) $this->db->limit($limit);
-		$query = $this->db->get();
-		return $query->num_rows()?$query->result():array();
-	}
-
-	public function getSecondLevelCategories(){
-		$this->db->select('_categories.rid, _categories.name, _categories.slug, _categories._categories_rid');
-		$this->db->from('_catparents');
-		$this->db->join('_categories', "_catparents._parent_rid = _categories.rid AND not _categories.archive");
-		$this->db->where(array('_catparents.level'=>'2'));
-		$this->db->order_by('global_popularity desc');
-		$this->db->group_by('_catparents._parent_rid');
-		$this->db->order_by('_categories.name');
-		$query = $this->db->get();
-		return $query->num_rows()?$query->result():array();
-	}
-	
-}
+	public function getTopCategories($limit=15){		$this->db->select('_categories.*, _categoriesimages.rid as imgRid, _categoriesimages.name as imgName, _categoriesimages.image as image');		$this->db->from('_categories');		$this->db->join('_categoriesimages', "_categoriesimages._categories_rid = _categories.rid AND _categoriesimages.imgtype='ICON'", 'LEFT');		$this->db->where('( not _categories._categories_rid ) and _categories.archive = 0');		$this->db->order_by('popularity desc');		$this->db->group_by('_categories.rid');		if($limit) $this->db->limit($limit);		$query = $this->db->get();		return $query->num_rows()?$query->result():array();	}
+	public function getSecondLevelCategories(){		$this->db->select('_categories.rid, _categories.name, _categories.slug, _categories._categories_rid');		$this->db->from('_catparents');		$this->db->join('_categories', "_catparents._parent_rid = _categories.rid AND not _categories.archive");		$this->db->where(array('_catparents.level'=>'2'));		$this->db->order_by('popularity desc');		$this->db->group_by('_catparents._parent_rid');		$this->db->order_by('_categories.name');		$query = $this->db->get();		return $query->num_rows()?$query->result():array();	}}
 ?>

@@ -60,6 +60,9 @@ class Categories_module{
 		$data['currcat'] = $this->ciObject->categories_model->getCategoryInfo($catRid);
 		if(!$data['currcat']) show_404();
 		$data['path'] = $this->ciObject->categories_model->getCategoryPath($catRid);
+		if($this->ciObject->agent->is_browser()){
+			$this->ciObject->categories_model->upPopularity($catRid);		
+		}
 		# at first render subcategories content
 		$data['subcats'] = $this->ciObject->categories_model->getCategories($catRid);
 		if(count($data['subcats'])){
