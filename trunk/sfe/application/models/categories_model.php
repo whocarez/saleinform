@@ -75,18 +75,31 @@ class Categories_model extends Model{
 		$countryRid = $this->ciObject->settings_module->getCurrSetting('_COUNTRY_RID_');	
 		$mcurrRid = $this->ciObject->settings_module->getCurrSetting('_MAIN_CURR_RID_');
 		$acurrRid = $this->ciObject->settings_module->getCurrSetting('_ADD_CURR_RID_');
-		# get others filters parameters		$this->db->select(" SQL_CALC_FOUND_ROWS _pritems.name as wareNAME, 
-							GROUP_CONCAT(_pritemsimgs.rid SEPARATOR '|') as prItemIMGS,
+		# get others filters parameters		$this->db->select(" SQL_CALC_FOUND_ROWS _pritems.name as wareNAME, _pritems.descr as wareDESCR,
+							_pritemsimgs.rid as prItem_rid, _pritemsimgs.image as prItem_image, _pritemsimgs.name as prItem_name,
+							_waresimages.rid as wItem_rid, _waresimages.image as wItem_image, _waresimages.name as wItem_name,
 							min(ROUND(IF(_currcources.cource is NULL, _officialcources.cource*_prices.price, _currcources.cource*_prices.price), 2)) as minbasePRICE,							max(ROUND(IF(_currcources.cource is NULL, _officialcources.cource*_prices.price, _currcources.cource*_prices.price), 2)) as maxbasePRICE,
-							ROUND(IF(_pritems._wares_rid is NULL, NULL, (SELECT avg(mark) FROM _waresuopinions WHERE _wares_rid=_pritems._wares_rid)), 0) as wareRATING,							ROUND(IF(_pritems._wares_rid is NULL, NULL, (SELECT count(rid) FROM _waresuopinions WHERE _wares_rid=_pritems._wares_rid)), 0) as wareOPINIONS,
-							(SELECT endword FROM _currency WHERE rid='$mcurrRid') as baseendWORD,							count(_pritems.rid) as offersQUAN, 							_categories.iscompared, 							_categories.isgrouped, 							_pritems._wares_rid,							max(DISTINCT(_pritems.short_descr)) as short_descr,							_pritems.link_ware,							_clients.name as clientNAME,								_clients.rid as clientRID,							_clients.street as clientSTREET,							_clients.build as clientBUILD,							_clients.wphones as clientWPHONES,							_cities.name as cityNAME,							IF(_pritems._brands_rid is NULL, 0, _pritems._brands_rid) as _brands_rid,		 							_pritems.model_alias,							_pritems._categories_rid,							_currency.endword", False);		$this->db->from('_prices');		$this->db->join('_pritems', '_pritems.rid=_prices._pritems_rid AND _pritems.archive=0');		$this->db->join('_pritemsimgs', '_pritems.rid=_pritemsimgs._pritems_rid AND _pritemsimgs.archive=0', 'LEFT');		$this->db->join('_clients', '_clients.rid=_pritems._clients_rid AND _clients.archive=0');		$this->db->join('_categories', '_pritems._categories_rid=_categories.rid AND _categories.archive=0');		$this->db->join('_currency', '_prices._currency_rid=_currency.rid AND _currency.archive=0');		$this->db->join('_currcources', '_currcources._clients_rid=_pritems._clients_rid AND _currcources._currency_rid=_prices._currency_rid AND _currcources.courcedate=_pritems.prdate AND _currcources.archive=0', 'LEFT');		$this->db->join('_officialcources', "_officialcources._currency_rid=_prices._currency_rid AND _officialcources.courcedate = (SELECT courcedate from _officialcources WHERE _countries_rid='$countryRid' order by courcedate desc limit 1) AND _officialcources.archive=0 AND _officialcources._countries_rid='$countryRid'", 'LEFT');
+							_wares.rating as wareRATING, _wares.rates_quan as wareRATING,							(SELECT endword FROM _currency WHERE rid='$mcurrRid' limit 1) as baseendWORD,							count(_pritems.rid) as offersQUAN, 							_categories.iscompared, 							_categories.isgrouped, 							_pritems._wares_rid,							max(DISTINCT(_pritems.short_descr)) as short_descr,							_pritems.link_ware,							_clients.name as clientNAME,								_clients.rid as clientRID,							_clients.street as clientSTREET,							_clients.build as clientBUILD,							_clients.wphones as clientWPHONES,							_cities.name as cityNAME,							_pritems.model_alias,							_pritems._categories_rid,							_currency.endword", False);		$this->db->from('_prices');		$this->db->join('_pritems', '_pritems.rid=_prices._pritems_rid AND _pritems.archive=0');		$this->db->join('_pritemsimgs', '_pritems.rid=_pritemsimgs._pritems_rid AND _pritemsimgs.archive=0', 'LEFT');
+		$this->db->join('_wares', '_pritems._wares_rid=_wares.rid AND _wares.archive=0', 'LEFT');
+		$this->db->join('_waresimages', '_waresimages._wares_rid=_wares.rid AND _waresimages.archive=0', 'LEFT');
+		$this->db->join('_clients', '_clients.rid=_pritems._clients_rid AND _clients.archive=0');		$this->db->join('_categories', '_pritems._categories_rid=_categories.rid AND _categories.archive=0');		$this->db->join('_currency', '_prices._currency_rid=_currency.rid AND _currency.archive=0');		$this->db->join('_currcources', '_currcources._clients_rid=_pritems._clients_rid AND _currcources._currency_rid=_prices._currency_rid AND _currcources.courcedate=_pritems.prdate AND _currcources.archive=0', 'LEFT');		$this->db->join('_officialcources', "_officialcources._currency_rid=_prices._currency_rid AND _officialcources.courcedate = (SELECT courcedate from _officialcources WHERE _countries_rid='$countryRid' order by courcedate desc limit 1) AND _officialcources.archive=0 AND _officialcources._countries_rid='$countryRid'", 'LEFT');
 		$this->db->join('_cities', '_cities.rid=_clients._cities_rid '.(($cityRid)?"and _clients._cities_rid={$cityRid}":''), 'LEFT');
 		$this->db->join('_regions', '_regions.rid=_cities._regions_rid '.((!$cityRid && $regionRid)?"and _regions.rid={$regionRid}":''), 'LEFT');
 		$this->db->join('_countries', '_countries.rid=_regions._countries_rid '.(($countryRid)?"and _countries.rid={$countryRid}":''), 'LEFT');
 		$this->db->where(array('_pritems._categories_rid'=>$cRid,								'_pritems.archive'=>'0'));		$this->db->groupby('_pritems.rid');		$this->db->limit(15, $offset);
 		$query = $this->db->get();
 		return $query->num_rows()?$query->result():array();	}
-	
+		/**
+	 * @author Mazvv
+	 * @param void
+	 * @return integer $rowsQuan
+	 */
+	public function getQueryRowsQuan(){
+		$this->db->select('FOUND_ROWS() as rowsQuan');
+		$query = $this->db->get();
+		return $query->row()->rowsQuan; 	
+	}
+	
 	public function GetCategoryPriceTypes($catRID)
 	{
 		$this->db->select('_prtypes.*');
@@ -215,17 +228,7 @@ class Categories_model extends Model{
 		return $searchARR; 
 	}
 	
-	/**
-	 * @author Mazvv
-	 * @param void
-	 * @return integer $rowsQuan
-	 */
-	public function GetQueryRowsQuan(){
-		$this->db->select('FOUND_ROWS() as rowsQuan');
-		$query = $this->db->get();
-		return $query->row()->rowsQuan; 	
-	}
-	
+
 	public function getTopCategories($limit=15){		$this->db->select('_categories.*, _categoriesimages.rid as imgRid, _categoriesimages.name as imgName, _categoriesimages.image as image');		$this->db->from('_categories');		$this->db->join('_categoriesimages', "_categoriesimages._categories_rid = _categories.rid AND _categoriesimages.imgtype='ICON'", 'LEFT');		$this->db->where('( not _categories._categories_rid ) and _categories.archive = 0');		$this->db->order_by('popularity desc');		$this->db->group_by('_categories.rid');		if($limit) $this->db->limit($limit);		$query = $this->db->get();		return $query->num_rows()?$query->result():array();	}
 	public function getSecondLevelCategories(){		$this->db->select('_categories.rid, _categories.name, _categories.slug, _categories._categories_rid');		$this->db->from('_catparents');		$this->db->join('_categories', "_catparents._parent_rid = _categories.rid AND not _categories.archive");		$this->db->where(array('_catparents.level'=>'2'));		$this->db->order_by('popularity desc');		$this->db->group_by('_catparents._parent_rid');		$this->db->order_by('_categories.name');		$query = $this->db->get();		return $query->num_rows()?$query->result():array();	}}
 ?>

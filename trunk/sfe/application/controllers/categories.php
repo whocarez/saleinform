@@ -4,6 +4,6 @@
 	public function index(){
 		$this->objectsArr['categories_area_obj'] = $this->categories_module->renderCategoriesList();		$this->load->view('layouts/categories/categories.php', $this->objectsArr);	}
 	public function categoriestree(){		$this->objectsArr['categories_area_obj'] = $this->categories_module->renderCategoriesTree();		$this->load->view('layouts/categories/categories.php', $this->objectsArr);	}
-	public function category($slug){		$this->objectsArr['categories_area_obj'] = $this->categories_module->renderCategory($slug);		$this->load->view('layouts/categories/category.php', $this->objectsArr);	}
+	public function category($slug, $page = null){		$this->objectsArr['categories_area_obj'] = $this->categories_module->renderCategory($slug, $page);		$this->load->view('layouts/categories/category.php', $this->objectsArr);	}
 }
 ?>

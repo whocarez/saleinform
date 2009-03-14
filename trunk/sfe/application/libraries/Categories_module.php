@@ -54,7 +54,7 @@ class Categories_module{
 		return $this->ciObject->load->view('modules/categories_module/tree.php',$data, True);
 	}
 	
-	public function renderCategory($slug=null){
+	public function renderCategory($slug=null, $page = null){
 		if(!$catRid = $this->getCridFromSlug($slug)) show_404();
 		$data = array();
 		$data['currcat'] = $this->ciObject->categories_model->getCategoryInfo($catRid);
@@ -72,140 +72,21 @@ class Categories_module{
 			$data['s_subcats'] = $this->ciObject->categories_model->getSubcategories2Level($catRid);
 			return $this->ciObject->load->view('modules/categories_module/category_ws.php',$data, True);	
 		}
-		$data['offers'] = $this->ciObject->categories_model->GetOffersByCategory($catRid); 
+		$data['offers'] = $this->ciObject->categories_model->GetOffersByCategory($catRid, $page);
+		foreach($data['offers'] as $key=>$offer) $data['offers'][$key]->img = ($offer->prItem_image)?$this->GetWareImage($offer):null; 
+		$data['offers_quan'] = $this->ciObject->categories_model->getQueryRowsQuan();
+		$data['offset'] = $page;
+		$this->ciObject->load->library('pagination');
+		$config['base_url'] = base_url().index_page().'/category/'.$catRid.'-'.$data['currcat']->slug;
+		$config['total_rows'] = $data['offers_quan'];
+		$config['num_links'] = 10;
+		$config['first_link'] = lang('CATEGORIES_PFIRST');
+		$config['last_link'] = lang('CATEGORIES_PLAST');
+		$config['per_page'] = 15;
+		$this->ciObject->pagination->initialize($config);
+		$data['pager'] = $this->ciObject->pagination->create_links();		
 		return $this->ciObject->load->view('modules/categories_module/category_pr.php',$data, True);
 		
-	}
-	
-	public function RenderCategoryContent(){
-		if(is_array($this->ciObject->categories_model->GetCategoriesArr($this->_categories_current_category_rid))) return $this->RenderSubcategoriesContent();
-		else return $this->RenderCategoryOffers();
-	}
-	
-	public function RenderSubcategoriesContent()
-	{
-		$categoriesLIST = $this->ciObject->categories_model->GetCategoriesArr();
-		$currentCATEGORY = $this->ciObject->categories_model->GetCategoryArr($this->_categories_current_category_rid, $this->_GetPars());
-		$currentCATEGORYIMAGES = $this->ciObject->categories_model->GetCategoryImages($this->_categories_current_category_rid, 'ICON');
-		if($currentCATEGORYIMAGES)	$this->objectsArr['categories_image_icon'] = $this->GetCategoryImage($currentCATEGORYIMAGES,'ICON');
-		else $this->objectsArr['categories_image_icon'] = '';
-		$this->ciObject->load->plugin('tree');
-		$this->objectsArr['categories_category_node_array'] = array();
-		$forest = _transform2forest($categoriesLIST, 'rid', '_categories_rid');
-		$currentNODEARR = _getNodeTree($forest, $this->_categories_current_category_rid);
-		$childrensQUAN = 0;
-		foreach($currentNODEARR as $row) $childrensQUAN += count($row['childNodes']);
-		if(!$childrensQUAN) 
-		{
-			$currentNODEARR = _getNodeTree($forest, $currentCATEGORY['_categories_rid']);
-			foreach($currentNODEARR as $key=>$row) if($row['rid']!=$this->_categories_current_category_rid) unset($currentNODEARR[$key]);
-		}
-		$index = 0;
-		foreach($currentNODEARR as $row)
-		{
-			$quanonCOL = (count($row['childNodes'])%2>0)?(count($row['childNodes'])+1)/2:count($row['childNodes'])/2;
-			$this->objectsArr['categories_category_node_array'][$index]['mainLEVEL'] = $row;
-			$i = 1;
-			$c_1 = array();
-			$c_2 = array();
-			foreach($row['childNodes'] as $key=>$node)
-			{
-				if($i<=$quanonCOL) $c_1[]=$node;
-				else $c_2[]=$node;
-				$i++;
-			}
-			if(!count($c_1)) $c_1[]=$row; 
-			$this->objectsArr['categories_category_node_array'][$index]['1c'] = $c_1;
-			$this->objectsArr['categories_category_node_array'][$index]['2c'] = $c_2;
-			$index++;
-		}
-		$this->objectsArr['categories_category_title'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_TITLE');
-		$this->objectsArr['categories_current_category_name'] = $currentCATEGORY['name'];
-		$this->objectsArr['categories_current_category_descr'] = $currentCATEGORY['descr'];
-		return $this->ciObject->load->view('modules/categories_module/catsubcategories.php',$this->objectsArr, True); 
-	}
-	
-	public function RenderCategoryOffers()
-	{
-		/* generate current URL step by step */
-		$currentCATEGORY = $this->ciObject->categories_model->GetCategoryArr($this->_categories_current_category_rid, $this->_GetPars());
-		$currentCATEGORYIMAGES = $this->ciObject->categories_model->GetCategoryImages($this->_categories_current_category_rid, 'ICON');
-		if($currentCATEGORYIMAGES) $this->objectsArr['categories_image_icon'] = $this->GetCategoryImage($currentCATEGORYIMAGES,'ICON');
-		else $this->objectsArr['categories_image_icon'] = '';
-		$this->objectsArr['categories_current_category_name'] = $currentCATEGORY['name'];
-		$this->objectsArr['categories_current_category_descr'] = $currentCATEGORY['descr'];
-		$this->objectsArr['categories_current_category_iscompared'] = $currentCATEGORY['iscompared'];
-		$this->objectsArr['categories_current_category_isgrouped'] = $currentCATEGORY['isgrouped'];
-		$this->objectsArr['categories_current_category_rid'] = $this->_categories_current_category_rid;
-		$this->objectsArr['categories_category_compare_wares_title'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_COMPARE_WARES_TITLE');		
-		$this->objectsArr['categories_category_compare_nowares_compare'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_COMPARE_NOWARES_COMPARE');		
-		$this->objectsArr['categories_category_compare_prices_title'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_COMPARE_PRICES_TITLE');
-		$this->objectsArr['categories_category_compare_title'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_COMPARE_TITLE');
-		$this->objectsArr['categories_category_sort_by'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_SORT_BY');
-		$this->objectsArr['categories_category_sort_by_name'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_SORT_BY_NAME');
-		$this->objectsArr['categories_category_sort_by_popular'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_SORT_BY_POPULAR');
-		$this->objectsArr['categories_category_sort_by_rating'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_SORT_BY_RATING');
-		$this->objectsArr['categories_category_sort_by_minprice'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_SORT_BY_MINPRICE');
-		$this->objectsArr['categories_category_sort_by_avgprice'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_SORT_BY_AVGPRICE');
-		$this->objectsArr['categories_category_sort_by_price'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_SORT_BY_PRICE');		
-		$this->objectsArr['categories_category_column_name'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_COLUMN_NAME');
-		$this->objectsArr['categories_category_column_rating'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_COLUMN_RATING');
-		$this->objectsArr['categories_category_column_prices'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_COLUMN_PRICES');
-		$this->objectsArr['categories_category_price_type'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_PRICE_TYPE');
-		$PARS = $this->_GetPars();
-		$PARS['c']=$currentCATEGORY;
-		$this->_RenderSortByDropdown($currentCATEGORY);	
-		$resultARR = $this->ciObject->categories_model->GetOffersByCategory($PARS);
-		$this->_categories_quan_of_offers = $this->ciObject->categories_model->GetQueryRowsQuan();
-		
-		if (!$this->_categories_quan_of_offers) 
-		{
-			$this->objectsArr['categories_category_offers_table']=$this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_NO_OFFERS');
-			if(count($this->_categories_current_uri_assoc)>1) $this->objectsArr['categories_category_offers_table']=$this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_NO_FINDED');	
-			return $this->ciObject->load->view('modules/categories_module/catnooffers.php',$this->objectsArr, True); 
-		}
-		else
-		{
-			$this->ciObject->load->library('pop_module');
-			$this->ciObject->pop_module->_SetCategoryPop();
-			$this->_RenderPrTypesDropdown($currentCATEGORY);
-			$this->ciObject->load->library('table');
-			$tmpl = array (
-        	            'table_open'          => '<div id="t_offers"><table celpadding=0 cellspacing=0 >',
-            	        'heading_row_start'   => '<tr>',
-                	    'heading_row_end'     => '</tr>',
-	                    'heading_cell_start'  => '<td>',
-	                    'heading_cell_end'    => '</td>',
-	                    'row_start'           => '<tr>',
-	                    'row_end'             => '</tr>',
-	                    'cell_start'          => '<td>',
-	                    'cell_end'            => '</td>',
-	                    'row_alt_start'       => '<tr>',
-	                    'row_alt_end'         => '</tr>',
-	                    'cell_alt_start'      => '<td>',
-	                    'cell_alt_end'        => '</td>',
-	                    'table_close'         => '</table></div>'
-    	    	      );
-			$this->ciObject->table->set_template($tmpl);		
-			#$this->_categories_quan_of_offers = count($resultARR);
-			#$resultARR = array_slice($resultARR, $this->_categories_current_page, $this->STN_categories_offers_quan_per_page);
-			$this->objectsArr['categories_category_guide_link'] = ($resultARR[0]['guideRID'])?anchor(site_url().'/guides/c/'.$this->_categories_current_category_rid, $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_GUIDE_LINK')):'';
-			$this->ciObject->benchmark->mark('cat_builddata_start');
-			foreach($resultARR as $row)
-			{
-				$tableROW = array();
-				$tableROW[] = $this->_RenderCompareCell($row);
-				$tableROW[] = $this->_RenderImageCell($row);
-				$tableROW[] = $this->_RenderNameCell($row);
-				$tableROW[] = ($row['isgrouped'])?$this->_RenderRatingCell($row):$this->_RenderCompanyRatingCell($row);
-				$tableROW[] = $this->_RenderPriceCell($row);
-				$this->ciObject->table->add_row($tableROW);
-			}
-			$this->objectsArr['categories_category_offers_table']=$this->ciObject->table->generate();
-			$this->objectsArr['categories_category_offers_pagination']=$this->GetOffersPagination();
-		}
-		
-		return $this->ciObject->load->view('modules/categories_module/catoffers.php',$this->objectsArr, True); 
 	}
 	
 	public function GetCategoryImage($imagesROWS, $typeP = 'ICON'){
@@ -238,172 +119,41 @@ class Categories_module{
 		$this->objectsArr['categories_image_icon'] = base_url().$imgNAME;
 	}
 
-	public function GetWareImage($imagesROWS)
-	{
+	public function GetWareImage($image){
 		# get random image
-		$this->ciObject->load->helper('array');
 		$this->ciObject->load->library('image_lib');
 		$this->ciObject->image_lib->clear();
-		$image = random_element($imagesROWS);
-
-		foreach($imagesROWS as $image)
-		{
-			$imgORIGINAL = $this->STN_categories_ware_images_original_path.$image['rid'].'_'.$image['name'];
-			$imgOFFERS  = $this->STN_categories_ware_images_offers_path.$image['rid'].'_'.$image['name'];
-			if(!file_exists($imgORIGINAL))
-			{
-				$ifile=fopen($imgORIGINAL, "w");
-				fwrite($ifile, $image['image']);
-				fclose($ifile);
-			} 					
-			if(!file_exists($imgOFFERS))
-			{
-				$config = array();
-				$config['image_library'] = 'GD2';
-				$config['source_image'] = $imgORIGINAL;
-				$config['new_image'] = $imgOFFERS;
-				$config['create_thumb'] = FALSE;
-				$config['width'] = $this->STN_categories_ware_images_offers_width;
-				$config['height'] = $this->STN_categories_ware_images_offers_height;
-				$this->ciObject->image_lib->initialize($config);
-				if (!$this->ciObject->image_lib->resize())
-				{
-    				echo $this->ciObject->image_lib->display_errors();
-				}
-			} 					
+		$iRid = $iName = $iImage = null;
+		if($image->wItem_rid){
+			$iRid = $image->wItem_rid; 
+			$iName = $image->wItem_name;
+			$iImage = $image->wItem_image;
+		} else {
+			$iRid = $image->prItem_rid; 
+			$iName = $image->prItem_name;
+			$iImage = $image->prItem_image;
 		}
-		$image = random_element($imagesROWS);
-		$imgNAME = $this->STN_categories_ware_images_offers_path.$image['rid'].'_'.$image['name'];
-		return base_url().$imgNAME;
-	}
-	
-	public function _RenderSortByDropdown($currentCATEGORY)
-	{
-		$currURI = $this->_categories_current_uri_assoc;
-		unset($currURI['sr']); unset($currURI['p']);
-		$this->objectsArr['categories_category_current_sort'] = base_url().index_page()."/categories/".$this->ciObject->uri->assoc_to_uri($currURI).'/sr/'.$this->_categories_current_sort_rule;
-		if($currentCATEGORY['isgrouped'])
-		{
-			$this->objectsArr['categories_category_sort_options'] = array(
-                  														base_url().index_page()."/categories/".$this->ciObject->uri->assoc_to_uri($currURI).'/sr/nm'=>$this->objectsArr['categories_category_sort_by_name'],
-                  														base_url().index_page()."/categories/".$this->ciObject->uri->assoc_to_uri($currURI).'/sr/rtn'=>$this->objectsArr['categories_category_sort_by_rating'],
-                  														base_url().index_page()."/categories/".$this->ciObject->uri->assoc_to_uri($currURI).'/sr/mpr'=>$this->objectsArr['categories_category_sort_by_minprice'],
-																		base_url().index_page()."/categories/".$this->ciObject->uri->assoc_to_uri($currURI).'/sr/apr'=>$this->objectsArr['categories_category_sort_by_avgprice']
-                														);
-		}
-		else
-			$this->objectsArr['categories_category_sort_options'] = array(
-                  														base_url().index_page()."/categories/".$this->ciObject->uri->assoc_to_uri($currURI).'/sr/nm'=>$this->objectsArr['categories_category_sort_by_name'],
-																		base_url().index_page()."/categories/".$this->ciObject->uri->assoc_to_uri($currURI).'/sr/pr'=>$this->objectsArr['categories_category_sort_by_price']
-                														);
-		$this->objectsArr['categories_category_sort_by_js'] = 'id="w_sortby" onChange="window.location.href=(document.getElementById(\'w_sortby\').options[selectedIndex].value)"';
-		return;
-	}
-
-	public function _RenderPrTypesDropdown($currentCATEGORY)
-	{
-		$currURI = $this->_categories_current_uri_assoc;
-		unset($currURI['pp']); unset($currURI['p']);
-		$prTYPES = $this->ciObject->categories_model->GetCategoryPriceTypes($currentCATEGORY['rid']);
-		$this->objectsArr['categories_category_price_types_options'] = array();
-		foreach($prTYPES as $type)
-		{ 
-			$this->objectsArr['categories_category_price_types_options'][base_url().index_page()."/categories/".$this->ciObject->uri->assoc_to_uri($currURI).'/pp/'.$type['cod']]=$type['name'];
-			if($type['cod']==$this->_categories_current_price_type) $this->objectsArr['categories_category_current_prtype']=base_url().index_page()."/categories/".$this->ciObject->uri->assoc_to_uri($currURI).'/pp/'.$type['cod'];
-		}
-		$this->objectsArr['categories_category_prtype_js']='id="w_prtype" onChange="window.location.href=(document.getElementById(\'w_prtype\').options[selectedIndex].value)"'; 
-	}
-	
-	public function _RenderCompareCell($row)
-	{
-		return ($row['iscompared'])?$this->ciObject->load->view('modules/categories_module/_cellcompare.php',$row, True):'';
-	}
-
-	public function _RenderImageCell($row)
-	{
-		$currentWAREIMAGES = ($row['_wares_rid'])?$this->ciObject->categories_model->GetWareImages($row['_wares_rid']):null;
-		if(!$currentWAREIMAGES && $row['prItemIMGS']) {
-			$currentWAREIMAGES = $this->ciObject->categories_model->GetItemImages($row['prItemIMGS']);
-		}
-		if($currentWAREIMAGES)
-		{ 
-			$row['categories_category_ware_image'] = $this->GetWareImage($currentWAREIMAGES);
-		} 
-		else $row['categories_category_ware_image']=base_url().'/images/no_image.png';
-		return $this->ciObject->load->view('modules/categories_module/_cellimage.php',$row, True);
-	}
-	
-	public function _RenderNameCell($row)
-	{
-		$this->ciObject->load->helper('text');
-		$row['categories_category_look_ware_title'] = ($row['_wares_rid'] && $row['isgrouped'])?anchor('/ware/c/'.$row['_categories_rid'].'/d/'.$row['_brands_rid'].'/m/'.$row['model_alias'].'/pp/'.$row['prCOD'], $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_LOOK_WARE_TITLE')):'';
-		//$row['categories_category_short_descr'] = ($row['short_descr'])?character_limiter($row['short_descr'], 150):$row['wareNAME'];
-		$row['categories_category_short_descr'] = ($row['wareSDESCR'])?character_limiter($row['wareSDESCR']):$row['short_descr'];
-		$row['categories_category_ware_name'] = ($row['isgrouped'])?anchor('/ware/c/'.$row['_categories_rid'].'/o/'.$row['_brands_rid'].'/m/'.$row['model_alias'].'/pp/'.$row['prCOD'], $row['wareNAME']):anchor($row['link_ware'], $row['wareNAME']);
-		$row['categories_category_button_link'] = ($row['isgrouped'])?base_url().index_page().'/ware/c/'.$row['_categories_rid'].'/o/'.$row['_brands_rid'].'/m/'.$row['model_alias'].'/pp/'.$row['prCOD']:$row['link_ware'];
-		$row['categories_category_info_link'] = (!$row['isgrouped'])?anchor(base_url().index_page().'/clients/c/'.$row['clientRID'], $row['clientNAME']):'';
-		$row['categories_category_ware_clientinfo'] = (!$row['isgrouped'])?$row['cityNAME'].', '.$row['clientSTREET'].', '.$row['clientBUILD'].'<br>'.$row['clientWPHONES']:'';
-		return $this->ciObject->load->view('modules/categories_module/_cellname.php',$row, True);
-	}
-	
-	public function _RenderRatingCell($row)
-	{
-		$row['write_rewiev_title'] = anchor(base_url().index_page().'/wareuops/c/'.$this->_categories_current_category_rid.'/b/'.$row['_brands_rid'].'/m/'.$row['model_alias'], $this->ciObject->lang->line('CATEGORIES_MODULE_WARE_REWIEV_TITLE'));	
-		$row['ware_rewievs_title'] = anchor('/ware/c/'.$row['_categories_rid'].'/op/'.$row['_brands_rid'].'/m/'.$row['model_alias'].'/pp/'.$row['prCOD'], $this->ciObject->lang->line('CATEGORIES_MODULE_WARE_REWIEVES_TITLE'));
-		$row['ware_erewievs_title'] = $this->ciObject->lang->line('CATEGORIES_MODULE_WARE_EREWIEVES_TITLE');
-		if(!$row['isgrouped'] || !$row['_wares_rid']) return '&nbsp;';
-		return $this->ciObject->load->view('modules/categories_module/_cellrating.php',$row, True);
-	}
-
-	public function _RenderCompanyRatingCell($row)
-	{
-		$row['write_rewiev_title'] = anchor(base_url().index_page().'/cluops/c/'.$row['clientRID'], $this->ciObject->lang->line('CATEGORIES_MODULE_CLIENT_REWIEV_TITLE'));	
-		$row['ware_rewievs_title'] = anchor(base_url().index_page().'/clients/o/'.$row['clientRID'], $this->ciObject->lang->line('CATEGORIES_MODULE_CLIENT_REWIEVES_TITLE'));
-		return $this->ciObject->load->view('modules/categories_module/_cellclientrating.php',$row, True);
-	}
-	
-	public function _RenderPriceCell($row)
-	{
-		$row['ware_offers_quan_title'] = $this->ciObject->lang->line('CATEGORIES_MODULE_WARE_OFFERS_QUAN_TITLE');
-		$row['ware_offers_buy_title'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_BUY_WARE_TITLE');
-		$row['categories_category_compare_prices_title'] = $this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_COMPARE_PRICES_TITLE');
-		$row['categories_category_button_link'] = ($row['isgrouped'])?base_url().index_page().'/ware/c/'.$row['_categories_rid'].'/o/'.$row['_brands_rid'].'/m/'.$row['model_alias'].'/pp/'.$row['prCOD']:$row['link_ware'];
-		$button_data = array(
-              			'name'=>'w_price_btn',
-              			'id'=>'w_price_btn',
-              			'value'=>$row['isgrouped']?$row['categories_category_compare_prices_title']:$row['ware_offers_buy_title'],
-              			'style'=>'float:right; border: 0px;margin-top: 0px; line-height: 17px; text-align: center; width: 80px;',
-						'class'=>'btn',
-						'type'=>'button',
-						/*'target'=>$row['isgrouped']?'':'_blank',*/
-						/*'onclick'=>"window.location.href='".addslashes($row['categories_category_button_link'])."'"*/	
-						'onclick'=>"window.open('".addslashes($row['categories_category_button_link'])."')"	  	
-            			);
-		$row['categories_category_ware_button']=form_input($button_data);	
-		return $this->ciObject->load->view('modules/categories_module/_cellprice.php',$row, True);
-	}
-
-	public function GetOffersPagination()
-	{
-		$paginationCONFIG = array('total_rows'=>$this->_categories_quan_of_offers, 
-									'per_page'=>$this->STN_categories_offers_quan_per_page,
-									'num_links'=>$this->STN_categories_offers_pagination_num_links);
-		unset($this->_categories_current_uri_assoc['p']);
-		$categories_category_pages_title=$this->ciObject->lang->line('CATEGORIES_MODULE_CATEGORY_PAGES_TITLE');
-		$paginationCONFIG['base_url']=base_url().index_page()."/categories/".$this->ciObject->uri->assoc_to_uri($this->_categories_current_uri_assoc).'/p/';
-		$paginationCONFIG['uri_segment']=count($this->_categories_current_uri_assoc)*2+3;
-		$paginationCONFIG['full_tag_open'] = '<div style="float: right; color: #888888; font-size: 8pt;font-weight: bold;margin-bottom: 10px;padding-top: 5px; padding-bottom: 5px;">'.$categories_category_pages_title;
-		$paginationCONFIG['full_tag_close'] = '</div>';
-		$paginationCONFIG['first_link'] = $this->ciObject->lang->line('CATEGORIES_MODULE_PAGINATION_FIRST_LINK_TITLE');
-		$paginationCONFIG['last_link'] = $this->ciObject->lang->line('CATEGORIES_MODULE_PAGINATION_LAST_LINK_TITLE');
-		$paginationCONFIG['next_link'] = '&gt&gt';
-		$paginationCONFIG['prev_link'] = '&lt&lt';
-		$paginationCONFIG['cur_tag_open'] = '<b> [';
-		$paginationCONFIG['cur_tag_close'] = ']<b>';
-
-		$this->ciObject->load->library('pagination');
-		$this->ciObject->pagination->initialize($paginationCONFIG);
-		return $this->ciObject->pagination->create_links();
+		$imgORIGINAL = $this->STN_categories_ware_images_original_path.$iRid.'_'.$iName;
+		$imgOFFERS  = $this->STN_categories_ware_images_offers_path.$iRid.'_'.$iName;
+		if(!file_exists($imgORIGINAL)){
+			$ifile=fopen($imgORIGINAL, "w");
+			fwrite($ifile, $iImage);
+			fclose($ifile);
+		} 					
+		if(!file_exists($imgOFFERS)){
+			$config = array();
+			$config['image_library'] = 'GD2';
+			$config['source_image'] = $imgORIGINAL;
+			$config['new_image'] = $imgOFFERS;
+			$config['create_thumb'] = FALSE;
+			$config['width'] = $this->STN_categories_ware_images_offers_width;
+			$config['height'] = $this->STN_categories_ware_images_offers_height;
+			$this->ciObject->image_lib->initialize($config);
+			if (!$this->ciObject->image_lib->resize()){
+   				echo $this->ciObject->image_lib->display_errors();
+			}
+		} 					
+		return $imgOFFERS;
 	}
 	
 	public function _GetPars()

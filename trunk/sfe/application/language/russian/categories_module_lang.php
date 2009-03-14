@@ -7,6 +7,9 @@ $lang['CATEGORIES_SHOW_TREE'] = 'Смотреть всё дерево катег
 $lang['CATEGORIES_TREE_TITLE'] = 'Дерево категорий';
 $lang['CATEGORIES_POP_PR'] = 'Новое и популярное в категории %s';
 $lang['CATEGORIES_NEW_REVIEWS'] = 'Новые отзывы в категории %s';
+$lang['CATEGORIES_SOFFERS'] = 'Показано от %s до %s из %s';
+$lang['CATEGORIES_PFIRST'] = 'Первая';
+$lang['CATEGORIES_PLAST'] = 'Последняя';
 
 
 $lang['CATEGORIES_MODULE_TABLE_TITLE'] = 'Сравнение цен';
