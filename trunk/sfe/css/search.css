@@ -1,0 +1,163 @@
+@CHARSET "UTF-8";
+/* { Домашняя верхняя панель */
+.home-top-left{
+	background: transparent url(../images/home_top_left.jpg) no-repeat scroll 0%; 
+	width: 9px; 
+	height: 123px; 
+	float: left;	
+}
+.home-top-right{
+	background: transparent url(../images/home_top_right.jpg) no-repeat scroll 0%; 
+	width: 9px; 
+	height: 123px; 
+	float: right;	
+}
+
+.zs{
+	height:123px;
+	margin-bottom: 0px;
+	background: transparent url(../images/home_top_bg.jpg) repeat-x;
+}
+
+.zs div.home-slogan{
+	width: 397px;
+	height: 48px;
+	background: transparent url(../images/header_text.png) no-repeat;
+	float: left;
+	margin: 50px 0px 0px 600px;
+	position: absolute; 
+}
+
+.fq2{
+	width: 484px;
+	height: 101px;
+	margin: 22px 10px 10px 40px;
+	background: transparent url(../images/home_search_bg.png) repeat-x;
+	position:absolute;
+	text-align: left;
+}
+
+div.fq2 h4 {
+	color:#15345C;
+	font-size:13px;
+	margin:0pt;
+	padding:10px 0px 0px 10px;
+}
+
+div.fq2 form{
+	position: absolute;
+	padding: 10px;
+}
+
+.mainQ {
+	border:1px solid #7F9DB9;
+	color:#000000;
+	line-height:28px;
+	height: 28px;	
+	font-size:150%;
+	width:355px;
+	margin-top: 5px;
+}
+.searchSubmit{
+	margin: 4px 0px 0px 5px;
+	vertical-align:top;
+	height: 30px;
+	width: 90px;
+	background:transparent url(../images/search_submit_big.png);
+	border: none;
+	color: #994800;
+	font-size: 130%;
+	cursor: pointer;
+}
+/* } Домашняя верхняя панель */
+
+/* { Узкая панель */
+.zs-narrow{
+	height:61px;
+	margin-bottom: 0px;
+	background: #385382 url(../images/header_bg_small.gif) repeat-x scroll center bottom;
+	border-width: 0px 1px 1px 1px;
+	border-color: #93C0FF;
+	border-style: solid;
+}
+
+.fq2-narrow{
+	width: 484px;
+	height: 55px;
+	margin: 5px 10px 10px 40px;
+	background: transparent url(../images/home_search_bg.png) repeat-x;
+	position:absolute;
+}
+
+div.fq2-narrow h4 {
+	color:#15345C;
+	font-size:95%;
+	margin:0pt;
+	padding:5px 0px 0px 5px;
+}
+
+div.fq2-narrow .mainQ {
+	border:1px solid #7F9DB9;
+	color:#000000;
+	height: 20px;	
+	font-size:100%;
+	width:355px;
+	margin: 5px 0px 0px 5px;
+}
+
+.searchSubmitSmall{
+	margin: 4px 0px 0px 5px;
+	vertical-align:top;
+	height: 22px;
+	width: 75px;
+	background:transparent url(../images/search_submit_small.png);
+	border: none;
+	color: #FFFFFF;
+	font-size: 100%;
+	cursor: pointer;
+}
+
+.zs-narrow div.home-slogan{
+	width: 397px;
+	height: 48px;
+	background: transparent url(../images/header_text_small.png) no-repeat center top;
+	float: left;
+	margin: 10px 0px 0px 550px;
+	position: absolute; 
+}
+
+.zs-narrow div.home-slogan ul#navigationUs{
+	display: none;
+	background: transparent url(http://images.us.ciao.com/ius/images/crux/background/feature_nav_right.gif) no-repeat right top;
+	clear:both;
+	height:18px;
+	margin:33px 0pt 0pt;
+	padding:0pt 12px 0pt 0pt;
+	text-align:right;
+}
+
+.zs-narrow div.home-slogan ul#navigationUs li {
+	background:transparent url(../images/feature_nav_sep.gif) no-repeat -7px 0px;
+	display:inline;
+	float:right;
+	line-height:20px;
+	margin:0pt;
+	padding:0pt;
+}
+
+.zs-narrow div.home-slogan ul#navigationUs li.last {
+	background:transparent url(../images/feature_nav_left.gif) no-repeat -1px 0px ;
+}
+
+.zs-narrow div.home-slogan ul#navigationUs li a.navLinkUs {
+	background:transparent url(../images/feature_nav_bg.gif) repeat-x right top;
+	color:#385382;
+	display:block;
+	font-size:11px;
+	font-weight:normal;
+	line-height:20px;
+	margin:0pt 0pt 2px 7px;
+	padding:0px 4px 8px;
+	text-decoration:none;
+}
+/* } Узкая панель */
