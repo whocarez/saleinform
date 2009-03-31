@@ -1,269 +1,0 @@
-@CHARSET "UTF-8";/* { Список категорий на главной */div.catslist{	background-image:url(../images/catsmain_bg.png);	border-top: 1px solid #93c0ff;	color:#919191;	font-size:11px;	margin: 10px 0px 0px 0px;
-	padding:0;
-	width: 280px;
-	position:relative;
-}
-
-div.catslist ul {
-	list-style-type:none;
-	padding:0 1px;
-}
-
-div.catslist ul li {
-	background-repeat:no-repeat;
-	border-color:#CBE3FF;
-	border-style:solid;
-	border-width:0 0 1px;
-	height:28px;
-	margin:0;
-	padding:6px 0;
-}
-div.catslist ul li img{
-	float: left;
-}
-div.catslist ul li.last-cat-item {
-	border-width:0 0 0px;
-}
-
-div.catslist ul li div{
-	margin: 0px 5px 0px 45px;
-}
-div.catslist ul li div h4 {
-	font-size:110%;
-}
-
-div.catslist ul li div span {
-	font-size:100%;
-}
-
-div.catslist ul li h4 a {
-	color:#15345C;
-	text-decoration:none;
-}
-
-div.catslist ul li h4 a:hover {
-	color:#15345C;
-	text-decoration:underline;
-}
-
-div.catslist ul li a {
-	color:#919191;
-	text-decoration:none;
-}
-
-div.catslist ul li a:hover {
-	color:#919191;
-	text-decoration:underline;
-}
-
-div.CategoryBrowserFooter {
-	background-color:#FFFFFF;
-	background-image:url(../images/catsmain_bottom.png);
-	background-repeat:no-repeat;
-	height:6px;
-	margin-bottom:0px;
-	position:relative;
-	width:280px;
-	z-index:11;
-}
-/* } Список категорий на главной */
-
-/* { TOP список категорий */
-#menuContent {
-	background:transparent url(../images/main_nav_ul_line.gif) repeat-x scroll 0 23px;
-	height:24px;
-	margin:0;
-	padding:0;
-	width:100%;
-}
-#menuContent #mainNavUs{
-	clear:both;
-	margin: 0 auto;
-}
-#menuContent #mainNavUs ul.mainMenuUs {
-	font-size:12px;
-	margin:0px 0px 0px 30px;
-	padding:0;
-	text-align:center;
-	white-space:nowrap;
-}
-
-#menuContent #mainNavUs li {
-	float:left;
-	font-size:12px;
-	list-style-image:none;
-	list-style-position:outside;
-	list-style-type:none;
-	margin:0 0 0 1px;
-	padding:0;
-	top:1px;
-}
-
-#menuContent #mainNavUs a {
-	background:transparent url(../images/main_nav_left.gif) no-repeat scroll 0 0;
-	border-bottom:1px solid #6288BA;
-	cursor:pointer;
-	display:block;
-	float:left;
-	font-size:12px;
-	height:23px;
-	padding:0 0 0 11px;
-	text-decoration:none;
-}
-
-#menuContent #mainNavUs a span {
-	float:none;
-}
-#menuContent #mainNavUs a span {
-	background:transparent url(../images/main_nav_right.gif) no-repeat scroll right top;
-	color:#575757;
-	cursor:pointer;
-	display:block;
-	float:left;
-	font-size:12px;
-	height:15px;
-	padding:5px 11px 3px 0;
-}
-
-#menuContent #mainNavUs a span span.biggerFont {
-	background:transparent none repeat scroll 0 50%;
-	display:inline;
-	font-size:14px;
-	line-height:12px;
-	margin:0;
-	padding:0 0 11px;
-}
-
-#menuContent #mainNavUs a:hover {
-	background-position:0 -28px;
-}
-
-#menuContent #mainNavUs a:hover span {
-	background-position:100% -28px;
-}
-#menuContent #mainNavUs a:hover span {
-	color:#FFFFFF;
-}
-#menuContent #mainNavUs #current a {
-	background-position:0 -28px;
-	border:medium none;
-	cursor:pointer;
-	height:24px;
-}
-#menuContent #mainNavUs #current a span {
-	background-position:100% -28px;
-	color:#FFFFFF;
-	cursor:pointer;
-	font-weight:normal;
-	height:15px;
-	padding:5px 11px 4px 0;
-}
-.ctr {
-	text-align:center;
-}
-/* } TOP список категорий */
-/* { Обзор категорий */
-table.wd510, table.layoutshell, table.navigation {
-	border-collapse:collapse;
-	border-spacing:0;
-	width:100%;
-	font-size: 12px;
-}
-td.layoutL{
-	text-align:left;
-	vertical-align:top;
-}
-div.breadCrumb2-US {
-	padding:9px 1px 10px 0;
-	text-align:left;
-	font-size: 13px;
-}
-div.breadCrumb2-US a, div.breadCrumb2-US a:visited, div.breadCrumb2-US a:active {
-	color:#7D7D7D;
-	font-weight:normal;
-	text-decoration:underline;
-}
-td.hdlpad1 {
-	padding-bottom:8px;
-}
-.headline, a.large:link, a.large:visited, a.large:hover, a.large:active {
-	font-size:150%;
-}
-td.layoutR {
-	vertical-align:top;
-	width:230px;
-}
-table.topprod {
-	border:1px solid #BDD7EF;
-	border-collapse:collapse;
-	margin-top:17px;
-	text-align:left;
-	width:230px;
-}
-td.topprodhdl {
-	border-bottom:1px solid #BDD7EF;
-	height:23px;
-	text-align:center;
-}
-.bg3dark, .bg3norm, .bgdark {
-	background:#BDD7EF none repeat scroll 0 0;
-}
-.keyword, a.hdl, .subhdl, .naviontxt {
-	font-weight:bold;
-}
-a.cathdl:link, 
-a.cathdl:visited, 
-a.cathdl:hover, 
-a.cathdl:active {
-	font-size: 110%;
-	font-weight:bold;
-}
-table.layoutshell a:hover, 
-table.layoutshell a:active {
-	color:#FF7F00;
-}
-table.wd750 {style_us.css (line 566)
-	border-collapse:collapse;
-	border-spacing:0;
-	text-align:left;
-	width:100%;
-	font-size: 12px;
-}
-/* } Обзор категорий */
-/* { Дерево категорий */
-td.bcrumbhdl {
-	height:10px;
-	padding-top:5px;
-	vertical-align:top;
-	font-size: 12px;
-}
-div.tree-link-bold{
-	font-weight: bold;
-	margin-top: 15px;
-}
-
-.level0{
-	margin-left: 0px;
-}
-.level1{
-	margin-left: 20px;
-}
-.level2{
-	margin-left: 40px;
-}
-.level3{
-	margin-left: 60px;
-}
-
-.level4{
-	margin-left: 80px;
-}
-.level5{
-	margin-left: 100px;
-}
-td.websrccat {
-	height:54px;
-	vertical-align:top;
-	width:33%;
-}
-/* } Дерево категорий *//* { Категория */div.newIntro {	color:#7D7D7D;	font-size:13px;	margin:20px 2px 28px;}td.layoutM{	width:10px;}td.layoutR{	vertical-align:top;	width:230px;	}table.newCatTable {	background-image:url(../images/css/bg/bg_newTable.gif);	background-position:center bottom;	background-repeat:repeat-x;	border-color: #93C0FF;	border-style:none solid solid;	border-width:medium 1px 1px;	margin:0 0 20px;	width:100%;}table.newCatTable td {	padding:15px 15px 5px;}td.subcat {	padding-bottom:5px;	padding-top:10px;	vertical-align:top;	width:50%;}.newCatTable dl.subcatbox {	margin-top:0;}dl.subcatbox {	margin-bottom:10px;}table.newCatTable td a.hdl{	color:#000000;	font-size:120%;	text-decoration:none;}table.newCatTable td a.subnr {	color:#7D7D7D;	font-size:13px;	text-decoration:underline;}dl.subcatbox dd {	margin-left:5px;	padding:2px 0;}.subnr {	color:#7D7D7D;	font-size:90%;}table.TrendProducts {	border:1px solid #CCDEF8;	width:100%;}table.TrendProducts thead td {	background:transparent url(../images/bg3box.gif) repeat-x scroll 0 0;	color:#000000;	font-size:12px;	font-weight:bold;	height:26px;	padding:0 0 0 8px;	text-align:left;	vertical-align:middle;}table.newRecentReviewsTable {	background-image:url(http://images.ciao.com/iuk/images/tabs/bg_newTable.gif);	background-position:center bottom;	background-repeat:repeat-x;	border:1px solid #A4D67A;	margin-bottom:15px;	width:100%;}table.newRecentReviewsTable th.title {	border-bottom:1px solid #A4D67A;	border-right:0 none;	color:#000000;	font-weight:bold;	height:26px;	text-align:left;}table.newRecentReviewsTable th {	background-image:url(../images/bg12box.gif);	background-position:center top;	background-repeat:repeat-x;}table.newRecentReviewsTable th {	font-size:12px;	padding-left:9px;	padding-right:8px;	white-space:nowrap;	}.searchResults2offers {	border-color: #CCCCCC;	border-style:none solid;	border-width:0 1px;	width:100%;}.searchResults2 tbody td {	color:#7D7D7D;	text-align:center;	padding:10px;}td.compare {	background:#EDF6FF none repeat scroll 0 0;	padding:0 3px;	width:20px;}.searchResults2offers tbody td {	border-bottom:1px solid #CCCCCC;}.alignLeft {	text-align:left !important;}.searchResults2 tbody td a {	font-size: 120%;	font-weight:bold;}div#leafCatContent table.navigationNumbers, #leafCatContent-RightNavigation table.navigationNumbers {	position:relative;	top:-1px;}.bg3light, .bglight {	background:#EDF6FF none repeat scroll 0 0;}.resultrangedownbg3, .resultrangedownbg32 {	border-color: #BDD7EF;	border-style:none solid solid;	border-width:0 1px 1px;	width:100%;}/* } Категория */

@@ -1,9 +1,0 @@
-<?php/* * The Categories*/class Categories extends Controller{	private $objectsArr = array();	public function __construct(){		parent::Controller();
-		$this->output->enable_profiler(True);		
-		/* load needed libraries */		$this->load->library('navline_module');		$this->load->library('categories_module');		$this->load->library('search_module');		$this->load->library('clients_module');		$this->load->library('keywords_module');		/* generate objects */		$this->objectsArr['nav_top_obj'] = $this->navline_module->renderTopMenu();		$this->objectsArr['topmenu_obj'] = $this->categories_module->renderTabbedMenu();		$this->objectsArr['search_bar_obj'] = $this->search_module->renderNarrowBar();		$this->objectsArr['footer_area_obj'] = $this->navline_module->renderFooterMenu();		$this->objectsArr['metatitle_area_obj'] = $this->keywords_module->renderMetatitleArea();		$this->objectsArr['keywords_area_obj'] = $this->keywords_module->renderKeywordsArea('');		$this->objectsArr['metadescription_area_obj'] = $this->keywords_module->renderMetadescriptionArea();	}
-	public function index(){
-		$this->objectsArr['categories_area_obj'] = $this->categories_module->renderCategoriesList();		$this->load->view('layouts/categories/categories.php', $this->objectsArr);	}
-	public function categoriestree(){		$this->objectsArr['categories_area_obj'] = $this->categories_module->renderCategoriesTree();		$this->load->view('layouts/categories/categories.php', $this->objectsArr);	}
-	public function category($slug, $page = null){		$this->objectsArr['categories_area_obj'] = $this->categories_module->renderCategory($slug, $page);		$this->load->view('layouts/categories/category.php', $this->objectsArr);	}
-}
-?>

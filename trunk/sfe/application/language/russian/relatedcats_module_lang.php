@@ -1,5 +1,0 @@
-<?php
-/* { RELATEDCATS MODULE */
-$lang['RELATEDCATS_MODULE_RELATEDCATS_AREA_TITLE'] = 'Смотрите также';
-/* } RELATEDCATS MODULE */
-?>

@@ -1,16 +1,0 @@
-@CHARSET "UTF-8";/* { Главное меню навигации */.top_nav{	clear: both;}.navigator_container{	float:right;	margin:0px 0px 0px 0px;	font-size: 95%;}
-ul.navigator_items li{	float:right;	line-height:15px;	list-style-image:none;	list-style-position:outside;	list-style-type:none;	margin:0;	padding:0;	position:relative;	top:1px;	}
-ul.navigator_items li a{	background:transparent url(../images/bg_menu_left.gif) no-repeat scroll left -8px;	border-top:1px solid #D5D5D5;	display:block;	float:left;	padding-left:11px;	text-decoration:none;}
-ul.navigator_items li a span{	background:transparent url(../images/bg_menu_right.gif) no-repeat scroll right -8px;	color:#575757;	display:block;	float:left;	padding:3px 11px 4px 0;}
-ul.navigator_items li a:hover span{	background-position:100% -37px;	cursor:pointer;	color: #FFFFFF;}
-ul.navigator_items li a:hover,ul.navigator_items li.navifirst a:hover {	background-position:left -37px;	cursor:pointer;	color: #FFFFFF;}
-ul.navigator_items li.navifirst a{	background:transparent url(../images/bg_menu_left_round.gif) no-repeat scroll left -8px;}
-ul.navigator_items li.navimember a{	background:transparent url(../images/bg_member_menu_left.gif) no-repeat scroll left -8px;}
-ul.navigator_items li.navimember a span{	background:transparent url(../images/bg_member_menu_right.gif) no-repeat scroll left -8px;}
-ul.navigator_items li.navimember a:hover span {	background:transparent url(../images/bg_menu_right.gif) no-repeat scroll right -37px;	color: #FFFFFF;}
-ul.navigator_items li.navimember a:hover {	background:transparent url(../images/bg_menu_left.gif) no-repeat scroll left -37px;	cursor:pointer;	color: #FFFFFF;}/* } Главное меню навигации */
-/* { Навиация для других разделов */ul.simple_items li{	float:right;	line-height:15px;	list-style-image:none;	list-style-position:outside;	list-style-type:none;	margin:0;	padding:0;	position:relative;	top:1px;	}
-ul.simple_items li a {	font-size:100%;	padding:0 5px 0 10px;	text-decoration:none;}
-ul.simple_items li a.orangeUs{	color:#FF6701;}
-ul.simple_items li a.grayUs{	color:#575757;}
-ul.simple_items li a:hover{	color:#FF6701;}/* } Навиация для других разделов *//* { Навигация подвала */div.footer_nav{	margin-top: 20px;	padding-top: 20px;	text-align: center;	clear: both;	line-height: 20px;	border-top: 1px solid #F8F8F8;}/* } Навигация подвала */
