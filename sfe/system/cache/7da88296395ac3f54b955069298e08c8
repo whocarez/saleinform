@@ -1,0 +1,732 @@
+1237635363TS---><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>	<title>Saleinform - сравнение цен, сравнение товаров</title>	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	<meta name="description" content="Сравнение цен и товаров интернет магазинов, советы покупателям, обзоры товаров, отзывы покупателей.">	<meta name="keywords" content="время,часов,батарея,стандартная,размеры,телефон,стандарт,мобильный,разговора,сравнить,предложений,ожидания,всего,купить,выпуска,отзыв,оставьте,первым,samsung,телефоны,motorola,сотовые,телефонов,vertu,sonyericsson,отзывов,показано,nokia,следущая,k320i,моделей,последняя,ke770,shine,a1200,mobiado,constellation,ascent,страницы,категории,professional,k750i,yellow,телефония,главная,сотовых,моделях,обзоры,описания,наименованию,рейтингу,мобильных,пользователей,отзывы,подбор,параметрам,сортировать,сравнение,мобильные,магазинах,интернет,товаров,время ожидания,разговора часов,время разговора,ожидания часов,год выпуска,сравнить цены,купить всего,стандартная батарея,долл сравнить,мобильный телефон,стандарт gsm,gsm 900,900 1800,1900 размеры,предложений мобильный,1800 1900,оставьте отзыв,первым стандарт,отзыв первым,часов 200,2006 купить,выпуска 2006,телефон samsung,samsung sgh,выпуска 2005,2005 купить,850 время,ion 850,ion 800,800 время,выпуска 2007,телефон motorola,2007 купить,сотовые телефоны,телефон vertu,ion 950,950 время,телефон nokia,0x46 0x20,телефон sonyericsson,отзывов стандарт,105 0x46,долл сравнить цены,время ожидания часов,время разговора часов,900 1800 1900,предложений мобильный телефон,1800 1900 размеры,оставьте отзыв первым,отзыв первым стандарт,год выпуска 2006,2006 купить всего,выпуска 2006 купить,мобильный телефон samsung,2005 купить всего,выпуска 2005 купить,год выпуска 2005,850 время разговора,800 время разговора,год выпуска 2007,мобильный телефон motorola,выпуска 2007 купить,2007 купить всего,950 время разговора,мобильный телефон vertu,мобильный телефон nokia,мобильный телефон sonyericsson">	<link rel="SHORTCUT ICON" href="http://soad/sfe/images/si.png">		<link rel="stylesheet" type="text/css" href="http://soad/sfe/css/style_new.css">	<link rel="stylesheet" type="text/css" href="http://soad/sfe/css/settings.css">	<link rel="stylesheet" type="text/css" href="http://soad/sfe/css/categories.css">	<link rel="stylesheet" type="text/css" href="http://soad/sfe/css/mostpopular.css">	<link rel="stylesheet" type="text/css" href="http://soad/sfe/css/common.css">		<link rel="stylesheet" type="text/css" href="http://soad/sfe/css/boxes1.css">	<link rel="stylesheet" type="text/css" href="http://soad/sfe/css/blocks2.css">	<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script></head>
+<body>
+	<!-- { Search form -->
+	<script type="text/javascript">
+<!--
+	function buildAction(){
+		var searchStringObj = document.getElementById('searchString');
+		var searchActionObj = document.getElementById('formAction');
+		var searchFormObj = document.getElementById('searchForm');
+		var categoryRidObj = document.getElementById('categoryRid');
+		var searchThisCatObj = document.getElementById('search_thiscat');
+		if(trim(searchStringObj.value) == ''){ 
+			alert('Строка поиска не должна быть пустой!');
+			return; 
+		}
+		else
+		{
+			if(trim(categoryRidObj.value) != '' && searchThisCatObj.checked == true)
+			{  
+				searchFormObj.action = searchActionObj.value + 'c/' + trim(categoryRidObj.value) + '/';
+			}
+			else searchFormObj.action = searchActionObj.value;
+			searchFormObj.action = searchFormObj.action + 'ss/' + trim(searchStringObj.value);
+		}
+	}
+
+	function trim(s)
+	{
+		return rtrim(ltrim(s));
+	}
+
+	function ltrim(s)
+	{
+		var l=0;
+		while(l < s.length && s[l] == ' ')
+		{	
+			l++; 
+		}
+		return s.substring(l, s.length);
+	}
+
+	function rtrim(s)
+	{
+		var r=s.length -1;
+		while(r > 0 && s[r] == ' ')
+		{	
+			r-=1;	
+		}
+		return s.substring(0, r+1);
+	}		
+//-->
+</script>
+<div class="top_nav">
+	<div class="navigator_container">
+		<ul class="navigator_items">
+					<li  >
+				<a href="http://soad/sfe/index.php/advertize">
+					<span>
+					Реклама					</span>
+				</a>
+			</li>	
+					<li  >
+				<a href="http://soad/sfe/index.php/clients">
+					<span>
+					Магазины					</span>
+				</a>
+			</li>	
+					<li  >
+				<a href="http://soad/sfe/index.php/brands">
+					<span>
+					Бренды					</span>
+				</a>
+			</li>	
+					<li  >
+				<a href="http://soad/sfe/index.php/guides">
+					<span>
+					Покупателю					</span>
+				</a>
+			</li>	
+					<li  >
+				<a href="http://soad/sfe/index.php/categories">
+					<span>
+					Категории					</span>
+				</a>
+			</li>	
+					<li class="navifirst" >
+				<a href="http://soad/sfe/">
+					<span>
+					Главная					</span>
+				</a>
+			</li>	
+				</ul>
+	</div>	
+	<div class="logo">
+		<a href="http://soad/sfe/"><img src="http://soad/sfe/images/logo.gif"  title="Saleinform.com - сравнение цен"  border="0" /></a>	</div>
+</div>
+
+<div class="zs">
+        <div class="home-top-left"></div>
+        <div class="home-top-right"></div>
+		<div class="home-slogan">  </div>
+	<div class="fq2">
+	<form action="http://soad/sfe/index.php" method="post" id="searchForm" name="searchForm" onSubmit="buildAction()">	
+		<input id="searchString" name="searchString" class="mainQ" value="" type="text">
+		<input id="sb" class="searchSubmit" value="Найти" type="submit" >
+		<input id="categoryRid" name="categoryRid" value="" type="hidden">
+		<input id="formAction" name="formAction" value="http://soad/sfe/index.php/categories/" type="hidden">
+		<br>
+		<span id="rgn_s" class="a">
+				</span>
+	</form>		
+	</div>
+</div>
+
+
+	<!-- { Search form -->
+
+	<table border="0" width="100%">
+		<tr>			<td class="cTD">
+				<!-- { Categoeries -->
+				<div id="Node_BreadCrumb" class="breadCrumb2-US">
+	<!-- Path navigator -->
+	<a href="http://soad/sfe/index.php" title="Главная">Главная</a>	<span class="grey"> > </span><a href="http://soad/sfe/index.php/categories" title="Категории товаров">Категории товаров</a>		<span class="grey"> > </span><a href="http://soad/sfe/index.php/category/101-telefoniya" title="Телефония">Телефония</a>		<span class="grey"> > </span>Сотовые телефоны</div>
+<table class="layoutshell">
+	<tr>
+		<td class="layoutL">
+			<h1>Сотовые телефоны</h1>
+			<div class="newIntro">
+				Сравнение цен на мобильные телефоны в интернет магазинах, отзывы пользователей о моделях сотовых телефонов, обзоры, описания мобильных телефонов, подбор моделей по параметрам.
+			</div>
+			
+			<div class="ptab4onbd" id="prodNav">
+				<ul>
+					<li id="ptab1on">
+						<a name="top">
+							<h4><span>Сотовые телефоны</span></h4>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<table cellspacing="0" class="resultrangetopPriceComp2 bg3boxgdt">
+				<tr>
+					<td class="rangearticles">
+													Показано 45 - 60 из 319											</td>
+					<td class="rangepages"> </td>
+					<td class="rangenextpage">
+						Сортировать по: 													<strong>наименованию</strong>
+							<img src="http://soad/sfe/images/arrow-sort-down.gif" />						  | 
+						 							<a href="http://soad/sfe/index.php/category/562-sotovye-telefony/sort/rating">рейтингу</a>						 | 
+						 							<a href="http://soad/sfe/index.php/category/562-sotovye-telefony/sort/price">цене</a>											</td>
+				</tr>
+			</table>
+			
+			<table class="searchResults2 searchResults2offers" cellspacing="0">
+									<tr>
+						<td class="compare">
+							<input type="checkbox" name="ids[]" value=""  />						</td>
+						<td width="180">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Motorola W510"><img src="http://soad/sfe/images/wares/offers_thumb/198_100.jpg"  alt="Мобильный телефон Motorola W510"  border="0" /></a>						</td>
+						<td class="alignLeft">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Motorola W510"><span class="productName">Мобильный телефон Motorola W510</span></a>														<p style="padding: 3px 0px;">	
+																<img src="http://soad/sfe/images/ratings/stars0.gif" />								&nbsp;&nbsp;
+																	<a href="http://soad/sfe/index.php" title="Мобильный телефон Motorola W510" class="opinions-link">оставьте отзыв первым</a>									
+							</p>
+														<p style="font-size: 90%;">
+								Стандарт: GSM 900/1800/1900, Размеры, мм: 99.0x46.0x17.5, Вес, г: 107, Стандартная батарея: Li-Ion 880, Время разговора, часов: 3.00, Время ожидания, часов: 350.00, Год выпуска: 2007							</p>
+							
+							<p>
+								<a href="http://soad/sfe/index.php" title="Купить Мобильный телефон Motorola W510 за 1769.25 грн." class="opinions-link" target="_blank">Купить всего за 1769.25 грн.</a>							</p>
+						</td>
+						<td class="noWrap" width="120">
+														<a href="http://soad/sfe/index.php" title="Мобильный телефон Motorola W510">1769.25 грн.</a>														<br>
+							<span class="subgrey add-price">
+							(							214.71 долл.							)
+							</span>
+							<br>
+							<button name="compare" type="button" class="compare-btn">Сравнить цены</button>							<br>
+							<span class="subgrey">
+								1 предложений							</span>
+						</td>
+					</tr>
+									<tr>
+						<td class="compare">
+							<input type="checkbox" name="ids[]" value=""  />						</td>
+						<td width="180">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон LG KE770 Shine"><img src="http://soad/sfe/images/wares/offers_thumb/205_103_big.jpg"  alt="Мобильный телефон LG KE770 Shine"  border="0" /></a>						</td>
+						<td class="alignLeft">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон LG KE770 Shine"><span class="productName">Мобильный телефон LG KE770 Shine</span></a>														<p style="padding: 3px 0px;">	
+																<img src="http://soad/sfe/images/ratings/stars8.gif" />								&nbsp;&nbsp;
+																	<a href="http://soad/sfe/index.php" title="Мобильный телефон LG KE770 Shine" class="opinions-link">1 отзывов</a>									
+							</p>
+														<p style="font-size: 90%;">
+								Стандарт: GSM 900/1800/1900, Размеры, мм: 105.0x46.0x9.9, Вес, г: 125, Стандартная батарея: Li-Ion 800, Время разговора, часов: 3.00, Время ожидания, часов: 200.00, Год выпуска: 2007							</p>
+							
+							<p>
+								<a href="http://soad/sfe/index.php" title="Купить Мобильный телефон LG KE770 Shine за 1425.23 грн." class="opinions-link" target="_blank">Купить всего за 1425.23 грн.</a>							</p>
+						</td>
+						<td class="noWrap" width="120">
+														<a href="http://soad/sfe/index.php" title="Мобильный телефон LG KE770 Shine">1425.23 грн.</a>														<br>
+							<span class="subgrey add-price">
+							(							172.96 долл.							)
+							</span>
+							<br>
+							<button name="compare" type="button" class="compare-btn">Сравнить цены</button>							<br>
+							<span class="subgrey">
+								1 предложений							</span>
+						</td>
+					</tr>
+									<tr>
+						<td class="compare">
+							<input type="checkbox" name="ids[]" value=""  />						</td>
+						<td width="180">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Samsung SGH-D900"><img src="http://soad/sfe/images/wares/offers_thumb/215_108_big.jpg"  alt="Мобильный телефон Samsung SGH-D900"  border="0" /></a>						</td>
+						<td class="alignLeft">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Samsung SGH-D900"><span class="productName">Мобильный телефон Samsung SGH-D900</span></a>														<p style="padding: 3px 0px;">	
+																<img src="http://soad/sfe/images/ratings/stars0.gif" />								&nbsp;&nbsp;
+																	<a href="http://soad/sfe/index.php" title="Мобильный телефон Samsung SGH-D900" class="opinions-link">оставьте отзыв первым</a>									
+							</p>
+														<p style="font-size: 90%;">
+								Стандарт: GSM 900/1800/1900, Размеры, мм: 103.5x51.0x13.9, Вес, г: 80, Стандартная батарея: Li-Ion 800, Время разговора, часов: 3.00, Время ожидания, часов: 200.00, Год выпуска: 2006							</p>
+							
+							<p>
+								<a href="http://soad/sfe/index.php" title="Купить Мобильный телефон Samsung SGH-D900 за 2359.00 грн." class="opinions-link" target="_blank">Купить всего за 2359.00 грн.</a>							</p>
+						</td>
+						<td class="noWrap" width="120">
+														<a href="http://soad/sfe/index.php" title="Мобильный телефон Samsung SGH-D900">2359.00 грн.</a>														<br>
+							<span class="subgrey add-price">
+							(							286.29 долл.							)
+							</span>
+							<br>
+							<button name="compare" type="button" class="compare-btn">Сравнить цены</button>							<br>
+							<span class="subgrey">
+								1 предложений							</span>
+						</td>
+					</tr>
+									<tr>
+						<td class="compare">
+							<input type="checkbox" name="ids[]" value=""  />						</td>
+						<td width="180">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Samsung SGH-E490"><img src="http://soad/sfe/images/wares/offers_thumb/230_116.jpg"  alt="Мобильный телефон Samsung SGH-E490"  border="0" /></a>						</td>
+						<td class="alignLeft">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Samsung SGH-E490"><span class="productName">Мобильный телефон Samsung SGH-E490</span></a>														<p style="padding: 3px 0px;">	
+																<img src="http://soad/sfe/images/ratings/stars0.gif" />								&nbsp;&nbsp;
+																	<a href="http://soad/sfe/index.php" title="Мобильный телефон Samsung SGH-E490" class="opinions-link">оставьте отзыв первым</a>									
+							</p>
+														<p style="font-size: 90%;">
+								Стандарт: GSM 900/1800/1900, Размеры, мм: 99.0x51.0x15.4, Вес, г: 85, Стандартная батарея: Li-Ion 850, Время разговора, часов: 2.00, Время ожидания, часов: 200.00, Год выпуска: 2006							</p>
+							
+							<p>
+								<a href="http://soad/sfe/index.php" title="Купить Мобильный телефон Samsung SGH-E490 за 1621.81 грн." class="opinions-link" target="_blank">Купить всего за 1621.81 грн.</a>							</p>
+						</td>
+						<td class="noWrap" width="120">
+														<a href="http://soad/sfe/index.php" title="Мобильный телефон Samsung SGH-E490">1621.81 грн.</a>														<br>
+							<span class="subgrey add-price">
+							(							196.82 долл.							)
+							</span>
+							<br>
+							<button name="compare" type="button" class="compare-btn">Сравнить цены</button>							<br>
+							<span class="subgrey">
+								1 предложений							</span>
+						</td>
+					</tr>
+									<tr>
+						<td class="compare">
+							<input type="checkbox" name="ids[]" value=""  />						</td>
+						<td width="180">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон SonyEricsson K320i"><img src="http://soad/sfe/images/wares/offers_thumb/237_119_big.jpg"  alt="Мобильный телефон SonyEricsson K320i"  border="0" /></a>						</td>
+						<td class="alignLeft">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон SonyEricsson K320i"><span class="productName">Мобильный телефон SonyEricsson K320i</span></a>														<p style="padding: 3px 0px;">	
+																<img src="http://soad/sfe/images/ratings/stars0.gif" />								&nbsp;&nbsp;
+																	<a href="http://soad/sfe/index.php" title="Мобильный телефон SonyEricsson K320i" class="opinions-link">оставьте отзыв первым</a>									
+							</p>
+														<p style="font-size: 90%;">
+								Стандарт: GSM 900/1800/1900, Размеры, мм: 101.0x44.0x18.0, Вес, г: 82, Стандартная батарея: Li-Ion 750, Время разговора, часов: 3.00, Время ожидания, часов: 200.00, Год выпуска: 2006							</p>
+							
+							<p>
+								<a href="http://soad/sfe/index.php" title="Купить Мобильный телефон SonyEricsson K320i за 992.92 грн." class="opinions-link" target="_blank">Купить всего за 992.92 грн.</a>							</p>
+						</td>
+						<td class="noWrap" width="120">
+														<a href="http://soad/sfe/index.php" title="Мобильный телефон SonyEricsson K320i">992.92 грн.</a>														<br>
+							<span class="subgrey add-price">
+							(							120.50 долл.							)
+							</span>
+							<br>
+							<button name="compare" type="button" class="compare-btn">Сравнить цены</button>							<br>
+							<span class="subgrey">
+								1 предложений							</span>
+						</td>
+					</tr>
+									<tr>
+						<td class="compare">
+							<input type="checkbox" name="ids[]" value=""  />						</td>
+						<td width="180">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Motorola A1200"><img src="http://soad/sfe/images/wares/offers_thumb/269_135_big.jpg"  alt="Мобильный телефон Motorola A1200"  border="0" /></a>						</td>
+						<td class="alignLeft">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Motorola A1200"><span class="productName">Мобильный телефон Motorola A1200</span></a>														<p style="padding: 3px 0px;">	
+																<img src="http://soad/sfe/images/ratings/stars0.gif" />								&nbsp;&nbsp;
+																	<a href="http://soad/sfe/index.php" title="Мобильный телефон Motorola A1200" class="opinions-link">оставьте отзыв первым</a>									
+							</p>
+														<p style="font-size: 90%;">
+								Стандарт: GSM 900/1800/1900, Размеры, мм: 95.7x51.7x21.5, Вес, г: 122, Стандартная батарея: Li-Ion 850, Время разговора, часов: 4.00, Время ожидания, часов: 200.00, Год выпуска: 2005							</p>
+							
+							<p>
+								<a href="http://soad/sfe/index.php" title="Купить Мобильный телефон Motorola A1200 за 3145.33 грн." class="opinions-link" target="_blank">Купить всего за 3145.33 грн.</a>							</p>
+						</td>
+						<td class="noWrap" width="120">
+														<a href="http://soad/sfe/index.php" title="Мобильный телефон Motorola A1200">3145.33 грн.</a>														<br>
+							<span class="subgrey add-price">
+							(							381.71 долл.							)
+							</span>
+							<br>
+							<button name="compare" type="button" class="compare-btn">Сравнить цены</button>							<br>
+							<span class="subgrey">
+								1 предложений							</span>
+						</td>
+					</tr>
+									<tr>
+						<td class="compare">
+							<input type="checkbox" name="ids[]" value=""  />						</td>
+						<td width="180">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Mobiado Professional"><img src="http://soad/sfe/images/wares/offers_thumb/281_141_big.jpg"  alt="Мобильный телефон Mobiado Professional"  border="0" /></a>						</td>
+						<td class="alignLeft">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Mobiado Professional"><span class="productName">Мобильный телефон Mobiado Professional</span></a>														<p style="padding: 3px 0px;">	
+																<img src="http://soad/sfe/images/ratings/stars0.gif" />								&nbsp;&nbsp;
+																	<a href="http://soad/sfe/index.php" title="Мобильный телефон Mobiado Professional" class="opinions-link">оставьте отзыв первым</a>									
+							</p>
+														<p style="font-size: 90%;">
+								Стандарт: GSM 900/1800, Размеры, мм: 105.0x46.0x20.0, Вес, г: 142, Стандартная батарея: Li-Ion 850, Время разговора, часов: 5.00, Время ожидания, часов: 300.00, Год выпуска: 2005							</p>
+							
+							<p>
+								<a href="http://soad/sfe/index.php" title="Купить Мобильный телефон Mobiado Professional за 17201.02 грн." class="opinions-link" target="_blank">Купить всего за 17201.02 грн.</a>							</p>
+						</td>
+						<td class="noWrap" width="120">
+														<a href="http://soad/sfe/index.php" title="Мобильный телефон Mobiado Professional">17201.02 грн.</a>														<br>
+							<span class="subgrey add-price">
+							(							2087.50 долл.							)
+							</span>
+							<br>
+							<button name="compare" type="button" class="compare-btn">Сравнить цены</button>							<br>
+							<span class="subgrey">
+								1 предложений							</span>
+						</td>
+					</tr>
+									<tr>
+						<td class="compare">
+							<input type="checkbox" name="ids[]" value=""  />						</td>
+						<td width="180">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Motorola RAZR V3xx"><img src="http://soad/sfe/images/wares/offers_thumb/288_145.jpg"  alt="Мобильный телефон Motorola RAZR V3xx"  border="0" /></a>						</td>
+						<td class="alignLeft">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Motorola RAZR V3xx"><span class="productName">Мобильный телефон Motorola RAZR V3xx</span></a>														<p style="padding: 3px 0px;">	
+																<img src="http://soad/sfe/images/ratings/stars0.gif" />								&nbsp;&nbsp;
+																	<a href="http://soad/sfe/index.php" title="Мобильный телефон Motorola RAZR V3xx" class="opinions-link">оставьте отзыв первым</a>									
+							</p>
+														<p style="font-size: 90%;">
+								Стандарт: GSM 900/1800/1900, Размеры, мм: 104.0x53.0x16.0, Вес, г: 102, Стандартная батарея: Li-Ion 710, Время разговора, часов: 4.00, Время ожидания, часов: 200.00, Год выпуска: 2006							</p>
+							
+							<p>
+								<a href="http://soad/sfe/index.php" title="Купить Мобильный телефон Motorola RAZR V3xx за 2850.45 грн." class="opinions-link" target="_blank">Купить всего за 2850.45 грн.</a>							</p>
+						</td>
+						<td class="noWrap" width="120">
+														<a href="http://soad/sfe/index.php" title="Мобильный телефон Motorola RAZR V3xx">2850.45 грн.</a>														<br>
+							<span class="subgrey add-price">
+							(							345.93 долл.							)
+							</span>
+							<br>
+							<button name="compare" type="button" class="compare-btn">Сравнить цены</button>							<br>
+							<span class="subgrey">
+								1 предложений							</span>
+						</td>
+					</tr>
+									<tr>
+						<td class="compare">
+							<input type="checkbox" name="ids[]" value=""  />						</td>
+						<td width="180">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон SonyEricsson K750i"><img src="http://soad/sfe/images/wares/offers_thumb/295_148_big.jpg"  alt="Мобильный телефон SonyEricsson K750i"  border="0" /></a>						</td>
+						<td class="alignLeft">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон SonyEricsson K750i"><span class="productName">Мобильный телефон SonyEricsson K750i</span></a>														<p style="padding: 3px 0px;">	
+																<img src="http://soad/sfe/images/ratings/stars0.gif" />								&nbsp;&nbsp;
+																	<a href="http://soad/sfe/index.php" title="Мобильный телефон SonyEricsson K750i" class="opinions-link">оставьте отзыв первым</a>									
+							</p>
+														<p style="font-size: 90%;">
+								Стандарт: GSM 900/1800/1900, Размеры, мм: 100.0x46.0x20.5, Вес, г: 99, Стандартная батарея: Li-Ion 900, Время разговора, часов: 7.00, Время ожидания, часов: 400.00, Год выпуска: 2005							</p>
+							
+							<p>
+								<a href="http://soad/sfe/index.php" title="Купить Мобильный телефон SonyEricsson K750i за 1562.95 грн." class="opinions-link" target="_blank">Купить всего за 1562.95 грн.</a>							</p>
+						</td>
+						<td class="noWrap" width="120">
+														<a href="http://soad/sfe/index.php" title="Мобильный телефон SonyEricsson K750i">1562.95 грн.</a>														<br>
+							<span class="subgrey add-price">
+							(							189.68 долл.							)
+							</span>
+							<br>
+							<button name="compare" type="button" class="compare-btn">Сравнить цены</button>							<br>
+							<span class="subgrey">
+								1 предложений							</span>
+						</td>
+					</tr>
+									<tr>
+						<td class="compare">
+							<input type="checkbox" name="ids[]" value=""  />						</td>
+						<td width="180">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Nokia 9300"><img src="http://soad/sfe/images/wares/offers_thumb/297_149_big.jpg"  alt="Мобильный телефон Nokia 9300"  border="0" /></a>						</td>
+						<td class="alignLeft">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Nokia 9300"><span class="productName">Мобильный телефон Nokia 9300</span></a>														<p style="padding: 3px 0px;">	
+																<img src="http://soad/sfe/images/ratings/stars0.gif" />								&nbsp;&nbsp;
+																	<a href="http://soad/sfe/index.php" title="Мобильный телефон Nokia 9300" class="opinions-link">оставьте отзыв первым</a>									
+							</p>
+														<p style="font-size: 90%;">
+								Стандарт: GSM 900/1800/1900, Размеры, мм: 132.0x51.0x21.0, Вес, г: 167, Стандартная батарея: Li-Ion 970, Время разговора, часов: 4.00, Время ожидания, часов: 200.00, Год выпуска: 2004							</p>
+							
+							<p>
+								<a href="http://soad/sfe/index.php" title="Купить Мобильный телефон Nokia 9300 за 3784.22 грн." class="opinions-link" target="_blank">Купить всего за 3784.22 грн.</a>							</p>
+						</td>
+						<td class="noWrap" width="120">
+														<a href="http://soad/sfe/index.php" title="Мобильный телефон Nokia 9300">3784.22 грн.</a>														<br>
+							<span class="subgrey add-price">
+							(							459.25 долл.							)
+							</span>
+							<br>
+							<button name="compare" type="button" class="compare-btn">Сравнить цены</button>							<br>
+							<span class="subgrey">
+								1 предложений							</span>
+						</td>
+					</tr>
+									<tr>
+						<td class="compare">
+							<input type="checkbox" name="ids[]" value=""  />						</td>
+						<td width="180">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Vertu Constellation Yellow Gold"><img src="http://soad/sfe/images/wares/offers_thumb/302_152.jpg"  alt="Мобильный телефон Vertu Constellation Yellow Gold"  border="0" /></a>						</td>
+						<td class="alignLeft">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Vertu Constellation Yellow Gold"><span class="productName">Мобильный телефон Vertu Constellation Yellow Gold</span></a>														<p style="padding: 3px 0px;">	
+																<img src="http://soad/sfe/images/ratings/stars0.gif" />								&nbsp;&nbsp;
+																	<a href="http://soad/sfe/index.php" title="Мобильный телефон Vertu Constellation Yellow Gold" class="opinions-link">оставьте отзыв первым</a>									
+							</p>
+														<p style="font-size: 90%;">
+								Стандарт: GSM 900/1800/1900, Размеры, мм: 109.0x45.0x15.7, Вес, г: 140, Стандартная батарея: Li-Ion 950, Время разговора, часов: 5.50, Время ожидания, часов: 250.00, Год выпуска: 2006							</p>
+							
+							<p>
+								<a href="http://soad/sfe/index.php" title="Купить Мобильный телефон Vertu Constellation Yellow Gold за 147437.29 грн." class="opinions-link" target="_blank">Купить всего за 147437.29 грн.</a>							</p>
+						</td>
+						<td class="noWrap" width="120">
+														<a href="http://soad/sfe/index.php" title="Мобильный телефон Vertu Constellation Yellow Gold">147437.29 грн.</a>														<br>
+							<span class="subgrey add-price">
+							(							17892.88 долл.							)
+							</span>
+							<br>
+							<button name="compare" type="button" class="compare-btn">Сравнить цены</button>							<br>
+							<span class="subgrey">
+								1 предложений							</span>
+						</td>
+					</tr>
+									<tr>
+						<td class="compare">
+							<input type="checkbox" name="ids[]" value=""  />						</td>
+						<td width="180">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Samsung SGH-i710"><img src="http://soad/sfe/images/wares/offers_thumb/305_154.jpg"  alt="Мобильный телефон Samsung SGH-i710"  border="0" /></a>						</td>
+						<td class="alignLeft">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Samsung SGH-i710"><span class="productName">Мобильный телефон Samsung SGH-i710</span></a>														<p style="padding: 3px 0px;">	
+																<img src="http://soad/sfe/images/ratings/stars0.gif" />								&nbsp;&nbsp;
+																	<a href="http://soad/sfe/index.php" title="Мобильный телефон Samsung SGH-i710" class="opinions-link">оставьте отзыв первым</a>									
+							</p>
+														<p style="font-size: 90%;">
+								Стандарт: GSM 900/1800/1900, Размеры, мм: 108.8x58.0x13.5, Вес, г: 109, Стандартная батарея: Li-Ion 1200, Время разговора, часов: 4.00, Время ожидания, часов: 200.00, Год выпуска: 2007							</p>
+							
+							<p>
+								<a href="http://soad/sfe/index.php" title="Купить Мобильный телефон Samsung SGH-i710 за 2369.00 грн." class="opinions-link" target="_blank">Купить всего за 2369.00 грн.</a>							</p>
+						</td>
+						<td class="noWrap" width="120">
+														<a href="http://soad/sfe/index.php" title="Мобильный телефон Samsung SGH-i710">2369.00 грн.</a>														<br>
+							<span class="subgrey add-price">
+							(							287.50 долл.							)
+							</span>
+							<br>
+							<button name="compare" type="button" class="compare-btn">Сравнить цены</button>							<br>
+							<span class="subgrey">
+								1 предложений							</span>
+						</td>
+					</tr>
+									<tr>
+						<td class="compare">
+							<input type="checkbox" name="ids[]" value=""  />						</td>
+						<td width="180">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Nokia 5200"><img src="http://soad/sfe/images/wares/offers_thumb/314_158_big.jpg"  alt="Мобильный телефон Nokia 5200"  border="0" /></a>						</td>
+						<td class="alignLeft">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Nokia 5200"><span class="productName">Мобильный телефон Nokia 5200</span></a>														<p style="padding: 3px 0px;">	
+																<img src="http://soad/sfe/images/ratings/stars6.gif" />								&nbsp;&nbsp;
+																	<a href="http://soad/sfe/index.php" title="Мобильный телефон Nokia 5200" class="opinions-link">1 отзывов</a>									
+							</p>
+														<p style="font-size: 90%;">
+								Стандарт: GSM 900/1800/1900, Размеры, мм: 92.4x48.2x20.7, Вес, г: 104, Стандартная батарея: Li-Ion 860, Время разговора, часов: 3.00, Время ожидания, часов: 200.00, Год выпуска: 2006							</p>
+							
+							<p>
+								<a href="http://soad/sfe/index.php" title="Купить Мобильный телефон Nokia 5200 за 1307.51 грн." class="opinions-link" target="_blank">Купить всего за 1307.51 грн.</a>							</p>
+						</td>
+						<td class="noWrap" width="120">
+														<a href="http://soad/sfe/index.php" title="Мобильный телефон Nokia 5200">1307.51 грн.</a>														<br>
+							<span class="subgrey add-price">
+							(							158.68 долл.							)
+							</span>
+							<br>
+							<button name="compare" type="button" class="compare-btn">Сравнить цены</button>							<br>
+							<span class="subgrey">
+								1 предложений							</span>
+						</td>
+					</tr>
+									<tr>
+						<td class="compare">
+							<input type="checkbox" name="ids[]" value=""  />						</td>
+						<td width="180">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Vertu Ascent  Le Mans"><img src="http://soad/sfe/images/wares/offers_thumb/335_169_big.jpg"  alt="Мобильный телефон Vertu Ascent  Le Mans"  border="0" /></a>						</td>
+						<td class="alignLeft">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Vertu Ascent  Le Mans"><span class="productName">Мобильный телефон Vertu Ascent  Le Mans</span></a>														<p style="padding: 3px 0px;">	
+																<img src="http://soad/sfe/images/ratings/stars0.gif" />								&nbsp;&nbsp;
+																	<a href="http://soad/sfe/index.php" title="Мобильный телефон Vertu Ascent  Le Mans" class="opinions-link">оставьте отзыв первым</a>									
+							</p>
+														<p style="font-size: 90%;">
+								Стандарт: GSM 900/1800/1900, Размеры, мм: 108.0x44.0x22.0, Вес, г: 173, Стандартная батарея: Li-Ion 950, Время разговора, часов: 4.00, Время ожидания, часов: 270.00, Год выпуска: 2006							</p>
+							
+							<p>
+								<a href="http://soad/sfe/index.php" title="Купить Мобильный телефон Vertu Ascent  Le Mans за 80820.36 грн." class="opinions-link" target="_blank">Купить всего за 80820.36 грн.</a>							</p>
+						</td>
+						<td class="noWrap" width="120">
+														<a href="http://soad/sfe/index.php" title="Мобильный телефон Vertu Ascent  Le Mans">80820.36 грн.</a>														<br>
+							<span class="subgrey add-price">
+							(							9808.30 долл.							)
+							</span>
+							<br>
+							<button name="compare" type="button" class="compare-btn">Сравнить цены</button>							<br>
+							<span class="subgrey">
+								1 предложений							</span>
+						</td>
+					</tr>
+									<tr>
+						<td class="compare">
+							<input type="checkbox" name="ids[]" value=""  />						</td>
+						<td width="180">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Samsung SGH-X670"><img src="http://soad/sfe/images/wares/offers_thumb/336_170.jpg"  alt="Мобильный телефон Samsung SGH-X670"  border="0" /></a>						</td>
+						<td class="alignLeft">
+							<a href="http://soad/sfe/index.php" title="Мобильный телефон Samsung SGH-X670"><span class="productName">Мобильный телефон Samsung SGH-X670</span></a>														<p style="padding: 3px 0px;">	
+																<img src="http://soad/sfe/images/ratings/stars0.gif" />								&nbsp;&nbsp;
+																	<a href="http://soad/sfe/index.php" title="Мобильный телефон Samsung SGH-X670" class="opinions-link">оставьте отзыв первым</a>									
+							</p>
+														<p style="font-size: 90%;">
+								Стандарт: GSM 900/1800/1900, Размеры, мм: 89.5x45.0x21.5, Вес, г: 78, Стандартная батарея: Li-Ion 800, Время разговора, часов: 2.50, Время ожидания, часов: 200.00, Год выпуска: 2006							</p>
+							
+							<p>
+								<a href="http://soad/sfe/index.php" title="Купить Мобильный телефон Samsung SGH-X670 за 1504.10 грн." class="opinions-link" target="_blank">Купить всего за 1504.10 грн.</a>							</p>
+						</td>
+						<td class="noWrap" width="120">
+														<a href="http://soad/sfe/index.php" title="Мобильный телефон Samsung SGH-X670">1504.10 грн.</a>														<br>
+							<span class="subgrey add-price">
+							(							182.54 долл.							)
+							</span>
+							<br>
+							<button name="compare" type="button" class="compare-btn">Сравнить цены</button>							<br>
+							<span class="subgrey">
+								1 предложений							</span>
+						</td>
+					</tr>
+							</table>
+			<table class="resultrangedownbg32 bg3light navigationNumbers">
+				<tr>
+					<td class="rangearticles">
+													Показано 45 - 60 из 319											</td>
+					<td align="center" valign="middle" id="pagination">
+												Страницы:  &nbsp;<strong>1</strong>&nbsp;<a href="http://soad/sfe/index.php/category/562-sotovye-telefony/p/45/p/15">2</a>&nbsp;<a href="http://soad/sfe/index.php/category/562-sotovye-telefony/p/45/p/30">3</a>&nbsp;<a href="http://soad/sfe/index.php/category/562-sotovye-telefony/p/45/p/45">4</a>&nbsp;<a href="http://soad/sfe/index.php/category/562-sotovye-telefony/p/45/p/60">5</a>&nbsp;<a href="http://soad/sfe/index.php/category/562-sotovye-telefony/p/45/p/75">6</a>&nbsp;<a href="http://soad/sfe/index.php/category/562-sotovye-telefony/p/45/p/15">Следущая »</a>&nbsp;&nbsp;<a href="http://soad/sfe/index.php/category/562-sotovye-telefony/p/45/p/315">Последняя</a>											</td>
+				</tr>
+			</table>						
+		</td>
+	</tr>
+</table>
+
+
+
+
+
+				<!-- } Categoeries -->
+	
+				<!-- { Contactstoolbar area -->
+				<div style="background-color: #F7F7F7;margin-bottom: 10px;">
+	<table style="margin: 0px; background: transparent none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; font-size: 100%; float: none ! important; width: 100%;" border="0" cellspacing="2">
+		<tr>
+			<td style="vertical-align: middle; padding-left: 9px; text-align: left;" width="33%">
+				<img src="http://soad/sfe/images/icons/1020_16x16.png"  align="left"  border="0" />   <a href="http://soad/sfe/index.php/contacts/er" title="Рапортовать об ошибке">Рапортовать об ошибке</a>				
+			</td>
+			<td style="vertical-align: middle; padding-left: 9px; text-align: left;" width="33%">
+				<img src="http://soad/sfe/images/icons/1205_16x16.png"  align="left"  border="0" />   <a href="http://soad/sfe/index.php/contacts/sf" title="Переслать другу">Переслать другу</a>
+			</td>
+			<td style="vertical-align: middle; padding-left: 9px; text-align: left;" width="33%">
+				<img src="http://soad/sfe/images/icons/0131_16x16.png"  align="left"  border="0" />   <a href="http://soad/sfe/index.php">Обсудить на форуме(скоро)</a>
+			</td>
+		</tr>
+	</table>
+</div>
+		
+				<!-- } Contactstoolbar area -->		
+			</td>
+			<td class="right">
+				<!-- { Settings area -->
+				<div class="settings-box">
+<h3>Текущие настройки поиска</h3>
+<table class="settings-table">
+	<tr>
+		<td width="100%" class="label">
+			<span>Страна</span>
+		</td>
+		<td>
+			<strong>Украина</strong>
+		</td>
+	</tr>
+	<tr>
+		<td width="100%"  class="label">
+			<span>Регион</span>
+		</td>
+		<td>
+			<strong>Все</strong>
+		</td>
+	</tr>
+	<tr>
+		<td width="100%"  class="label">
+			<span>Город</span>
+		</td>
+		<td>
+			<strong>Все</strong>
+		</td>
+	</tr>
+</table>
+<br>
+<h3>Валюты</h3>
+<table class="settings-table">
+	<tr>
+		<td width="100%"  class="label">
+			<span>Основная</span>
+		</td>
+		<td>
+			<strong>UAH</strong>
+		</td>
+	</tr>
+	<tr>
+		<td width="100%"  class="label">
+			<span>Дополнительная</span>
+		</td>
+		<td>
+			<strong>USD</strong>
+		</td>
+	</tr>
+</table>
+<br>
+<h3>Курсы валют</h3>
+<table class="settings-table">
+	
+	<tr>
+		<td width="100%"  class="label">
+			<span>BYR</span>
+		</td>
+		<td>
+			<b>0.003</b>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="100%"  class="label">
+			<span>USD</span>
+		</td>
+		<td>
+			<b>7.7</b>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="100%"  class="label">
+			<span>EUR</span>
+		</td>
+		<td>
+			<b>9.695</b>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="100%"  class="label">
+			<span>RUB</span>
+		</td>
+		<td>
+			<b>0.213</b>
+		</td>
+	</tr>
+	
+</table>
+<br>
+<a href="http://soad/sfe/index.php/settings">настроить</a>
+</div>		
+				<!-- } Settings area -->
+				<!-- { Mostpopular searches -->
+				<div class="mostpopular-cloud">	<div class="cloud-header">		<div class="cloud-right-corner"></div>	</div>	<div class="cloud-content">		<h3>Чаще всего ищут</h3> 		<span class="subtitle">что пользователи ищут чаще всего?</span><br>					<a href="http://soad/sfe/index.php/categories/ss/lg" style="font-size:140.74074074074%;" title="lg">lg</a>					<a href="http://soad/sfe/index.php/categories/ss/ручка" style="font-size:107.40740740741%;" title="ручка">ручка</a>					<a href="http://soad/sfe/index.php/categories/ss/Wi Fi" style="font-size:101.85185185185%;" title="Wi Fi">Wi Fi</a>					<a href="http://soad/sfe/index.php/categories/ss/Nokia n73" style="font-size:105.55555555556%;" title="Nokia n73">Nokia n73</a>					<a href="http://soad/sfe/index.php/categories/ss/wd" style="font-size:118.51851851852%;" title="wd">wd</a>					<a href="http://soad/sfe/index.php/categories/ss/v9" style="font-size:120.37037037037%;" title="v9">v9</a>					<a href="http://soad/sfe/index.php/categories/ss/сумка" style="font-size:111.11111111111%;" title="сумка">сумка</a>					<a href="http://soad/sfe/index.php/categories/ss/1020" style="font-size:137.03703703704%;" title="1020">1020</a>					<a href="http://soad/sfe/index.php/categories/ss/odeon" style="font-size:107.40740740741%;" title="odeon">odeon</a>					<a href="http://soad/sfe/index.php/categories/ss/6300" style="font-size:151.85185185185%;" title="6300">6300</a>					<a href="http://soad/sfe/index.php/categories/ss/c 770" style="font-size:103.7037037037%;" title="c 770">c 770</a>					<a href="http://soad/sfe/index.php/categories/ss/sims 2" style="font-size:103.7037037037%;" title="sims 2">sims 2</a>					<a href="http://soad/sfe/index.php/categories/ss/dvd" style="font-size:138.88888888889%;" title="dvd">dvd</a>					<a href="http://soad/sfe/index.php/categories/ss/mp3" style="font-size:140.74074074074%;" title="mp3">mp3</a>					<a href="http://soad/sfe/index.php/categories/ss/dalvey" style="font-size:137.03703703704%;" title="dalvey">dalvey</a>					<a href="http://soad/sfe/index.php/categories/ss/Asus" style="font-size:146.2962962963%;" title="Asus">Asus</a>					<a href="http://soad/sfe/index.php/categories/ss/Motorola V9" style="font-size:120.37037037037%;" title="Motorola V9">Motorola V9</a>					<a href="http://soad/sfe/index.php/categories/ss/tefal" style="font-size:103.7037037037%;" title="tefal">tefal</a>					<a href="http://soad/sfe/index.php/categories/ss/playstation" style="font-size:100%;" title="playstation">playstation</a>					<a href="http://soad/sfe/index.php/categories/ss/тв" style="font-size:100%;" title="тв">тв</a>					<a href="http://soad/sfe/index.php/categories/ss/ipod" style="font-size:103.7037037037%;" title="ipod">ipod</a>					<a href="http://soad/sfe/index.php/categories/ss/salmo" style="font-size:100%;" title="salmo">salmo</a>					<a href="http://soad/sfe/index.php/categories/ss/hp" style="font-size:225.92592592593%;" title="hp">hp</a>					<a href="http://soad/sfe/index.php/categories/ss/pioneer" style="font-size:140.74074074074%;" title="pioneer">pioneer</a>					<a href="http://soad/sfe/index.php/categories/ss/принтер" style="font-size:112.96296296296%;" title="принтер">принтер</a>					<a href="http://soad/sfe/index.php/categories/ss/Robosapien" style="font-size:100%;" title="Robosapien">Robosapien</a>					<a href="http://soad/sfe/index.php/categories/ss/ML" style="font-size:137.03703703704%;" title="ML">ML</a>					<a href="http://soad/sfe/index.php/categories/ss/nokia" style="font-size:162.96296296296%;" title="nokia">nokia</a>					<a href="http://soad/sfe/index.php/categories/ss/flash" style="font-size:103.7037037037%;" title="flash">flash</a>					<a href="http://soad/sfe/index.php/categories/ss/Samsung" style="font-size:250%;" title="Samsung">Samsung</a>			</div>		<div class="cloud-bottom-border">		<div class="cloud-footer-bar">			<div class="cloud-bottom-right-corner"></div>		</div>	</div>	</div>					
+				<!-- { Mostpopular searches -->			</td>
+		</tr>
+	</table>
+
+
+	<div class="footer">
+		<div class="footer-left"></div>
+		<div class="footer-right"></div>
+		<!-- { Footer menu -->
+		<div>
+			<div style="width: 220px;display: inline;float:left;padding-top: 5px;">
+	Copyright © 2006-2009 <a href="http://soad/sfe/index.php" title="Saleinform">Saleinform</a> <br>
+	All rights reserved
+</div>
+<div style="width: 200px;display: inline;float:left;margin: 5px 0 5px 0px; padding-left:10px; border-left: 1px dotted #666666;">
+	<a href="http://soad/sfe/index.php/clients/r">добавить магазин</a><br><a href="http://soad/sfe/index.php/advertize">реклама на сайте</a><br><a href="http://soad/sfe/index.php/help">помощь</a><br><a href="http://soad/sfe/index.php/contacts">контакты</a>
+</div>
+<div style="float:left;">
+	<!-- Buttons -->
+</div>
+<div style="clear: both;"></div>
+
+		</div>
+		<!-- { Footer menu -->
+	</div>
+
+	<br>
+	<div style="color:#D2D2D2;">
+		<center>
+			Generation Time {elapsed_time} s. Memory Usage {memory_usage}
+		</center>
+	</div>
+
+
+	<script type="text/javascript">_uacct = "UA-2175735-1";urchinTracker();</script> 
+
+</body>
+</html>
