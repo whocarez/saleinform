@@ -1,53 +1,0 @@
-*{	margin:0;	padding:0;}
-body{	font-family:arial,helvetica,clean,sans-serif;	font-size-adjust:none;	font-style:normal;	font-variant:normal;	font-weight:normal;	line-height:1.22;		min-width: 970px;	margin: 0px 10px 10px 10px;	background-color: #FFFFFF;	font-size:12px;	}
-h1{	font-size: 170%;	font-weight: normal;	margin-bottom:10px;}h2{	font-size: 115%;}h3{	font-size: 105%;}h4{	font-size: 100%;}
-a:link, a:VISITED {	color:#0000CC;}
-
-.logo{
-	width: 360px;
-	padding: 2px 0px 5px 0px;
-}
-.subgrey {
-	color:#7D7D7D;
-	font-size:95%;
-	font-weight:normal;
-}
-.greyb {
-	color:#7D7D7D;
-	font-weight:bold;
-}
-.error-message{
-	color:#FF0000;
-	margin: 5px 0px 0px 0px;
-	vertical-align: middle;
-	background: transparent url(../img/error_16x16.png) no-repeat left top;
-	padding-left: 20px;
-}
-hr {
-	background:#CECECE none repeat scroll 0 0;
-	border:medium none;
-	color:#CECECE;
-	height:1px;
-	margin: 5px 0px 5px 0px;
-}
-.message-save-success{
-	background: transparent url(../img/icons/disk.png) no-repeat left center;
-	padding: 5px 0px 5px 20px;
-	margin: 5px 0px; 
-	color: grey;
-}
-
-.message-save-failure{
-	background: transparent url(../img/icons/error.png) no-repeat left center;
-	padding: 5px 0px 5px 20px;
-	margin: 5px 0px; 
-	color: grey;
-}
-td{	font-size: 12px;}
-td.cTD{
-	padding: 10px;	
-}
-
-span.link-more{
-	float: right;
-}

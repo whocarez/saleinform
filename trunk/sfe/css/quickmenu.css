@@ -1,33 +1,0 @@
-@CHARSET "UTF-8";div.quickmenu-block{	width: 100%;	margin-bottom: 10px;}div.quickmenu-block input{	padding: 2px;	font-size: 120%;	font-weight: bold;	border:1px solid #7F9DB9;		width: 150px;}div.quickmenu-block input.quickmenu_btn{	width: 80px;	height: 24px;	font-size: 120%;	color: #FFFFFF;	border:none;	background: transparent url(../images/quickmenu_btn.png) no-repeat top left;	margin: 5px 0px 0px 100px;	}
-div.quickmenu-header{
-	background:transparent url(../images/bgs/top_orange_frame.gif) no-repeat left top;
-	min-height:3px;
-	height: 3px;
-	width:100%;	
-	padding: 0px;
-	margin: 0px;
-	font-size:2px;
-}
-div.quickmenu-right-corner{
-	background:transparent url(../images/bgs/top_orange_frame.gif) no-repeat -961px top ;
-	float:right;
-	width:9px;
-	min-height:3px;
-	height: 3px;
-	font-size:2px;
-}
-div.quickmenu-content{
-	border-left:1px solid #fed058;
-	border-right:1px solid #fed058;	background-color: #fef0c1;
-	font-size: 12px;
-	margin:0;
-	padding:0px 2px;
-	text-align: justify;
-}
-div.quickmenu-bottom-border{	background-color: #FFFFFF;
-	clear:both;	height:3px;}
-div.quickmenu-footer-bar{	background:transparent url(../images/bgs/bottom_orange_frame.gif) repeat-x left bottom;	height:3px;	min-height: 3px;	width:100%;		font-size: 1px;
-}
-div.quickmenu-bottom-right-corner{	background:transparent url(../images/bgs/bottom_orange_frame.gif) no-repeat -961px bottom;	float:right;	height:3px;	width:9px;	}
-div.quickmenu-content img{	margin-top: 10px;	margin-right: 10px;	border: none;}
-div.quickmenu-content h3{	padding: 5px;	color:#333333;}div.quickmenu-content a{	color:#E51C52;	font-weight: bold;}div.quickmenu-content a:hover{	color:#5F8C1F;	text-decoration: none;}
