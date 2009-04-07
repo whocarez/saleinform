@@ -38,9 +38,9 @@ $active_group = "default";
 $active_record = TRUE;
 
 $db['default']['hostname'] = "localhost";
-$db['default']['username'] = "saleinform_sfedb";
-$db['default']['password'] = "korn17";
-$db['default']['database'] = "saleinform_sfedb";
+$db['default']['username'] = "root";
+$db['default']['password'] = "";
+$db['default']['database'] = "saleinform";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "";
 $db['default']['pconnect'] = TRUE;
@@ -49,19 +49,6 @@ $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = dirname(FCPATH).'cache';
 $db['default']['char_set'] = "utf8";
 $db['default']['dbcollat'] = "utf8_general_ci";
-
-$db['soad']['hostname'] = "localhost";
-$db['soad']['username'] = "root";
-$db['soad']['password'] = "";
-$db['soad']['database'] = "saleinform";
-$db['soad']['dbdriver'] = "mysql";
-$db['soad']['dbprefix'] = "";
-$db['soad']['pconnect'] = TRUE;
-$db['soad']['db_debug'] = TRUE;
-$db['soad']['cache_on'] = FALSE;
-$db['soad']['cachedir'] = dirname(FCPATH).'cache';
-$db['soad']['char_set'] = "utf8";
-$db['soad']['dbcollat'] = "utf8_general_ci";
 
 /* End of file database.php */
 /* Location: ./system/application/config/database.php */
