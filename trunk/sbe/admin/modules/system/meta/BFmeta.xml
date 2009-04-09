@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizForm BizDataObj="system.meta.BOmeta" Class="BizForm" Description="Add description of BizForm" InheritFrom="" Name="BFmeta" Package="system.meta" PageSize="28" SearchRule="" Title="SEO" jsClass="jbForm">
+	<DisplayModes>
+		<Mode DataFormat="array" Name="QUERY" TemplateFile="edit.tpl"/>
+		<Mode DataFormat="array" Name="EDIT" TemplateFile="edit.tpl"/>
+		<Mode DataFormat="array" Name="NEW" TemplateFile="edit.tpl"/>
+		<Mode DataFormat="block" FormatStyle="tbl" Name="READ" TemplateFile="list.tpl"/>
+	</DisplayModes>
+		<BizCtrlList>
+		<BizCtrl DisplayName="ID" FieldName="Id" Name="bctrl_Id" DisplayMode="READ" Sortable="Y" Required="Y"/>
+		<BizCtrl DisplayName="Код" FieldName="code" Name="bctrl_code" Sortable="Y" Required="Y" />
+		<BizCtrl DisplayName="Наименование" FieldName="name" Name="bctrl_name" Sortable="Y" Required="Y" />
+		<BizCtrl DisplayName="Meta Title" FieldName="meta_title" Name="bctrl_meta_title" Required="Y" Type="textarea" Style="width:300px; height: 50px;" DisplayMode="NEW|EDIT"/>	
+		<BizCtrl DisplayName="Meta Description" FieldName="meta_description" Name="bctrl_meta_description" Required="Y" Type="textarea" Style="width:300px; height: 50px;" DisplayMode="NEW|EDIT"/>	
+		<BizCtrl DisplayName="Meta Keywords" FieldName="meta_keywords" Name="bctrl_meta_keywords" Required="Y" Type="textarea" Style="width:300px; height: 50px;" DisplayMode="NEW|EDIT"/>	
+	</BizCtrlList>
+	<Toolbar>
+		<Control Caption="Поиск" DisplayMode="READ" Function="SearchRecord()" Image="search.gif" Name="btn_search" Type="button" />
+		<Control Caption="Поиск" DisplayMode="QUERY" Function="RunSearch()" Image="search.gif" Name="btn_dosearch" Type="button" />
+		<Control Caption="Правка" DisplayMode="READ" Function="EditRecord()" Image="edit.gif" Name="btn_edit" Type="button" />
+		<Control Caption="Новый" DisplayMode="READ" Function="NewRecord()" Image="new.gif" Name="btn_new" Type="button" />
+		<Control Caption="Сохранить" DisplayMode="EDIT|NEW" Function="SaveRecord()" Image="save.gif" Name="btn_save" Type="button" />
+		<!-- 
+		<Control Caption="Копировать" DisplayMode="READ" Function="CopyRecord()" Image="copy.gif" Name="btn_copy" Style="" Type="button"/>
+		 -->
+		<Control Caption="Удалить" DisplayMode="READ" Function="DeleteRecord()" Image="delete.gif" Name="btn_delete" Style="" Type="button" />
+		<Control Caption="Отмена" DisplayMode="EDIT|NEW|QUERY" Function="Cancel()" Image="cancel.gif" Name="btn_cancel" Type="button" />
+		<Control Caption="Обновить" DisplayMode="READ" Function="RefreshQuery()" Image="refresh.gif" Name="btn_refresh" Style="" Type="button" />
+		<Control Caption="Запустить сервис" DisplayMode="READ" Function="RunActiveService()" Image="OK.gif" Name="btn_go_service" Style="" Type="button" />
+		<Control Caption="Експорт в ексель" Name="btn_excel" Image="excel.gif" Type="button" Width="" Height="" HTMLAttr="" Function="CallService(excelService,renderHTML)" FunctionType="Popup" DisplayMode="READ"/>
+		<Control Caption="Планировщик" DisplayMode="READ" Function="RunServicesByScheduler()" Image="" Name="btn_scheduler" Style="" Type="button" />
+		<Control Caption="Експорт" Name="btn_export" Image="" Type="button" HTMLAttr="" Function="CallService(ioService,exportXML)" FunctionType="Page" DisplayMode="READ"/>
+		<Control Caption="Импорт" Name="btn_import" Image="" Type="button" HTMLAttr="" Function="ShowPopup(shared.FMImportPopup)" FunctionType="Popup" DisplayMode="READ"/>
+
+	</Toolbar> 
+	<Navbar>
+		<Control Name="btn_next" Image="next.gif" Caption="Следующая" Type="button" DisplayMode="READ">
+			<EventHandler Name="onclick" Event="onclick" Function="NextPage()" />
+			<EventHandler Name="nextrecord" Event="" Function="NextRow()" />
+		</Control>
+		<Control Name="btn_prev" Image="prev.gif" Caption="Предыдущая" Type="button" DisplayMode="READ">
+			<EventHandler Name="onclick" Event="onclick" Function="PrevPage()" />
+			<EventHandler Name="prevrecord" Event="" Function="PrevRow()" />
+		</Control>
+			<Control Name="btn_last" Image="nextlast.gif" Caption="В конец" Type="button" Width="" Height="" HTMLAttr="" Function="GotoPage(-1)" Style="" Enabled="" DisplayMode="" Access=""/>
+			<Control Name="btn_first" Image="prevfirst.gif" Caption="В начало" Type="button" Width="" Height="" HTMLAttr="" Function="GotoPage(1)" Style="" Enabled="" DisplayMode="" Access=""/>
+	</Navbar> 
+</BizForm>

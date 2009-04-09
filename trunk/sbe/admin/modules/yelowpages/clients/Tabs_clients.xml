@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="no"?>
+<Tabs Name="Tabs_clients" Package="yelowpages.clients" Class="HTMLTabs" TemplateFile="tabs.tpl">
+   <TabViews>
+   	  <View Name="client_cats" URL="" View="yelowpages.clients.BVclients_cats" Caption="Основные группы" Icon=""/>
+      <View Name="client_cources" URL="" View="yelowpages.clients.BVclients_cources" Caption="Курсы валют" Icon=""/>
+      <View Name="client_logos" URL="" View="yelowpages.clients.BVclients_logos" Caption="Логотипы" Icon=""/>
+      <View Name="client_prloadsorganizer" URL="" View="yelowpages.clients.BVclients_prloadsorganizer" Caption="Загрузки" Icon=""/>
+   </TabViews>
+</Tabs>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizDataObj Class="BizDataObj" DBName="Default" Description="Add description of BizDataObj" IdGeneration="Identity" InheritFrom="" Name="BOtmppritemscources" OtherSQLRule="" Package="prices.tmppritemscources" SearchRule="" SortRule="" Table="_tmppritemscources">
+	<BizFieldList>
+		<!--  -->
+		<BizField Column="cod" Name="_currency_cod" Join="currency_join" />
+		<!--  -->
+		<BizField Column="rid" Name="Id"/>
+		<BizField Column="_currency_rid" Name="_currency_rid" Type="Number" Required="Y"/>
+		<BizField Column="_tmppricesstorage_rid" Name="_tmppricesstorage_rid" Type="Number" Required="Y"/>
+		<BizField Column="cource" Name="cource" Type="Float" Required="Y"/>
+		<BizField Column="" Name="archive_display_value" Value="{(@:Field[archive].Value == '1')?'Да':'Нет'}"/>
+		<BizField Column="archive" Name="archive" />
+	</BizFieldList>
+	<TableJoins>
+		<Join Name="currency_join" Table="_currency" Column="rid" ColumnRef="_currency_rid" JoinType="INNER JOIN"/>
+		<Join Name="tmppricesstorage_join" Table="_tmppricesstorage" Column="rid" ColumnRef="_tmppricesstorage_rid" JoinType="INNER JOIN"/>
+	</TableJoins>
+	<ObjReferences>
+		<Object Name="prices.tmppricesstorage.BOtmppricesstorage" Description="" Relationship="M-1" Table="_tmppricesstorage" Column="Id" FieldRef="_tmppricesstorage_rid" CascadeDelete="Y"/>
+	</ObjReferences>
+</BizDataObj>

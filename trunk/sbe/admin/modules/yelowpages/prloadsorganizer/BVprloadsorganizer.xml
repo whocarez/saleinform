@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizView Class="BizView" Description="Система администрирования" Name="BVprloadsorganizer" Package="yelowpages.prloadsorganizer" Template="layout_two_rows.tpl">
+	<ControlList>
+		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
+		<Control Name="right_panel_content_1" Form="yelowpages.clients.BFclients_prloadsorganizer" SubCtrls="yelowpages.prloadsorganizer.BFprloadsorganizer"/>
+		<Control Name="right_panel_content_2" Form="yelowpages.prloadsorganizer.BFprloadsorganizer"/>
+	</ControlList>
+</BizView>
