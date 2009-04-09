@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<BizView Class="BizView" Description="Система администрирования" Name="BVlinkstocategories" Package="content.linkstocategories" Template="layouts/layout_two_cols.tpl">
-	<ControlList>
-		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
-		<Control Name="left_panel" Form="wares.wares.BFcategories" SubCtrls="content.linkstocategories.BFlinkstocategories"/>
-		<Control Name="right_panel" Form="content.linkstocategories.BFlinkstocategories"/>		
-	</ControlList>
-</BizView>

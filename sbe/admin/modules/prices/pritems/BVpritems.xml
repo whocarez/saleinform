@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<BizView Class="BizView" Description="Система администрирования" Name="BVpritems" Package="prices.pritems" Template="layouts/layout_two_cols.tpl">
-	<ControlList>
-		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
-		<Control Name="right_panel_content_1" Form="wares.wares.BFcategories" SubCtrls="prices.pritems.BFpritems"/>
-		<Control Name="right_panel_content_2" Form="prices.pritems.BFpritems" SubCtrls="prices.prices.BFprices"/>
-		<Control Name="right_panel_content_3" Form="prices.prices.BFprices"/>
-	</ControlList>
-</BizView>
