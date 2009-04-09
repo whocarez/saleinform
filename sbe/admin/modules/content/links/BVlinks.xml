@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizView Class="BizView" Description="Система администрирования" Name="BVlinks" Package="content.links" Template="layouts/layout_two_rows.tpl">
+	<ControlList>
+		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
+		<Control Name="right_panel_content_1" Form="content.links.BFlinks"/>
+	</ControlList>
+</BizView>

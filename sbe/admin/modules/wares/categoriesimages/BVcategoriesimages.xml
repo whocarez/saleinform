@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizView Class="BizView" Description="Система администрирования" Name="BVcategoriesimages" Package="wares.categoriesimages" Template="layouts/layout_two_cols.tpl">
+	<ControlList>
+		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
+		<Control Name="right_panel_content_1" Form="wares.wares.BFcategories" SubCtrls="wares.categoriesimages.BFcategoriesimages"/>
+		<Control Name="right_panel_content_2" Form="wares.categoriesimages.BFcategoriesimages"/>
+	</ControlList>
+</BizView>

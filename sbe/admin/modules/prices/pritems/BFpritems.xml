@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizForm BizDataObj="prices.pritems.BOpritems" Class="BizForm" Description="Add description of BizForm" InheritFrom="" Name="BFpritems" Package="prices.pritems" PageSize="17" SearchRule="[archive]=0" Title="Хранилище цен" jsClass="jbForm">
+	<DisplayModes>
+		<Mode DataFormat="array" Name="QUERY" TemplateFile="edit.tpl"/>
+		<Mode DataFormat="array" Name="EDIT" TemplateFile="edit.tpl"/>
+		<Mode DataFormat="array" Name="NEW" TemplateFile="edit.tpl"/>
+		<Mode DataFormat="block" FormatStyle="tbl" Name="READ" TemplateFile="list.tpl"/>
+	</DisplayModes>
+	<BizCtrlList>
+		<BizCtrl DisplayName="ID" FieldName="Id" Sortable="Y" Name="bctrl_Id" DisplayMode="READ"/>
+
+		<BizCtrl DisplayName="Страна" FieldName="_countries_rid" Name="bctrl__countries_rid" Hidden="N" Required="Y" SelectFrom="yelowpages.countries.BOcountries[name:Id],[archive]=0" DisplayMode="EDIT|NEW">		
+			<EventHandler Name="onchange" Event="onchange" Function="UpdateForm()" FunctionType="" />
+		</BizCtrl>
+		<BizCtrl DisplayName="Регион" FieldName="_regions_rid" Name="bctrl__regions_rid" Required="Y" SelectFrom="yelowpages.regions.BOregions[name:Id],[_countries_rid]={@:Control[bctrl__countries_rid].Value} AND [archive]=0" DisplayMode="EDIT|NEW">		
+			<EventHandler Name="onchange" Event="onchange" Function="UpdateForm()" FunctionType="" />
+		</BizCtrl>
+		<BizCtrl DisplayName="Город" FieldName="_cities_rid" Name="bctrl__cities_rid" SelectFrom="yelowpages.cities.BOcities[name:Id],[_regions_rid]={@:Control[bctrl__regions_rid].Value} AND [archive]=0" Required="Y" DisplayMode="EDIT|NEW">
+			<EventHandler Name="onchange" Event="onchange" Function="UpdateForm()" FunctionType="" />
+		</BizCtrl>
+
+		<BizCtrl DisplayName="Страна" FieldName="_countries_rid" Name="bctrl__countries_rid_query" Hidden="N" Required="Y" SelectFrom="yelowpages.countries.BOcountries[name:Id],[archive]=0" HTMLAttr="&lt;option value= &gt;Все&lt;/option&gt;" DisplayMode="QUERY">		
+			<EventHandler Name="onchange" Event="onchange" Function="UpdateForm()" FunctionType="" />
+		</BizCtrl>
+		<BizCtrl DisplayName="Регион" FieldName="_regions_rid" Name="bctrl__regions_rid_query" Required="Y" SelectFrom="yelowpages.regions.BOregions[name:Id],[_countries_rid]={@:Control[bctrl__countries_rid_query].Value} AND [archive]=0" HTMLAttr="&lt;option value= &gt;Все&lt;/option&gt;" DisplayMode="QUERY">		
+			<EventHandler Name="onchange" Event="onchange" Function="UpdateForm()" FunctionType="" />
+		</BizCtrl>
+		<BizCtrl DisplayName="Город" FieldName="_cities_rid" Name="bctrl__cities_rid_query" SelectFrom="yelowpages.cities.BOcities[name:Id],[_regions_rid]={@:Control[bctrl__regions_rid_query].Value} AND [archive]=0" Required="Y" HTMLAttr="&lt;option value= &gt;Все&lt;/option&gt;" DisplayMode="QUERY">
+			<EventHandler Name="onchange" Event="onchange" Function="UpdateForm()" FunctionType="" />
+		</BizCtrl>
+		
+		<BizCtrl DisplayName="Клиент" Sortable="Y" FieldName="_clients_full_name" Name="bctrl__clients_full_name" DisplayMode="READ"/>
+		<BizCtrl DisplayName="Клиент" FieldName="_clients_rid" Name="bctrl__clients_rid" DisplayMode="NEW|EDIT" Required="Y" SelectFrom="yelowpages.clients.BOclients[client_full_name:Id],[_cities_rid]={@:Control[bctrl__cities_rid].Value} AND [archive]=0"/>
+		<BizCtrl DisplayName="Клиент" FieldName="_clients_rid" Name="bctrl__clients_rid_query" DisplayMode="QUERY" Required="Y" HTMLAttr="&lt;option value= &gt;*&lt;/option&gt;" SelectFrom="yelowpages.clients.BOclients[_clients_full_name:Id],[_cities_rid]={@:Control[bctrl__cities_rid_query].Value} AND [archive]=0"/>
+
+		<BizCtrl DisplayName="Кaтегория" Hidden="Y" FieldName="_categories_name" Name="bctrl__categories_name" DisplayMode="READ"/>
+		<BizCtrl DisplayName="Кaтегория" FieldName="_categories_rid" Name="bctrl__categories_rid" DisplayMode="NEW|EDIT" Required="Y" SelectFrom="wares.wares.BOcategories[name:Id:_categories_rid], [archive]=0"/>
+		<BizCtrl DisplayName="Кaтегория" FieldName="_categories_rid" Name="bctrl__categories_rid_query" DisplayMode="QUERY"  Required="Y" HTMLAttr="&lt;option value= &gt;*&lt;/option&gt;" SelectFrom="wares.wares.BOcategories[name:Id:_categories_rid], [archive]=0"/>
+		<BizCtrl DisplayName="Наименование" FieldName="name" Hidden="N" Sortable="Y" Required="Y" Name="bctrl_name" />
+		<BizCtrl DisplayName="Бренд" FieldName="_brands_name" Sortable="Y" Name="bctrl__brands_name" Required="Y" DisplayMode="READ"/>
+		<BizCtrl DisplayName="Бренд" FieldName="_brands_rid" Name="bctrl__brands_rid" Required="Y" DisplayMode="NEW|EDIT" SelectFrom="wares.brands.BObrands[name:Id], [archive]=0"/>
+		<BizCtrl DisplayName="Бренд" FieldName="_brands_rid" Name="bctrl__brands_rid_query" Required="Y" DisplayMode="QUERY" HTMLAttr="&lt;option value= &gt;*&lt;/option&gt;" SelectFrom="wares.brands.BObrands[name:Id], [archive]=0"/>
+		<!--
+		<BizCtrl DisplayName="Товар" FieldName="_wares_full_name" Sortable="Y" Name="bctrl__wares_full_name" DisplayMode="READ"/>
+		<BizCtrl DisplayName="Товар" FieldName="_wares_rid" Name="bctrl__wares_rid" DisplayMode="NEW|EDIT" SelectFrom="wares.wares.BOwares[name:Id], [archive]=0"/>
+		<BizCtrl DisplayName="Товар" FieldName="_wares_rid" Name="bctrl__wares_rid_query" DisplayMode="QUERY" HTMLAttr="&lt;option value= &gt;*&lt;/option&gt;" SelectFrom="wares.wares.BOwares[name:Id], [archive]=0"/>
+		 -->
+		<BizCtrl DisplayName="Модель" FieldName="model" Sortable="Y" Required="Y" Name="bctrl_model" />
+
+		<BizCtrl DisplayName="Наличие" FieldName="_availabletypes_name" Required="Y" Sortable="Y" Name="bctrl__availabletypes_name" DisplayMode="READ"/>
+		<BizCtrl DisplayName="Наличие" FieldName="_availabletypes_rid" Required="Y" Name="bctrl__availabletypes_rid" DisplayMode="NEW|EDIT" SelectFrom="prices.availabletypes.BOavailabletypes[name:Id], [archive]=0"/>
+		<BizCtrl DisplayName="Наличие" FieldName="_availabletypes_rid" Required="Y" Name="bctrl__availabletypes_rid_query" DisplayMode="QUERY" HTMLAttr="&lt;option value= &gt;*&lt;/option&gt;" SelectFrom="prices.availabletypes.BOavailabletypes[name:Id], [archive]=0"/>
+		
+		<BizCtrl DisplayName="Короткое описание" FieldName="short_descr" Name="bctrl_short_descr" DisplayMode="NEW|EDIT"/>
+		<!-- 
+		<BizCtrl DisplayName="Длинное описание" FieldName="long_descr" Name="bctrl_long_descr" DisplayMode="NEW|EDIT"/>
+		 -->
+		<BizCtrl DisplayName="Ссылка" FieldName="link_ware" Name="bctrl_link_ware" DisplayMode="NEW|EDIT"/>
+		<!-- 
+		<BizCtrl DisplayName="Изображение" FieldName="link_image" Name="bctrl_link_image" DisplayMode="NEW|EDIT"/>
+		 -->
+		<BizCtrl DisplayName="Дата прайса" Required="Y" Type="Date" Sortable="Y" FieldName="prdate" Name="bctrl_prdate"/>
+		
+		<BizCtrl DisplayName="Примечание" FieldName="descr" Name="bctrl_descr" Required="N" Sortable="N" Width="400" Type="Textarea" DisplayMode="NEW|EDIT"/>
+		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
+		<BizCtrl DisplayName="Создан" FieldName="createDT" Name="bctrl_createDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N" Hidden="Y"/>
+		<BizCtrl DisplayName="Изменен" FieldName="modifyDT" Name="bctrl_modifyDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N" Hidden="Y"/>
+	</BizCtrlList>
+	<Toolbar>
+		<Control Caption="Поиск" DisplayMode="READ" Function="SearchRecord()" Image="search.gif" Name="btn_search" Type="button" />
+		<Control Caption="Поиск" DisplayMode="QUERY" Function="RunSearch()" Image="search.gif" Name="btn_dosearch" Type="button" />
+		<!-- 
+		<Control Caption="Правка" DisplayMode="READ" Function="EditRecord()" Image="edit.gif" Name="btn_edit" Type="button" />
+		<Control Caption="Новый" DisplayMode="READ" Function="NewRecord()" Image="new.gif" Name="btn_new" Type="button" />
+		<Control Caption="Сохранить" DisplayMode="EDIT|NEW" Function="SaveRecord()" Image="save.gif" Name="btn_save" Type="button" />
+		<Control Caption="Копировать" DisplayMode="READ" Function="CopyRecord()" Image="copy.gif" Name="btn_copy" Style="" Type="button"/>
+		 -->
+		<Control Caption="Удалить" DisplayMode="READ" Function="DeleteRecord()" Image="delete.gif" Name="btn_delete" Style="" Type="button" />
+		<Control Caption="Отмена" DisplayMode="EDIT|NEW|QUERY" Function="Cancel()" Image="cancel.gif" Name="btn_cancel" Type="button" />
+		<Control Caption="Обновить" DisplayMode="READ" Function="RefreshQuery()" Image="refresh.gif" Name="btn_refresh" Style="" Type="button" />
+		<Control Caption="Експорт в ексель" Name="btn_excel" Image="excel.gif" Type="button" Width="" Height="" HTMLAttr="" Function="CallService(excelService,renderHTML)" FunctionType="Popup" DisplayMode="READ"/>
+		<Control Caption="Експорт" Name="btn_export" Image="" Type="button" HTMLAttr="" Function="CallService(ioService,exportXML)" FunctionType="Page" DisplayMode="READ"/>
+		<Control Caption="Импорт" Name="btn_import" Image="" Type="button" HTMLAttr="" Function="ShowPopup(shared.FMImportPopup)" FunctionType="Popup" DisplayMode="READ"/>
+
+	</Toolbar> 
+	<Navbar>
+		<Control Name="btn_next" Image="next.gif" Caption="Следующая" Type="button" DisplayMode="READ">
+			<EventHandler Name="onclick" Event="onclick" Function="NextPage()" />
+			<EventHandler Name="nextrecord" Event="" Function="NextRow()" />
+		</Control>
+		<Control Name="btn_prev" Image="prev.gif" Caption="Предыдущая" Type="button" DisplayMode="READ">
+			<EventHandler Name="onclick" Event="onclick" Function="PrevPage()" />
+			<EventHandler Name="prevrecord" Event="" Function="PrevRow()" />
+		</Control>
+			<Control Name="btn_last" Image="nextlast.gif" Caption="В конец" Type="button" Width="" Height="" HTMLAttr="" Function="GotoPage(-1)" Style="" Enabled="" DisplayMode="" Access=""/>
+			<Control Name="btn_first" Image="prevfirst.gif" Caption="В начало" Type="button" Width="" Height="" HTMLAttr="" Function="GotoPage(1)" Style="" Enabled="" DisplayMode="" Access=""/>
+	</Navbar> 
+</BizForm>

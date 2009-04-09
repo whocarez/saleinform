@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<BizDataObj Class="BizDataObj" DBName="Default" IdGeneration="Identity" Description="Add description of BizDataObj" InheritFrom="" Name="BOguidesimages" OtherSQLRule="" Package="wares.guidesimages" SearchRule="" SortRule="[name] ASC" Table="_guidesimages">
+	<BizFieldList>
+		<BizField Column="rid" Name="Id" />
+		<BizField Column="name" Name="name" Type="Text"/>
+		<BizField Column="_guides_rid" Name="_guides_rid" Type="Number"/>
+		<BizField Column="type" Name="type" Type="Text" />
+		<BizField Column="size" Name="size" Type="Text" />
+		<BizField Column="archive" Name="archive" DefaultValue="0" Type="Text"/>
+		<BizField Column="" Name="archive_display_value" Value="{(@:Field[archive].Value == '1')?'Да':'Нет'}"/>
+		<BizField Column="descr" Name="descr" Type="Text" />
+		<BizField Column="createDT" Name="createDT" Type="DateTime" />
+		<BizField Column="modifyDT" Name="modifyDT" Type="DateTime" />
+		<BizField Column="image" Name="image" Type="Blob"/>
+	</BizFieldList>
+	<TableJoins>
+		<!-- 
+		<Join Name="guides_join" Table="_guides" Column="rid" ColumnRef="_guides_rid" JoinType="INNER JOIN" />	
+		 -->
+	</TableJoins>
+	<ObjReferences>
+		<Object Column="Id" Description="советы покупателям" FieldRef="_guides_rid" Name="wares.guides.BOguides" Relationship="M-1" Table="_guides" CascadeDelete="Y"/>		
+	</ObjReferences>
+</BizDataObj>

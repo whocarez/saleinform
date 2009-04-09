@@ -1,0 +1,7 @@
+<?xml version="1.0" standalone="no"?>
+<BizView Name="ReportView" Description="Events Report" Package="reports.pritemsquan" Class="BizView" Template="layouts/layout_simple.tpl" AccessControl="">
+	<ControlList>
+		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
+		<Control Name="fm_report" Form="BFpritemsquan"/>
+	</ControlList>
+</BizView>

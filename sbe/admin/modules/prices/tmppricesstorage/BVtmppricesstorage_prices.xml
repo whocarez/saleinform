@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizView Class="BizView" Description="Система администрирования" Name="BVtmppricesstorage" Package="prices.tmppricesstorage" Template="layout_tmpprices.tpl">
+	<ControlList>
+		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
+		<Control Name="right_panel_content_1" Form="prices.tmppricesstorage.BFtmppricesstorage" SubCtrls="prices.tmppritemscources.BFtmppritemscources;prices.clcategories.BFclcategories;prices.tmppritems.BFtmppritems"/>
+		<Control Name="right_panel_content_2" Form="prices.tmppritemscources.BFtmppritemscources" />
+		<Control Name="right_panel_content_3" Form="prices.clcategories.BFclcategories" SubCtrls="prices.tmppritems.BFtmppritems"/>
+		<Control Name="right_panel_content_4" Form="prices.tmppritems.BFtmppritems" SubCtrls="prices.tmpprices.BFtmpprices"/>
+		<Control Name="right_panel_content_5" Form="prices.tmppricesstorage.Tabs_tmppricesstorage"/>
+		<Control Name="right_panel_content_6" Form="prices.tmpprices.BFtmpprices"/>
+	</ControlList>
+</BizView>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizView Class="BizView" Description="Система администрирования" Name="BVcluopinions" Package="yelowpages.cluopinions" Template="layout_simple.tpl">
+	<ControlList>
+		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
+		<!-- 
+		<Control Name="right_panel_content_1" Form="yelowpages.clients.BFclients_cluopinions" SubCtrls="yelowpages.cluopinions.BFcluopinions"/>
+		 -->
+		<Control Name="right_panel_content_2" Form="yelowpages.cluopinions.BFcluopinions"/>
+	</ControlList>
+</BizView>
