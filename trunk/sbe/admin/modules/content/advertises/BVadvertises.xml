@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<BizView Class="BizView" Description="Система администрирования" Name="BVadvertises" Package="content.advertises" Template="layouts/layout_two_rows.tpl">
-	<ControlList>
-		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
-		<Control Name="right_panel_content_1" Form="content.bareas.BFbareas" SubCtrls="content.advertises.BFadvertises"/>
-		<Control Name="right_panel_content_2" Form="content.advertises.BFadvertises"/>
-	
-	</ControlList>
-</BizView>

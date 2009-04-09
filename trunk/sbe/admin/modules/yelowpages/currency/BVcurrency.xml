@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<BizView Class="BizView" Description="Система администрирования" Name="BVcurrency" Package="yelowpages.currency" Template="layout_simple.tpl">
-	<ControlList>
-		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
-		<Control Name="right_panel_content" Form="yelowpages.currency.BFcurrency"/>
-	</ControlList>
-</BizView>

@@ -1,7 +1,0 @@
-<?xml version="1.0" standalone="no"?>
-<Tabs Name="Tabs_geography" Package="yelowpages.geography" Class="HTMLTabs" TemplateFile="tabs.tpl">
-   <TabViews>
-      <View Name="official_cources" URL="" View="yelowpages.geography.BVgeography_cources" Caption="Курсы валют" Icon=""/>
-      <View Name="cities_and_regions" URL="" View="yelowpages.geography.BVgeography_regions" Caption="Регионы и города" Icon=""/>
-   </TabViews>
-</Tabs>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<BizView Class="BizView" Description="Система администрирования" Name="BVwelcome" Package="welcome" Template="welcome_layout.tpl">
-	<ControlList>
-		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
-		<Control Name="welcome_content" Form="welcome.BFwelcome"/>
-	</ControlList>
-</BizView>

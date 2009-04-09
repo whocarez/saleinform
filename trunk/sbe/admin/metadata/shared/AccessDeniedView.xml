@@ -1,3 +1,0 @@
-<?xml version="1.0" standalone="no"?>
-<BizView Name="AccessDeniedView" Description="View access denied" Package="shared" Class="BizView" Template="accessdenied.tpl">
-</BizView>
