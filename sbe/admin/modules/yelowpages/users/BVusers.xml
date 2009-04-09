@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizView Class="BizView" Description="Система администрирования" Name="BVusers" Package="yelowpages.users" Template="layouts/layout_two_rows.tpl">
+	<ControlList>
+		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
+		<Control Name="right_panel_content_1" Form="yelowpages.clients.BFclients_users" SubCtrls="yelowpages.users.BFusers"/>
+		<Control Name="right_panel_content_2" Form="yelowpages.users.BFusers"/>
+	</ControlList>
+</BizView>
