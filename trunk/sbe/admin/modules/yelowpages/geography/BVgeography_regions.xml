@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizView Class="BizView" Description="Система администрирования" Name="BVgeography" Package="yelowpages.geography" Template="geography_layout.tpl">
+	<ControlList>
+		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
+		<Control Name="content_1" Form="yelowpages.countries.BFcountries" SubCtrls="yelowpages.regions.BFregions"/>
+		<Control Name="content_2" Form="yelowpages.geography.Tabs_geography" SubCtrls=""/>
+		<Control Name="content_3" Form="yelowpages.regions.BFregions" SubCtrls="yelowpages.cities.BFcities"/>
+		<Control Name="content_4" Form="yelowpages.cities.BFcities"/>		
+	</ControlList>
+</BizView>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizDataObj Class="BizDataObj" DBName="Default" Description="Add description of BizDataObj" IdGeneration="Identity" InheritFrom="" Name="BOmeta" OtherSQLRule="" Package="system.meta" SearchRule="" SortRule="" Table="_metadata">
+	<BizFieldList>
+		<BizField Column="rid" Name="Id" />
+		<BizField Column="code" Name="code" Type="Text" Required="Y"/>
+		<BizField Column="name" Name="name" Type="Text" Required="Y"/>
+		<BizField Column="meta_title" Name="meta_title" Type="Text" Required="Y"/>
+		<BizField Column="meta_description" Name="meta_description" Type="Text" Required="Y"/>
+		<BizField Column="meta_keywords" Name="meta_keywords" Type="Text" Required="Y"/>
+	</BizFieldList>
+	<TableJoins>
+	</TableJoins>
+	<ObjReferences>
+	</ObjReferences>
+</BizDataObj>

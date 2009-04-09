@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<BizDataObj Class="BizDataObj" DBName="Default" IdGeneration="Identity" Description="Add description of BizDataObj" InheritFrom="" Name="BOwaresrewievs" OtherSQLRule="" Package="wares.waresrewievs" SearchRule="" SortRule="" Table="_waresrewievs">
+	<BizFieldList>
+		<BizField Column="rid" Name="Id" />
+		<BizField Column="_wares_rid" Name="_wares_rid" Required="Y" Type="Number"/>
+		<BizField Column="review_title" Name="review_title" Required="Y" Type="Text"/>
+		<BizField Column="review" Name="review" Required="Y" Type="Text"/>
+		<BizField Column="datereview" Name="daterewiev" Required="Y" Type="Datetime"/>
+		<BizField Column="archive" Name="archive" DefaultValue="0" Type="Text"/>
+		<BizField Column="" Name="archive_display_value" Value="{(@:Field[archive].Value == '1')?'Да':'Нет'}"/>
+		<BizField Column="descr" Name="descr" Type="Text" />
+		<BizField Column="createDT" Name="createDT" Type="DateTime" />
+		<BizField Column="modifyDT" Name="modifyDT" Type="DateTime" />
+	</BizFieldList>
+	<TableJoins>
+		<Join Name="wares_join" Table="_wares" Column="rid" ColumnRef="_wares_rid" JoinType="INNER JOIN" />		
+	</TableJoins>
+	<ObjReferences>
+		<Object Name="wares.wares.BOwares" Description="товары" Relationship="M-1" Table="_wares" Column="Id" FieldRef="_wares_rid" CascadeDelete="Y"/>				
+	</ObjReferences>
+</BizDataObj>

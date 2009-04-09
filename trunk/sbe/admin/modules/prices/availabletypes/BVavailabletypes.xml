@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BizView Class="BizView" Description="Система администрирования" Name="BVavailabletypes" Package="prices.availabletypes" Template="layouts/layout_simple.tpl">
+	<ControlList>
+		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
+		<Control Name="right_panel_content" Form="prices.availabletypes.BFavailabletypes"/>
+	</ControlList>
+</BizView>
