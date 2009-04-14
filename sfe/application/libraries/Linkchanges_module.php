@@ -18,14 +18,5 @@ class Linkchanges_module
 		$this->ciObject->load->model("linkchanges_model");
 	}
 	
-	public function RenderLinkChangesArea()
-	{
-		if(isset($this->current_uri_assoc['c']))
-			$this->objectsArr['linkschange_list'] = $this->ciObject->linkchanges_model->GetLinksArr($this->links_quan, $this->current_uri_assoc['c']);
-		else
-			$this->objectsArr['linkschange_list'] = $this->ciObject->linkchanges_model->GetLinksArr($this->links_quan);
-		return $this->ciObject->load->view('modules/linkchanges_module/linkchangesarea.php',$this->objectsArr, True);
-	}
-	
+	public function RenderLinkChangesArea(){		if(isset($this->current_uri_assoc['c']))			$this->objectsArr['linkschange_list'] = $this->ciObject->linkchanges_model->GetLinksArr($this->links_quan, $this->current_uri_assoc['c']);		else			$this->objectsArr['linkschange_list'] = $this->ciObject->linkchanges_model->GetLinksArr($this->links_quan);		return $this->ciObject->load->view('modules/linkchanges_module/linkchangesarea.php',$this->objectsArr, True);	}
 }
-?>

@@ -19,7 +19,7 @@ class Rating_model extends Model{
 		$this->db->from('_pritems');
 		$this->db->join('_wares', '_wares.rid=_pritems._wares_rid');
 		$this->db->join('_waresuopinions', '_wares.rid=_waresuopinions._wares_rid');
-		$this->db->join('_clients', '_clients.rid=_pritems._clients_rid AND _clients.archive=0');
+		$this->db->join('_clients', '_clients.rid=_pritems._clients_rid');
 		$this->db->join('_waresimages', '_wares.rid=_waresimages._wares_rid', 'LEFT');
 		$this->db->join('_brands', '_brands.rid=_pritems._brands_rid');	
 		if(!$parsARR['catRID']) $this->db->where(array('_wares.archive'=>'0', '_waresuopinions.archive'=>'0'));
@@ -41,7 +41,6 @@ class Rating_model extends Model{
 			$this->db->join('_countries', '_countries.rid=_regions._countries_rid');
 			$this->db->where(array('_countries.rid'=>$parsARR['countriesRID']));
 		}
-		$this->db->where(array('_pritems.archive'=>'0'));
 		$this->db->groupby('_wares.rid');
 		$this->db->having(array('wareRATING>='=>'7'));
 		$this->db->orderby('wareRATING DESC');

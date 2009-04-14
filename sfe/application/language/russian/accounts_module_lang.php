@@ -1,41 +1,4 @@
-<?php
-/* { ACCOUNTS MODULE */
-$lang['ACCOUNTS_HOME'] = 'Домашняя';
-$lang['ACCOUNTS_REGISTER'] = 'Регистрация';
-$lang['ACCOUNTS_LOGIN'] = 'Войти на сайт';
-$lang['ACCOUNTS_HELP'] = 'Помощь';
-$lang['ACCOUNTS_HELP_INFO'] = '
-				<strong>Например:</strong> superstar123<br>
-				Используйте латинские символы.
-				Все Ваши отзывы и комментарии будут подписаны этим именем.<br>
-				<strong>Важно:</strong>
-				пожалуйста, не используйте в качестве логина Ваш адрес электронной почты.
-';
-$lang['ACCOUNTS_REG_NEW_USER'] = 'Регистрация нового пользователя';
-$lang['ACCOUNTS_NEW_USER'] = 'Новый пользователь?';
-$lang['ACCOUNTS_ALREADY_USER'] = 'Уже зарегистрированы на сайте?';
-$lang['ACCOUNTS_NO_USER_DESCR'] = 'Если у Вас еще нет учетной записи на нашем сайте, пожалуйста, сперва зарегистрируйтесь.';
-$lang['ACCOUNTS_REG_TIME'] = 'Регистрация займет всего несколько секунд';
-$lang['ACCOUNTS_NOP'] = 'и ни к чему Вас не обязывает';
-$lang['ACCOUNTS_ABOUT_1'] = 'Имея учетную запись на нашем сайте, Вы можете:';
-$lang['ACCOUNTS_ABOUT_2'] = 'Оставлять отзывы на товары';
-$lang['ACCOUNTS_ABOUT_3'] = 'Оценивать товары и магазины';
-$lang['ACCOUNTS_ABOUT_4'] = 'Формировать заказы';
-$lang['ACCOUNTS_ABOUT_5'] = 'и многое другое...';
-$lang['ACCOUNTS_LOGIN_1'] = 'Пожалуйста, введите Ваши логин';
-$lang['ACCOUNTS_LOGIN_2'] = 'и пароль.';
-$lang['ACCOUNTS_LOGIN_3'] = 'Забыли Ваш';
-$lang['ACCOUNTS_LOGIN_4'] = 'логин';
-$lang['ACCOUNTS_LOGIN_5'] = 'Пароль';
-$lang['ACCOUNTS_LOGIN_6'] = 'Важно: Ваши логин и пароль регистрозависимы';
-$lang['ACCOUNTS_LOGIN_7'] = 'Забыли Ваш';
-$lang['ACCOUNTS_LOGIN_8'] = 'пароль';
-$lang['ACCOUNTS_LOGIN_9'] = 'Войти';
-$lang['ACCOUNTS_LOGIN_ERROR'] = 'Ошибка авторизации: неверен логин или пароль';
-$lang['ACCOUNTS_LOGIN_T'] = 'Логин';
-$lang['ACCOUNTS_PASSWORD_T'] = 'Пароль';
-$lang['ACCOUNTS_CONFIRMP_T'] = 'Подтверждение пароля';
-$lang['ACCOUNTS_EMAIL_T'] = 'Ваш Email';
+<?php/* { ACCOUNTS MODULE */$lang['ACCOUNTS_HOME'] = 'Домашняя';$lang['ACCOUNTS_REGISTER'] = 'Регистрация';$lang['ACCOUNTS_LOGIN'] = 'Войти на сайт';$lang['ACCOUNTS_HELP'] = 'Помощь';$lang['ACCOUNTS_HELP_INFO'] = '				<strong>Например:</strong> superstar123<br>				Используйте латинские символы.				Все Ваши отзывы и комментарии будут подписаны этим именем.<br>				<strong>Важно:</strong>				пожалуйста, не используйте в качестве логина Ваш адрес электронной почты.';$lang['ACCOUNTS_REG_NEW_USER'] = 'Регистрация нового пользователя';$lang['ACCOUNTS_NEW_USER'] = 'Новый пользователь?';$lang['ACCOUNTS_ALREADY_USER'] = 'Уже зарегистрированы на сайте?';$lang['ACCOUNTS_NO_USER_DESCR'] = 'Если у Вас еще нет учетной записи на нашем сайте, пожалуйста, сперва зарегистрируйтесь.';$lang['ACCOUNTS_REG_TIME'] = 'Регистрация займет всего несколько секунд';$lang['ACCOUNTS_NOP'] = 'и ни к чему Вас не обязывает';$lang['ACCOUNTS_ABOUT_1'] = 'Имея учетную запись на нашем сайте, Вы можете:';$lang['ACCOUNTS_ABOUT_2'] = 'Оставлять отзывы на товары';$lang['ACCOUNTS_ABOUT_3'] = 'Оценивать товары и магазины';$lang['ACCOUNTS_ABOUT_4'] = 'Формировать заказы';$lang['ACCOUNTS_ABOUT_5'] = 'и многое другое...';$lang['ACCOUNTS_LOGIN_1'] = 'Пожалуйста, введите Ваши логин';$lang['ACCOUNTS_LOGIN_2'] = 'и пароль.';$lang['ACCOUNTS_LOGIN_3'] = 'Забыли Ваш';$lang['ACCOUNTS_LOGIN_4'] = 'логин';$lang['ACCOUNTS_LOGIN_5'] = 'Пароль';$lang['ACCOUNTS_LOGIN_6'] = 'Важно: Ваши логин и пароль регистрозависимы';$lang['ACCOUNTS_LOGIN_7'] = 'Забыли Ваш';$lang['ACCOUNTS_LOGIN_8'] = 'пароль';$lang['ACCOUNTS_LOGIN_9'] = 'Войти';$lang['ACCOUNTS_LOGIN_ERROR'] = 'Ошибка авторизации: неверен логин или пароль';$lang['ACCOUNTS_LOGIN_T'] = 'Логин';$lang['ACCOUNTS_PASSWORD_T'] = 'Пароль';$lang['ACCOUNTS_CONFIRMP_T'] = 'Подтверждение пароля';$lang['ACCOUNTS_EMAIL_T'] = 'Ваш Email';
 $lang['ACCOUNTS_CAPTCHA_T'] = 'Код на картинке';
 
 $lang['ACCOUNTS_MODULE_LOGIN_AREA_TITLE'] = 'Авторизация';
