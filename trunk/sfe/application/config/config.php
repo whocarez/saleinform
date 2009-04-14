@@ -11,8 +11,8 @@
 |	http://example.com/
 |
 */
-#$config['base_url']	= "http://localhost/sfe/";
-$config['base_url']	= "http://www.saleinform.com/";
+$config['base_url']	= "http://localhost/sfe/";
+#$config['base_url']	= "http://www.saleinform.com/";
 
 /*
 |--------------------------------------------------------------------------
