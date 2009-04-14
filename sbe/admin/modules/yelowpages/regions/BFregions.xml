@@ -9,20 +9,13 @@
 		<BizCtrlList>
 		<BizCtrl DisplayName="ID" FieldName="Id" Name="bctrl_Id1" Class="RowSelector" DisplayMode="READ" Sortable="Y" Required="Y"/>
 		<BizCtrl DisplayName="ID" FieldName="Id" Name="bctrl_Id" DisplayMode="READ" Sortable="Y"/>
-		<BizCtrl DisplayName="Страна" FieldName="_countries_rid" Name="bctrl__countries_rid" Required="Y" Enabled="Y" SelectFrom="yelowpages.countries.BOcountries[name:Id],[archive]=0" DisplayMode="NEW|EDIT" Hidden="N"/>
-		<BizCtrl DisplayName="Страна" FieldName="_countries_rid" Name="bctrl__countries_rid_query" Required="Y" Enabled="Y" HTMLAttr="&lt;option value= &gt;Все&lt;/option&gt;" SelectFrom="yelowpages.countries.BOcountries[name:Id],[archive]=0" DisplayMode="QUERY" Hidden="N"/>
+		<BizCtrl DisplayName="Страна" FieldName="_countries_rid" Name="bctrl__countries_rid" Required="Y" Enabled="Y" SelectFrom="yelowpages.countries.BOcountries[name:Id]" DisplayMode="NEW|EDIT" Hidden="N"/>
+		<BizCtrl DisplayName="Страна" FieldName="_countries_rid" Name="bctrl__countries_rid_query" Required="Y" Enabled="Y" HTMLAttr="&lt;option value= &gt;Все&lt;/option&gt;" SelectFrom="yelowpages.countries.BOcountries[name:Id]" DisplayMode="QUERY" Hidden="N"/>
 		<BizCtrl DisplayName="Наименование" FieldName="name" Name="bctrl_name" Sortable="Y" Required="Y" DisplayMode="READ|NEW|EDIT"/>
 		<BizCtrl DisplayName="Наименование" FieldName="name" Name="bctrl_name_query" Sortable="Y" DisplayMode="QUERY"/>
 		<BizCtrl DisplayName="Отображение" FieldName="display_name" Name="bctrl_display_name" Sortable="Y" Required="Y" DisplayMode="READ|NEW|EDIT"/>
 		<BizCtrl DisplayName="Отображение" FieldName="display_name" Name="bctrl_display_name_query" Sortable="Y" DisplayMode="QUERY"/>
 		<BizCtrl DisplayName="Страна" FieldName="_countries_name" Name="bctrl_countries_name" DrillDownLink="yelowpages.countries.BVcountries,BFcountries.bctrl_Id=bctrl__countries_rid" Sortable="Y" Required="Y" DisplayMode="READ"/>
-		<BizCtrl DisplayName="Примечание" FieldName="descr" Name="bctrl_descr" Required="N" Sortable="N" Width="400" Type="Textarea" DisplayMode="NEW|EDIT"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive_display_value" Name="bctrl_archive_display_value" Required="N" Sortable="N" DisplayMode="READ" />
-		<!-- 
-		<BizCtrl DisplayName="Создан" FieldName="createDT" Name="bctrl_createDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
-		<BizCtrl DisplayName="Изменен" FieldName="modifyDT" Name="bctrl_modifyDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
-		 -->
 	</BizCtrlList>
 	<Toolbar>
 		<Control Caption="Поиск" DisplayMode="READ" Function="SearchRecord()" Image="search.gif" Name="btn_search" Type="button" />

@@ -8,32 +8,19 @@
 	</DisplayModes>
 	<BizCtrlList>
 		<BizCtrl DisplayName="ID" FieldName="Id" Name="bctrl_Id" Sortable="Y" DisplayMode="READ"/>
-		<BizCtrl DisplayName="Родитель" FieldName="_catpars_rid" Required="Y" Name="bctrl__catpars_rid_new" SelectFrom="wares.catpars.BOcatpars[_pars_name:Id],[archive]=0 AND [_categories_rid] = {@:Control[bctrl__categories_rid].Value}" HTMLAttr="&lt;option value= &gt;-&lt;/option&gt;" DisplayMode="NEW|EDIT" Enabled="Y"/>
-		<BizCtrl DisplayName="Параметр" FieldName="_pars_name" Required="Y"  Sortable="Y" Name="bctrl__pars_name" DisplayMode="READ" Hidden="N"/>
-		<BizCtrl DisplayName="Параметр" FieldName="_pars_rid" Required="Y"  Name="bctrl__pars_rid" DisplayMode="NEW|EDIT" SelectFrom="wares.pars.BOpars[name:Id],[archive]=0" Hidden="N" HTMLAttr="&lt;option value= &gt;-&lt;/option&gt;" Enabled="Y"/>
-		<BizCtrl DisplayName="Параметр" FieldName="_pars_rid_find" Required="Y"  Name="bctrl__pars_rid_query" DisplayMode="QUERY" SelectFrom="wares.pars.BOpars[name:Id],[archive]=0" Hidden="N" Enabled="Y"/>		
-		<BizCtrl DisplayName="Категория" FieldName="_categories_name" Required="Y" Name="bctrl__categories_name" DisplayMode="READ" Hidden="Y"/>
-		<BizCtrl DisplayName="Категория" FieldName="_categories_rid" Name="bctrl__categories_rid" ValuePicker="wares.categories.BFcategoriesPopup" Enabled="Y" DisplayMode="NEW|EDIT|QUERY">
-			<EventHandler Name="onchange" Event="onchange" Function="AutoPickValue(bctrl__categories_rid)" FunctionType="" />
-		</BizCtrl>
-		<!-- 
-		<BizCtrl DisplayName="Категория" FieldName="_categories_rid" Required="Y" Name="bctrl__categories_rid" DisplayMode="NEW|EDIT|QUERY" SelectFrom="wares.categories.BOcategories[Name:Id:PId],[archive]=0" Hidden="N" Enabled="Y"/>
-		-->
+		<BizCtrl DisplayName="Группа" FieldName="_catparsgroups_rid" Required="Y"  Sortable="Y" Name="bctrl__catparsgroups_rid" DisplayMode="NEW|EDIT" Hidden="N" />
+		<BizCtrl Name="bctrl__pars_rid" FieldName="_pars_rid" DisplayName="Параметр" ValuePicker="wares.pars.BFparsPopup" DisplayMode="NEW|EDIT" Required="Y">
+        	<EventHandler Name="onchange" Event="onchange" Function="AutoPickValue(bctrl__pars_rid)" FunctionType="" />
+      	</BizCtrl>
+		<BizCtrl DisplayName="Параметр" FieldName="_pars_name" Name="bctrl__pars_name" DisplayMode="READ" Sortable="Y"/>
 		<BizCtrl DisplayName="Порядок" FieldName="numorder" Sortable="Y" Required="Y" Name="bctrl_numorder"/>
 		<BizCtrl DisplayName="Доступ" FieldName="ptype" Sortable="N" Required="Y" Name="bctrl_ptype" DisplayMode="NEW|EDIT|QUERY" SelectFrom="shared.Selection(PTYPE)"/>
 		<BizCtrl DisplayName="Схожесть" FieldName="likeness" Sortable="Y" Name="bctrl_likeness" SelectFrom="shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
-		<BizCtrl DisplayName="Схожесть" FieldName="likeness_display_value" Sortable="N" Name="bctrl_likeness_display_value" DisplayMode="READ" />
+		<BizCtrl DisplayName="С" FieldName="likeness_display_value" Sortable="N" Name="bctrl_likeness_display_value" DisplayMode="READ" />
 		<BizCtrl DisplayName="Фильтруемый" FieldName="filtered" Sortable="Y" Name="bctrl_filtered" SelectFrom="shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
-		<BizCtrl DisplayName="Фильтруемый" FieldName="filtered_display_value" Sortable="N" Name="bctrl_filtered_display_value" DisplayMode="READ" />
+		<BizCtrl DisplayName="Ф" FieldName="filtered_display_value" Sortable="N" Name="bctrl_filtered_display_value" DisplayMode="READ" />
 		<BizCtrl DisplayName="К.описание" FieldName="dpart" Sortable="Y" Name="bctrl_dpart" SelectFrom="shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
-		<BizCtrl DisplayName="К.описание" FieldName="dpart_display_value" Sortable="N" Name="bctrl_dpart_display_value" DisplayMode="READ" />
-		<BizCtrl DisplayName="Примечание" FieldName="descr" Name="bctrl_descr" Required="N" Sortable="N" Width="400" Type="Textarea" DisplayMode="NEW|EDIT"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive_display_value" Name="bctrl_archive_display_value" Required="N" Sortable="N" DisplayMode="READ" />
-		<!-- 
-		<BizCtrl DisplayName="Создан" FieldName="createDT" Name="bctrl_createDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
-		<BizCtrl DisplayName="Изменен" FieldName="modifyDT" Name="bctrl_modifyDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
-		 -->
+		<BizCtrl DisplayName="КО" FieldName="dpart_display_value" Sortable="N" Name="bctrl_dpart_display_value" DisplayMode="READ" />
 	</BizCtrlList>
 	<Toolbar>
 		<Control Caption="Поиск" DisplayMode="READ" Function="SearchRecord()" Image="search.gif" Name="btn_search" Type="button" />

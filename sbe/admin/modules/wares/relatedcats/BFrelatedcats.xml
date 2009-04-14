@@ -8,13 +8,8 @@
 	</DisplayModes>
 	<BizCtrlList>
 		<BizCtrl DisplayName="Наименование" FieldName="_categories_name" Sortable="Y" DisplayMode="READ" Name="bctrl__categories_name"/>
-		<BizCtrl DisplayName="Наименование" FieldName="related_categories_rid" Sortable="Y" Required="Y" HTMLAttr="required='1' " SelectFrom="wares.categories.BOcategories[Name:Id:PId],[archive]=0" DisplayMode="NEW|EDIT" Name="bctrl_related_categories_rid"/>
-		<BizCtrl DisplayName="Связан с" FieldName="_categories_rid" Name="bctrl__categories_rid_new" SelectFrom="wares.categories.BOcategories[Name:Id:PId],[archive]=0" HTMLAttr="&lt;option value= &gt;-&lt;/option&gt;" DisplayMode="NEW|EDIT" Enabled="Y"/>
-		<BizCtrl DisplayName="Примечание" FieldName="descr" Name="bctrl_descr" Required="N" Type="Textarea" Style="width: 400px; height: 100px;" DisplayMode="NEW|EDIT"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive_display_value" Name="bctrl_archive_display_value" Required="N" Sortable="N" DisplayMode="READ" />
-		<BizCtrl DisplayName="Создан" FieldName="createDT" Name="bctrl_createDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"  />
-		<BizCtrl DisplayName="Изменен" FieldName="modifyDT" Name="bctrl_modifyDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"  />
+		<BizCtrl DisplayName="Наименование" FieldName="related_categories_rid" Sortable="Y" Required="Y" HTMLAttr="required='1' " ValuePicker="wares.categories.BFcategoriesPopup" DisplayMode="NEW|EDIT" Name="bctrl_related_categories_rid"/>
+		<BizCtrl DisplayName="Связан с" FieldName="_categories_rid" Name="bctrl__categories_rid_new" ValuePicker="wares.categories.BFcategoriesPopup" HTMLAttr="&lt;option value= &gt;-&lt;/option&gt;" DisplayMode="NEW|EDIT" Enabled="Y"/>
 	</BizCtrlList>
 	<Toolbar>
 		<!-- 

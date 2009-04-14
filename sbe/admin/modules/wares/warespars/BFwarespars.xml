@@ -12,13 +12,7 @@
 		<BizCtrl DisplayName="Параметр" FieldName="_pars_name" Sortable="Y" Required="Y" Name="bctrl__pars_name" DisplayMode="READ"/>
 		<BizCtrl DisplayName="Параметр" FieldName="_pars_rid" Sortable="Y" Required="Y" Name="bctrl__pars_rid_query"  DisplayMode="QUERY" SelectFrom="wares.catpars.BOcatpars[_pars_name:_pars_rid], [archive]=0  AND [_categories_rid]={@wares.categories.BOcategories:Field[Id].Value} AND [_catpars_rid]&lt;&gt;0 AND [ptype]='WARE'"/>
 		<BizCtrl DisplayName="Параметр" FieldName="_pars_rid" Sortable="Y" Required="Y" HTMLAttr="required='1'" Name="bctrl__pars_rid"  DisplayMode="NEW|EDIT" SelectFrom="wares.catpars.BOcatpars[_pars_name:_pars_rid], [archive]=0  AND [_categories_rid]={@wares.categories.BOcategories:Field[Id].Value} AND [_catpars_rid]&lt;&gt;0 AND [ptype]='WARE'"/>
-
 		<BizCtrl DisplayName="Значение" FieldName="value" Sortable="Y" Required="Y" HTMLAttr="required='1'" Name="bctrl_value"/>
-		<BizCtrl DisplayName="Примечание" FieldName="descr" Name="bctrl_descr" Required="N" Sortable="N" Type="TextArea" Style="width: 400px; height: 100px;" DisplayMode="NEW|EDIT"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive_display_value" Name="bctrl_archive_display_value" Required="N" Sortable="N" DisplayMode="READ" />
-		<BizCtrl DisplayName="Создан" FieldName="createDT" Name="bctrl_createDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
-		<BizCtrl DisplayName="Изменен" FieldName="modifyDT" Name="bctrl_modifyDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
 	</BizCtrlList>
 	<Toolbar>
 		<Control Caption="Поиск" DisplayMode="READ" Function="SearchRecord()" Image="search.gif" Name="btn_search" Type="button" />

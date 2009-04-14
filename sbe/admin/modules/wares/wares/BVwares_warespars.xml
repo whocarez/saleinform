@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BizView Class="BizView" Description="Система администрирования" Name="BVwares_warespars" Package="wares.wares" Template="layouts/layout_two_cols.tpl">
+<BizView Class="BizView" Description="Система администрирования" Name="BVwares_warespars" Package="wares.wares" Template="wares_layout.tpl">
 	<ControlList>
 		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
-		<Control Name="right_panel_content_1" Form="wares.wares.BFcategories" SubCtrls="wares.wares.BFwares"/>
-		<Control Name="right_panel_content_2" Form="wares.wares.BFwares" SubCtrls="wares.warespars.BFwarespars"/>
+		<Control Name="right_panel_content_2" Form="wares.wares.BFwares" SubCtrls="wares.catparsgroups.BFcatparsgroups"/>
 		<Control Name="right_panel_content_3" Form="wares.wares.Tabs_wares"/>
-		<Control Name="right_panel_content_4" Form="wares.warespars.BFwarespars"/>		
+		<Control Name="right_panel_content_4" Form="wares.catparsgroups.BFcatparsgroups" SubCtrls="wares.catpars.BFcatpars"/>
+		<Control Name="right_panel_content_5" Form="wares.catpars.BFcatpars"/>
+		<!-- 
+		<Control Name="right_panel_content_6" Form="wares.warespars.BFwarespars"/>
+		 -->		
 	</ControlList>
 </BizView>

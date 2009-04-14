@@ -2,6 +2,7 @@
 <BizDataObj Class="BizDataObj" DBName="Default" IdGeneration="Identity" Description="Add description of BizDataObj" InheritFrom="" Name="BOwaresuopinions" OtherSQLRule="" Package="wares.waresuopinions" SearchRule="" SortRule="" Table="_waresuopinions">
 	<BizFieldList>
 		<!-- -->
+		<BizField Column="name" Name="_wares_name" Join="wares_join"/> 
 		<BizField Column="display_name" Name="_members_display_name" Join="members_join"/>
 		<BizField Column="email" Name="_members_email" Join="members_join"/> 
 		<!-- -->
@@ -12,9 +13,7 @@
 		<BizField Column="opinion" Name="opinion" Type="Text" Required="Y"/>
 		<BizField Column="archive" Name="archive" DefaultValue="0" Type="Text"/>
 		<BizField Column="" Name="archive_display_value" Value="{(@:Field[archive].Value == '1')?'Да':'Нет'}"/>
-		<BizField Column="descr" Name="descr" Type="Text" />
 		<BizField Column="createDT" Name="createDT" Type="DateTime" />
-		<BizField Column="modifyDT" Name="modifyDT" Type="DateTime" />
 	</BizFieldList>
 	<TableJoins>
 		<Join Name="wares_join" Table="_wares" Column="rid" ColumnRef="_wares_rid" JoinType="INNER JOIN" />		

@@ -11,17 +11,12 @@
 		<BizCtrl DisplayName="Валюта" FieldName="_currency_cod" Name="bctrl__currency_cod" Hidden="N" Sortable="Y" DisplayMode="READ"/>
 		<BizCtrl DisplayName="_countries_name" FieldName="_countries_name" Name="bctrl__countries_name" Hidden="Y"/>
 		<BizCtrl DisplayName="Страна" FieldName="_countries_rid" Name="bctrl__countries_rid" Required="Y" DisplayMode="NEW" SelectFrom="yelowpages.countries.BOcountries[name:Id]" Enabled="N" />
-		<BizCtrl DisplayName="Валюта" FieldName="_currency_rid" Name="bctrl__currency_rid" Sortable="Y" Required="Y" SelectFrom="yelowpages.currency.BOcurrency[name:Id],[archive]=0" DisplayMode="EDIT|NEW"/>
-		<BizCtrl DisplayName="Валюта" FieldName="_currency_rid" Name="bctrl__currency_rid_query" Sortable="Y" SelectFrom="yelowpages.currency.BOcurrency[name:Id],[archive]=0" HTMLAttr="&lt;option value= &gt;Все&lt;/option&gt;" DisplayMode="QUERY"/>
+		<BizCtrl DisplayName="Валюта" FieldName="_currency_rid" Name="bctrl__currency_rid" Sortable="Y" Required="Y" SelectFrom="yelowpages.currency.BOcurrency[name:Id]" DisplayMode="EDIT|NEW"/>
+		<BizCtrl DisplayName="Валюта" FieldName="_currency_rid" Name="bctrl__currency_rid_query" Sortable="Y" SelectFrom="yelowpages.currency.BOcurrency[name:Id]" HTMLAttr="&lt;option value= &gt;Все&lt;/option&gt;" DisplayMode="QUERY"/>
 		<BizCtrl DisplayName="Дата" FieldName="courcedate" Name="bctrl_courcedate" Sortable="Y" Required="Y" Type="Date" DisplayMode="READ|NEW|EDIT"/>
 		<BizCtrl DisplayName="Курс" FieldName="cource" Name="bctrl_cource" Sortable="Y" Type="Number" Required="Y" Format="Float" DisplayMode="READ|NEW|EDIT"/>
 		<BizCtrl DisplayName="Дата" FieldName="courcedate" Name="bctrl_courcedate_query" Sortable="Y" Type="Date" DisplayMode="QUERY"/>
 		<BizCtrl DisplayName="Курс" FieldName="cource" Name="bctrl_cource_query" Sortable="Y" Type="Number" Format="Float" DisplayMode="QUERY"/>
-		<BizCtrl DisplayName="Примечание" FieldName="descr" Name="bctrl_descr" Required="N" Sortable="N" Width="400" Type="Textarea" DisplayMode="NEW|EDIT"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive_display_value" Name="bctrl_archive_display_value" Required="N" Sortable="N" DisplayMode="READ" />
-		<BizCtrl DisplayName="Создан" FieldName="createDT" Name="bctrl_createDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
-		<BizCtrl DisplayName="Изменен" FieldName="modifyDT" Name="bctrl_modifyDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
 	</BizCtrlList>
 	<Toolbar>
 		<Control Caption="Поиск" DisplayMode="READ" Function="SearchRecord()" Image="search.gif" Name="btn_search" Type="button" />

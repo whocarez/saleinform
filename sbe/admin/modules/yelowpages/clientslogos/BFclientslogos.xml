@@ -13,9 +13,6 @@
 		<BizCtrl DisplayName="Размер" FieldName="size" Sortable="Y" Name="bctrl_size" DisplayMode="READ|QUERY"/>
 		<BizCtrl DisplayName="Наименование" FieldName="name" Function="yelowpages.clientslogos.BFclientslogos.Download({@:Control[bctrl_Id].Value})" FunctionType="Page" Sortable="Y" Name="bctrl_name" DisplayMode="READ|QUERY"/>
 		<BizCtrl DisplayName="Изображение" FieldName="image" Sortable="N" Required="Y" Type="File" Name="bctrl_image" DisplayMode="NEW|EDIT"/>
-		<BizCtrl DisplayName="Примечание" FieldName="descr" Name="bctrl_descr" Required="N" Sortable="N" Type="TextArea" Style="width: 400px; height: 100px;" DisplayMode="NEW|EDIT"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive_display_value" Name="bctrl_archive_display_value" Required="N" Sortable="N" DisplayMode="READ" />
 	</BizCtrlList>
 	<Toolbar>
 		<Control Caption="Поиск" DisplayMode="READ" Function="SearchRecord()" Image="search.gif" Name="btn_search" Type="button" />

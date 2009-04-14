@@ -5,11 +5,6 @@
    <MenuItem URL="controller.php?view=yelowpages.currency.BVcurrency" Target="" Caption="Валюты">
    </MenuItem>
    <MenuItem URL="controller.php?view=yelowpages.geography.BVgeography_cources" Target="" Caption="География" Icon="">
-   		<!-- 
-		<MenuItem URL="controller.php?view=yelowpages.countries.BVcountries" Target="" Caption="Страны" />   
-		<MenuItem URL="controller.php?view=yelowpages.regions.BVregions" Target="" Caption="Регионы" />
-		<MenuItem URL="controller.php?view=yelowpages.cities.BVcities" Target="" Caption="Города" />
-		 -->
    </MenuItem>
    <MenuItem URL="" Target="" Caption="Клиенты" Icon="">
 		<MenuItem URL="controller.php?view=yelowpages.cltypes.BVcltypes" Target="" Caption="Типы клиентов" />   
@@ -17,20 +12,14 @@
 		<MenuItem URL="controller.php?view=yelowpages.clients.BVclients_cources" Target="" Caption="Справочник клиентов" />		
 		<MenuItem URL="controller.php?view=yelowpages.users.BVusers" Target="" Caption="Аккаунты клиентов" />	
 		<MenuItem URL="controller.php?view=yelowpages.cluopinions.BVcluopinions" Target="" Caption="Отзывы пользователей" />
-		<!-- 
-		<MenuItem URL="controller.php?view=yelowpages.prloadsorganizer.BVprloadsorganizer" Target="" Caption="Статусы загрузок" />
-		 -->			
    </MenuItem>
    <MenuItem URL="" Target="" Caption="Товары" Icon="">
-		<MenuItem URL="controller.php?view=wares.brands.BVbrands" Target="" Caption="Справочник брендов" />   
-		<MenuItem URL="controller.php?view=wares.brandsassoc.BVbrandsassoc" Target="" Caption="Синонимы брендов" />   
 		<MenuItem URL="controller.php?view=wares.categories.BVcategories" Target="" Caption="Справочник категорий" />   
 		<MenuItem URL="controller.php?view=wares.wares.BVwares_warespars" Target="" Caption="Справочник товаров" />   
 		<MenuItem URL="controller.php?view=wares.categoriesimages.BVcategoriesimages" Target="" Caption="Изображения категорий" />   
 		<MenuItem URL="controller.php?view=wares.pars.BVpars" Target="" Caption="Справочник параметров" />   
 		<MenuItem URL="controller.php?view=wares.relatedcats.BVrelatedcats" Target="" Caption="Родственные категории" />   
-		<MenuItem URL="controller.php?view=wares.guides.BVguides" Target="" Caption="Советы покупателям" />   
-		<MenuItem URL="controller.php?view=wares.catpars.BVcatpars" Target="" Caption="Параметры категорий" />   
+		<MenuItem URL="controller.php?view=wares.waresuopinions.BVwaresuopinions" Target="" Caption="Отзывы о товарах" />   
    </MenuItem>
    <MenuItem URL="" Target="" Caption="Пользователи" Icon="">
 		<MenuItem URL="controller.php?view=members.members.BVmembers" Target="" Caption="Пользователи" />    
@@ -41,11 +30,9 @@
 		<MenuItem URL="controller.php?view=prices.prtypes.BVprtypes" Target="" Caption="Типы цен" />    
 		<MenuItem URL="controller.php?view=prices.availabletypes.BVavailabletypes" Target="" Caption="Типы наличия" />    
 		<MenuItem URL="controller.php?view=prices.tmppricesstorage.BVtmppricesstorage" Target="" Caption="Временное хранилище" />    
-		<MenuItem URL="controller.php?view=prices.pritems.BVpritems" Target="" Caption="Хранилище цен" />    
    </MenuItem>
    <MenuItem URL="" Target="" Caption="Контент" Icon="">
 		<MenuItem URL="controller.php?view=content.newscategories.BVnewscategories" Target="" Caption="Новости" />    
-		<MenuItem URL="controller.php?view=content.advertises.BVadvertises" Target="" Caption="Реклама" />
 		<MenuItem URL="controller.php?view=content.links.BVlinks" Target="" Caption="Cсылки" />  
 		<MenuItem URL="controller.php?view=content.linkstocategories.BVlinkstocategories" Target="" Caption="Обмен ссылками" />    
    </MenuItem>
