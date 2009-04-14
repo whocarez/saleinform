@@ -16,10 +16,6 @@
 		<BizCtrl DisplayName="Статус ошибки" FieldName="error_status" Name="bctrl_error_status" Sortable="Y" DisplayMode="NEW|EDIT|QUERY"/>
 		<BizCtrl DisplayName="Клиент_ID" FieldName="_clients_rid" Name="bctrl__clients_rid" Enabled="N" DisplayMode="NEW"/>
 		<BizCtrl DisplayName="Примечание" FieldName="descr" Name="bctrl_descr" Required="N" Sortable="N"  Type="TextArea" Style="width: 400px; height: 100px;" DisplayMode="NEW|EDIT"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive_display_value" Name="bctrl_archive_display_value" Required="N" Sortable="N" DisplayMode="READ" />
-		<BizCtrl DisplayName="Создан" FieldName="createDT" Name="bctrl_createDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
-		<BizCtrl DisplayName="Изменен" FieldName="modifyDT" Name="bctrl_modifyDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
 	</BizCtrlList>
 	<Toolbar>
 		<Control Caption="Поиск" DisplayMode="READ" Function="SearchRecord()" Image="search.gif" Name="btn_search" Type="button" />

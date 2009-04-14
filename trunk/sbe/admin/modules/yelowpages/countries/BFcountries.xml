@@ -12,17 +12,9 @@
 		<BizCtrl DisplayName="Наименование" FieldName="name" Name="bctrl_name" Sortable="Y" Required="Y" DisplayMode="READ|EDIT|NEW"/>
 		<BizCtrl DisplayName="Код" FieldName="cod" Name="bctrl_cod_query" Sortable="Y" DisplayMode="QUERY"/>
 		<BizCtrl DisplayName="Наименование" FieldName="name" Name="bctrl_name_query" Sortable="Y" DisplayMode="QUERY"/>
-		<BizCtrl DisplayName="Валюта" FieldName="_currency_rid" SelectFrom="yelowpages.currency.BOcurrency[name:Id],[archive]=0" Name="bctrl__currency_rid" Sortable="Y" DisplayMode="NEW|EDIT" Required="Y"/>
-		<BizCtrl DisplayName="Валюта" FieldName="_currency_rid" SelectFrom="yelowpages.currency.BOcurrency[name:Id],[archive]=0" HTMLAttr="&lt;option value= &gt;Все&lt;/option&gt;" Name="bctrl__currency_rid_query" Sortable="Y" DisplayMode="QUERY"/>
+		<BizCtrl DisplayName="Валюта" FieldName="_currency_rid" SelectFrom="yelowpages.currency.BOcurrency[name:Id]" Name="bctrl__currency_rid" Sortable="Y" DisplayMode="NEW|EDIT" Required="Y"/>
+		<BizCtrl DisplayName="Валюта" FieldName="_currency_rid" SelectFrom="yelowpages.currency.BOcurrency[name:Id]" HTMLAttr="&lt;option value= &gt;Все&lt;/option&gt;" Name="bctrl__currency_rid_query" Sortable="Y" DisplayMode="QUERY"/>
 		<BizCtrl DisplayName="Валюта" FieldName="_currency_cod" Name="bctrl__currency_cod" DrillDownLink="yelowpages.currency.BVcurrency,BFcurrency.Id=bctrl__currency_rid" Sortable="Y" DisplayMode="READ"/>
-		<BizCtrl DisplayName="Изображение" FieldName="image_col" Name="bctrl_image_col" Type="File" DisplayMode="EDIT|NEW"/>
-		<BizCtrl DisplayName="Примечание" FieldName="descr" Name="bctrl_descr" Required="N" Sortable="N" Width="400" Type="Textarea" DisplayMode="NEW|EDIT"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive_display_value" Name="bctrl_archive_display_value" Required="N" Sortable="N" DisplayMode="READ" />
-		<!-- 
-		<BizCtrl DisplayName="Создан" FieldName="createDT" Name="bctrl_createDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
-		<BizCtrl DisplayName="Изменен" FieldName="modifyDT" Name="bctrl_modifyDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
-		 -->
 	</BizCtrlList>
 	<Toolbar>
 		<Control Caption="Поиск" DisplayMode="READ" Function="SearchRecord()" Image="search.gif" Name="btn_search" Type="button" />

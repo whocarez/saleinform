@@ -8,8 +8,6 @@
 		<BizField Column="_currency_rid" Name="_currency_rid" Type="Number" Required="Y"/>
 		<BizField Column="_tmppricesstorage_rid" Name="_tmppricesstorage_rid" Type="Number" Required="Y"/>
 		<BizField Column="cource" Name="cource" Type="Float" Required="Y"/>
-		<BizField Column="" Name="archive_display_value" Value="{(@:Field[archive].Value == '1')?'Да':'Нет'}"/>
-		<BizField Column="archive" Name="archive" />
 	</BizFieldList>
 	<TableJoins>
 		<Join Name="currency_join" Table="_currency" Column="rid" ColumnRef="_currency_rid" JoinType="INNER JOIN"/>

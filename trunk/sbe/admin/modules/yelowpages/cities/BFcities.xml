@@ -9,25 +9,18 @@
 		<BizCtrlList>
 		<BizCtrl DisplayName="ID" FieldName="Id" Name="bctrl_Id1" Class="RowSelector" DisplayMode="READ" Sortable="Y" Required="Y"/>
 		<BizCtrl DisplayName="ID" FieldName="Id" Name="bctrl_Id" DisplayMode="READ" Sortable="Y" Required="Y"/>
-		<BizCtrl DisplayName="Страна" FieldName="_countries_rid" Name="bctrl__countries_rid" Enabled="Y" SelectFrom="yelowpages.countries.BOcountries[name:Id],[archive]=0" DisplayMode="NEW|EDIT" Hidden="N" Required="Y">		
+		<BizCtrl DisplayName="Страна" FieldName="_countries_rid" Name="bctrl__countries_rid" Enabled="Y" SelectFrom="yelowpages.countries.BOcountries[name:Id]" DisplayMode="NEW|EDIT" Hidden="N" Required="Y">		
 			<EventHandler Name="onchange" Event="onchange" Function="UpdateForm()" FunctionType="" />
 		</BizCtrl>
-		<BizCtrl DisplayName="Страна" FieldName="_countries_rid" Name="bctrl__countries_rid_query" Enabled="Y" SelectFrom="yelowpages.countries.BOcountries[name:Id],[archive]=0" HTMLAttr="&lt;option value= &gt;Все&lt;/option&gt;" DisplayMode="QUERY" Hidden="N" Required="Y">		
+		<BizCtrl DisplayName="Страна" FieldName="_countries_rid" Name="bctrl__countries_rid_query" Enabled="Y" SelectFrom="yelowpages.countries.BOcountries[name:Id]" HTMLAttr="&lt;option value= &gt;Все&lt;/option&gt;" DisplayMode="QUERY" Hidden="N" Required="Y">		
 			<EventHandler Name="onchange" Event="onchange" Function="UpdateForm()" FunctionType="" />
 		</BizCtrl>
-		<BizCtrl DisplayName="Регион" FieldName="_regions_rid" Name="bctrl__regions_rid" Enabled="Y" SelectFrom="yelowpages.regions.BOregions[name:Id],[_countries_rid]={@:Control[bctrl__countries_rid].Value} AND [archive]=0" DisplayMode="NEW|EDIT" Hidden="N" Required="Y"/>
-		<BizCtrl DisplayName="Регион" FieldName="_regions_rid" Name="bctrl__regions_rid_query" Enabled="Y" HTMLAttr="&lt;option value= &gt;Все&lt;/option&gt;" SelectFrom="yelowpages.regions.BOregions[name:Id],[_countries_rid]={@:Control[bctrl__countries_rid_query].Value} AND [archive]=0" DisplayMode="QUERY" Hidden="N" Required="Y"/>
+		<BizCtrl DisplayName="Регион" FieldName="_regions_rid" Name="bctrl__regions_rid" Enabled="Y" SelectFrom="yelowpages.regions.BOregions[name:Id],[_countries_rid]={@:Control[bctrl__countries_rid].Value}" DisplayMode="NEW|EDIT" Hidden="N" Required="Y"/>
+		<BizCtrl DisplayName="Регион" FieldName="_regions_rid" Name="bctrl__regions_rid_query" Enabled="Y" HTMLAttr="&lt;option value= &gt;Все&lt;/option&gt;" SelectFrom="yelowpages.regions.BOregions[name:Id],[_countries_rid]={@:Control[bctrl__countries_rid_query].Value}" DisplayMode="QUERY" Hidden="N" Required="Y"/>
 		<BizCtrl DisplayName="Наименование" FieldName="name" Name="bctrl_name" Sortable="Y" Required="Y" DisplayMode="READ|NEW|EDIT"/>
 		<BizCtrl DisplayName="Наименование" FieldName="name" Name="bctrl_name_query" Sortable="Y" DisplayMode="QUERY"/>
 		<BizCtrl DisplayName="Страна" FieldName="_countries_name" Name="bctrl__countries_name" Enabled="Y" DrillDownLink="yelowpages.countries.BVcountries,BFcountries.Id=bctrl__countries_rid" DisplayMode="READ" Hidden="N" Required="Y"/>		
 		<BizCtrl DisplayName="Регион" FieldName="_regions_name" Name="bctrl__regions_name" Enabled="Y" DrillDownLink="yelowpages.regions.BVregions,BFregions.Id=bctrl__regions_rid" DisplayMode="READ" Hidden="N" Required="Y"/>		
-		<BizCtrl DisplayName="Примечание" FieldName="descr" Name="bctrl_descr" Required="N" Sortable="N" Width="400" Type="Textarea" DisplayMode="NEW|EDIT"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive_display_value" Name="bctrl_archive_display_value" Required="N" Sortable="N" DisplayMode="READ" />
-		<!-- 
-		<BizCtrl DisplayName="Создан" FieldName="createDT" Name="bctrl_createDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
-		<BizCtrl DisplayName="Изменен" FieldName="modifyDT" Name="bctrl_modifyDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
-		 -->
 	</BizCtrlList>
 	<Toolbar>
 		<Control Caption="Поиск" DisplayMode="READ" Function="SearchRecord()" Image="search.gif" Name="btn_search" Type="button" />

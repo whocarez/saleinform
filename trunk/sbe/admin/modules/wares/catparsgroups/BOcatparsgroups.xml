@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<BizDataObj Class="BizDataObj" DBName="Default" IdGeneration="Identity" Description="Add description of BizDataObj" InheritFrom="" Name="BOcatparsgroups" OtherSQLRule="" Package="wares.catparsgroups" SearchRule="" SortRule="" Table="_catparsgroups">
+	<BizFieldList>
+		<BizField Column="rid" Name="Id" />
+		<BizField Column="_categories_rid" Name="_categories_rid" Type="Number" Required="Y"/>
+		<BizField Column="name" Name="name" Type="Text" Required="Y"/>
+		<BizField Column="numorder" Name="numorder" Type="Number" Required="Y"/>
+		<BizField Column="visible" Name="visible" DefaultValue="0" Type="Text"/>
+		<BizField Column="" Name="visible_display_value" Value="{(@:Field[visible].Value == '1')?'Да':'Нет'}"/>
+	</BizFieldList>
+	<TableJoins>
+	</TableJoins>
+	<ObjReferences>
+		<Object Name="wares.wares.BOwares" Description="товары" Relationship="M-1" Table="_wares" Column="_categories_rid" FieldRef="_categories_rid" CascadeDelete="Y"/>
+		<Object Name="wares.categories.BOcategories" Description="категории" Relationship="M-1" Table="_categories" Column="Id" FieldRef="_categories_rid" CascadeDelete="Y"/>
+		<Object Column="_catparsgroups_rid" Description="параметры" FieldRef="Id" Name="wares.catpars.BOcatpars" Relationship="1-M" Table="_catpars" CascadeDelete="Y"/>
+	</ObjReferences>
+</BizDataObj>

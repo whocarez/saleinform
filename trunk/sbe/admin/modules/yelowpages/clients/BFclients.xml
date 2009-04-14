@@ -8,19 +8,19 @@
 	</DisplayModes>
 	<BizCtrlList>
 		<BizCtrl DisplayName="ID" FieldName="Id" Name="bctrl_Id" DisplayMode="READ" Sortable="Y" Required="Y"/>
-		<BizCtrl DisplayName="Форма собственности" FieldName="_urforms_rid" Name="bctrl__urforms_rid" SelectFrom="yelowpages.urforms.BOurforms[name:Id],[archive]=0" Required="Y" DisplayMode="EDIT|NEW"/>
+		<BizCtrl DisplayName="Форма собственности" FieldName="_urforms_rid" Name="bctrl__urforms_rid" SelectFrom="yelowpages.urforms.BOurforms[name:Id]" Required="Y" DisplayMode="EDIT|NEW"/>
 		<BizCtrl DisplayName="Наименование" FieldName="name" Name="bctrl_name" Sortable="Y" Required="Y" Width="300" DisplayMode="NEW|EDIT|QUERY"/>
 		<BizCtrl DisplayName="Наименование" FieldName="name" Name="bctrl_name_full" Link="{@:Control[bctrl_url].Value}" Sortable="Y" Required="Y" Width="300" DisplayMode="READ"/>
-		<BizCtrl DisplayName="Тип" FieldName="_cltypes_rid" Name="bctrl__cltypes_rid" SelectFrom="yelowpages.cltypes.BOcltypes[name:Id],[archive]=0" Required="Y" DisplayMode="EDIT|NEW"/>
+		<BizCtrl DisplayName="Тип" FieldName="_cltypes_rid" Name="bctrl__cltypes_rid" SelectFrom="yelowpages.cltypes.BOcltypes[name:Id]" Required="Y" DisplayMode="EDIT|NEW"/>
 		<BizCtrl DisplayName="Страна" FieldName="_countries_name" Name="bctrl__countries_name" Sortable="Y" DisplayMode="READ"/>		
 		<BizCtrl DisplayName="Город" FieldName="_cities_name" Name="bctrl__cities_name" Sortable="Y" DisplayMode="READ"/>
-		<BizCtrl DisplayName="Страна" FieldName="_countries_rid" Name="bctrl__countries_rid" Hidden="N" Required="Y" SelectFrom="yelowpages.countries.BOcountries[name:Id],[archive]=0" DisplayMode="EDIT|NEW">		
+		<BizCtrl DisplayName="Страна" FieldName="_countries_rid" Name="bctrl__countries_rid" Hidden="N" Required="Y" SelectFrom="yelowpages.countries.BOcountries[name:Id]" DisplayMode="EDIT|NEW">		
 			<EventHandler Name="onchange" Event="onchange" Function="UpdateForm()" FunctionType="" />
 		</BizCtrl>
-		<BizCtrl DisplayName="Регион" FieldName="_regions_rid" Name="bctrl__regions_rid" Required="Y" SelectFrom="yelowpages.regions.BOregions[name:Id],[_countries_rid]={@:Control[bctrl__countries_rid].Value} AND [archive]=0" DisplayMode="EDIT|NEW">		
+		<BizCtrl DisplayName="Регион" FieldName="_regions_rid" Name="bctrl__regions_rid" Required="Y" SelectFrom="yelowpages.regions.BOregions[name:Id],[_countries_rid]={@:Control[bctrl__countries_rid].Value}" DisplayMode="EDIT|NEW">		
 			<EventHandler Name="onchange" Event="onchange" Function="UpdateForm()" FunctionType="" />
 		</BizCtrl>
-		<BizCtrl DisplayName="Город" FieldName="_cities_rid" Name="bctrl__cities_rid" SelectFrom="yelowpages.cities.BOcities[name:Id],[_regions_rid]={@:Control[bctrl__regions_rid].Value} AND [archive]=0" Required="Y" DisplayMode="EDIT|NEW"/>
+		<BizCtrl DisplayName="Город" FieldName="_cities_rid" Name="bctrl__cities_rid" SelectFrom="yelowpages.cities.BOcities[name:Id],[_regions_rid]={@:Control[bctrl__regions_rid].Value}" Required="Y" DisplayMode="EDIT|NEW"/>
 
 		<BizCtrl DisplayName="Почтовый индекс" FieldName="zip" Name="bctrl_zip" Required="Y" DisplayMode="EDIT|NEW"/>
 		<BizCtrl DisplayName="Улица" FieldName="street" Name="bctrl_street" Required="Y" DisplayMode="EDIT|NEW" Width="300"/>
@@ -46,14 +46,11 @@
 		<BizCtrl DisplayName="Прайс" FieldName="price_load_value" Name="bctrl_price_load_value" Sortable="N" DisplayMode="READ"/>
 		
 		<BizCtrl DisplayName="Актуальность прайса(дней)" FieldName="pr_actual_days" Enabled="{(@:Control[bctrl_price_load].Value == '1')?'Y':'N'}" Name="bctrl_pr_actual_days" DisplayMode="EDIT|NEW"/>
-		<BizCtrl DisplayName="Актуальность прайса(часов)" FieldName="pr_actual_hours" Enabled="{(@:Control[bctrl_price_load].Value == '1')?'Y':'N'}" Name="bctrl_pr_actual_hours" DisplayMode="EDIT|NEW"/>
-		<BizCtrl DisplayName="Актуальность прайса(минут)" FieldName="pr_actual_minutes" Enabled="{(@:Control[bctrl_price_load].Value == '1')?'Y':'N'}" Name="bctrl_pr_actual_minutes" DisplayMode="EDIT|NEW"/>
 		<BizCtrl DisplayName="E-mail прайса" FieldName="price_email" Enabled="{(@:Control[bctrl_price_load].Value == '1')?'Y':'N'}" Name="bctrl_price_email" DisplayMode="EDIT|NEW" Width="300"/>
 		<BizCtrl DisplayName="URL прайса" FieldName="price_url" Enabled="{(@:Control[bctrl_price_load].Value == '1')?'Y':'N'}" Name="bctrl_price_url" DisplayMode="EDIT|NEW" Width="300"/>
 		<BizCtrl DisplayName="Контактные телефоны" FieldName="contact_phones" Enabled="{(@:Control[bctrl_price_load].Value == '1')?'Y':'N'}" Name="bctrl_contact_phones" DisplayMode="EDIT|NEW" Width="300"/>
 		<BizCtrl DisplayName="Email" FieldName="contact_email" Link="mailto:{@:Control[bctrl_contact_email].Value}" Sortable="N" Enabled="{(@:Control[bctrl_price_load].Value == '1')?'Y':'N'}" Name="bctrl_contact_email" DisplayMode="READ|EDIT|NEW" Width="300"/>
 		<BizCtrl DisplayName="Контактное лицо" FieldName="contact_person" Enabled="{(@:Control[bctrl_price_load].Value == '1')?'Y':'N'}" Name="bctrl_contact_person" DisplayMode="EDIT|NEW" Width="300"/>
-		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="shared.Selection(NY)" DisplayMode="NEW|EDIT"/>
 	</BizCtrlList>
 	<Toolbar>
 		<Control Caption="Поиск" DisplayMode="READ" Function="SearchRecord()" Image="search.gif" Name="btn_search" Type="button" />

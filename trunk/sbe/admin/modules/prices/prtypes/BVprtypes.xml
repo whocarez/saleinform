@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BizView Class="BizView" Description="Система администрирования" Name="BVprtypes" Package="prices.prtypes" Template="layouts/layout_simple.tpl">
+<BizView Class="BizView" Description="Система администрирования" Name="BVprtypes" Package="prices.prtypes" Template="layout_simple.tpl">
 	<ControlList>
 		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
 		<Control Name="right_panel_content" Form="prices.prtypes.BFprtypes"/>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<BizView Class="BizView" Description="Система администрирования" Name="BVbrandsassoc" Package="wares.brandsassoc" Template="layouts/layout_two_rows.tpl">
-	<ControlList>
-		<Control Name="mainmenu" Form="shared.BFmainmenu"/>
-		<Control Name="right_panel_content_1" Form="wares.brands.BFbrands_brandsassoc" SubCtrls="wares.brandsassoc.BFbrandsassoc"/>
-		<Control Name="right_panel_content_2" Form="wares.brandsassoc.BFbrandsassoc"/>
-	</ControlList>
-</BizView>

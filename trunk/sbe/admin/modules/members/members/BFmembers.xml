@@ -10,7 +10,7 @@
 		<BizCtrl DisplayName="ID" FieldName="Id" Sortable="Y" Required="Y" Name="bctrl_Id" DisplayMode="READ"/>
 		<BizCtrl DisplayName="Имя" FieldName="display_name" Required="Y" Sortable="Y" HTMLAttr="required='1'" Name="bctrl_display_name"/>
 		<BizCtrl DisplayName="Логин" FieldName="login" Required="Y" Sortable="Y" HTMLAttr="required='1'" Name="bctrl_login"/>
-		<BizCtrl DisplayName="Пароль" FieldName="password" Required="Y" HTMLAttr="required='1'" Hidden="N" Type="Password" Name="bctrl_password" DisplayMode="NEW|EDIT"/>
+		<BizCtrl DisplayName="Пароль" FieldName="password" Required="Y" HTMLAttr="required='1'" Hidden="N" Name="bctrl_password" DisplayMode="NEW|EDIT"/>
 		<BizCtrl DisplayName="Email" FieldName="email" Required="Y" Sortable="Y" HTMLAttr="required='1' regexp='JSVAL_RX_EMAIL'" Name="bctrl_email"/>
 		<BizCtrl DisplayName="Активирован" FieldName="activate_status" Name="bctrl_activate_status" Required="N" Sortable="N" Type="listbox" SelectFrom="shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
 		<BizCtrl DisplayName="Активирован" FieldName="activate_status_display_value" Name="bctrl_activate_status_display_value" Required="N" Sortable="N" DisplayMode="READ" />
@@ -20,7 +20,6 @@
 		<BizCtrl DisplayName="Архивный" FieldName="archive" Name="bctrl_archive" Required="N" Sortable="N" Type="listbox" SelectFrom="shared.Selection(NY)" DisplayMode="NEW|EDIT|QUERY"/>
 		<BizCtrl DisplayName="Архивный" FieldName="archive_display_value" Name="bctrl_archive_display_value" Required="N" Sortable="N" DisplayMode="READ" />
 		<BizCtrl DisplayName="Создан" FieldName="createDT" Name="bctrl_createDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
-		<BizCtrl DisplayName="Изменен" FieldName="modifyDT" Name="bctrl_modifyDT" Required="Y" Sortable="N" Width="500" DisplayMode="READ" Enabled="N"/>
 	</BizCtrlList>
 	<Toolbar>
 		<Control Caption="Поиск" DisplayMode="READ" Function="SearchRecord()" Image="search.gif" Name="btn_search" Type="button" />

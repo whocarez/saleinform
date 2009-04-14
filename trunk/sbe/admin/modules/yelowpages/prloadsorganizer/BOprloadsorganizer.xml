@@ -11,11 +11,7 @@
 		<BizField Column="error_status" Name="error_status" Type="Number"/>
 		<BizField Column="" Name="error_status_value" Value="{(@:Field[error_status].Value == '1')?'ERROR':'OK'}"/>
 		<BizField Column="_clients_rid" Name="_clients_rid" Type="Number"/>
-		<BizField Column="archive" Name="archive" />
-		<BizField Column="" Name="archive_display_value" Value="{(@:Field[archive].Value == '1')?'Да':'Нет'}"/>
 		<BizField Column="descr" Name="descr" />
-		<BizField Column="createDT" Name="createDT" Type="DateTime"/>
-		<BizField Column="modifyDT" Name="modifyDT" Type="DateTime"/>
 	</BizFieldList>
 	<TableJoins>
 		<Join Name="clients_join" Table="_clients" Column="rid" ColumnRef="_clients_rid" JoinType="INNER JOIN"/>
