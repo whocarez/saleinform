@@ -1,39 +1,6 @@
-<?php
-if (!defined('BASEPATH')) exit('No direct script access allowed');
-/*
- * Last module
- * Mazvv 03-05-2007
-*/
-class Last_module 
-{
-	private $ciObject;
-	private $objectsArr = array();
-	private $STN_last_module_area_title;
-	private $STN_last_news_area_title;
-	private $STN_last_opinions_area_title;
-	private $STN_last_reviews_area_title;
-	private $STN_last_wdetails_area_title;
-	private $_last_current_uri_assoc;
-	private $_last_current_category_rid;
-	private $_last_current_main_curr_rid;
-	private $_last_current_add_curr_rid;	
-	private $_last_current_city_rid;
-	private $_last_current_country_rid;
-	private $_last_current_region_rid;
-	private $STN_news_image_sthumb_path = 'images/news/news_sthumb/';
-	private $STN_news_image_thumb_path = 'images/news/news_thumb/';
-	private $STN_news_image_original_path = 'images/news/original_size/';
-	private $STN_news_images_sthumb_width = 50;
-	private $STN_news_images_sthumb_height = 50;
-	private $STN_news_images_thumb_width = 150;
-	private $STN_news_images_thumb_height = 150;
+<?phpif (!defined('BASEPATH')) exit('No direct script access allowed');/* * Last module * Mazvv 03-05-2007*/class Last_module{	private $ciObject;	private $objectsArr = array();	private $STN_last_module_area_title;	private $STN_last_news_area_title;	private $STN_last_opinions_area_title;	private $STN_last_reviews_area_title;	private $STN_last_wdetails_area_title;	private $_last_current_uri_assoc;	private $_last_current_category_rid;	private $_last_current_main_curr_rid;	private $_last_current_add_curr_rid;		private $_last_current_city_rid;	private $_last_current_country_rid;	private $_last_current_region_rid;	private $STN_news_image_sthumb_path = 'images/news/news_sthumb/';	private $STN_news_image_thumb_path = 'images/news/news_thumb/';	private $STN_news_image_original_path = 'images/news/original_size/';	private $STN_news_images_sthumb_width = 50;	private $STN_news_images_sthumb_height = 50;	private $STN_news_images_thumb_width = 150;	private $STN_news_images_thumb_height = 150;	
 	
-	
-	public function __construct(){
-		$this->ciObject = &get_instance();
-		$this->ciObject->lang->load('last_module');
-		$this->ciObject->load->model('last_model');
-		$this->STN_last_module_area_title = $this->ciObject->lang->line('LAST_MODULE_AREA_TITLE');
+	public function __construct(){		$this->ciObject = &get_instance();		$this->ciObject->lang->load('last_module');		$this->ciObject->lang->load('clients_module');		$this->ciObject->load->model('last_model');		$this->STN_last_module_area_title = $this->ciObject->lang->line('LAST_MODULE_AREA_TITLE');
 		$this->STN_last_news_area_title = $this->ciObject->lang->line('LAST_MODULE_NEWS_AREA_TITLE');
 		$this->STN_last_opinions_area_title = $this->ciObject->lang->line('LAST_MODULE_OPINIONS_AREA_TITLE');
 		$this->STN_last_reviews_area_title = $this->ciObject->lang->line('LAST_MODULE_REVIEWS_AREA_TITLE');
@@ -43,7 +10,7 @@ class Last_module
 		$this->_last_current_city_rid = $currentSESS['SI_SETTINGS']['_CITY_RID_'];
 		$this->_last_current_country_rid = $currentSESS['SI_SETTINGS']['_COUNTRY_RID_'];
 		$this->_last_current_region_rid = $currentSESS['SI_SETTINGS']['_REGION_RID_'];
-	}
+	}		public function RenderLastCluopinions(){		$data = array();		$this->ciObject->load->library('clients_module');		$data['opns_list'] = $this->ciObject->last_model->getLastCluopinions();		foreach($data['opns_list'] as $key=>$row){			$data['opns_list'][$key]->logo = $this->ciObject->clients_module->GetMiniLogoImage($row); 		}		return $this->ciObject->load->view('modules/last_module/lastcluops.php',$data, True);		}
 	
 	public function RenderLastNews(){
 		$this->ciObject->load->helper('text');
