@@ -1,0 +1,21 @@
+html {
+}
+* {
+	margin:0;
+	padding:0;
+}
+body {
+	font-family:arial,helvetica,clean,sans-serif;
+	font-size:12px;
+	font-size-adjust:none;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.22;	
+	min-width: 970px;
+	margin: 0px 10px 10px 10px;
+	background-color: #FFFFFF;
+}
+ table {
+ 	font-size:12px;
+ }

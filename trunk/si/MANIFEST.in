@@ -1,0 +1,3 @@
+include si/config/deployment.ini_tmpl
+recursive-include si/public *
+recursive-include si/templates *
