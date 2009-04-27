@@ -24,17 +24,24 @@
 	<table border="0" width="100%">
 		<tr>
 			<td class="left">
-			
-				<!-- { Login area -->
-				<?=$login_area_obj;?>				
-				<!-- } Login area -->
+				<!-- { Main categories area -->
+				<?=$categories_main_obj;?>
+				<!-- } Main categories area -->
 				
+				<!--  { Advertising -->
+				<a href="http://www.vipgift.com.ua"  target="_blank" title="Подарки" >
+			        <?=img(array('src'=>'images/adv/vipgift.jpg', 'alt'=>'Подарки', 'border'=>"0"));?>
+				</a>
+				<!--  { Advertising -->
+
 				<!-- { Quickmenu area -->
-				<?=$quickmenu_area_obj;?>				
+				<?#=$quickmenu_area_obj;?>				
 				<!-- } Quickmenu area -->
 				
 				<!--  { Linkchanges -->
+				<!-- 
 				<?=$linkchanges_area_obj;?>
+				 -->
 				<!--  { Linkchanges -->
 
 				<!--  { Advertising -->
@@ -51,11 +58,11 @@
 				<!-- } What Is It info -->		
 
 				<!-- { Categoeries -->
-				<?=$categories_table_obj;?>
+				<?#=$categories_table_obj;?>
 				<!-- } Categoeries -->
 
 				<!-- { Rated products -->
-				<?#=$mostpopular_categories_carousel_obj;?>
+				<?=$mostpopular_categories_carousel_obj;?>
 				<!-- } Rated products -->
 
 				<!-- { Last updates -->
@@ -68,6 +75,9 @@
 	
 			</td>
 			<td class="right">
+				<!-- { Login area -->
+				<?=$login_area_obj;?>				
+				<!-- } Login area -->
 	
 				<!-- { Settings area -->
 				<?=$settings_area_obj;?>

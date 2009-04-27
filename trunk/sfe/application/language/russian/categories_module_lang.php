@@ -27,5 +27,6 @@ $lang['CATEGORIES_MODULE_CATEGORY_PAGES_TITLE']='Страницы: ';
 $lang['CATEGORIES_MODULE_SEARCH_RES_TITLE'] = 'Результат поиска';
 $lang['CATEGORIES_MODULE_SEARCH_NORES'] = 'К сожалению, по Вашему запросу ничего не найдено. Пожалуйста уточните критерии поиска либо зайдите в конкретный раздел справочника и воспользуйтесь фильтром для поиска.';
 $lang['CATEGORIES_MODULE_SEARCH_STR_TITLE'] = 'Вы искали "%s"';
+$lang['CATEGORIES_MODULE_MAIN_ALL_TITLE'] = 'Все категории';
 /* } CATEGORIES MODULE */
 ?>

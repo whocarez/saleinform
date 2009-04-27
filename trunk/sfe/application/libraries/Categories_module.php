@@ -61,6 +61,16 @@ class Categories_module{
 		return $cRid; 
 	}
 	
+	public function renderTopCategoriesList(){
+		$data = array();
+		$data['categories_list'] = $this->ciObject->categories_model->getMainCategories();
+		foreach($data['categories_list'] as $key=>$row) {
+			$data['categories_list'][$key]->icon = $this->GetCategoryImage($row, 'ICON');
+			$data['categories_list'][$key]->subcats = $this->ciObject->categories_model->getMainSecondLevelCategories($row->rid);
+		}
+		return $this->ciObject->load->view('modules/categories_module/maincats.php',$data, True);
+	}
+	
 	public function RenderCategoriesTable(){
 		$categoriesLIST = $this->ciObject->categories_model->GetCategories($this->STN_categories_root_cat_rid);
 		$quanonCOL = (count($categoriesLIST)%2>0)?(count($categoriesLIST)+1)/2:count($categoriesLIST)/2;
@@ -160,16 +170,12 @@ class Categories_module{
 		# get random image
 		$this->ciObject->load->helper('array');
 		$image = random_element($imagesROWS);
-		$imgNAME = ($typeP=='ICON')?$this->STN_categories_icons_images_path.$image['rid'].'_'.$image['name']:$this->STN_categories_pictures_images_path.$image['rid'].'_'.$image['name'];
+		$imgNAME = ($typeP=='ICON')?$this->STN_categories_icons_images_path.$image->imgRid.'_'.$image->imgName:$this->STN_categories_pictures_images_path.$image->imgRid.'_'.$image->imgName;
 		if(file_exists($imgNAME)) return base_url().$imgNAME;
 		$ifile=fopen($imgNAME, "w");
-		fwrite($ifile,$image['image']);
+		fwrite($ifile,$image->image);
 		fclose($ifile); 
-		if($typeP=='ICON')
-		{
-			$this->objectsArr['categories_image_icon'] = base_url().$imgNAME;
-			return; 	
-		}
+		if($typeP=='ICON') return $imgNAME;
 		$config = array();
 		$config['image_library'] = 'GD2';
 		$config['source_image'] = $imgNAME;
@@ -183,7 +189,7 @@ class Categories_module{
 		{
     		echo $this->ciObject->image_lib->display_errors();
 		}				
-		$this->objectsArr['categories_image_icon'] = base_url().$imgNAME;
+		return $imgNAME;
 	}
 
 	public function GetWareImage($imagesROWS){
