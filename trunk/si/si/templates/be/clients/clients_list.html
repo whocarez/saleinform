@@ -1,0 +1,28 @@
+<div class="grid-container" xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" lang="en" py:strip="False">
+<h4>
+	${_(u'Прайслисты')} (${c.pquan})
+</h4>
+<table width="100%" cellpadding="0" cellspacing="0" class="grid">
+	<tr>
+		<th>${_(u'Лого')}</th>
+		<th>${_(u'Страна')}</th>
+		<th>${_(u'Город')}</th>
+		<th>${_(u'загр.|не загр.')}</th>
+		<th>${_(u'Активный')}</th>
+		<th>${_(u'Сайт')}</th>
+		<th>${_(u'Дата прайса')}</th>
+		<th>&nbsp;</th>
+	</tr>
+	<tr py:for="row in c.clients_list">
+		<td>${row.Client.name}</td>
+		<td>${row.Country.name}</td>
+		<td>${row.City.name}</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td style="color: red; font-weight: bold;"></td>
+		<td>
+		</td>
+	</tr>
+</table>
+</div>

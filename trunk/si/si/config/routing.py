@@ -28,6 +28,8 @@ def make_map():
     map.connect('/be/tmpstorage/currency/{storage}', controller='be/tmpstorage', action='currency')
     map.connect('/be/tmpstorage/remove/{storage}', controller='be/tmpstorage', action='remove')
     map.connect('/be/tmpstorage/categories/{client}', controller='be/tmpstorage', action='categories')
+    
+    map.connect('/be/clients', controller='be/clients')
     # } BE
     
     map.connect('/{controller}/{action}')

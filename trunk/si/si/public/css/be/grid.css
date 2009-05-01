@@ -25,11 +25,11 @@ table.grid{
 	margin-bottom: 5px;
 }
 table.grid tr td{
-	font-size: 100%;
+	font-size: 90%;
 	font-weight: normal;
 	text-align: left;
 	line-height: 15px;	
-	padding: 5px;
+	padding: 2px 5px;
 	border-bottom: 1px #d79900 solid;
 }
 table.grid tr th{
