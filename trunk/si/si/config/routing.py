@@ -30,6 +30,10 @@ def make_map():
     map.connect('/be/tmpstorage/categories/{client}', controller='be/tmpstorage', action='categories')
     
     map.connect('/be/clients', controller='be/clients')
+    map.connect('/be/clients/price/{clrid}', controller='be/clients', action='price')
+    map.connect('/be/clients/active/{clrid}', controller='be/clients', action='active')
+    map.connect('/be/clients/edit/{clrid}', controller='be/clients', action='edit')
+    map.connect('/be/clients/add', controller='be/clients', action='edit')
     # } BE
     
     map.connect('/{controller}/{action}')

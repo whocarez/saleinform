@@ -1,28 +1,63 @@
 <div class="grid-container" xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" lang="en" py:strip="False">
 <h4>
-	${_(u'Прайслисты')} (${c.pquan})
+	${_(u'Клиенты')} (${c.clients_quan})
 </h4>
 <table width="100%" cellpadding="0" cellspacing="0" class="grid">
 	<tr>
 		<th>${_(u'Лого')}</th>
+		<th>${_(u'Название')}</th>
 		<th>${_(u'Страна')}</th>
 		<th>${_(u'Город')}</th>
-		<th>${_(u'загр.|не загр.')}</th>
+		<th>${_(u'загр')}</th>
+		<th>${_(u'не загр.')}</th>
+		<th>${_(u'Прайс')}</th>
 		<th>${_(u'Активный')}</th>
-		<th>${_(u'Сайт')}</th>
 		<th>${_(u'Дата прайса')}</th>
 		<th>&nbsp;</th>
 	</tr>
 	<tr py:for="row in c.clients_list">
+		<td>
+			<span py:choose=""> 
+				<span py:when="not row.Clientlogo">&nbsp;</span>
+				<span py:otherwise="">
+					<img src="${h.img_thumb('img/clients/logos', row.Clientlogo.rid, row.Clientlogo.image, (80, 80))}" alt="${row.Client.name}"/>
+				</span>
+			</span>
+		</td>
 		<td>${row.Client.name}</td>
 		<td>${row.Country.name}</td>
 		<td>${row.City.name}</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td style="color: red; font-weight: bold;"></td>
+		<td>${row.Client.items_quan}</td>
+		<td><font color="red">${row.tmpitems_quan}</font></td>
 		<td>
+			<span py:choose=""> 
+				<span py:when="row.Client.pr_load==0">
+					<a href="/be/clients/price/${row.Client.rid}?action=active" title="${_(u'Разрешить прайс')}" ><img src="/img/design/icons/cross.png" border="0"/></a>
+				</span>
+				<span py:otherwise="">
+					<a href="/be/clients/price/${row.Client.rid}?action=deactive" title="${_(u'Запретить прайс')}" ><img src="/img/design/icons/tick.png" border="0"/></a>
+				</span>
+			</span>
+		</td>
+		<td>
+			<span py:choose=""> 
+				<span py:when="row.Client.active==0">
+					<a href="/be/clients/active/${row.Client.rid}?action=active" title="${_(u'Активировать клиента')}" ><img src="/img/design/icons/cross.png" border="0"/></a>
+				</span>
+				<span py:otherwise="">
+					<a href="/be/clients/active/${row.Client.rid}?action=deactive" title="${_(u'Дективировать клиента')}" ><img src="/img/design/icons/tick.png" border="0"/></a>
+				</span>
+			</span>
+		</td>
+		<td>${row.price_date}&nbsp;</td>
+		<td>
+			<a href="/be/clients/edit/${row.Client.rid}" title="${_(u'Редактировать')}"><img src="/img/design/icons/pencil.png" border="0"/></a>
+			<a href="${row.Client.url}" title="${_(u'Удалить клиента')}"><img src="/img/design/icons/delete.png" border="0"/></a>
+			<a href="${row.Client.url}" title="${_(u'Перейти на сайт')}" target="_blank"><img src="/img/design/icons/arrow_right.png"  border="0"/></a>
 		</td>
 	</tr>
 </table>
+<div class="pager">
+	${c.pager}
+</div>
 </div>
