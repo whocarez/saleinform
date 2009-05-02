@@ -34,6 +34,8 @@ def make_map():
     map.connect('/be/clients/active/{clrid}', controller='be/clients', action='active')
     map.connect('/be/clients/edit/{clrid}', controller='be/clients', action='edit')
     map.connect('/be/clients/add', controller='be/clients', action='edit')
+    map.connect('/be/clients/get_regions', controller='be/clients', action='get_regions')
+    map.connect('/be/clients/get_cities', controller='be/clients', action='get_cities')
     # } BE
     
     map.connect('/{controller}/{action}')

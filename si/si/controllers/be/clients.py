@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 import logging
 
 from pylons import request, response, session, tmpl_context as c
@@ -58,16 +59,28 @@ class ClientsController(BaseController):
         
     def edit(self, clrid = None):
         if not clrid: redirect_to('/be/clients')
-        c.client = meta.Session.query(sidb.Client).filter(sidb.Client.rid==clrid).first()
+        c.client = meta.Session.query(sidb.Client, sidb.Region.rid.label('region_rid'), sidb.Country.rid.label('country_rid')).filter(sidb.Client.rid==clrid).\
+                                        join((sidb.City, sidb.Client._cities_rid == sidb.City.rid)).\
+                                        join((sidb.Region, sidb.City._regions_rid == sidb.Region.rid)).\
+                                        join((sidb.Country, sidb.Region._countries_rid == sidb.Country.rid)).\
+                                        first()
         if not c.client: redirect_to('/be/clients')
+        c.countries_list = meta.Session.query(sidb.Country).order_by(sidb.Country.name).all()
+        c.regions_list = meta.Session.query(sidb.Region).filter(sidb.Region._countries_rid==c.client.country_rid).order_by(sidb.Region.name).all()
+        c.cities_list = meta.Session.query(sidb.City).filter(sidb.City._regions_rid==c.client.region_rid).order_by(sidb.City.name).all()
         if request.POST.get('save', None):
             #save processing
             pass
         c.subtempl = 'clients_edit'
         return render('be/layouts/clients.html')
-        
+
+    def get_regions(self, country_rid):
+        return meta.Session.query(sidb.Region).filter(sidb.Region._countries_rid==country_rid).order_by(sidb.Region.name).all()
+
+    def get_cities(self, region_rid):
+        return meta.Session.query(sidb.City).filter(sidb.City._regions_rid==region_rid).order_by(sidb.City.name).all()
+    
     def _processingClients(self, rid=None):
-        """Создание/Редактирование данных"""
         #try:
         if rid:
             client = meta.Session.query(sidb.Client).filter(sidb.Client.rid==rid).first()
