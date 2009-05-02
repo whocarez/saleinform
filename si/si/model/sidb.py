@@ -11,6 +11,7 @@ countries = Table('_countries', metadata, autoload = True, autoload_with=engine)
 regions = Table('_regions', metadata, autoload = True, autoload_with=engine)
 cities = Table('_cities', metadata, autoload = True, autoload_with=engine)
 clients = Table('_clients', metadata, autoload = True, autoload_with=engine)
+clientslogos = Table('_clientslogos', metadata, autoload = True, autoload_with=engine)
 clcategories = Table('_clcategories', metadata, autoload = True, autoload_with=engine)
 pritems = Table('_pritems', metadata, autoload = True, autoload_with=engine)
 tmppricesstorage = Table('_tmppricesstorage', metadata, autoload = True, autoload_with=engine)
@@ -28,6 +29,7 @@ class Region(object): pass
 class City(object): pass
 class Pritem(object): pass
 class Client(object): pass
+class Clientlogo(object): pass
 class Clcategory(object): pass
 class Tmppricesstorage(object): pass
 class Tmppritem(object): pass
@@ -43,7 +45,8 @@ orm.mapper(Country, countries)
 orm.mapper(Region, regions)
 orm.mapper(City, cities)
 orm.mapper(Pritem, pritems)
-orm.mapper(Client, clients)
+orm.mapper(Client, clients, properties={'items_quan': orm.column_property(expression.select([func.count('*')], pritems.c._clients_rid==clients.c.rid).label('items_quan'))})
+orm.mapper(Clientlogo, clientslogos)
 orm.mapper(Clcategory, clcategories, properties={'tmpitems_quan': orm.column_property(expression.select([func.count('*')], tmppritems.c._clcategories_rid==clcategories.c.rid).label('tmpitems_quan'))})
 orm.mapper(Tmppricesstorage, tmppricesstorage,  properties={'tmpitems_quan': orm.column_property(expression.select([func.count('*')], tmppritems.c._tmppricesstorage_rid==tmppricesstorage.c.rid).label('tmpitems_quan'))})
 orm.mapper(Tmppritem, tmppritems)

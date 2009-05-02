@@ -1,0 +1,192 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" lang="en" py:strip="False">
+<h3>${_(u'Редактирование клиента')}</h3>
+<div class="back-link">
+	<a href="/be/clients" title="${_(u'Назад к списку клиентов')}">${_(u'Назад к списку клиентов')}</a>
+</div>
+
+<div class="message-save-success">
+	${_(u'Изменения успешно сохранены')}
+</div>
+
+<div class="message-save-failure">
+	${_(u'Изменения не сохранены из-за ошибок.')}
+</div>
+
+<form action="/be/clients/edit" method="post">
+<div class="clients-processing">
+	<table width="50%">
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Название')}</label>
+		</td>
+		<td>
+			<input type="text" name="name" value="${c.client.name}" id="name"/>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Город')}</label>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Адрес')}</label>
+		</td>
+		<td>
+			<table width="100%">
+				<tr>
+					<td>
+						${_(u'индекс')}
+					</td>	
+					<td>
+						${_(u'улица')}
+					</td>	
+					<td>
+						${_(u'дом, оффис')}
+					</td>	
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="zip" value="${c.client.zip}" id="zip" size="5"/>
+					</td>	
+					<td>
+						<input type="text" name="street" value="${c.client.street}" id="street" width="50"/>
+					</td>	
+					<td>
+						<input type="text" name="build" value="${c.client.build}" id="build" width="50"/>
+					</td>	
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Телефоны')}</label>
+		</td>
+		<td>
+			<input type="text" name="wphones" value="${c.client.wphones}" id="wphones" size="50"/>			
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Skype')}</label>
+		</td>
+		<td>
+			<input type="text" name="skype" value="${c.client.skype}" id="skype" size="25"/>		
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'ICQ')}</label>
+		</td>
+		<td>
+			<input type="text" name="icq" value="${c.client.icq}" id="icq" size="25"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Сайт')}</label>
+		</td>
+		<td>
+			<input type="text" name="url" value="${c.client.url}" id="url" size="25"/>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Кредит')}</label>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Доставка')}</label>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Время работы')}</label>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Описание')}</label>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Загрузка прайсов')}</label>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Актуальность прайса')}</label>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Email прайса')}</label>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Адрес прайса')}</label>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Контактные телефоны')}</label>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Контактный Email')}</label>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Контактное лицо')}</label>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Активный')}</label>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Популярность')}</label>
+		</td>
+		<td>
+		</td>
+	</tr>
+	</table>
+	<input type="submit" name="save" value="${_(u'Сохранить')}"/>
+</div>
+</form>
+</div>
