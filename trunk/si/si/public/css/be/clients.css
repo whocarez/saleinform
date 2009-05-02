@@ -1,0 +1,69 @@
+@CHARSET "UTF-8";
+div.clients-container{
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+div.clients-toolbar{
+	padding: 5px;
+	text-align: left;
+	width: 200px;
+	float: left;
+}
+div.add-tool{
+	padding-left: 25px;
+	background: transparent url(/img/design/icons/add.png) no-repeat left center;
+}
+div.refresh-tool{
+	padding-left: 25px;
+	background: transparent url(/img/design/icons/arrow_refresh.png) no-repeat left center;
+}
+
+table.admin-clients{
+	width: 100%;
+	background-color: #fafafa;
+	border: 1px #d79900 solid;
+	margin-bottom: 5px;
+}
+table.admin-clients tr td{
+	font-size: 100%;
+	font-weight: normal;
+	text-align: left;
+	line-height: 15px;	
+	padding: 5px;
+	border-bottom: 1px #d79900 solid;
+}
+table.admin-clients tr th{
+	padding: 5px;
+	font-size: 100%;
+	font-weight: bold;
+	text-align: left;
+	line-height: 20px;	
+	border-bottom: 2px solid #d79900;
+	background-color: #fff2ba;
+}
+div.country-processing{
+}
+div.back-link{
+	padding-left: 25px;
+	background: transparent url(/img/design/icons/arrow_left.png) no-repeat left center;
+}
+.btnR {
+	background:transparent url(/img/design/button_orange_s_L.gif) no-repeat scroll left top;
+	margin:0;
+	padding:0 0 0 8px;
+}
+a.btnL {
+	color:#FFFFFF;
+	display:block;
+	font-weight:bold;
+	text-decoration:none;
+	background:transparent url(/img/design/button_orange_s_R.gif) no-repeat scroll right top;
+	margin:0;
+	padding:5px 15px 5px 7px;
+}
+div.search-bar{
+	 padding:5px;
+	 	 
+	 border: 1px solid #c3ddfa;
+	 margin: 5px 0px 5px 202px;
+}
