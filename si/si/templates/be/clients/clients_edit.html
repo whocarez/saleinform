@@ -1,14 +1,15 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" lang="en" py:strip="False">
+<script type="text/javascript" src="/js/be/clients.js"></script>
 <h3>${_(u'Редактирование клиента')}</h3>
 <div class="back-link">
 	<a href="/be/clients" title="${_(u'Назад к списку клиентов')}">${_(u'Назад к списку клиентов')}</a>
 </div>
-
-<div class="message-save-success">
+<br/>
+<div py:if="c.oper_status==True" class="message-save-success" >
 	${_(u'Изменения успешно сохранены')}
 </div>
 
-<div class="message-save-failure">
+<div py:if="c.oper_status==False" class="message-save-failure">
 	${_(u'Изменения не сохранены из-за ошибок.')}
 </div>
 
@@ -42,18 +43,18 @@
 				</tr>
 				<tr>
 					<td>
-						<select name="_countries_rid" id="_countries_rid">
-							<option py:for="country in c.countries_list" selected="${country.rid == c.client.country_rid and 'selected' or None}">${country.name}</option>
+						<select name="_countries_rid" id="_countries_rid" onchange="onCountryChange();" size="5" style="width:150px;">
+							<option py:for="country in c.countries_list" value="${country.rid}" selected="${country.rid == c.client.country_rid and 'selected' or None}">${country.name}</option>
 						</select>	
 					</td>	
 					<td>
-						<select name="_regions_rid" id="_regions_rid">
-							<option py:for="region in c.regions_list" selected="${region.rid == c.client.region_rid and 'selected' or None}">${region.name}</option>
+						<select name="_regions_rid" id="_regions_rid" onchange="onRegionChange();" size="5" style="width:150px;">
+							<option py:for="region in c.regions_list" value="${region.rid}" selected="${region.rid == c.client.region_rid and 'selected' or None}" >${region.name}</option>
 						</select>	
 					</td>	
 					<td>
-						<select name="_cities_rid" id="_cities_rid">
-							<option py:for="city in c.cities_list" selected="${city.rid == c.client.Client._cities_rid and 'selected' or None}">${city.name}</option>
+						<select name="_cities_rid" id="_cities_rid" size="5" style="width:150px;">
+							<option py:for="city in c.cities_list" value="${city.rid}" selected="${city.rid == c.client.Client._cities_rid and 'selected' or None}">${city.name}</option>
 						</select>	
 					</td>	
 				</tr>
