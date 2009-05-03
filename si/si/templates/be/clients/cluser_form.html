@@ -1,0 +1,45 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" lang="en" py:strip="False">
+<script type="text/javascript" src="/js/be/clients.js"></script>
+<h3>${_(u'Редактирование учетной записи клиента')} ${c.client.name}</h3>
+<div class="back-link">
+	<a href="/be/clients" title="${_(u'Назад к списку клиентов')}">${_(u'Назад к списку клиентов')}</a>
+</div>
+<br/>
+<div py:if="not c.cluser" >
+	<img src="/img/design/icons/exclamation.png"/> ${_(u'Для клиента нет учетной записи')}
+</div>
+
+<div py:if="c.oper_status==True" class="message-save-success" >
+	${_(u'Изменения успешно сохранены')}
+</div>
+
+<div py:if="c.oper_status==False" class="message-save-failure">
+	${_(u'Изменения не сохранены из-за ошибок.')}
+</div>
+
+<form action="/be/clients/user/${c.client.rid}" method="post">
+<input type="hidden" value="${c.client.rid}" name="clrid"/>
+<div class="clients-processing">
+	<table width="50%">
+	<tr>
+		<td width="40%">
+			<label for="login">${_(u'Логин')}</label>
+		</td>
+		<td>
+			<input type="text" name="login" value="${c.cluser and c.cluser.login or ''}" id="login"/>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="passwd">${_(u'Пароль')}</label>
+		</td>
+		<td>
+			<input type="text" name="passwd" value="${c.cluser and c.cluser.passwd or ''}" id="passwd"/><br/>
+			<a href="javascript: return void(0);" onclick="gen_passwd();">${_(u'генерить пароль')}</a>
+		</td>
+	</tr>
+	</table>
+	<input type="submit" name="save" value="${_(u'Сохранить')}"/>
+</div>
+</form>
+</div>

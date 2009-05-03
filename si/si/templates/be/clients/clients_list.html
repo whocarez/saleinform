@@ -2,6 +2,10 @@
 <h4>
 	${_(u'Клиенты')} (${c.clients_quan})
 </h4>
+<div class="clients-toolbar">
+	<div class="add-tool"><a href="/be/clients/add">${_(u'Добавить клиента')}</a></div>
+</div>
+
 <table width="100%" cellpadding="0" cellspacing="0" class="grid">
 	<tr>
 		<th>${_(u'Лого')}</th>
@@ -52,7 +56,9 @@
 		<td>${row.price_date}&nbsp;</td>
 		<td>
 			<a href="/be/clients/edit/${row.Client.rid}" title="${_(u'Редактировать')}"><img src="/img/design/icons/pencil.png" border="0"/></a>
-			<a href="${row.Client.url}" title="${_(u'Удалить клиента')}"><img src="/img/design/icons/delete.png" border="0"/></a>
+			<a href="/be/clients/remove/${row.Client.rid}" title="${_(u'Удалить клиента')}" onclick="javascript: return confirm('${_(u'Удалить клиента ')}${row.Client.name}')"><img src="/img/design/icons/delete.png" border="0"/></a>
+			<a href="/be/clients/user/${row.Client.rid}" title="${_(u'Редактирование учетной записи клиента')}">
+				<img src="/img/design/icons/${row.User and 'user_edit' or 'user_add'}.png" border="0"/></a>			
 			<a href="${row.Client.url}" title="${_(u'Перейти на сайт')}" target="_blank"><img src="/img/design/icons/arrow_right.png"  border="0"/></a>
 		</td>
 	</tr>

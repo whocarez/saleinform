@@ -22,3 +22,14 @@ function onRegionChange(){
 		}
 	});
 }
+
+function gen_passwd(){
+	$.ajax({
+		type: "POST",
+		url: "/be/clients/gen_passwd",
+		data: {},
+		success: function(msg){
+			$('#passwd').val(msg);
+		}
+	});
+}

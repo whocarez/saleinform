@@ -1,6 +1,6 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" lang="en" py:strip="False">
 <script type="text/javascript" src="/js/be/clients.js"></script>
-<h3>${_(u'Редактирование клиента')}</h3>
+<h3>${_(u'Добавление клиента')}</h3>
 <div class="back-link">
 	<a href="/be/clients" title="${_(u'Назад к списку клиентов')}">${_(u'Назад к списку клиентов')}</a>
 </div>
@@ -13,16 +13,24 @@
 	${_(u'Изменения не сохранены из-за ошибок.')}
 </div>
 
-<form action="/be/clients/edit/${c.client.Client.rid}" method="post">
+<form action="/be/clients/add" method="post">
 <div class="clients-processing">
 	<table width="50%">
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Название')}</label>
+		</td>
+		<td>
+			<input type="text" name="name" value="" id="name"/>
+		</td>
+	</tr>
 	<tr>
 		<td width="40%">
 			<label for="code">${_(u'Юридическая форма')}</label>
 		</td>
 		<td>
 			<select name="_urforms_rid" id="_urforms_rid">
-				<option py:for="urform in c.urforms_list" value="${urform.rid}" selected="${urform.rid == c.client.Client._urforms_rid and 'selected' or None}">${urform.name}</option>
+				<option py:for="urform in c.urforms_list" value="${urform.rid}" >${urform.name}</option>
 			</select>	
 		</td>
 	</tr>
@@ -32,17 +40,8 @@
 		</td>
 		<td>
 			<select name="_cltypes_rid" id="_cltypes_rid">
-				<option py:for="cltype in c.cltypes_list" value="${cltype.rid}" selected="${cltype.rid == c.client.Client._cltypes_rid and 'selected' or None}">${cltype.name}</option>
+				<option py:for="cltype in c.cltypes_list" value="${cltype.rid}" >${cltype.name}</option>
 			</select>	
-		</td>
-	</tr>
-
-	<tr>
-		<td width="40%">
-			<label for="code">${_(u'Название')}</label>
-		</td>
-		<td>
-			<input type="text" name="name" value="${c.client.Client.name}" id="name"/>
 		</td>
 	</tr>
 	<tr>
@@ -65,17 +64,17 @@
 				<tr>
 					<td>
 						<select name="_countries_rid" id="_countries_rid" onchange="onCountryChange();" size="5" style="width:150px;">
-							<option py:for="country in c.countries_list" value="${country.rid}" selected="${country.rid == c.client.country_rid and 'selected' or None}">${country.name}</option>
+							<option py:for="country in c.countries_list" value="${country.rid}">${country.name}</option>
 						</select>	
 					</td>	
 					<td>
 						<select name="_regions_rid" id="_regions_rid" onchange="onRegionChange();" size="5" style="width:150px;">
-							<option py:for="region in c.regions_list" value="${region.rid}" selected="${region.rid == c.client.region_rid and 'selected' or None}" >${region.name}</option>
+							<option py:for="region in c.regions_list" value="${region.rid}">${region.name}</option>
 						</select>	
 					</td>	
 					<td>
 						<select name="_cities_rid" id="_cities_rid" size="5" style="width:150px;">
-							<option py:for="city in c.cities_list" value="${city.rid}" selected="${city.rid == c.client.Client._cities_rid and 'selected' or None}">${city.name}</option>
+							<option py:for="city in c.cities_list" value="${city.rid}">${city.name}</option>
 						</select>	
 					</td>	
 				</tr>
@@ -101,13 +100,13 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="zip" value="${c.client.Client.zip}" id="zip" size="5"/>
+						<input type="text" name="zip" value="" id="zip" size="5"/>
 					</td>	
 					<td>
-						<input type="text" name="street" value="${c.client.Client.street}" id="street" width="50"/>
+						<input type="text" name="street" value="" id="street" width="50"/>
 					</td>	
 					<td>
-						<input type="text" name="build" value="${c.client.Client.build}" id="build" width="50"/>
+						<input type="text" name="build" value="" id="build" width="50"/>
 					</td>	
 				</tr>
 			</table>
@@ -118,7 +117,7 @@
 			<label for="code">${_(u'Телефоны')}</label>
 		</td>
 		<td>
-			<input type="text" name="wphones" value="${c.client.Client.wphones}" id="wphones" size="50"/>			
+			<input type="text" name="wphones" value="" id="wphones" size="50"/>			
 		</td>
 	</tr>
 	<tr>
@@ -126,7 +125,7 @@
 			<label for="code">${_(u'Skype')}</label>
 		</td>
 		<td>
-			<input type="text" name="skype" value="${c.client.Client.skype}" id="skype" size="25"/>		
+			<input type="text" name="skype" value="" id="skype" size="25"/>		
 		</td>
 	</tr>
 	<tr>
@@ -134,7 +133,7 @@
 			<label for="code">${_(u'ICQ')}</label>
 		</td>
 		<td>
-			<input type="text" name="icq" value="${c.client.Client.icq}" id="icq" size="25"/>
+			<input type="text" name="icq" value="" id="icq" size="25"/>
 		</td>
 	</tr>
 	
@@ -143,7 +142,7 @@
 			<label for="code">${_(u'Сайт')}</label>
 		</td>
 		<td>
-			<input type="text" name="url" value="${c.client.Client.url}" id="url" size="25"/>
+			<input type="text" name="url" value="" id="url" size="25"/>
 		</td>
 	</tr>
 	<tr>
@@ -151,14 +150,7 @@
 			<label for="code">${_(u'Кредит')}</label>
 		</td>
 		<td>
-			<span py:choose="">
-				<span py:when="c.client.Client.creadits_info == 0">
-					<input type="checkbox" value="1" name="creadits_info"/>
-				</span>
-				<span py:otherwise="">
-					<input type="checkbox" value="1" checked="checked" name="creadits_info"/>
-				</span>
-			</span> 
+			<input type="checkbox" value="1" name="creadits_info"/>
 		</td>
 	</tr>
 	<tr>
@@ -166,7 +158,7 @@
 			<label for="code">${_(u'Доставка')}</label>
 		</td>
 		<td>
-			<textarea rows="3" cols="43" value="${c.client.Client.delivery_info}" name="delivery_info">${c.client.Client.delivery_info}</textarea>
+			<textarea rows="3" cols="43" value="" name="delivery_info"></textarea>
 		</td>
 	</tr>
 	<tr>
@@ -174,7 +166,7 @@
 			<label for="code">${_(u'Время работы')}</label>
 		</td>
 		<td>
-			<textarea rows="3" cols="43" value="${c.client.Client.worktime_info}" name="worktime_info">${c.client.Client.worktime_info}</textarea>
+			<textarea rows="3" cols="43" value="" name="worktime_info"></textarea>
 		</td>
 	</tr>
 	<tr>
@@ -182,7 +174,7 @@
 			<label for="code">${_(u'Описание')}</label>
 		</td>
 		<td>
-			<textarea rows="3" cols="43" value="${c.client.Client.descr}" name="descr">${c.client.Client.descr}</textarea>
+			<textarea rows="3" cols="43" value="" name="descr"></textarea>
 		</td>
 	</tr>
 	<tr>
@@ -190,14 +182,7 @@
 			<label for="code">${_(u'Загрузка прайсов')}</label>
 		</td>
 		<td>
-			<span py:choose="">
-				<span py:when="c.client.Client.pr_load == 0">
-					<input type="checkbox" value="1" name="pr_load"/>
-				</span>
-				<span py:otherwise="">
-					<input type="checkbox" value="1" checked="checked" name="pr_load"/>
-				</span>
-			</span> 
+			<input type="checkbox" value="1" name="pr_load"/>
 		</td>
 	</tr>
 	<tr>
@@ -206,7 +191,7 @@
 		</td>
 		<td>
 			<select name="pr_actual_days" id="pr_actual_days">
-				<option py:for="i in range(1, 15)" selected="${c.client.Client.pr_actual_days == i and 'selected' or None}">${i}</option>
+				<option py:for="i in range(1, 15)" value="${i}">${i}</option>
 			</select>
 		</td>
 	</tr>
@@ -215,7 +200,7 @@
 			<label for="code">${_(u'Адрес прайса')}</label>
 		</td>
 		<td>
-			<input type="text" name="pr_url" value="${c.client.Client.pr_url}" id="pr_url" size="50"/>
+			<input type="text" name="pr_url" value="" id="pr_url" size="50"/>
 		</td>
 	</tr>
 	<tr>
@@ -223,7 +208,7 @@
 			<label for="code">${_(u'Контактные телефоны')}</label>
 		</td>
 		<td>
-			<input type="text" name="contact_phones" value="${c.client.Client.contact_phones}" id="contact_phones" size="50"/>
+			<input type="text" name="contact_phones" value="" id="contact_phones" size="50"/>
 		</td>
 	</tr>
 	<tr>
@@ -231,7 +216,7 @@
 			<label for="code">${_(u'Контактный Email')}</label>
 		</td>
 		<td>
-			<input type="text" name="contact_email" value="${c.client.Client.contact_email}" id="contact_email" size="50"/>
+			<input type="text" name="contact_email" value="" id="contact_email" size="50"/>
 		</td>
 	</tr>
 	<tr>
@@ -239,7 +224,7 @@
 			<label for="code">${_(u'Контактное лицо')}</label>
 		</td>
 		<td>
-			<input type="text" name="contact_person" value="${c.client.Client.contact_person}" id="contact_person" size="50"/>
+			<input type="text" name="contact_person" value="" id="contact_person" size="50"/>
 		</td>
 	</tr>
 	<tr>
@@ -247,14 +232,7 @@
 			<label for="code">${_(u'Активный')}</label>
 		</td>
 		<td>
-			<span py:choose="">
-				<span py:when="c.client.Client.active == 0">
-					<input type="checkbox" value="1" name="active"/>
-				</span>
-				<span py:otherwise="">
-					<input type="checkbox" value="1" checked="checked" name="active"/>
-				</span>
-			</span> 
+			<input type="checkbox" value="1" name="active"/>
 		</td>
 	</tr>
 	<tr>
@@ -262,7 +240,7 @@
 			<label for="code">${_(u'Популярность')}</label>
 		</td>
 		<td>
-			<input type="text" name="popularity" value="${c.client.Client.popularity}" id="popularity" size="5"/>
+			<input type="text" name="popularity" value="" id="popularity" size="5"/>
 		</td>
 	</tr>
 	</table>

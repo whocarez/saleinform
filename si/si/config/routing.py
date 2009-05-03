@@ -33,9 +33,14 @@ def make_map():
     map.connect('/be/clients/price/{clrid}', controller='be/clients', action='price')
     map.connect('/be/clients/active/{clrid}', controller='be/clients', action='active')
     map.connect('/be/clients/edit/{clrid}', controller='be/clients', action='edit')
-    map.connect('/be/clients/add', controller='be/clients', action='edit')
+    map.connect('/be/clients/add', controller='be/clients', action='add')
     map.connect('/be/clients/get_regions', controller='be/clients', action='get_regions')
     map.connect('/be/clients/get_cities', controller='be/clients', action='get_cities')
+    
+    map.connect('/be/clients/remove/{clrid}', controller='be/clients', action='remove')
+    
+    map.connect('/be/clients/user/{clrid}', controller='be/clients', action='user')
+    map.connect('/be/clients/gen_passwd', controller='be/clients', action='gen_passwd')
     # } BE
     
     map.connect('/{controller}/{action}')
