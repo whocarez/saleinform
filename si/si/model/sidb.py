@@ -6,6 +6,7 @@ import time
 
 urforms = Table('_urforms', metadata, autoload = True, autoload_with=engine)
 cltypes = Table('_cltypes', metadata, autoload = True, autoload_with=engine)
+clcats = Table('_clcats', metadata, autoload = True, autoload_with=engine)
 clcatparents = Table('_clcatparents', metadata, autoload = True, autoload_with=engine)
 categories = Table('_categories', metadata, autoload = True, autoload_with=engine)
 currency = Table('_currency', metadata, autoload = True, autoload_with=engine)
@@ -34,6 +35,7 @@ class Region(object): pass
 class City(object): pass
 class Pritem(object): pass
 class Client(object): pass
+class Clcat(object): pass
 class User(object): pass
 class Clientlogo(object): pass
 class Clcategory(object): pass
@@ -54,6 +56,7 @@ orm.mapper(Region, regions)
 orm.mapper(City, cities)
 orm.mapper(Pritem, pritems)
 orm.mapper(Client, clients, properties={'items_quan': orm.column_property(expression.select([func.count('*')], pritems.c._clients_rid==clients.c.rid).label('items_quan'))})
+orm.mapper(Clcat, clcats)
 orm.mapper(User, users)
 orm.mapper(Clientlogo, clientslogos)
 orm.mapper(Clcategory, clcategories, properties={'tmpitems_quan': orm.column_property(expression.select([func.count('*')], tmppritems.c._clcategories_rid==clcategories.c.rid).label('tmpitems_quan'))})

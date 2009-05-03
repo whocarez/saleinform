@@ -1,0 +1,38 @@
+<div class="grid-container" xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" lang="en" py:strip="False">
+<h4>
+	${_(u'Категории клиента')} ${c.price.client_name}(${c.price.country_name}, ${c.price.city_name})
+</h4>
+<div class="back-link">
+	<a href="/be/clients" title="${_(u'Назад к списку клиентов')}">${_(u'Назад к списку клиентов')}</a>
+</div>
+<div style="font-size: 12px;margin: 5px 0px;">
+	<a href="/be/tmpstorage/categories/${c.price.client_rid}">${_(u'Корень')}</a><span py:strip="True" py:for="row in c.clcatparents"> >> <a href="/be/tmpstorage/categories/${c.price.client_rid}?parent=${row.Clcatparents._parent_rid}">${row.category_name}</a></span> >> <b py:if="c.currentcategory">${c.currentcategory.name}</b>
+</div>
+<table class="grid" cellpadding="0" cellspacing="0" style="width:50%;">
+	<tr>
+		<th>${_(u'Категория клиента')}</th>
+		<th>${_(u'Связанная категория')}</th>
+		<th>${_(u'Незагружено')}</th>
+	</tr>
+	<tr py:for="row in c.clcategories">
+		<td>
+			<span py:choose=""> 
+				<span py:when="row.Clcategory.clrid in c.leafs">${row.Clcategory.name}</span>
+				<span py:otherwise="">
+					<a href="/be/tmpstorage/categories/${c.price.client_rid}?parent=${row.Clcategory.clrid}">${row.Clcategory.name}</a>
+				</span>
+			</span>
+		</td>
+		<td>${row.category_name}&nbsp;</td>
+		
+		<td>
+			<span py:choose=""> 
+				<span py:when="row.Clcategory.clrid in c.leafs">${row.Clcategory.tmpitems_quan}</span>
+				<span py:otherwise="">
+					${row.tmpitems_quan1}
+				</span>
+			</span>
+		</td>
+	</tr>
+</table>
+</div>
