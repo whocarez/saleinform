@@ -8,7 +8,7 @@ from sqlalchemy import func
 from si.lib.base import BaseController, render
 from si.model import meta, sidb
 from pylons.decorators import validate
-from si.model.forms.be import clients as v_clients, cluser as v_cluser
+from si.model.forms.be import clients as v_clients, cluser as v_cluser, clientlogo as v_clientlogo
 import string
 from random import Random
 
@@ -29,7 +29,7 @@ class ClientsController(BaseController):
                                            outerjoin((sidb.Tmppricesstorage, sidb.Tmppricesstorage._clients_rid == sidb.Client.rid)).\
                                            group_by(sidb.Client.rid).\
                                            order_by(sidb.Client.name)
-        page = paginate.Page(clients_list, items_per_page=20, page=request.GET.get("page", 1))
+        page = paginate.Page(clients_list, items_per_page=10, page=request.GET.get("page", 1))
         c.pager = page.pager()
         c.clients_list = page.items
         c.subtempl = 'clients_list'
@@ -185,3 +185,29 @@ class ClientsController(BaseController):
         newpasswd = ''.join(Random().sample(string.letters+string.digits, 6))
         return newpasswd
         
+    @validate(schema=v_clientlogo.ClientlogoForm(), form="logo")
+    def logo(self, clrid = None):
+        if not clrid: redirect_to('/be/clients')
+        c.client = meta.Session.query(sidb.Client).filter(sidb.Client.rid==clrid).first()
+        if not c.client: redirect_to('/be/clients')
+        c.client_logo = meta.Session.query(sidb.Clientlogo).filter(sidb.Clientlogo._clients_rid==clrid).first()
+        if request.POST.get('save', None):
+            if not c.client_logo:
+                c.client_logo = sidb.Clientlogo()
+                c.client_logo._clients_rid = c.client.rid
+            try:
+                c.client_logo.image = request.POST.get('logo', False).file.read()
+                c.client_logo.size = len(request.POST.get('logo', False).file.read())
+                c.client_logo.name = request.POST.get('logo', False).filename
+                c.client_logo.type = request.POST.get('logo', False).type
+                meta.Session.add(c.client_logo)
+                meta.Session.commit()
+                c.oper_status = True
+            except:
+                meta.Session.rollback()
+                c.oper_status = False
+        c.subtempl = 'clientlogo_form'
+        return render('be/layouts/clients.html')
+        
+        
+         

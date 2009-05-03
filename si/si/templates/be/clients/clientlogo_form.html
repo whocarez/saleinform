@@ -1,0 +1,41 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" lang="en" py:strip="False">
+<script type="text/javascript" src="/js/be/clients.js"></script>
+<h3>${_(u'Логотип клиента')} ${c.client.name}</h3>
+<div class="back-link">
+	<a href="/be/clients" title="${_(u'Назад к списку клиентов')}">${_(u'Назад к списку клиентов')}</a>
+</div>
+<br/>
+<div py:if="not c.client_logo" >
+	<img src="/img/design/icons/exclamation.png"/> ${_(u'Для клиента нет логотипа')}
+</div>
+
+<div py:if="c.oper_status==True" class="message-save-success" >
+	${_(u'Изменения успешно сохранены')}
+</div>
+
+<div py:if="c.oper_status==False" class="message-save-failure">
+	${_(u'Изменения не сохранены из-за ошибок.')}
+</div>
+
+<form action="/be/clients/logo/${c.client.rid}" method="post" enctype="multipart/form-data">
+<input type="hidden" value="${c.client.rid}" name="clrid"/>
+<div class="clients-processing">
+	<table width="50%">
+	<tr py:if="c.client_logo">
+		<td colspan="2">
+			<img src="${h.img_thumb('img/clients/logos', c.client_logo.rid, c.client_logo.image, (150, 150))}" alt="${c.client.name}"/>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="login">${_(u'Логотип')}</label>
+		</td>
+		<td>
+			<input type="file" name="logo" value="" id="logo"/>
+		</td>
+	</tr>
+	</table>
+	<input type="submit" name="save" value="${_(u'Сохранить')}"/>
+</div>
+</form>
+</div>
