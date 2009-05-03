@@ -41,6 +41,7 @@ def make_map():
     
     map.connect('/be/clients/user/{clrid}', controller='be/clients', action='user')
     map.connect('/be/clients/gen_passwd', controller='be/clients', action='gen_passwd')
+    map.connect('/be/clients/logo/{clrid}', controller='be/clients', action='logo')
     # } BE
     
     map.connect('/{controller}/{action}')
