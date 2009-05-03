@@ -18,6 +18,7 @@
 		<th>${_(u'Активный')}</th>
 		<th>${_(u'Дата прайса')}</th>
 		<th>&nbsp;</th>
+		<th>&nbsp;</th>
 	</tr>
 	<tr py:for="row in c.clients_list">
 		<td>
@@ -55,11 +56,17 @@
 		</td>
 		<td>${row.price_date}&nbsp;</td>
 		<td>
+			&nbsp;
+			<a py:if="row.storage_rid" href="/be/clients/currency/${row.storage_rid}" title="${_(u'Курс валют')}"><img src="/img/design/icons/money.png" alt="${_(u'Курс валют')}" border="0"/></a>
+			<a py:if="row.storage_rid" href="/be/clients/categories/${row.Client.rid}" title="${_(u'Категории клиента')}" ><img src="/img/design/icons/chart_organisation.png" alt="${_(u'Категории клиента')}" border="0"/></a>
+			<a py:if="row.storage_rid" onclick="javascript:return confirm('${_(u'Действительно удалить это хранилище?')}')" href="/be/clients/removestorage/${row.storage_rid}" title="${_(u'Удалить временное хранилище')}" ><img src="/img/design/icons/chart_organisation_delete.png" alt="${_(u'Удалить временное хранилище')}" border="0"/></a>
+		</td>
+		<td>
 			<a href="/be/clients/edit/${row.Client.rid}" title="${_(u'Редактировать')}"><img src="/img/design/icons/pencil.png" border="0"/></a>
 			<a href="/be/clients/remove/${row.Client.rid}" title="${_(u'Удалить клиента')}" onclick="javascript: return confirm('${_(u'Удалить клиента ')}${row.Client.name}')"><img src="/img/design/icons/delete.png" border="0"/></a>
 			<a href="/be/clients/user/${row.Client.rid}" title="${_(u'Редактирование учетной записи клиента')}"><img src="/img/design/icons/${row.User and 'user_edit' or 'user_add'}.png" border="0"/></a>			
 			<a href="/be/clients/logo/${row.Client.rid}" title="${_(u'Логотип клиента')}"><img src="/img/design/icons/${row.Clientlogo and 'image_edit' or 'image_add'}.png" border="0"/></a>
-			<a href="/be/clients/clcats/${row.Client.rid}" title="${_(u'Основные категории клиента')}"><img src="/img/design/icons/wrench.png" border="0"/></a>			
+			<a href="/be/clients/clcats/${row.Client.rid}" title="${_(u'Основные категории клиента')}"><img src="/img/design/icons/wrench.png" border="0"/></a>
 			<a href="${row.Client.url}" title="${_(u'Перейти на сайт')}" target="_blank"><img src="/img/design/icons/arrow_right.png"  border="0"/></a>
 		</td>
 	</tr>

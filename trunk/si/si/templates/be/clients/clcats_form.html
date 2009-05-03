@@ -1,0 +1,35 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" lang="en" py:strip="False">
+<script type="text/javascript" src="/js/be/clients.js"></script>
+<h3>${_(u'Основные категории клиента')} ${c.client.name}</h3>
+<div class="back-link">
+	<a href="/be/clients" title="${_(u'Назад к списку клиентов')}">${_(u'Назад к списку клиентов')}</a>
+</div>
+<br/>
+
+<div py:if="c.oper_status==True" class="message-save-success" >
+	${_(u'Изменения успешно сохранены')}
+</div>
+
+<div py:if="c.oper_status==False" class="message-save-failure">
+	${_(u'Изменения не сохранены из-за ошибок.')}
+</div>
+
+<form action="/be/clients/clcats/${c.client.rid}" method="post">
+<input type="hidden" value="${c.client.rid}" name="clrid"/>
+<div class="clients-processing">
+	<table width="50%">
+	<tr>
+		<td width="40%">
+			<label for="login">${_(u'Отметьте категории:')}</label>
+		</td>
+		<td>
+			<div py:for="cat in c.categories" py:strip="True"> 
+			<input type="checkbox" name="_categories_rid"  value="${cat.rid}" checked="${(cat.rid in c.clcats) and 'checked' or None}" id="_categories_rid"/> <label>${cat.name}</label><br/>
+			</div>
+		</td>
+	</tr>
+	</table>
+	<input type="submit" name="save" value="${_(u'Сохранить')}"/>
+</div>
+</form>
+</div>
