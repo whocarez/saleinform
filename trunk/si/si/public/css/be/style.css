@@ -16,6 +16,29 @@ body {
 	margin: 0px 10px 10px 10px;
 	background-color: #FFFFFF;
 }
- table {
+table {
  	font-size:12px;
  }
+ 
+.error-message{
+	color:#FF0000;
+	margin: 5px 0px 0px 0px;
+	vertical-align: middle;
+	background: transparent url(/img/design/icons/error.png) no-repeat left top;
+	white-space: nowrap;
+	overflow: hidden;
+	padding-left: 20px;
+}
+.message-save-success{
+	background: transparent url(/img/design/icons/disk.png) no-repeat left center;
+	padding: 5px 0px 5px 20px;
+	margin: 5px 0px; 
+	color: grey;
+}
+
+.message-save-failure{
+	background: transparent url(/img/design/icons/error.png) no-repeat left center;
+	padding: 5px 0px 5px 20px;
+	margin: 5px 0px; 
+	color: grey;
+}
