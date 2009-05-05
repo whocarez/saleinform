@@ -1,0 +1,37 @@
+<div class="grid-container" xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" lang="en" py:strip="False">
+<h4>
+	${_(u'Категории товаров')}
+</h4>
+<div style="font-size: 12px;margin: 5px 0px;">
+	<a href="/be/categories">${_(u'Корень')}</a><span py:strip="True" py:for="row in c.category_parents"> >> <a href="/be/categories?parent=${row.rid}">${row.name}</a></span><span py:if="c.currcat" py:strip="True"> >> <b>${c.currcat.name}</b></span>
+</div>
+<table class="grid" cellpadding="0" cellspacing="0" style="width:50%;">
+	<tr>
+		<th>${_(u'Название')}</th>
+		<th>${_(u'Популярность')}</th>
+		<th>${_(u'В ТОП')}</th>
+		<th>${_(u'Группировка')}</th>
+		<th>${_(u'Сравнение')}</th>
+		<th>&nbsp;</th>
+	</tr>
+	<tr py:for="row in c.categories_list">
+		<td>
+			<span py:choose=""> 
+				<span py:when="row.rid in c.leafs">${row.name}</span>
+				<span py:otherwise="">
+					<a href="/be/categories?parent=${row.rid}">${row.name}</a>
+				</span>
+			</span>
+		</td>
+		<td>${row.popularity}&nbsp;</td>
+		<td><img src="/img/design/icons/${row.to_main and 'tick' or 'cancel'}.png" alt="" border="0"/></td>
+		<td><img src="/img/design/icons/${row.isgrouped and 'tick' or 'cancel'}.png" alt="" border="0"/></td>
+		<td><img src="/img/design/icons/${row.iscompared and 'tick' or 'cancel'}.png" alt="" border="0"/></td>
+		<td>
+			<a href="/be/categories/add/${row.rid}" title="${_(u'Добавить вложенную категорию')}"><img src="/img/design/icons/add.png" border="0"/></a>
+			<a href="/be/categories/edit/${row.rid}" title="${_(u'Редактировать')}"><img src="/img/design/icons/pencil.png" border="0"/></a>
+			<a href="/be/categories/remove/${row.rid}" title="${_(u'Удалить категорию')}" onclick="javascript: return confirm('${_(u'Удалить категорию ')}${row.name}')"><img src="/img/design/icons/delete.png" border="0"/></a>
+		</td>
+	</tr>
+</table>
+</div>

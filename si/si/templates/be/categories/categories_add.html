@@ -1,0 +1,121 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" lang="en" py:strip="False">
+<h3>${_(u'Добавление катагории')}</h3>
+<div class="back-link">
+	<a href="/be/categories?parent=${c.currcat and c.currcat._categories_rid or 0}" title="${_(u'Назад к списку категорий')}">${_(u'Назад к списку категорий')}</a>
+</div>
+<br/>
+<div py:if="c.oper_status==True" class="message-save-success" >
+	${_(u'Изменения успешно сохранены')}
+</div>
+
+<div py:if="c.oper_status==False" class="message-save-failure">
+	${_(u'Изменения не сохранены из-за ошибок.')}
+</div>
+
+<form action="/be/categories/add/${c._categories_rid}" method="post">
+<input type="hidden" value="${c._categories_rid}" name="_categories_rid"/>
+<div class="clients-processing">
+	<table width="50%">
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Название')}</label>
+		</td>
+		<td>
+			<input type="text" name="name" value="" id="name"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="40%">
+			<label for="meta_title">${_(u'Мета заголовок')}</label>
+		</td>
+		<td>
+			<textarea rows="3" cols="43" value="" name="meta_title"></textarea>
+		</td>
+	</tr>
+
+	<tr>
+		<td width="40%">
+			<label for="meta_description">${_(u'Мета описание')}</label>
+		</td>
+		<td>
+			<textarea rows="3" cols="43" value="" name="meta_description"></textarea>
+		</td>
+	</tr>
+
+	<tr>
+		<td width="40%">
+			<label for="meta_keywords">${_(u'Ключевые слова')}</label>
+		</td>
+		<td>
+			<textarea rows="3" cols="43" value="" name="meta_keywords"></textarea>
+		</td>
+	</tr>
+
+	<tr>
+		<td width="40%">
+			<label for="slug">${_(u'ЧПУ')}</label>
+		</td>
+		<td>
+			<input type="text" name="slug" value="" id="slug"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="40%">
+			<label for="">${_(u'В главное меню')}</label>
+		</td>
+		<td>
+			<input type="checkbox" value="1" name="to_main"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="40%">
+			<label for="">${_(u'Группировка')}</label>
+		</td>
+		<td>
+			<input type="checkbox" value="1" name="isgrouped"/>
+		</td>
+	</tr>
+
+	<tr>
+		<td width="40%">
+			<label for="">${_(u'Сравнение')}</label>
+		</td>
+		<td>
+			<input type="checkbox" value="1" name="iscompared"/>
+		</td>
+	</tr>
+
+	<tr>
+		<td width="40%">
+			<label for="">${_(u'Архив')}</label>
+		</td>
+		<td>
+			<input type="checkbox" value="1" name="archive"/>
+		</td>
+	</tr>
+
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Популярность')}</label>
+		</td>
+		<td>
+			<input type="text" name="popularity" value="" id="popularity" size="5"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="40%">
+			<label for="descr">${_(u'Описание категории')}</label>
+		</td>
+		<td>
+			<textarea rows="3" cols="43" value="" name="descr"></textarea>
+		</td>
+	</tr>
+	</table>
+	<input type="submit" name="save" value="${_(u'Сохранить')}"/>
+</div>
+</form>
+</div>

@@ -1,0 +1,149 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" lang="en" py:strip="False">
+<h3>${_(u'Редактирование катагории')} ${c.currcat.name}</h3>
+<div class="back-link">
+	<a href="/be/categories?parent=${c.currcat._categories_rid}" title="${_(u'Назад к списку категорий')}">${_(u'Назад к списку категорий')}</a>
+</div>
+<br/>
+<div py:if="c.oper_status==True" class="message-save-success" >
+	${_(u'Изменения успешно сохранены')}
+</div>
+
+<div py:if="c.oper_status==False" class="message-save-failure">
+	${_(u'Изменения не сохранены из-за ошибок.')}
+</div>
+
+<form action="/be/categories/edit/${c.currcat.rid}" method="post">
+<input type="hidden" value="${c.currcat._categories_rid}" name="_categories_rid"/>
+<div class="clients-processing">
+	<table width="50%">
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Название')}</label>
+		</td>
+		<td>
+			<input type="text" name="name" value="${c.currcat.name}" id="name"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="40%">
+			<label for="meta_title">${_(u'Мета заголовок')}</label>
+		</td>
+		<td>
+			<textarea rows="3" cols="43" value="${c.currcat.meta_title}" name="meta_title">${c.currcat.meta_title}</textarea>
+		</td>
+	</tr>
+
+	<tr>
+		<td width="40%">
+			<label for="meta_description">${_(u'Мета описание')}</label>
+		</td>
+		<td>
+			<textarea rows="3" cols="43" value="${c.currcat.meta_description}" name="meta_description">${c.currcat.meta_description}</textarea>
+		</td>
+	</tr>
+
+	<tr>
+		<td width="40%">
+			<label for="meta_keywords">${_(u'Ключевые слова')}</label>
+		</td>
+		<td>
+			<textarea rows="3" cols="43" value="${c.currcat.meta_keywords}" name="meta_keywords">${c.currcat.meta_keywords}</textarea>
+		</td>
+	</tr>
+
+	<tr>
+		<td width="40%">
+			<label for="slug">${_(u'ЧПУ')}</label>
+		</td>
+		<td>
+			<input type="text" name="slug" value="${c.currcat.slug}" id="slug"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="40%">
+			<label for="">${_(u'В главное меню')}</label>
+		</td>
+		<td>
+			<span py:choose="">
+				<span py:when="c.currcat.to_main == 0">
+					<input type="checkbox" value="1" name="to_main"/>
+				</span>
+				<span py:otherwise="">
+					<input type="checkbox" value="1" checked="checked" name="to_main"/>
+				</span>
+			</span> 
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="40%">
+			<label for="">${_(u'Группировка')}</label>
+		</td>
+		<td>
+			<span py:choose="">
+				<span py:when="c.currcat.isgrouped == 0">
+					<input type="checkbox" value="1" name="isgrouped"/>
+				</span>
+				<span py:otherwise="">
+					<input type="checkbox" value="1" checked="checked" name="isgrouped"/>
+				</span>
+			</span> 
+		</td>
+	</tr>
+
+	<tr>
+		<td width="40%">
+			<label for="">${_(u'Сравнение')}</label>
+		</td>
+		<td>
+			<span py:choose="">
+				<span py:when="c.currcat.iscompared == 0">
+					<input type="checkbox" value="1" name="iscompared"/>
+				</span>
+				<span py:otherwise="">
+					<input type="checkbox" value="1" checked="checked" name="iscompared"/>
+				</span>
+			</span> 
+		</td>
+	</tr>
+
+	<tr>
+		<td width="40%">
+			<label for="">${_(u'Архив')}</label>
+		</td>
+		<td>
+			<span py:choose="">
+				<span py:when="c.currcat.archive == 0">
+					<input type="checkbox" value="1" name="archive"/>
+				</span>
+				<span py:otherwise="">
+					<input type="checkbox" value="1" checked="checked" name="archive"/>
+				</span>
+			</span> 
+		</td>
+	</tr>
+
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Популярность')}</label>
+		</td>
+		<td>
+			<input type="text" name="popularity" value="${c.currcat.popularity}" id="popularity" size="5"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="40%">
+			<label for="descr">${_(u'Описание категории')}</label>
+		</td>
+		<td>
+			<textarea rows="3" cols="43" value="${c.currcat.descr}" name="descr">${c.currcat.descr}</textarea>
+		</td>
+	</tr>
+	</table>
+	<input type="submit" name="save" value="${_(u'Сохранить')}"/>
+</div>
+</form>
+</div>

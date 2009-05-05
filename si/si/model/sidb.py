@@ -9,6 +9,7 @@ cltypes = Table('_cltypes', metadata, autoload = True, autoload_with=engine)
 clcats = Table('_clcats', metadata, autoload = True, autoload_with=engine)
 clcatparents = Table('_clcatparents', metadata, autoload = True, autoload_with=engine)
 categories = Table('_categories', metadata, autoload = True, autoload_with=engine)
+catparents = Table('_catparents', metadata, autoload = True, autoload_with=engine)
 currency = Table('_currency', metadata, autoload = True, autoload_with=engine)
 countries = Table('_countries', metadata, autoload = True, autoload_with=engine)
 regions = Table('_regions', metadata, autoload = True, autoload_with=engine)
@@ -29,6 +30,7 @@ class Urform(object): pass
 class Cltype(object): pass
 class Clcatparents(object): pass
 class Category(object): pass
+class Catparent(object): pass
 class Currency(object): pass
 class Country(object): pass
 class Region(object): pass
@@ -49,6 +51,7 @@ class Tmppritemsimg(object): pass
 orm.mapper(Cltype, cltypes)
 orm.mapper(Urform, urforms)
 orm.mapper(Clcatparents, clcatparents)
+orm.mapper(Catparent, catparents)
 orm.mapper(Category, categories)
 orm.mapper(Currency, currency)
 orm.mapper(Country, countries)
