@@ -10,6 +10,6 @@ $lang['NAVLINE_MODULE_GUIDES_LINK_TITLE'] = 'Покупателю';
 $lang['NAVLINE_MODULE_COMPARES_LINK_TITLE'] = 'Сравнение товаров';
 $lang['NAVLINE_MODULE_HELP_LINK_TITLE'] = 'Помощь';
 $lang['NAVLINE_MODULE_ADVERTIZE_LINK_TITLE'] = 'Реклама';
-$lang['NAVLINE_MODULE_NEWS_LINK_TITLE'] = 'Новости';
+$lang['NAVLINE_MODULE_NEWS_LINK_TITLE'] = 'Новости';$lang['NAVLINE_MODULE_HELP_ABOUT_TITLE'] = 'О проекте';$lang['NAVLINE_MODULE_BACK_TO_HOME_TITLE'] = 'На главную страницу Saleinform';
 /* } NAVLINE MODULE */
 ?>
