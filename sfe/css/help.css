@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+td.helplayoutL {
+	vertical-align:top;
+	width:200px;
+}
+table.helpbox {
+	height:310px;
+	width:200px;
+}
+.bg3dark, .bg3norm, .bgdark {
+	background:#BDD7EF none repeat scroll 0 0;
+}
+
+td.help4 {
+	padding:10px;
+	text-align:left;
+	vertical-align:top;
+	white-space:nowrap;
+}
+
+.bg3light, .bglight {
+	background:#EDF6FF none repeat scroll 0 0;
+}
+td.helplayoutR {
+	padding:0 0 0 20px;
+	text-align:left;
+	vertical-align:top;
+}
+.headline{
+	font-size:20px;
+}

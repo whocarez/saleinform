@@ -1,7 +1,7 @@
 <?=doctype('html4-strict')?>
 <html>
 <head>	<?=meta($meta)?>	<title><?=$title?></title>	<link rel="SHORTCUT ICON" href="<?php echo base_url()?>images/si.png">	
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/style_new.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/style_new.css">	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/categories.css">	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/help.css">
 	<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
 </head>
 <body>
@@ -11,12 +11,7 @@
 
 	<table border="0" width="100%">
 		<tr>
-			<td class="cTD" style="padding: 0px;">
-				<div>
-<!-- ************************************************************************* --> 
-Материал этого раздела на стадии подготовки
-<!-- *****************************************************************************-->				
-				</div>
+			<td class="cTD" style="padding: 0px;">				<?php echo $help_obj;?>
 				<?php echo $contactstoolbar_area_obj;?>		
 			</td>
 		</tr>
