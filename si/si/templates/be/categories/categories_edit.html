@@ -7,7 +7,14 @@
 <div py:if="c.oper_status==True" class="message-save-success" >
 	${_(u'Изменения успешно сохранены')}
 </div>
-
+<script type="text/javascript" src="/js/thierdpart/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+tinyMCE.init({
+	mode : "textareas",
+	theme : "simple",
+	editor_selector : "descr"
+});
+</script>
 <div py:if="c.oper_status==False" class="message-save-failure">
 	${_(u'Изменения не сохранены из-за ошибок.')}
 </div>
@@ -139,7 +146,7 @@
 			<label for="descr">${_(u'Описание категории')}</label>
 		</td>
 		<td>
-			<textarea rows="3" cols="43" value="${c.currcat.descr}" name="descr">${c.currcat.descr}</textarea>
+			<textarea rows="3" cols="43" value="${c.currcat.descr}" class="descr" name="descr">${c.currcat.descr}</textarea>
 		</td>
 	</tr>
 	</table>
