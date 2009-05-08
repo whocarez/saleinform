@@ -57,13 +57,13 @@
 				<?=$whatisit_area_obj;?>		
 				<!-- } What Is It info -->		
 
-				<!-- { Categoeries -->
-				<?#=$categories_table_obj;?>
-				<!-- } Categoeries -->
-
 				<!-- { Rated products -->
 				<?=$mostpopular_categories_carousel_obj;?>
 				<!-- } Rated products -->
+
+				<!-- { Hotoffers -->
+				<?=$hotoffers_obj;?>
+				<!-- } Hotoffers -->
 
 				<!-- { Last updates -->
 				<?=$last_area_obj;?>

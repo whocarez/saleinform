@@ -34,6 +34,6 @@
     		echo $this->ciObject->image_lib->display_errors();
 		}				
 		return $imgNAME;
-	}
+	}	
 }
 ?>

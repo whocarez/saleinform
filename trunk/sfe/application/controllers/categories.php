@@ -1,7 +1,7 @@
 <?php/* * The Categories*/
 class Categories extends Controller{	private $objectsArr = array();
 	public function __construct(){
-		parent::Controller();
+		parent::Controller();		#$this->output->cache(10);
 		// { Enable profiler for admin only
 		$currentSESS = $this->session->userdata('_SI_');
 		if(isset($currentSESS['SI_LOGIN']['_USER_LOGIN_']) && $currentSESS['SI_LOGIN']['_USER_LOGIN_'] == 'mazvv'){

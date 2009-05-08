@@ -75,9 +75,9 @@
 								<?=img("images/ratings/stars{$r}.gif", $offer->wareOPINIONS.' '.lang('CATEGORIES_MODULE_CLIENT_REWIEVES_TITLE'))?>
 								&nbsp;&nbsp;
 								<?if(!$offer->wareOPINIONS) { ?>
-									<?=anchor('', lang('CATEGORIES_MODULE_FIRST_OPN'), 'title="'.$offer->wareNAME.'" class="opinions-link"')?>
+									<?=anchor('ware/editreview/'.$offer->offerRID.'-'.$offer->offerSLUG, lang('CATEGORIES_MODULE_FIRST_OPN'), 'title="'.$offer->wareNAME.'" class="opinions-link"')?>
 								<? } else { ?>
-									<?=anchor('', $offer->wareOPINIONS.' '.lang('CATEGORIES_MODULE_CLIENT_REWIEVES_TITLE'), 'title="'.$offer->wareNAME.'" class="opinions-link"')?>
+									<?=anchor('offer/'.$offer->offerRID.'-'.$offer->offerSLUG.'#comp', $offer->wareOPINIONS.' '.lang('CATEGORIES_MODULE_CLIENT_REWIEVES_TITLE'), 'title="'.$offer->wareNAME.'" class="opinions-link"')?>
 								<? } ?>	
 							</p>
 							<? } ?>

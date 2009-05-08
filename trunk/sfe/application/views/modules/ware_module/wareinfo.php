@@ -9,6 +9,14 @@
 	<span class="grey"> > </span><?=$offer_info->name?>
 </div>
 
+<script type="text/javascript">
+function changeImg(img){
+	rPath = '<?=base_url()?>'+img;
+	$('#ware_img').attr('src', rPath);
+	$('#basic').attr('href', rPath.replace('/details_thumb/', '/original_size/'));
+	return;
+}
+</script>
 
 <table cellspacing="0" border="0" id="proMem">
 	<tr>
@@ -17,7 +25,10 @@
 				<div style="cursor: pointer; height: 150px;">
 				<?if($img) { ?>
 					<?$i=random_element($img)?>
-					<?=img(array('src'=>$i[0], 'alt'=>$offer_info->name, 'border'=>'0', 'class'=>'imgProd'))?>
+					<a href="<?=str_replace('/details_thumb/', '/original_size/', base_url().$i[0])?>" title="<?=$offer_info->name?>" id="basic"><?=img(array('src'=>$i[0], 'alt'=>$offer_info->name, 'border'=>'0', 'class'=>'imgProd', 'id'=>'ware_img'))?></a>
+					<script type="text/javascript">
+						$('#basic').bigPicture(); 
+					</script>
 				<? } ?>
 				</div>
                 <br/>
@@ -26,7 +37,7 @@
 					<tr>
 						<?foreach($img as $r) { ?>
 						<td style="border: 1px solid rgb(207, 207, 207); cursor: pointer;" class="pImg">
-							<?=img(array('src'=>$r[1], 'alt'=>$offer_info->name, 'border'=>'0'))?>
+							<a href="javascript: void(0);" title="<?=$offer_info->name?>" onclick="javascript: changeImg('<?=$r[0];?>');"><?=img(array('src'=>$r[1], 'alt'=>$offer_info->name, 'border'=>'0'))?></a>
 						</td>
 						<? } ?>
 					</tr>
@@ -93,7 +104,7 @@
 	<tr>
 		<td>
 			<?$o_img = ($o->img)?($o->img):'images/no_offer_mini.png'?>
-			<?=anchor('clicks/offer/'.$o->offerRID, img(array('src'=>$o_img, 'alt'=>$o->wareNAME, 'border'=>'0'), 'title="'.$o->wareNAME.'" target="_blank"'))?>
+			<?=anchor('clicks/offer/'.$o->offerRID, img(array('src'=>$o_img, 'alt'=>$o->wareNAME, 'border'=>'0')), 'title="'.$o->wareNAME.'" target="_blank"')?>
 		</td>
 		<td class="visit-cell offer-name">
 			<?=anchor('clicks/offer/'.$o->offerRID, $o->wareNAME, 'title="'.$o->wareNAME.'" target="_blank"')?><br>

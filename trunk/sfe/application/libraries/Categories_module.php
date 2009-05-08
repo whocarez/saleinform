@@ -298,5 +298,18 @@ class Categories_module{
     	return $forest;
 	}
 	
+	/**
+	 * Get Hot offers block
+	 * @return unknown_type
+	 */
+	public function renderHotOffers(){
+		# By default we get random products where offers more than 1
+		$rows = $this->ciObject->categories_model->getHotOffers();
+		foreach($rows as $key=>$row) {
+			$rows[$key]->img = $this->GetWareImage($this->ciObject->categories_model->getHotOfferImage($row->rid));
+		}
+		$data = array('items'=>$rows);  
+		return $this->ciObject->load->view('modules/categories_module/hotoffers.php', $data, True); 
+	}
 }
 ?>

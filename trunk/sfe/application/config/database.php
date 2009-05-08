@@ -37,9 +37,9 @@
 $active_group = "default";
 $active_record = TRUE;
 
-$db['default']['hostname'] = "localhost";
+$db['default']['hostname'] = "soad";
 $db['default']['username'] = "root";
-$db['default']['password'] = "";
+$db['default']['password'] = "korn17";
 $db['default']['database'] = "saleinform";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "";
