@@ -20,6 +20,10 @@ class ClientsController(BaseController):
 
     def index(self):
         c.clients_quan = meta.Session.query(sidb.Client).count()
+        sorts = [('name', sidb.Client.name), ('prdate', sidb.Tmppricesstorage.price_date), ('items', sidb.Tmppricesstorage.tmpitems_quan)]
+        sort_field = request.GET.get("sort_field", 'name')
+        sort_rule = request.GET.get("sort_rule", 'ASC')
+
         clients_list = meta.Session.query(sidb.Client, sidb.City, sidb.Country, sidb.Clientlogo, sidb.User, sidb.Tmppricesstorage.rid.label('storage_rid'),
                                             sidb.Tmppricesstorage.tmpitems_quan, sidb.Tmppricesstorage.price_date).\
                                            join((sidb.City, sidb.Client._cities_rid == sidb.City.rid)).\
