@@ -13,7 +13,7 @@ class CategoriesForm(formencode.Schema):
     meta_title = formencode.All(formencode.validators.String(strip=True), formencode.validators.MaxLength(256))
     meta_keywords = formencode.All(formencode.validators.String(strip=True), formencode.validators.MaxLength(256))
     meta_description = formencode.All(formencode.validators.String(strip=True), formencode.validators.MaxLength(256))
-    descr = formencode.All(formencode.validators.String(not_empty=True, strip=True), formencode.validators.MinLength(5), formencode.validators.MaxLength(256))
+    descr = formencode.All(formencode.validators.String(not_empty=True, strip=True), formencode.validators.MinLength(5), formencode.validators.MaxLength(1024))
     
         
         
