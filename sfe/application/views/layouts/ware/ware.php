@@ -5,8 +5,8 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/navline.css">
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/products.css">
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/common.css">
-	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/categories.css">
-	<script src="<?php echo base_url()?>javascript/jquery-1.3.2.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/categories.css">	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/core.css">	<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/skin.css">
+	<script src="<?php echo base_url()?>javascript/jquery-1.3.2.min.js" type="text/javascript"></script>	<script src="<?php echo base_url()?>javascript/jquery.bigPicture-pack.js" type="text/javascript"></script>
 	<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
 </head>
 <body>
