@@ -1,0 +1,61 @@
+<div class="grid-container" xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" lang="en" py:strip="False">
+<h4>
+	${_(u'Товары')} (${c.wares_quan})
+</h4>
+<div class="clients-toolbar">
+	<div class="add-tool"><a href="/be/wares/add">${_(u'Добавить товар')}</a></div>
+</div>
+<py:def function = "sorter(col)">
+			<span py:choose="">
+				<span py:when="c.sort_col==col">
+					<span py:choose="">
+						<span py:when="c.sort_rule=='asc'">
+							<a href="/be/wares?sort_field=${col}&amp;sort_rule=desc"><img src="/img/design/icons/arrow_down.png" border="0"/></a>
+						</span>
+						<span py:otherwise="">
+							<a href="/be/wares?sort_field=${col}&amp;sort_rule=asc"><img src="/img/design/icons/arrow_up.png" border="0"/></a>
+						</span>
+					</span>		
+				</span>
+				<span py:otherwise="">
+					<a href="/be/wares?sort_field=${col}&amp;sort_rule=asc"><img src="/img/design/icons/arrow_updown.png" border="0"/></a>
+				</span>
+			</span>
+</py:def>
+<table width="100%" cellpadding="0" cellspacing="0" class="grid">
+	<form action="/be/wares" method="post" autocomplete="off"	>
+	<input type="hidden" value="1" name="filter"/>
+	<tr>
+		<th>${_(u'ID')}</th>
+		<th>
+			${_(u'Название')}
+			${sorter('name')}<br/>
+			<input name="s_name" value="${c.s_name}" type="text"/>
+		</th>
+		<th>
+			${_(u'Категория')}<br/>
+		</th>
+		<th>
+			${_(u'ЧПУ')}<br/>
+		</th>
+		<th>
+			${_(u'Популярность')}
+		</th>
+		<th>&nbsp;</th>
+	</tr>
+	<input type="image" width="1" height="1"/>
+	</form>
+	<tr py:for="row in c.wares_list">
+		<td>${row.Ware.rid}</td>
+		<td>${row.Ware.name}</td>
+		<td>${row.category_name}</td>
+		<td>${row.Ware.slug}</td>
+		<td>${row.Ware.popularity}</td>
+		<td>
+		</td>
+	</tr>
+</table>
+<div class="pager">
+	${c.pager}
+</div>
+</div>

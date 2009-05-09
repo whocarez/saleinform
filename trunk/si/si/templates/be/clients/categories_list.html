@@ -13,8 +13,9 @@
 		<th>${_(u'Категория клиента')}</th>
 		<th>${_(u'Связанная категория')}</th>
 		<th>${_(u'Незагружено')}</th>
+		<th>&nbsp;</th>
 	</tr>
-	<tr py:for="row in c.clcategories">
+	<tr py:for="row in c.clcategories" >
 		<td>
 			<span py:choose=""> 
 				<span py:when="row.Clcategory.clrid in c.leafs">${row.Clcategory.name}</span>
@@ -23,8 +24,9 @@
 				</span>
 			</span>
 		</td>
-		<td>${row.category_name}&nbsp;</td>
-		
+		<td>
+			${row.category_name}&nbsp;
+		</td>
 		<td>
 			<span py:choose=""> 
 				<span py:when="row.Clcategory.clrid in c.leafs">${row.Clcategory.tmpitems_quan}</span>
@@ -32,6 +34,9 @@
 					${row.tmpitems_quan1}
 				</span>
 			</span>
+		</td>
+		<td>
+			<a href="/be/clients/editcategory/${c.price.client_rid}?parent=${row.Clcategory.clrid}&amp;action=setcat" title="${_(u'Категория')}"><img src="/img/design/icons/pencil.png" border="0"/></a>
 		</td>
 	</tr>
 </table>
