@@ -5,22 +5,61 @@
 <div class="clients-toolbar">
 	<div class="add-tool"><a href="/be/clients/add">${_(u'Добавить клиента')}</a></div>
 </div>
-
+<py:def function = "sorter(col)">
+			<span py:choose="">
+				<span py:when="c.sort_col==col">
+					<span py:choose="">
+						<span py:when="c.sort_rule=='asc'">
+							<a href="/be/clients?sort_field=${col}&amp;sort_rule=desc"><img src="/img/design/icons/arrow_down.png" border="0"/></a>
+						</span>
+						<span py:otherwise="">
+							<a href="/be/clients?sort_field=${col}&amp;sort_rule=asc"><img src="/img/design/icons/arrow_up.png" border="0"/></a>
+						</span>
+					</span>		
+				</span>
+				<span py:otherwise="">
+					<a href="/be/clients?sort_field=${col}&amp;sort_rule=asc"><img src="/img/design/icons/arrow_updown.png" border="0"/></a>
+				</span>
+			</span>
+</py:def>
 <table width="100%" cellpadding="0" cellspacing="0" class="grid">
 	<tr>
+		<!-- 
 		<th>${_(u'Лого')}</th>
-		<th>${_(u'Название')}</th>
-		<th>${_(u'Страна')}</th>
-		<th>${_(u'Город')}</th>
-		<th>${_(u'загр')}</th>
-		<th>${_(u'не загр.')}</th>
+		 -->
+		<th>
+			${_(u'Название')}
+			${sorter('name')}<br/>
+			<input name="s_name" value="${c.s_name}" id="s_name"/>
+		</th>
+		<th>
+			${_(u'Страна')}<br/>
+			<input name="s_country" value="${c.s_country}" id="s_country"/>
+		</th>
+		<th>
+			${_(u'Город')}<br/>
+			<input name="s_city" value="${c.s_city}" id="s_city"/>
+		</th>
+		<th>
+			${_(u'загр')}
+		</th>
+		<th>
+			${_(u'не загр.')}
+			${sorter('tmpitems')}
+		</th>
 		<th>${_(u'Прайс')}</th>
-		<th>${_(u'Активный')}</th>
-		<th>${_(u'Дата прайса')}</th>
+		<th>
+			${_(u'Активный')}
+		</th>
+		<th>
+			${_(u'Дата прайса')}
+			${sorter('prdate')}
+		</th>
 		<th>&nbsp;</th>
 		<th>&nbsp;</th>
 	</tr>
 	<tr py:for="row in c.clients_list">
+		<!-- 
 		<td>
 			<span py:choose=""> 
 				<span py:when="not row.Clientlogo">&nbsp;</span>
@@ -29,6 +68,7 @@
 				</span>
 			</span>
 		</td>
+		 -->
 		<td>${row.Client.name}</td>
 		<td>${row.Country.name}</td>
 		<td>${row.City.name}</td>

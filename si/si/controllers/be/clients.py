@@ -20,10 +20,11 @@ class ClientsController(BaseController):
 
     def index(self):
         c.clients_quan = meta.Session.query(sidb.Client).count()
-        sorts = [('name', sidb.Client.name), ('prdate', sidb.Tmppricesstorage.price_date), ('items', sidb.Tmppricesstorage.tmpitems_quan)]
-        sort_field = request.GET.get("sort_field", 'name')
-        sort_rule = request.GET.get("sort_rule", 'ASC')
-
+        c.sorts = [('name', sidb.Client.name), ('prdate', sidb.Tmppricesstorage.price_date), ('tmpitems', sidb.Tmppricesstorage.tmpitems_quan)]
+        c.sort_col = request.GET.get("sort_field", 'name')
+        sort_field = dict(c.sorts).get(c.sort_col)
+        c.sort_rule = request.GET.get("sort_rule", 'asc')
+        sort_field = (c.sort_rule == 'desc' and  sort_field.desc() or sort_field.asc())  
         clients_list = meta.Session.query(sidb.Client, sidb.City, sidb.Country, sidb.Clientlogo, sidb.User, sidb.Tmppricesstorage.rid.label('storage_rid'),
                                             sidb.Tmppricesstorage.tmpitems_quan, sidb.Tmppricesstorage.price_date).\
                                            join((sidb.City, sidb.Client._cities_rid == sidb.City.rid)).\
@@ -32,9 +33,8 @@ class ClientsController(BaseController):
                                            outerjoin((sidb.User, sidb.User._clients_rid == sidb.Client.rid)).\
                                            outerjoin((sidb.Clientlogo, sidb.Clientlogo._clients_rid == sidb.Client.rid)).\
                                            outerjoin((sidb.Tmppricesstorage, sidb.Tmppricesstorage._clients_rid == sidb.Client.rid)).\
-                                           group_by(sidb.Client.rid).\
-                                           order_by(sidb.Client.name)
-        page = paginate.Page(clients_list, items_per_page=10, page=request.GET.get("page", 1))
+                                           group_by(sidb.Client.rid).order_by(sort_field)
+        page = paginate.Page(clients_list, items_per_page=15, page=request.GET.get("page", 1), sort_col=c.sort_col, sort_rule=c.sort_rule)
         c.pager = page.pager()
         c.clients_list = page.items
         c.subtempl = 'clients_list'
