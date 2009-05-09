@@ -48,11 +48,13 @@ def make_map():
     map.connect('/be/clients/currency/{storage}', controller='be/clients', action='currency')
     
     map.connect('/be/clients/removestorage/{storage}', controller='be/clients', action='removestorage')
+    map.connect('/be/clients/clload/{client}', controller='be/clients', action="clload")
 
     map.connect('/be/categories', controller='be/categories')
     map.connect('/be/categories/edit/{rid}', controller='be/categories', action="edit")
     map.connect('/be/categories/add/{rid}', controller='be/categories', action="add")
-
+    
+    map.connect('/be/wares', controller='be/wares')
     # } BE
     
     map.connect('/{controller}/{action}')

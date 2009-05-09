@@ -25,12 +25,12 @@ class ClientsController(BaseController):
         sort_field = dict(c.sorts).get(c.sort_col)
         c.sort_rule = request.GET.get("sort_rule", 'asc')
         sort_field = (c.sort_rule == 'desc' and  sort_field.desc() or sort_field.asc())
-        if request.POST.get('filter', None):
-            if request.POST.get('s_name'): session['s_name'] = request.POST.get('s_name')
-            if request.POST.get('s_country'): session['s_country'] = request.POST.get('s_country')
-            if request.POST.get('s_city'): session['s_city'] = request.POST.get('s_city')
-            session.save()
-        c.s_name = session.has_key('s_name') 
+        for key, value in request.POST.iteritems():
+            if key in ['s_name', 's_country', 's_city']: session[key] = value  
+        session.save()
+        c.s_name = session.has_key('s_name') and session.get('s_name') or u''
+        c.s_country = session.has_key('s_country') and session.get('s_country') or u''
+        c.s_city = session.has_key('s_city') and session.get('s_city') or u''
         clients_list = meta.Session.query(sidb.Client, sidb.City, sidb.Country, sidb.Clientlogo, sidb.User, sidb.Tmppricesstorage.rid.label('storage_rid'),
                                             sidb.Tmppricesstorage.tmpitems_quan, sidb.Tmppricesstorage.price_date).\
                                            join((sidb.City, sidb.Client._cities_rid == sidb.City.rid)).\
@@ -40,6 +40,10 @@ class ClientsController(BaseController):
                                            outerjoin((sidb.Clientlogo, sidb.Clientlogo._clients_rid == sidb.Client.rid)).\
                                            outerjoin((sidb.Tmppricesstorage, sidb.Tmppricesstorage._clients_rid == sidb.Client.rid)).\
                                            group_by(sidb.Client.rid).order_by(sort_field)
+                        
+        if c.s_name: clients_list = clients_list.filter(sidb.Client.name.like('%'+c.s_name+'%'))
+        if c.s_country: clients_list = clients_list.filter(sidb.Country.name.like('%'+c.s_country+'%'))
+        if c.s_city: clients_list = clients_list.filter(sidb.City.name.like('%'+c.s_city+'%'))
         page = paginate.Page(clients_list, items_per_page=15, page=request.GET.get("page", 1), sort_col=c.sort_col, sort_rule=c.sort_rule)
         c.pager = page.pager()
         c.clients_list = page.items
@@ -296,4 +300,11 @@ class ClientsController(BaseController):
         meta.Session.commit()
         redirect_to('/be/clients')
         
-         
+    def clload(self, client=None):
+        if not client: redirect_to('/be/clients')
+        meta.Session.query(sidb.Prloadsorganizer).filter(sidb.Prloadsorganizer._clients_rid==client).delete()
+        redirect_to('/be/clients')
+        
+    def editcategory(self, client=None):
+        if not client: redirect_to('/be/clients')
+             

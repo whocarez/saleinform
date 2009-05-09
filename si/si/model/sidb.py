@@ -25,6 +25,8 @@ tmpprices = Table('_tmpprices', metadata, autoload = True, autoload_with=engine)
 tmppritemscources = Table('_tmppritemscources', metadata, autoload = True, autoload_with=engine)
 tmppritemsattrs = Table('_tmppritemsattrs', metadata, autoload = True, autoload_with=engine)
 tmppritemsimgs = Table('_tmppritemsimgs', metadata, autoload = True, autoload_with=engine)
+prloadsorganizer = Table('_prloadsorganizer', metadata, autoload = True, autoload_with=engine)
+wares = Table('_wares', metadata, autoload = True, autoload_with=engine)
 
 class Urform(object): pass
 class Cltype(object): pass
@@ -47,6 +49,8 @@ class Tmpprice(object): pass
 class Tmppritemscource(object): pass
 class Tmppritemsattr(object): pass
 class Tmppritemsimg(object): pass
+class Prloadsorganizer(object): pass
+class Ware(object): pass
 
 orm.mapper(Cltype, cltypes)
 orm.mapper(Urform, urforms)
@@ -68,4 +72,7 @@ orm.mapper(Tmppritem, tmppritems)
 orm.mapper(Tmpprice, tmpprices)
 orm.mapper(Tmppritemscource, tmppritemscources)
 orm.mapper(Tmppritemsattr, tmppritemsattrs)
-orm.mapper(Tmppritemsimg, tmppritemsimgs)    
+orm.mapper(Tmppritemsimg, tmppritemsimgs)
+orm.mapper(Prloadsorganizer, prloadsorganizer)
+orm.mapper(Ware, wares)
+    
