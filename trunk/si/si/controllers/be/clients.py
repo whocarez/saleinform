@@ -24,7 +24,13 @@ class ClientsController(BaseController):
         c.sort_col = request.GET.get("sort_field", 'name')
         sort_field = dict(c.sorts).get(c.sort_col)
         c.sort_rule = request.GET.get("sort_rule", 'asc')
-        sort_field = (c.sort_rule == 'desc' and  sort_field.desc() or sort_field.asc())  
+        sort_field = (c.sort_rule == 'desc' and  sort_field.desc() or sort_field.asc())
+        if request.POST.get('filter', None):
+            if request.POST.get('s_name'): session['s_name'] = request.POST.get('s_name')
+            if request.POST.get('s_country'): session['s_country'] = request.POST.get('s_country')
+            if request.POST.get('s_city'): session['s_city'] = request.POST.get('s_city')
+            session.save()
+        c.s_name = session.has_key('s_name') 
         clients_list = meta.Session.query(sidb.Client, sidb.City, sidb.Country, sidb.Clientlogo, sidb.User, sidb.Tmppricesstorage.rid.label('storage_rid'),
                                             sidb.Tmppricesstorage.tmpitems_quan, sidb.Tmppricesstorage.price_date).\
                                            join((sidb.City, sidb.Client._cities_rid == sidb.City.rid)).\
