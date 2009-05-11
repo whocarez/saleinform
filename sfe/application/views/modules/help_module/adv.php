@@ -38,35 +38,8 @@
   						2.
   					</td>
   					<td style="width:100%; padding-left:10px;padding-bottom: 10px;">
-  						<strong><?=lang('HELP_MODULE_WHATISIT_CONTENT2_T')?></strong><br>
-  						<?=lang('HELP_MODULE_WHATISIT_CONTENT2')?>
-  					</td>
-  				</tr>
-  				<tr>
-  					<td>
-  						3.
-  					</td>
-  					<td style="width:100%; padding-left:10px;padding-bottom: 10px;">
-  						<strong><?=lang('HELP_MODULE_WHATISIT_CONTENT3_T')?></strong><br>
-  						<?=lang('HELP_MODULE_WHATISIT_CONTENT3')?>
-  					</td>
-  				</tr>
-  				<tr>
-  					<td>
-  						4.
-  					</td>
-  					<td style="width:100%; padding-left:10px;padding-bottom: 10px;">
-  						<strong><?=lang('HELP_MODULE_WHATISIT_CONTENT4_T')?></strong><br>
-  						<?=lang('HELP_MODULE_WHATISIT_CONTENT4')?>
-  					</td>
-  				</tr>
-  				<tr>
-  					<td>
-  						5.
-  					</td>
-  					<td style="width:100%; padding-left:10px;padding-bottom: 10px;">
-  						<strong><?=lang('HELP_MODULE_WHATISIT_CONTENT5_T')?></strong><br>
-  						<?=lang('HELP_MODULE_WHATISIT_CONTENT5')?>
+  						<strong><?=lang('HELP_MODULE_ADV_CONTENT2_T')?></strong><br>
+  						<?=lang('HELP_MODULE_ADV_CONTENT2')?>
   					</td>
   				</tr>
   				
