@@ -55,6 +55,9 @@ def make_map():
     map.connect('/be/categories/add/{rid}', controller='be/categories', action="add")
     
     map.connect('/be/wares', controller='be/wares')
+    map.connect('/be/wares/add', controller='be/wares', action="add")
+    
+    map.connect('/be/scats', controller='be/scats')    
     # } BE
     
     map.connect('/{controller}/{action}')

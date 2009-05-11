@@ -30,3 +30,31 @@ class WaresController(BaseController):
         c.wares_list = page.items
         c.subtempl = 'wares_list'
         return render('be/layouts/wares.html')
+    
+    def _processingWares(self, rid=None):
+        try:
+            if rid:
+                ware = meta.Session.query(sidb.Ware).filter(sidb.Ware.rid==rid).first()
+            else: 
+                ware = sidb.Ware()
+            ware.name = request.POST.get('name', None)
+            ware._categories_rid = request.POST.get('_categories_rid', None)
+            ware.popularity = request.POST.get('popularity', 0)
+            meta.Session.add(ware)
+            meta.Session.commit()
+            return ware.rid
+        except:
+            meta.Session.rollback()
+            return False
+    
+    def add(self):
+        c.oper_status = None
+        if request.POST.get('save', None):
+            new_ware = self._processingWares() 
+            if new_ware:
+                redirect_to('/be/wares/edit/%s'%new_ware)
+            else:
+                c.oper_status = False
+        c.subtempl = 'wares_add'
+        return render('be/layouts/wares.html')
+        

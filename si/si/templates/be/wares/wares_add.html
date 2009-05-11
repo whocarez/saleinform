@@ -1,0 +1,49 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" lang="en" py:strip="False">
+<script type="text/javascript" src="/js/be/clients.js"></script>
+<h3>${_(u'Добавление товара')}</h3>
+<div class="back-link">
+	<a href="/be/clients" title="${_(u'Назад к списку клиентов')}">${_(u'Назад к списку товаров')}</a>
+</div>
+<br/>
+<div py:if="c.oper_status==True" class="message-save-success" >
+	${_(u'Изменения успешно сохранены')}
+</div>
+
+<div py:if="c.oper_status==False" class="message-save-failure">
+	${_(u'Изменения не сохранены из-за ошибок.')}
+</div>
+
+<form action="/be/wares/add" method="post">
+<div class="clients-processing">
+	<table width="50%">
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Название')}</label>
+		</td>
+		<td>
+			<input type="text" name="name" value="" id="name"/>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="_categories_rid">${_(u'Категория')}</label>
+		</td>
+		<td>
+			<input type="text" name="category_name" value="" id="category_name"/>
+			<a href="/be/scats" target="_blank" onClick="popupWin = window.open(this.href, 'scats', 'location,width=500,height=600,top=0'); popupWin.focus(); return false;"><img src="/img/design/icons/application.png" border="0"/></a>			
+			<input type="hidden" name="_categories_rid" value="" id="_categories_rid" size="5"/>
+		</td>
+	</tr>
+	<tr>
+		<td width="40%">
+			<label for="code">${_(u'Популярность')}</label>
+		</td>
+		<td>
+			<input type="text" name="popularity" value="" id="popularity" size="5"/>
+		</td>
+	</tr>
+	</table>
+	<input type="submit" name="save" value="${_(u'Сохранить')}"/>
+</div>
+</form>
+</div>

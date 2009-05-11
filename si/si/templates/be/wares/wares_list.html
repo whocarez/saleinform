@@ -52,6 +52,8 @@
 		<td>${row.Ware.slug}</td>
 		<td>${row.Ware.popularity}</td>
 		<td>
+			<a href="/be/wares/edit/${row.Ware.rid}" title="${_(u'Редактировать')}"><img src="/img/design/icons/pencil.png" border="0"/></a>
+			<a href="/be/wares/remove/${row.Ware.rid}" title="${_(u'Удалить товар')}" onclick="javascript: return confirm('${_(u'Удалить товар ')}${row.Ware.name}')"><img src="/img/design/icons/delete.png" border="0"/></a>
 		</td>
 	</tr>
 </table>
