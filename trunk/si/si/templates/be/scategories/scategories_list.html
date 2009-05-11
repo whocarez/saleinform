@@ -1,0 +1,31 @@
+<div class="grid-container" xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" lang="en" py:strip="False">
+<h4>
+	${_(u'Категории товаров')}
+</h4>
+<div style="font-size: 12px;margin: 5px 0px;">
+	<a href="/be/scats">${_(u'Корень')}</a><span py:strip="True" py:for="row in c.parents"> >> <a href="/be/scats?srid=${row.rid}">${row.name}</a></span><span py:if="c.currcat" py:strip="True"> >> <b>${c.currcat.name}</b></span>
+</div>
+<table class="grid" cellpadding="0" cellspacing="0" style="width:50%;">
+	<tr>
+		<th>${_(u'Название')}</th>
+		<th>${_(u'Популярность')}</th>
+		<th>${_(u'В ТОП')}</th>
+		<th>${_(u'Группировка')}</th>
+		<th>${_(u'Сравнение')}</th>
+	</tr>
+	<tr py:for="row in c.categories_list">
+		<td>
+			<span py:choose=""> 
+				<span py:when="row.rid in c.leafs">${row.name}</span>
+				<span py:otherwise="">
+					<a href="/be/scats?srid=${row.rid}">${row.name}</a>
+				</span>
+			</span>
+		</td>
+		<td>${row.popularity}&nbsp;</td>
+		<td><img src="/img/design/icons/${row.to_main and 'tick' or 'cancel'}.png" alt="" border="0"/></td>
+		<td><img src="/img/design/icons/${row.isgrouped and 'tick' or 'cancel'}.png" alt="" border="0"/></td>
+		<td><img src="/img/design/icons/${row.iscompared and 'tick' or 'cancel'}.png" alt="" border="0"/></td>
+	</tr>
+</table>
+</div>
