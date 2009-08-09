@@ -1,0 +1,3 @@
+<?php/** * TravelCRM * * An open source CRM system for travel agencies * * @package		Core * @author		mazvv * @license		GNU GPLv3 (http://gplv3.fsf.org)  * @link		http://code.google.com/p/travelcrm/ *//** * Tasks module *  * @author mazvv * @package Libraries * @subpackage Core */class Taskslib{	protected $ci; # global Codeigniter object		public function __construct() {		# get global Codeigniter object		$this->ci = &get_instance();		$this->ci->lang->load('tasks');		$this->ci->load->model('tasks_model');	}
+		public function get_tasks(){		$data = array();		$data['title'] = lang('TASKS_TITLE');		$data['tasks'] = $this->ci->tasks_model->get_ds();		return $this->ci->load->view('tasks/grid', $data, True);	}	}
+?>
